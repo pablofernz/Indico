@@ -10,16 +10,15 @@ Este es un proyecto de una página web para un restaurante ficticio el cual cre�
 ...
 
 ## Tecnologias
-Las tecnologías que estoy utilizando en este proyecto son:
+Algunas de las tecnologías que estoy utilizando en este proyecto son:
 
 Back-end:
 * Javascript
-* Express.js (backend)
-* MongoDB Atlas (backend)
-* Mongoose (backend)
-* MongoDB Compass (interfaz gráfica de la base de datos)
-* PNPM (instalador de dependencias)
-* Node.js (entorno de ejecucion)
+* Express.js
+* MongoDB Atlas
+* Mongoose
+* MongoDB Compass
+* Node.js
 
 Front-end:
 * Next.js
