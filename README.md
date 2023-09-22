@@ -1,6 +1,6 @@
 1. [Info General](#Info-General)
 2. [Tecnologías](#tecnologias)
-3. [Instalación](#instalacion)
+3. [Instalación](#Instalación)
    
 ### Info General
 -En Progreso-
