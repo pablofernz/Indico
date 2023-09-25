@@ -17,7 +17,7 @@ Back-end:
 * Express.js
 * MongoDB Atlas
 * Mongoose
-* MongoDB Compass
+* MongoDB Compass (interfaz gráfica de la base de datos)
 * Node.js
 
 Front-end:
