@@ -1,4 +1,6 @@
 const mongoose = require("mongoose")
+const reviewsSchema = require("./Reviews").schema
+
 
 const clientSchema = mongoose.Schema({
     name: {
@@ -24,7 +26,8 @@ const clientSchema = mongoose.Schema({
     role: {
         type: String,
         default: "Client"
-    }
+    },
+    reviews: [reviewsSchema]
 }, {
     versionKey: false // Establecer versionKey en false para eliminar la propiedad "__v"
 })

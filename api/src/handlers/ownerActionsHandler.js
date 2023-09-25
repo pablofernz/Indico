@@ -1,33 +1,17 @@
 const Menu = require('../models/Menu');
+const Client = require('../models/Client');
 const foodAdd = require('../controllers/foodAdder');
 
-const getMenu = async (req, res) => {
-    const { search, type } = req.query
-
+const seeClients = async (req, res) => {
     try {
-        const menu = await Menu.find();
-
-        if (search || type) {
-            if (type) {
-                const searchedType = menu.filter((menus) => menus.type.toLowerCase().includes(type.toLowerCase()))
-
-                if (!searchedType.length) throw Error("No pudimos encontrar este tipo de comida :(")
-                else return res.status(200).json(searchedType)
-
-            } else {
-                if (search) {
-                    const searchedFood = menu.filter((menus) => menus.title.toLowerCase().includes(search.toLowerCase()))
-
-                    if (!searchedFood.length) throw Error("No encontramos esta comida :(")
-                    else return res.status(200).json(searchedFood)
-
-                } else {
-                    return res.status(200).json(menu);
-                }
-            }
-        } else return res.status(200).json(menu);
+        const clients = await Client.find();
+        if (clients.length) {
+            return res.status(200).json(clients)
+        } else {
+            throw Error("No hay clientes")
+        }
     } catch (error) {
-        res.status(500).json(error.message);
+        return res.status(400).json(error.message)
     }
 }
 
@@ -92,8 +76,9 @@ const deleteFood = async (req, res) => {
         return res.status(400).json(error.message)
     }
 }
+
 module.exports = {
-    getMenu,
+    seeClients,
     addFood,
     updateFood,
     deleteFood

@@ -1,5 +1,5 @@
 const Owner = require('../models/Owner');
-const addOwner = require("../controllers/ownerCreate")
+const addOwner = require("../controllers/ownerCreator")
 
 const createOwner = async (req, res) => {
     const { name, lastname, email, password, image } = req.body

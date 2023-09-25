@@ -2,20 +2,21 @@ const Client = require('../models/Client');
 const addClient = require("../controllers/clientCreator")
 
 const createClient = async (req, res) => {
-    const { name, lastname, email, password, image } = req.body
+    const { name, lastname, email, password, image, reviews } = req.body
 
     try {
         const existingClient = await Client.findOne({
             name: name,
             lastname: lastname,
             email: email,
-            password: password
+            password: password,
+            reviews: reviews
         });
 
         if (existingClient) {
             return res.status(400).json({ error: 'Ya existe una cuenta con este correo. Inicia sesión' });
         } else {
-            const newClient = addClient({ name, lastname, email, password, image })
+            const newClient = addClient({ name, lastname, email, password, image, reviews })
             return res.status(200).json(newClient)
         }
 
