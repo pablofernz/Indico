@@ -21,7 +21,7 @@ Back-end:
 * Node.js
 
 Front-end:
-* Next.js
+* React
   
 ## Instalación
 Aunque el proyecto sigue en desarrollo, puedes instalarlo y probar las funcionalidades del backend ingresando los siguientes comandos en la terminal
