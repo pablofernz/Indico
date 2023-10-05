@@ -44,7 +44,7 @@ const addReview = async (req, res) => {
             const existingReview = client.reviews.filter((review) => review.text == text)
 
             if (existingReview.length) {
-                return res.status(400).send("Ya tienes una reseña parecida, sabemos que puedes ser mucho más creativo :).")
+                return res.status(400).send("Ya tienes una reseña parecida, sabemos que puedes ser mucho más creativo :)")
 
             } else {
                 const review = new Review({ text, stars });

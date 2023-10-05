@@ -1,10 +1,12 @@
 const { Router } = require('express');
-const { createOwner, updateOwner, seeOwners, deleteOwner } = require("../handlers/ownerHandler");
+const { createOwner, ownerLogin, updateOwner, seeOwners, deleteOwner } = require("../handlers/ownerHandler");
 const { seeClients, addFood, updateFood, deleteFood } = require('../handlers/ownerActionsHandler');
 const { getMenu } = require('../handlers/clientStoreHandler');
 const ownerRouter = Router();
 
 ownerRouter.post("/register", createOwner)
+
+ownerRouter.post("/login", ownerLogin)
 ownerRouter.get("/list", seeOwners)
 ownerRouter.put("/update/:id", updateOwner)
 ownerRouter.delete("/delete/:id", deleteOwner)

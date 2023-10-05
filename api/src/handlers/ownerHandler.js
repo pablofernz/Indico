@@ -1,5 +1,6 @@
 const Owner = require('../models/Owner');
 const addOwner = require("../controllers/ownerCreator")
+const bcrypt = require("bcrypt")
 
 const createOwner = async (req, res) => {
     const { name, lastname, email, password, image } = req.body
@@ -8,14 +9,11 @@ const createOwner = async (req, res) => {
         const owners = await Owner.find();
         if (owners.length < 2) {
             const existingOwner = await Owner.findOne({
-                name: name,
-                lastname: lastname,
-                email: email,
-                password: password
+                email: email
             });
 
             if (existingOwner) {
-                return res.status(400).json({ error: 'Ya existe una cuenta con este correo.' });
+                return res.status(400).json({ error: 'Ya existe una cuenta con este correo. Inicia sesión' });
             } else {
                 const newOwner = addOwner({ name, lastname, email, password, image })
                 return res.status(200).json(newOwner)
@@ -82,9 +80,33 @@ const deleteOwner = async (req, res) => {
     }
 }
 
+
+const ownerLogin = async (req, res) => {
+    const { email, password } = req.body
+
+    try {
+        const existingOwner = await Owner.findOne({ email })
+
+        if (existingOwner) {
+            const passwordsMatch = await bcrypt.compare(password, existingOwner.password);
+
+            if (passwordsMatch) {
+                return res.status(200).send(`Bienvenido, ${existingOwner.name}`)
+            } else {
+                return res.status(400).send("Contraseña incorrecta.");
+            }
+        } else {
+            return res.status(400).send("No existe esta cuenta, registrate.")
+        }
+    } catch (error) {
+        return res.status(400).json(error.message)
+    }
+}
+
 module.exports = {
     createOwner,
     updateOwner,
     seeOwners,
-    deleteOwner
+    deleteOwner,
+    ownerLogin
 }

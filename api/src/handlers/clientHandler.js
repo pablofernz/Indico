@@ -1,16 +1,13 @@
 const Client = require('../models/Client');
 const addClient = require("../controllers/clientCreator")
+const bcrypt = require("bcrypt")
 
 const createClient = async (req, res) => {
     const { name, lastname, email, password, image, reviews } = req.body
 
     try {
         const existingClient = await Client.findOne({
-            name: name,
-            lastname: lastname,
-            email: email,
-            password: password,
-            reviews: reviews
+            email: email
         });
 
         if (existingClient) {
@@ -65,8 +62,32 @@ const deleteClient = async (req, res) => {
     }
 }
 
+const clientLogin = async (req, res) => {
+    const { email, password } = req.body
+
+    try {
+        const existingClient = await Client.findOne({ email })
+
+        if (existingClient) {
+            const passwordsMatch = await bcrypt.compare(password, existingClient.password);
+
+            if (passwordsMatch) {
+                return res.status(200).send(`Bienvenido, ${existingClient.name}`)
+            } else {
+                return res.status(400).send("Contraseña incorrecta.");
+            }
+        } else {
+            return res.status(400).send("No existe esta cuenta, registrate.")
+        }
+    } catch (error) {
+        return res.status(400).json(error.message)
+    }
+}
+
+
 module.exports = {
     createClient,
     updateClient,
-    deleteClient
+    deleteClient,
+    clientLogin
 }

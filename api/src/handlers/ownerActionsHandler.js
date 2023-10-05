@@ -6,7 +6,15 @@ const seeClients = async (req, res) => {
     try {
         const clients = await Client.find();
         if (clients.length) {
-            return res.status(200).json(clients)
+
+            const clientsFilteredData = clients.map((client) => ({
+                name: client.name,
+                lastname: client.lastname,
+                email: client.email,
+                image: client.image,
+                reviews: client.reviews
+            }))
+            return res.status(200).json(clientsFilteredData)
         } else {
             throw Error("No hay clientes")
         }

@@ -1,9 +1,10 @@
 const { Router } = require('express');
-const { createClient, deleteClient, updateClient } = require("../handlers/clientHandler")
+const { createClient, deleteClient, updateClient, clientLogin } = require("../handlers/clientHandler")
 const { addReview, myReviews, deleteReview } = require("../handlers/clientStoreHandler");
 const router = Router();
 
 router.post("/register", createClient)
+router.post("/login", clientLogin)
 router.put("/update/:id", updateClient)
 router.delete("/delete/:id", deleteClient)
 
