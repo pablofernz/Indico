@@ -1,3 +1,7 @@
+.Landing {
+    scrollbar-gutter: revert;
+}
+
 section {
     display: flex;
     height: 100vh;
@@ -7,9 +11,6 @@ section {
     color: #292929;
     background-color: rgb(221, 221, 221);
     font-size: 70px;
-}
-
-main {
 }
 
 .HomeSection {
@@ -42,21 +43,21 @@ main {
     background-color: rgb(209, 100, 133);
 }
 
-.button svg {
+/* .button svg {
+    background-color: rgb(30, 30, 30);
     position: fixed;
     bottom: 20px;
     right: 20px;
-    background: #c1c1c1;
+    background: r;
     height: 40px;
     width: 40px;
     padding: 7px 12px;
     font-size: 18px;
     border-radius: 6px;
     box-shadow: rgba(0, 0, 0, 0.15);
-}
+    opacity: 0%;
+} */
 
-.Landing {}
-
-.home {
-    background-color: aqua;
+section:focus .button{
+opacity: 100%;
 }
