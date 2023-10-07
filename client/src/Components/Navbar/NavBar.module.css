@@ -1,0 +1,114 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+
+* {
+    scroll-behavior: smooth;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+nav {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 60px;
+}
+
+nav .navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 100%;
+    max-width: 95%;
+    margin: auto;
+    
+}
+
+nav .navbar .logo a {
+    color: #2b2b2b;
+    font-size: 27px;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+nav .navbar .menu {
+    display: flex;
+}
+
+.navbar .menu li {
+    list-style: none;
+    margin: 0 15px;
+}
+
+.navbar li a {
+    color: rgb(32, 32, 32);
+    font-size: 17px;
+    font-weight: 500;
+    text-decoration: none;
+}
+
+/* section {
+    display: flex;
+    height: 100vh;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    color: #292929;
+    font-size: 70px;
+} */
+
+.button svg {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: #c1c1c1;
+    height: 40px;
+    width: 40px;
+    padding: 7px 12px;
+    font-size: 18px;
+    border-radius: 6px;
+    box-shadow: rgba(0, 0, 0, 0.15);
+}
+
+.Login {
+    background-color: transparent;
+    font-size: 15px;
+    font-family: 'Poppins', sans-serif;
+    cursor: pointer;
+    padding: 5px;
+    border: 2px solid rgb(30, 30, 30);
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+.Login:hover {
+    background-color: rgb(30, 30, 30);
+    color: rgb(233, 233, 233);
+}
+
+.btnsnav {
+    transform: scale(1);
+    cursor: pointer;
+}
+
+.btnsnav:focus:after,
+.btnsnav:hover:after {
+    width: 100%;
+    left: 0%;
+}
+
+.btnsnav:after {
+    content: "";
+    pointer-events: none;
+    bottom: -2px;
+    left: 50%;
+    position: absolute;
+    width: 0%;
+    height: 2px;
+    background-color: #000000;
+    transition-timing-function: cubic-bezier(0.25, 0.8, 0.25, 1);
+    transition-duration: 400ms;
+    transition-property: width, left;
+}
