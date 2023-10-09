@@ -13,7 +13,9 @@ nav {
     left: 0;
     top: 0;
     width: 100%;
-    height: 60px;
+    height: 50px;
+    background-color: rgb(235, 235, 235);
+    z-index: 30;
 }
 
 nav .navbar {
@@ -23,14 +25,15 @@ nav .navbar {
     height: 100%;
     max-width: 95%;
     margin: auto;
-    
+
 }
 
 nav .navbar .logo a {
     color: #2b2b2b;
-    font-size: 27px;
-    font-weight: 600;
-    text-decoration: none;
+    font-size: 30px;
+    font-weight: 500;
+    /* font-family: "Monas demo"; */
+    font-family: "Real Line";
 }
 
 nav .navbar .menu {
@@ -65,7 +68,6 @@ nav .navbar .menu {
 .Login {
     background-color: transparent;
     font-size: 15px;
-    font-family: 'Poppins', sans-serif;
     cursor: pointer;
     padding: 5px;
     border: 2px solid rgb(30, 30, 30);
@@ -101,4 +103,81 @@ nav .navbar .menu {
     transition-timing-function: cubic-bezier(0.25, 0.8, 0.25, 1);
     transition-duration: 400ms;
     transition-property: width, left;
+}
+
+.navbar2 {
+    display: none;
+}
+
+
+
+.burger {
+    position: relative;
+    width: 40px;
+    height: 30px;
+    background: transparent;
+    cursor: pointer;
+    display: block;
+    transform: scale(0.6);
+}
+
+.burger input {
+    display: none;
+}
+
+.burger span {
+    display: block;
+    position: absolute;
+    height: 4px;
+    width: 100%;
+    background: black;
+    border-radius: 9px;
+    opacity: 1;
+    left: 0;
+    transform: rotate(0deg);
+    transition: .25s ease-in-out;
+}
+
+.burger span:nth-of-type(1) {
+    top: 0px;
+    transform-origin: left center;
+}
+
+.burger span:nth-of-type(2) {
+    top: 50%;
+    transform: translateY(-50%);
+    transform-origin: left center;
+}
+
+.burger span:nth-of-type(3) {
+    top: 100%;
+    transform-origin: left center;
+    transform: translateY(-100%);
+}
+
+.burger input:checked~span:nth-of-type(1) {
+    transform: rotate(45deg);
+    top: 0px;
+    left: 5px;
+}
+
+.burger input:checked~span:nth-of-type(2) {
+    width: 0%;
+    opacity: 0;
+}
+
+.burger input:checked~span:nth-of-type(3) {
+    transform: rotate(-45deg);
+    top: 28px;
+    left: 5px;
+}
+
+@media (max-width: 800px) {
+    .navbar2 {
+        display: block;
+    }
+
+    .navbar li a {
+        display: none;
+    }
 }

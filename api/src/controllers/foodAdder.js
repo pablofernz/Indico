@@ -1,11 +1,16 @@
 const menuSchema = require("../models/Menu")
 
-const foodAdd = ({ title, description, price, discount, image, type }, res) => {
-    const newFood = menuSchema({ title, description, price, discount, image, type })
-    newFood.save()
-        .then(() => { () => console.log("Food added to database") })
-        .catch(() => { () => console.log("We have problems to add this food to database") })
-    return newFood
-}
+const foodAdd = async ({ title, description, price, discount, image, type }) => {
+    try {
+        const newFood = new menuSchema({ title, description, price, discount, image, type });
+        const savedFood = await newFood.save();
+        console.log("Creado exitosamente");
+        return savedFood;
+    } catch (error) {
+        console.error("Error al crear", error);
+        throw error; // Lanza el error para que se maneje en la función llamante
+    }
+};
+
 
 module.exports = foodAdd

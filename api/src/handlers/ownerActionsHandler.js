@@ -24,7 +24,7 @@ const seeClients = async (req, res) => {
 }
 
 const addFood = async (req, res) => {
-    const { title, description, price, discount, image, type } = req.body
+    const { title, description, price, discount, image, type } = req.body;
 
     try {
         const existingMenu = await Menu.findOne({
@@ -36,14 +36,18 @@ const addFood = async (req, res) => {
         if (existingMenu) {
             return res.status(400).json({ error: 'Este menú ya existe' });
         } else {
-            const add = foodAdd({ title, description, price, discount, image, type })
-            return res.status(200).json(add)
+            if (description.length > 100) {
+                return res.status(400).json({ error: "La descripción no puede contener más de 100 caracteres" });
+            } else {
+                const add = await foodAdd({ title, description, price, discount, image, type }, res);
+                return res.status(200).json(add);
+            }
         }
-
     } catch (error) {
-        return res.status(500).json(error.message);
+        console.error("Error adding food:", error);
+        return res.status(500).json({ error: "Internal server error" });
     }
-}
+};
 
 const updateFood = async (req, res) => {
     const { id } = req.params

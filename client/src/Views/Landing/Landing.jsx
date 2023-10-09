@@ -1,13 +1,26 @@
-import React from "react";
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { getMenu, getReviews } from "../../Redux/actions";
 import NavBar from "../../Components/Navbar/NavBar";
 import style from "./Landing.module.css";
 import ScrollTopButton from "../../Components/ScrollTopButton/ScrollTop";
+import Footer from "../../Components/Footer/Footer";
+
+
+import MenuSection from "./Sections/Menu/menuSection";
+
 const Landing = () => {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getMenu());
+  }, [dispatch]);
+
   return (
     <div className={style.Landing}>
       <NavBar />
 
-      <main>
+      <header>
         <section className={style.HomeSection} id="Start">
           <div>Inicio</div>
         </section>
@@ -17,7 +30,7 @@ const Landing = () => {
         </section>
 
         <section className={style.MenuSection} id="Menu">
-          <div>Preview menú</div>
+          <MenuSection/>
         </section>
 
         <section className={style.ReviewsSection} id="Reviews">
@@ -27,9 +40,11 @@ const Landing = () => {
         <section className={style.RegisterSection} id="Register">
           <div>Registro</div>
         </section>
-      </main>
+      </header>
 
       <ScrollTopButton />
+
+      <Footer />
     </div>
   );
 };

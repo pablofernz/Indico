@@ -1,0 +1,108 @@
+.Content {
+    border-radius: 25px;
+    height: 250px;
+    width: 300px;
+    background-color: rgb(235, 235, 235);
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 25px 50px -12px;
+}
+
+.Discount {
+    position: absolute;
+    z-index: 3;
+    font-size: 15px;
+    padding: 5px;
+    color: aliceblue;
+    background-color: rgb(39, 34, 34);
+    border-radius: 25px 0px 10px 0px;
+}
+
+.Img {
+    height: 140px;
+    width: 300px;
+    border-radius: 25px 25px 0px 0px;
+    object-fit: cover;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.15),
+        0 2px 2px rgba(0, 0, 0, 0.15),
+        0 4px 4px rgba(0, 0, 0, 0.15),
+        0 8px 8px rgba(0, 0, 0, 0.15);
+}
+
+
+.Text>h1 {
+    padding-left: 10px;
+    margin-top: -20px;
+    font-size: 18px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color: rgb(49, 49, 49);
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    max-width: 230px;
+}
+
+.Text>p {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: rgb(116, 116, 116);
+    padding-top: 2px;
+    font-size: 12px;
+    max-width: 290px;
+    padding-left: 10px;
+    position: absolute;
+}
+
+.Prices {
+    position: absolute;
+    padding-top: 35px;
+}
+
+.Price {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    padding-top: 10px;
+    padding-left: 10px;
+    color: rgb(50, 50, 50);
+    font-size: 22px;
+}
+
+.strikedPrice {
+    position: absolute;
+    padding-left: 7px;
+    margin-top: 1px;
+    color: rgb(50, 50, 50);
+    font-size: 15px;
+}
+
+.CartBtn {
+    width: 45px;
+    height: 35px;
+    border-radius: 10px 0px 25px 0px;
+    border: none;
+    background-color: rgb(30, 30, 30);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.103);
+    position: absolute;
+    margin-top: -24px;
+    margin-left: 255px;
+    transition:all 0.4s ease;
+    opacity: 0%;
+}
+
+.Content:hover .CartBtn{
+    opacity: 100%;
+}
+.IconContainer {
+    position: absolute;
+    width: 20px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.CartBtn:active .IconContainer {
+    opacity: 0%;
+    transition: all 0.5s ease;
+    
+}

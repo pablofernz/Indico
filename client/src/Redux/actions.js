@@ -1,17 +1,28 @@
-import { PRUEBA} from './action-types'
+import axios from "axios"
 
-/*
-/////////////////////ejemplo funcion asincrona para las store/////////////////////// 
-export const asyncFunction = (params) => {
-    return function(dispatch){
-        fetch(`url`)
-      .then((response) => response.json())
-      .then((data) => dispatch({type: typeFunction, payload: data}))
+export const GET_REVIEWS = 'GET_REVIEWS'
+export const GET_MENU = 'GET_MENU'
+
+export const getReviews = () => {
+    return async function (dispatch) {
+        const response = await axios.get('http://localhost:3001/store/reviews')
+        const reviews = response.data
+        dispatch({
+            type: GET_REVIEWS,
+            payload: reviews
+        })
     }
-} 
-*/
+}
 
-export const probarEstado = () => {
-    console.log('hola desde actions')
-    return{type:PRUEBA}
+export const getMenu = () => {
+    return async function (dispatch) {
+        const response = await axios.get('http://localhost:3001/store/menu')
+        const menu = response.data
+        // console.log(menu)
+
+        dispatch({
+            type: GET_MENU,
+            payload: menu
+        })
+    }
 }
