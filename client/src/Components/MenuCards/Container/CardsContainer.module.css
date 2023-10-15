@@ -4,6 +4,19 @@
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    gap: 20px;
+    gap: 25px;
     
+}
+
+@media (max-width: 800px) {
+    .Cards{
+        transform: scale(0.8);
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        gap: 45px;
+        
+    }
 }

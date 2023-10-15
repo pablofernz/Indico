@@ -42,10 +42,14 @@ const NavBar = () => {
             </li>
 
             <li>
-              <a className={style.Login} onClick={() => navigate("/registro")}>
+              <a
+                className={style.Login}
+                onClick={() => navigate("/client/login")}
+              >
                 Inicia Sesión
               </a>
             </li>
+
             <div className={style.navbar2}>
               <label className={style.burger} htmlFor="burger">
                 <input type="checkbox" onClick={handleclick} id="burger" />
@@ -53,6 +57,62 @@ const NavBar = () => {
                 <span></span>
                 <span></span>
               </label>
+
+              <ul
+                className={`${style.menuSmall} ${
+                  isOpen === "open" ? style.open : style.closed
+                }`}
+              >
+                <a
+                  href="#Menu"
+                  className={style.btnsnav2}
+                  onClick={handleclick}
+                >
+                  Menú
+                </a>
+                <a
+                  href="#Reviews"
+                  className={style.btnsnav2}
+                  onClick={handleclick}
+                >
+                  Reseñas
+                </a>
+                <a
+                  href="#Register"
+                  className={style.btnsnav2}
+                  onClick={handleclick}
+                >
+                  Regístrate
+                </a>
+                <a
+                  className={style.Login2}
+                  onClick={() => navigate("/registro")}
+                >
+                  Inicia Sesión
+                </a>
+              </ul>
+
+              {/* {isOpen === "open" ? (
+                <div className={style.menuSmallContainer}>
+                  <ul className={style.menuSmall}>
+                    <a href="#Menu" className={style.btnsnav2}>
+                      Menú
+                    </a>
+                    <a href="#Reviews" className={style.btnsnav2}>
+                      Reseñas
+                    </a>
+                    <a href="#Register" className={style.btnsnav2}>
+                      Regístrate
+                    </a>
+                    <a
+                      className={style.Login2}
+                      onClick={() => navigate("/registro")}
+                    >
+                      Inicia Sesión
+                    </a>
+                  </ul>
+                </div>
+              ) : null} */}
             </div>
           </ul>
         </div>

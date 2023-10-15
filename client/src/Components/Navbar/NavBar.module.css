@@ -6,6 +6,7 @@
     padding: 0;
     box-sizing: border-box;
     font-family: 'Poppins', sans-serif;
+
 }
 
 nav {
@@ -135,8 +136,9 @@ nav .navbar .menu {
     opacity: 1;
     left: 0;
     transform: rotate(0deg);
-    transition: .25s ease-in-out;
+    transition: .4s ease-in-out;
 }
+
 
 .burger span:nth-of-type(1) {
     top: 0px;
@@ -155,21 +157,74 @@ nav .navbar .menu {
     transform: translateY(-100%);
 }
 
-.burger input:checked~span:nth-of-type(1) {
-    transform: rotate(45deg);
-    top: 0px;
-    left: 5px;
+
+
+.menuSmall {
+    z-index: -2;
+    margin-left: -140px;
+    margin-top: 10px;
+    width: 200px;
+    height: 300px;
+    position: fixed;
+    background-color: rgb(235, 235, 235);
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 35px;
+    border-radius: 0px 0px 25px 25px;
+    /* box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset; */
+    transition: all 0.4s ease-in-out;
+    transform: translateX(300px);
+
 }
 
-.burger input:checked~span:nth-of-type(2) {
+.open {
+    transform: translateX(0px);
+}
+
+.closed{
+    transform: translateX(300px);
+}
+
+.btnsnav2 {
+    transform: scale(1);
+    cursor: pointer;
+    color: rgb(32, 32, 32);
+    font-size: 17px;
+    font-weight: 500;
+    text-decoration: none;
+}
+
+.btnsnav2:focus:after,
+.btnsnav2:hover:after {
+    width: 100%;
+    left: 0%;
+}
+
+.btnsnav2:after {
+    content: "";
+    pointer-events: none;
+    bottom: -2px;
+    left: 50%;
+    position: absolute;
     width: 0%;
-    opacity: 0;
+    height: 2px;
+    background-color: #000000;
+    transition-timing-function: cubic-bezier(0.25, 0.8, 0.25, 1);
+    transition-duration: 400ms;
+    transition-property: width, left;
 }
 
-.burger input:checked~span:nth-of-type(3) {
-    transform: rotate(-45deg);
-    top: 28px;
-    left: 5px;
+.Login2 {
+    background-color: rgb(30, 30, 30);
+    font-size: 15px;
+    cursor: pointer;
+    padding: 5px;
+    border: 2px solid rgb(30, 30, 30);
+    border-radius: 5px;
+    color: rgb(233, 233, 233);
 }
 
 @media (max-width: 800px) {

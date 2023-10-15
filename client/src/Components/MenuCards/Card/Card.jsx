@@ -40,8 +40,8 @@ export default function Card({
       <img className={style.Img} src={image} alt="" />
       <div>
         <ul className={style.Text}>
-          <h1>{`${title}.`}</h1>
-          <p>{description}</p>
+          <h1>{title}</h1>
+          <p>{description}.</p>
         </ul>
       </div>
       <div className={style.Prices}>

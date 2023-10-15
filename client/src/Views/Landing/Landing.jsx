@@ -6,7 +6,7 @@ import style from "./Landing.module.css";
 import ScrollTopButton from "../../Components/ScrollTopButton/ScrollTop";
 import Footer from "../../Components/Footer/Footer";
 
-
+import StartSection from "./Sections/Menu/Start/startSection";
 import MenuSection from "./Sections/Menu/menuSection";
 
 const Landing = () => {
@@ -22,7 +22,7 @@ const Landing = () => {
 
       <header>
         <section className={style.HomeSection} id="Start">
-          <div>Inicio</div>
+          <StartSection />
         </section>
 
         <section className={style.ServiceSection}>
@@ -30,7 +30,7 @@ const Landing = () => {
         </section>
 
         <section className={style.MenuSection} id="Menu">
-          <MenuSection/>
+          <MenuSection />
         </section>
 
         <section className={style.ReviewsSection} id="Reviews">

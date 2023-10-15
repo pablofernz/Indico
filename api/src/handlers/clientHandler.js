@@ -72,7 +72,7 @@ const clientLogin = async (req, res) => {
             const passwordsMatch = await bcrypt.compare(password, existingClient.password);
 
             if (passwordsMatch) {
-                return res.status(200).send(`Bienvenido, ${existingClient.name}`)
+                return res.status(200).send(`Hola, ${existingClient.name}`)
             } else {
                 return res.status(400).send("Contraseña incorrecta.");
             }
