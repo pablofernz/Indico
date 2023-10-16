@@ -86,8 +86,8 @@ const NavBar = () => {
                 </a>
                 <a
                   className={style.Login2}
-                  onClick={() => navigate("/registro")}
-                >
+                  onClick={() => navigate("/client/login")}
+                  >
                   Inicia Sesión
                 </a>
               </ul>

@@ -66,18 +66,21 @@ const clientLogin = async (req, res) => {
     const { email, password } = req.body
 
     try {
-        const existingClient = await Client.findOne({ email })
+        if (!email && !password) return res.status(400).send("Debes ingresar datos")
+        else {
+            const existingClient = await Client.findOne({ email })
 
-        if (existingClient) {
-            const passwordsMatch = await bcrypt.compare(password, existingClient.password);
+            if (existingClient) {
+                const passwordsMatch = await bcrypt.compare(password, existingClient.password);
 
-            if (passwordsMatch) {
-                return res.status(200).send(`Hola, ${existingClient.name}`)
+                if (passwordsMatch) {
+                    return res.status(200).send(`Hola, ${existingClient.name}`)
+                } else {
+                    return res.status(400).send("El correo o la contraseña son incorrectas.");
+                }
             } else {
-                return res.status(400).send("Contraseña incorrecta.");
+                return res.status(400).send("No existe esta cuenta, registrate.")
             }
-        } else {
-            return res.status(400).send("No existe esta cuenta, registrate.")
         }
     } catch (error) {
         return res.status(400).json(error.message)

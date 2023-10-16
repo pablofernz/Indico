@@ -1,10 +1,9 @@
 .form {
     display: flex;
     justify-content: center;
-    background-color: rgb(231, 231, 231);
     height: 100vh;
     width: 100vw;
-
+    background-color: black;
 }
 
 .title {
@@ -14,20 +13,31 @@
 .label {
     color: rgb(96, 96, 96);
     font-size: 14px;
-    padding-top: 5px;
-    
+    display: flex;
+    justify-content: space-between;
+
 }
 
 .loginContainer {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-image: url(../../../assets/img/wallpaperflare.com_wallpaper.jpg);
-    background-size: cover;
-    background-position: center center;
+
     flex: 1;
 
 }
+
+.background {
+    position: absolute;
+    height: 100vh;
+    width: 100vw;
+    z-index: 0;
+    background-size: cover;
+    background-position: center center;
+    background-image: url(https://images.unsplash.com/photo-1613274554329-70f997f5789f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80);
+}
+
+
 
 .login {
     display: flex;
@@ -35,13 +45,17 @@
     gap: 10px;
     padding: 30px;
     min-width: 300px;
+    min-height: 500px;
     max-height: 500px;
     border-radius: 20px;
     color: rgb(31, 31, 31);
-    background-color: rgb(235, 235, 235);
+    background-size: cover;
+    background-position: center center;
+    background-image: url(https://images.unsplash.com/photo-1516541196182-6bdb0516ed27?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80);
     height: 80vh;
     width: 32vw;
     box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+    z-index: 1;
 }
 
 .inputForm {
@@ -54,15 +68,29 @@
     transition: 0.2s ease-in-out;
 }
 
+.inputFormError{
+    /* border: 1.5px solid rgb(182, 0, 0); */
+    border: 1.5px solid rgb(199, 199, 199);
+    border-radius: 10px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    padding-left: 10px;
+    transition: 0.2s ease-in-out;
+}
 .input {
     margin-left: 10px;
     border-radius: 10px;
     border: none;
-    width: 85%;
+    width: 100%;
     height: 100%;
     background-color: transparent;
     justify-content: center;
     font-size: 15px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    max-width: 340px;
 }
 
 .input:focus {
@@ -87,10 +115,10 @@
 
 .flexRow {
     display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 10px;
-    justify-content: space-between;
+    justify-content: center;
+     align-items: center;
+    /* gap: 10px;
+    justify-content: space-between; */
 }
 
 .flexRow>div>label {
@@ -108,9 +136,15 @@
 }
 
 .span:hover {
-    text-decoration: underline black;
+    text-decoration: underline rgb(0, 34, 255);
 }
 
+.errors{
+    font-size: 14px;
+    margin-left: 5px;
+    color: rgb(29, 29, 29);
+    font-weight: 500;
+}
 .buttonSubmit {
     margin: 5px 0 5px 0;
     background-color: #151717;
@@ -122,11 +156,31 @@
     height: 50px;
     width: 100%;
     cursor: pointer;
-    transition: all 0.2s ease;
+    transition: all 0.5s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.buttonSubmitLoading{
+    margin: 5px 0 5px 0;
+    background-color: #333333;
+    border: none;
+    color: white;
+    font-size: 15px;
+    font-weight: 500;
+    border-radius: 10px;
+    height: 50px;
+    width: 100%;
+    cursor:not-allowed;
+    transition: all 0.5s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .buttonSubmit:hover {
-    transform: scale(0.97);
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
 }
 
 .p {
@@ -138,8 +192,8 @@
 
 .btn {
     margin-top: 10px;
-    width: 50%;
-    height: 50px;
+    width: 30%;
+    height: 40px;
     border-radius: 10px;
     display: flex;
     justify-content: center;
@@ -154,5 +208,5 @@
 }
 
 .btn:hover {
-    transform: scale(0.97);
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
 }

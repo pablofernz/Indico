@@ -1,15 +1,19 @@
 import style from "./Login.module.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
+import IconLoader from "../../../Components/MenuCards/iconLoader/iconLoader";
+import toast, { Toaster } from "react-hot-toast";
 
 const ClientLogin = () => {
   const [Loading, isLoading] = useState(false);
-  const [form, setForm] = useState([
-    {
-      email: "",
-      password: "",
-    },
-  ]);
+  const [isLoged, setIsLoged] = useState(false);
+
+  const [form, setForm] = useState({
+    email: "",
+    password: "",
+  });
+
+  const [Errors, setErrors] = useState("");
 
   const changeHandler = (event) => {
     const property = event.target.name;
@@ -18,14 +22,47 @@ const ClientLogin = () => {
     setForm({ ...form, [property]: value });
   };
 
-  const submitHandler = (event) => {
-    //cuando se hace click realiza el post
+  useEffect(() => {
+    if (Errors.length) {
+      toast.error(Errors, {
+        duration: 4000,
+        position: "bottom-right",
+        style: {
+          background: "rgb(23,23,23)",
+          color: "#fff",
+        },
+      });
+    }
+
+    if (isLoged == true) {
+      toast.success("Sesión Iniciada", {
+        duration: 4000,
+        position: "bottom-right",
+        style: {
+          background: "rgb(23,23,23)",
+          color: "#fff",
+        },
+      });
+    }
+  }, [isLoged, Errors]);
+
+  const submitHandler = async (event) => {
     event.preventDefault();
 
-    axios
+    isLoading(true);
+    setErrors("");
+    setIsLoged(false);
+
+    const status = axios
       .post("http://localhost:3001/client/login", form)
-      .then((res) => alert(res.data))
-      .catch((err) => alert(err.response.data));
+      .then((res) => {
+        isLoading(false);
+        setIsLoged(true);
+      })
+      .catch((err) => {
+        isLoading(false);
+        setErrors(err.response.data);
+      });
   };
 
   return (
@@ -33,9 +70,17 @@ const ClientLogin = () => {
       <div className={style.background}></div>
       <div className={style.loginContainer}>
         <form className={style.login}>
+          <Toaster />
           <h1 className={style.title}>Inicia Sesión</h1>
-          <label className={style.label}>Email</label>
-          <div className={style.inputForm}>
+          <label className={style.label} htmlFor="email">
+            Email
+            {/* <a className={style.errors}>Correo incorrecto</a> */}
+          </label>
+          <div
+            className={
+              Errors.email === false ? style.inputForm : style.inputFormError
+            }
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="18"
@@ -48,14 +93,19 @@ const ClientLogin = () => {
             <input
               type="text"
               className={style.input}
-              placeholder="email@example.com"
+              placeholder="Ingresa tu correo"
               onChange={changeHandler}
               value={form.email}
               name="email"
+              id="email"
+              autoComplete="email"
             />
           </div>
 
-          <label className={style.label}>Contraseña</label>
+          <label className={style.label} htmlFor="password">
+            Contraseña
+            {/* <a className={style.errors}>Contraseña incorrecta</a> */}
+          </label>
           <div className={style.inputForm}>
             <svg
               fill="rgb(90, 90, 90)"
@@ -74,21 +124,21 @@ const ClientLogin = () => {
               onChange={changeHandler}
               value={form.password}
               name="password"
+              id="password"
             />
           </div>
 
           <div className={style.flexRow}></div>
-          <button className={style.buttonSubmit} onClick={submitHandler}>
-            {Loading == false ? "Inicia Sesión" : "Cargando..."}
+          <button
+            className={
+              Loading == true ? style.buttonSubmitLoading : style.buttonSubmit
+            }
+            onClick={submitHandler}
+          >
+            {Loading == true ? <IconLoader /> : "Iniciar Sesión"}
           </button>
           <p className={style.p}>
-            No tienes una cuenta?{" "}
-            <a
-              className={style.span}
-              onClick={() => navigate("/client/register")}
-            >
-              Registrate
-            </a>
+            No tienes una cuenta? <a className={style.span}>Registrate</a>
           </p>
           <p className={style.p}>O ingresa con</p>
 
@@ -104,10 +154,10 @@ const ClientLogin = () => {
                   </g>
                 </g>
               </svg>
-              Google
+              {/* Google */}
             </button>
 
-            <button className={style.btn}>
+            {/* <button className={style.btn}>
               <svg
                 viewBox="0 0 24 24"
                 height="25"
@@ -116,8 +166,7 @@ const ClientLogin = () => {
               >
                 <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"></path>
               </svg>
-              GitHub
-            </button>
+            </button> */}
           </div>
         </form>
       </div>
