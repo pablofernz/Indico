@@ -10,7 +10,7 @@ Este es un proyecto de una página web para un restaurante ficticio el cual cre�
 ...
 
 ## Tecnologias
-Algunas de las tecnologías que estoy utilizando en este proyecto son:
+Algunas de las herramientas que estoy utilizando en este proyecto son:
 
 Back-end:
 * Javascript
@@ -20,8 +20,12 @@ Back-end:
 * MongoDB Compass (interfaz gráfica de la base de datos)
 * Node.js
 
+Autenticación (en proceso):
+* Firebase
+
 Front-end:
 * React
+* Redux
   
 ## Instalación
 Aunque el proyecto sigue en desarrollo, puedes instalarlo y probar las funcionalidades del backend ingresando los siguientes comandos en la terminal
