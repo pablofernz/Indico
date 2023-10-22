@@ -3,7 +3,9 @@ import "./App.css";
 import { Routes, Route, Navigate } from "react-router-dom";
 import Landing from "./Views/Landing/Landing";
 import ClientLogin from "./Views/Client/Login/Login";
-import Home from "./Views/Home/Home";
+import ClientRegister from "./Views/Client/Register/Register";
+import Store from "./Views/Store/Store";
+
 function App() {
   return (
     <div className="App">
@@ -11,7 +13,9 @@ function App() {
         <Route path="/" element={<Navigate to={"/landing"} />} />
         <Route path="/landing" element={<Landing />} />
         <Route path="/client/login" element={<ClientLogin />} />
-        <Route path="/home" element={<Home />} />
+        <Route path="/client/register" element={<ClientRegister />} />
+        <Route path="/store" element={<Store/>} />
+
       </Routes>
     </div>
   );

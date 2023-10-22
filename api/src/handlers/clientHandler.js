@@ -6,15 +6,20 @@ const createClient = async (req, res) => {
     const { name, lastname, email, password, image, reviews } = req.body
 
     try {
-        const existingClient = await Client.findOne({
-            email: email
-        });
+        if (name && lastname && email && password) {
 
-        if (existingClient) {
-            return res.status(400).json({ error: 'Ya existe una cuenta con este correo. Inicia sesión' });
+            const existingClient = await Client.findOne({
+                email: email
+            });
+
+            if (existingClient) {
+                return res.status(400).send('Ya existe una cuenta con este correo. Inicia sesión');
+            } else {
+                const newClient = addClient({ name, lastname, email, password, image, reviews })
+                return res.status(200).send("Cuenta creada")
+            }
         } else {
-            const newClient = addClient({ name, lastname, email, password, image, reviews })
-            return res.status(200).json(newClient)
+            return res.status(400).send("Debes rellenar tus datos")
         }
 
     } catch (error) {
@@ -76,7 +81,7 @@ const clientLogin = async (req, res) => {
                 if (passwordsMatch) {
                     return res.status(200).send(`Hola, ${existingClient.name}`)
                 } else {
-                    return res.status(400).send("El correo o la contraseña son incorrectas.");
+                    return res.status(400).send("La contraseña es incorrecta.");
                 }
             } else {
                 return res.status(400).send("No existe esta cuenta, registrate.")

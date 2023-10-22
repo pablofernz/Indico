@@ -1,4 +1,4 @@
-import style from "./Login.module.css";
+import style from "./Register.module.css";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import IconLoader from "../../../Components/iconLoader/iconLoader";
@@ -6,19 +6,25 @@ import toast, { Toaster } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import validate from "./validations";
 
-const ClientLogin = () => {
+const ClientRegister = () => {
   const navigate = useNavigate();
   const [Loading, isLoading] = useState(false);
-  const [isLoged, setIsLoged] = useState(false);
+  const [isRegistered, setIsRegistered] = useState(false);
 
   const [form, setForm] = useState({
+    name: "",
+    lastname: "",
     email: "",
     password: "",
+    image: "",
   });
 
   const [errors, setErrors] = useState({
+    name: "",
+    lastname: "",
     email: "",
     password: "",
+    image: "",
   });
 
   const [submitErrors, setSubmitErrors] = useState("");
@@ -27,13 +33,12 @@ const ClientLogin = () => {
   const changeHandler = (event) => {
     const property = event.target.name;
     const value = event.target.value;
-
     setForm({ ...form, [property]: value });
     setErrors({ ...errors, [property]: "" });
   };
 
   useEffect(() => {
-    if (showErrorToast === true) {
+    if (showErrorToast) {
       toast.error(submitErrors, {
         duration: 4000,
         position: "bottom-right",
@@ -45,7 +50,7 @@ const ClientLogin = () => {
       setShowErrorToast(false);
     }
 
-    if (isLoged == true) {
+    if (isRegistered) {
       toast.success("Ingresando...", {
         duration: 4000,
         position: "bottom-right",
@@ -58,13 +63,13 @@ const ClientLogin = () => {
         navigate("/store");
       }, 1000);
     }
-  }, [isLoged, submitErrors, showErrorToast]);
+  }, [isRegistered, submitErrors, showErrorToast]);
 
   const submitHandler = async (event) => {
     event.preventDefault();
     isLoading(true);
     setSubmitErrors("");
-    setIsLoged(false);
+    setIsRegistered(false);
 
     const property = event.target.name;
     const value = event.target.value;
@@ -74,11 +79,11 @@ const ClientLogin = () => {
     if (Object.keys(validationErrors).length === 0) {
       try {
         const res = await axios.post(
-          "http://localhost:3001/client/login",
+          "http://localhost:3001/client/register",
           form
         );
         isLoading(false);
-        setIsLoged(true);
+        setIsRegistered(true);
       } catch (err) {
         isLoading(false);
         setSubmitErrors(err.response.data);
@@ -87,19 +92,96 @@ const ClientLogin = () => {
     } else {
       setErrors(validationErrors);
       setSubmitErrors("Revise los datos");
-      setIsLoged(false);
+      setIsRegistered(false);
       isLoading(false);
       setShowErrorToast(true);
     }
   };
-
   return (
     <header className={style.form}>
       <div className={style.background}></div>
       <div className={style.loginContainer}>
         <form className={style.login}>
           <Toaster />
-          <h1 className={style.title}>Inicia Sesión</h1>
+          <h1 className={style.title}>Registrate</h1>
+
+          <label className={style.label} htmlFor="name">
+            Nombres
+          </label>
+          <div
+            className={!errors.name ? style.inputForm : style.inputFormError}
+          >
+            <input
+              type="text"
+              className={!errors.name ? style.input : style.inputError}
+              placeholder={errors.name ? errors.name : "Nombres"}
+              onChange={changeHandler}
+              value={form.name}
+              name="name"
+              id="name"
+              autoComplete="name"
+            />
+            {errors.name ? (
+              <div className={style.svg}>
+                <svg
+                  className="feather feather-alert-circle"
+                  fill="none"
+                  height="20"
+                  stroke="rgb(255, 137, 137)"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  viewBox="0 0 24 24"
+                  width="20"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <circle cx="12" cy="12" r="10" />
+                  <line x1="12" x2="12" y1="8" y2="12" />
+                  <line x1="12" x2="12.01" y1="16" y2="16" />
+                </svg>
+              </div>
+            ) : null}
+          </div>
+
+          <label className={style.label} htmlFor="lastname">
+            Apellido
+          </label>
+          <div
+            className={
+              !errors.lastname ? style.inputForm : style.inputFormError
+            }
+          >
+            <input
+              type="text"
+              className={!errors.lastname ? style.input : style.inputError}
+              placeholder={errors.lastname ? errors.lastname : "Apellido"}
+              onChange={changeHandler}
+              value={form.lastname}
+              name="lastname"
+              id="lastname"
+            />
+            {errors.lastname ? (
+              <div className={style.svg}>
+                <svg
+                  className="feather feather-alert-circle"
+                  fill="none"
+                  height="20"
+                  stroke="rgb(255, 137, 137)"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  viewBox="0 0 24 24"
+                  width="20"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <circle cx="12" cy="12" r="10" />
+                  <line x1="12" x2="12" y1="8" y2="12" />
+                  <line x1="12" x2="12.01" y1="16" y2="16" />
+                </svg>
+              </div>
+            ) : null}
+          </div>
+
           <label className={style.label} htmlFor="email">
             Email
           </label>
@@ -209,19 +291,14 @@ const ClientLogin = () => {
             }
             onClick={submitHandler}
           >
-            {Loading == true ? <IconLoader /> : "Iniciar Sesión"}
+            {Loading == true ? <IconLoader /> : "Crear cuenta"}
           </button>
           <p className={style.p}>
-            No tienes una cuenta?{" "}
-            <a
-              className={style.span}
-              onClick={() => navigate("/client/register")}
-            >
-              Registrate
+            Ya tienes una cuenta?{" "}
+            <a className={style.span} onClick={() => navigate("/client/login")}>
+              Inicia Sesión
             </a>
           </p>
-          {/* <p className={style.p}>O ingresa con</p> */}
-
           <div className={style.flexRow}>
             <button className={style.btn}>
               <svg
@@ -231,6 +308,7 @@ const ClientLogin = () => {
                 width="25"
                 height="25"
                 viewBox="0 0 48 48"
+                className={style.btnSvg}
               >
                 <path
                   fill="#FFC107"
@@ -258,4 +336,4 @@ const ClientLogin = () => {
   );
 };
 
-export default ClientLogin;
+export default ClientRegister;
