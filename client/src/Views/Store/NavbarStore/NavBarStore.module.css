@@ -17,6 +17,7 @@ nav {
     height: 60px;
     background-color: transparent;
     z-index: 30;
+
 }
 
 nav .navbar {
@@ -26,6 +27,7 @@ nav .navbar {
     height: 100%;
     max-width: 95%;
     margin: auto;
+
 }
 
 .menu {
@@ -51,6 +53,7 @@ nav .navbar {
     transition: all 0.2s ease;
 }
 
+
 .button:hover {
     background-color: rgb(48, 48, 48);
     color: whitesmoke;
@@ -66,22 +69,15 @@ nav .navbar {
     height: 30px;
     width: 70px;
     border-radius: 40px;
-    transition: all 0.3s ease-in;
+    transition: all 0.5s ease-out;
     margin-left: auto;
+    background-color: rgb(48, 48, 48);
 }
 
-.input:hover {
-    background-color: rgb(48, 48, 48);
-    color: whitesmoke;
-}
 
 .input:focus {
     background-color: rgb(48, 48, 48);
     color: whitesmoke;
     outline: none;
     width: 80%;
-}
-
-.input:focus(.button) {
-    opacity: 0%;
 }

@@ -5,7 +5,6 @@ import Card from "../Card/Card";
 
 const Cards = () => {
   const dishes = useSelector((state) => state.menu);
-  console.log(dishes);
 
   return (
     <div className={style.Cards}>

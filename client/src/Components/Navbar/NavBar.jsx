@@ -21,6 +21,11 @@ const NavBar = () => {
       <nav>
         <div className={style.navbar}>
           <div className={style.logo}>
+            <img
+              className={style.logoImg}
+              src="https://i.ibb.co/4JNx6NT/logo-bold-2.png"
+              alt="logo"
+            />
             <a>Indico.</a>
           </div>
 
@@ -42,10 +47,7 @@ const NavBar = () => {
             </li>
 
             <li>
-              <a
-                className={style.Login}
-                onClick={() => navigate("/client/login")}
-              >
+              <a className={style.Login} onClick={() => navigate("/login")}>
                 Inicia Sesión
               </a>
             </li>
@@ -84,10 +86,7 @@ const NavBar = () => {
                 >
                   Regístrate
                 </a>
-                <a
-                  className={style.Login2}
-                  onClick={() => navigate("/client/login")}
-                  >
+                <a className={style.Login2} onClick={() => navigate("/login")}>
                   Inicia Sesión
                 </a>
               </ul>

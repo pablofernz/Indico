@@ -1,15 +1,27 @@
-.Cards{
+.page {}
+
+.page h1 {
+    font-size: 35px;
+    font-weight: 100;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    bottom: 40px;
+    font-family: Real Line;
+}
+
+.Cards {
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    gap: 25px;
-    transform: scale(0.9);
+    gap: 40px;
 }
 
 @media (max-width: 800px) {
-    .Cards{
+    .Cards {
         transform: scale(0.8);
         display: flex;
         flex-wrap: wrap;
@@ -17,6 +29,6 @@
         align-items: center;
         justify-content: center;
         gap: 45px;
-        
+
     }
 }

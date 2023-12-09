@@ -1,0 +1,436 @@
+.background {
+    background-image: url(https://i.ibb.co/MV0Hqhk/lucy-joy-Otc-BYz-A22z-M-unsplash.jpg);
+    background-size: cover;
+    background-color: rgb(235, 235, 235);
+    height: 100vh;
+    width: 100vw;
+    background-position: center center;
+    animation: move 240s linear infinite;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    border-radius: 0px 0px 20px 20px;
+
+}
+
+@keyframes move {
+    0% {
+        background-position: center center;
+    }
+
+    50% {
+        background-position: 0px 0px;
+    }
+
+    100% {
+        background-position: center center;
+
+    }
+}
+
+
+.title,
+.subtitle,
+.subtitle2,
+.button {
+    text-align: center;
+    margin: auto;
+}
+
+.title {
+    font-size: 80px;
+    font-family: Real Line;
+    line-height: 1;
+    color: rgb(41, 41, 41);
+    display: flex;
+    justify-content: center;
+    cursor: default;
+    font-weight: 100;
+}
+
+.subtitle {
+    font-weight: 300;
+    font-size: 18px;
+    text-align: center;
+    max-width: 700px;
+    min-width: 200px;
+    padding: 20px;
+    cursor: default;
+}
+
+
+
+.button {
+    background-color: transparent;
+    font-size: 18px;
+    font-weight: 500;
+    cursor: pointer;
+    display: inline;
+    padding: 10px 20px 10px 20px;
+    border: 2px solid rgb(30, 30, 30);
+    border-radius: 30px;
+    transition: all 0.3s ease;
+    justify-content: center;
+    width: 200px;
+    text-align: center;
+}
+
+.button:hover {
+    background-color: rgb(30, 30, 30);
+    color: rgb(160, 250, 170);
+}
+
+@media (max-width: 900px) {
+    .title {
+        font-size: 80px;
+        text-align: center;
+    }
+
+
+}
+
+@media (max-width: 500px) {
+    .title {
+        font-size: 50px;
+        text-align: center;
+    }
+
+    .subtitle {
+        display: grid;
+        justify-content: center;
+        text-align: center;
+        font-size: 12px;
+    }
+
+    .background button {
+        font-size: 15px;
+    }
+
+    .b {
+        justify-content: center;
+        text-align: center;
+    }
+}
+
+.mouse {
+    transform: scale(0.4);
+    width: 50px;
+    height: 90px;
+    border: 5.5px solid rgb(31, 31, 31);
+    border-radius: 60px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    margin-left: 20px;
+
+    &::before {
+        content: '';
+        width: 16px;
+        height: 16px;
+        position: absolute;
+        top: 10px;
+        left: 50%;
+        transform: translateX(-50%);
+        background-color: #333;
+        border-radius: 50%;
+        opacity: 1;
+        animation: wheel 2s ease infinite;
+    }
+}
+
+
+
+@keyframes wheel {
+    0% {
+        opacity: 0;
+        top: 10;
+    }
+
+    30%, 60% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+        top: 55px;
+    }
+}
+
+.textContainer {
+    height: 100vh;
+    width: 50vw;
+    position: absolute;
+    left: 0;
+    display: flex;
+    align-items: center;
+    margin: 50px;
+}
+
+.CardsContainer {
+    margin-top: 40px;
+    height: 100vh;
+    width: 50vw;
+    position: absolute;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.CardsGrid {
+    height: calc(70% - 20px);
+    width: calc(70% - 20px);
+    margin: 10px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.Card1, .Card2, .Card3, .Card4 {
+    box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
+}
+
+/* ---------------------------------------------- */
+
+.Card1 {
+    height: 125%;
+    width: 100%;
+    border-radius: 20px;
+    background-image: url(https://images.unsplash.com/photo-1535799695145-f3849086ee3d?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8d2hpdGUlMjByZXN0YXVyYW50fGVufDB8fDB8fHww);
+    background-position: 400px -150px;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    animation: backgroundAnimation 60s ease-in-out infinite;
+}
+
+@keyframes backgroundAnimation {
+    0% {
+        background-position: 400px -150px;
+    }
+
+    25% {
+        background-position: 300px -150px;
+    }
+
+    75% {
+        background-position: 500px -150px;
+    }
+
+    100% {
+        background-position: 400px -150px;
+    }
+}
+
+.notificationButton {
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    margin: 10px;
+    left: 20.9vw;
+    top: 13vh;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    z-index: 40;
+}
+
+.notificationButton:active+.notificationIcon {
+    transform: translate(0px, -5px);
+}
+
+.notificationIcon {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 25px;
+    margin: 10px;
+    left: 20.9vw;
+    top: 13vh;
+    transition: all 0.2s ease-in-out;
+}
+
+.notificationIcon path {
+    fill: rgb(233, 233, 233)
+}
+
+.notificationIconActive {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 25px;
+    margin: 10px;
+    left: 20.9vw;
+    top: 13vh;
+    transition: all 0.2s ease-in-out;
+}
+
+.notificationIconActive path {
+    fill: rgb(157, 255, 168)
+}
+
+
+.reserveText1 {
+    font-size: 80px;
+    font-weight: 600;
+    color: rgb(34, 34, 34);
+    cursor: default;
+}
+
+.reserveText2 {
+    font-size: 18px;
+    font-weight: 500;
+    color: rgb(31, 31, 31);
+    position: relative;
+    margin-top: -80px;
+    cursor: default;
+}
+
+.Btn {
+    width: 30px;
+    height: 30px;
+    background: transparent;
+    border-radius: 50%;
+    cursor: pointer;
+    position: relative;
+    border: none;
+    transform: rotate(90deg);
+}
+
+.arrow path {
+    fill: rgb(232, 232, 232);
+    transition: all 0.3s ease;
+}
+
+.button2 {
+    font-size: 15px;
+    font-weight: 500;
+    cursor: pointer;
+    border-radius: 50px;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 100%;
+    text-align: center;
+    border: 2px solid rgb(30, 30, 30);
+    background-color: rgb(30, 30, 30);
+    color: rgb(235, 235, 235);
+    padding: 2px 0px 2px 0px;
+
+}
+
+.button2:hover {
+    border: 2px solid rgb(30, 30, 30);
+    background-color: rgb(30, 30, 30);
+    color: rgb(160, 250, 170);
+}
+
+.button2:hover .arrow path {
+    fill: rgb(160, 250, 170);
+    translate: 0px -100px;
+}
+
+/* ---------------------------------------------- */
+
+.Card2 {
+    background-color: rgb(30, 30, 30);
+    background-size: cover;
+    height: 75%;
+    width: 100%;
+    border-radius: 20px;
+}
+
+/* ---------------------------------------------- */
+
+.Card3Open {
+    height: 75%;
+    width: 100%;
+    border-radius: 20px;
+    background-image: url(https://images.unsplash.com/photo-1555019928-0587fc217685?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTM4fHxyZXN0YXVyYW50fGVufDB8fDB8fHwwZ);
+    background-size: 400px;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    cursor: default;
+}
+
+
+.Card3Closed {
+    height: 75%;
+    width: 100%;
+    border-radius: 20px;
+    background-image: url(https://images.unsplash.com/photo-1545069986-6684b1203ca5?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D);
+    background-size: 300px;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    filter: hue-rotate(0deg);
+    cursor: default;
+}
+
+.backgroundCard3 {
+    border-radius: 20px;
+    height: 100%;
+    width: 100%;
+
+}
+
+.HoursText {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.HoursText:nth-child(1) {
+    font-size: 14px;
+    color: rgb(230, 230, 230);
+    font-weight: 700;
+}
+
+
+.HoursTextOpen {
+    font-size: 35px;
+    font-weight: 900;
+    color: rgb(224, 255, 228);
+}
+
+.HoursTextOpen {
+    text-shadow: 0 0 10px rgb(160, 250, 170), 0 0 20px rgb(160, 250, 170), 0 0 30px rgb(160, 250, 170), 0 0 40px rgb(160, 250, 170), 0 0 70px rgb(160, 250, 170), 0 0 80px rgb(160, 250, 170), 0 0 100px rgb(160, 250, 170);
+}
+
+
+.HoursTextClosed {
+    font-size: 35px;
+    font-weight: 900;
+    color: rgb(255, 221, 221);
+}
+
+.HoursTextClosed {
+    text-shadow: 0 0 10px rgb(248, 118, 118), 0 0 20px rgb(248, 118, 118), 0 0 30px rgb(248, 118, 118), 0 0 40px rgb(248, 118, 118), 0 0 70px rgb(248, 118, 118), 0 0 80px rgb(248, 118, 118), 0 0 100px rgb(248, 118, 118);
+}
+
+.HoursText:nth-child(3) {
+    font-size: 14px;
+    font-weight: 900;
+    color: rgb(230, 230, 230);
+}
+
+/* ---------------------------------------------- */
+
+.Card4 {
+    background-color: rgb(30, 30, 30);
+    height: 125%;
+    width: 100%;
+    border-radius: 20px;
+    cursor: default;
+}

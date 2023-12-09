@@ -7,6 +7,9 @@ export const getReviews = () => {
     return async function (dispatch) {
         const response = await axios.get('http://localhost:3001/store/reviews')
         const reviews = response.data
+        // const data = reviews.map(rev => rev.reviews)
+        // console.log(reviews)
+
         dispatch({
             type: GET_REVIEWS,
             payload: reviews

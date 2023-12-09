@@ -1,22 +1,20 @@
 .Landing {
-    background-color: rgb(222, 222, 222);}
+    background-color: rgb(30, 30, 30);}
 
 section {
     display: flex;
     height: 100vh;
-    width: 100%;
+    width: 100vw;
     align-items: center;
     justify-content: center;
     color: #292929;
-    background-color: rgb(221, 221, 221);
+    background-color: rgb(31, 31, 31);
     font-size: 70px;
-    margin-bottom: 45px;
 }
 
 .HomeSection {
     height: 100vh;
     width: 100%;
-    background-color: rgb(235, 235, 235);
 }
 
 .ServiceSection {
@@ -27,13 +25,13 @@ section {
 .MenuSection {
     height: 70vh;
     width: 100%;
-    background-color: rgb(235, 235, 235);
+    background-color: rgb(31, 31, 31);
 }
 
 .ReviewsSection {
-    height: 60vh;
+    height: 70vh;
     width: 100%;
-    background-color: rgb(209, 167, 100);
+    background-color: rgb(234, 234, 234);
 }
 
 .RegisterSection {

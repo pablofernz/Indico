@@ -6,14 +6,17 @@ import style from "./Landing.module.css";
 import ScrollTopButton from "../../Components/ScrollTopButton/ScrollTop";
 import Footer from "../../Components/Footer/Footer";
 
-import StartSection from "./Sections/Menu/Start/startSection";
+import StartSection from "./Sections/Start/startSection";
 import MenuSection from "./Sections/Menu/menuSection";
+import ReviewContainer from "./Sections/Reviews/ReviewContainer/reviewContainer";
+import ReviewsSection from "./Sections/Reviews/ReviewCard/reviewsSection";
 
 const Landing = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(getMenu());
+    dispatch(getReviews());
   }, [dispatch]);
 
   return (
@@ -25,16 +28,14 @@ const Landing = () => {
           <StartSection />
         </section>
 
-        <section className={style.ServiceSection}>
-          <div>Servicio</div>
-        </section>
-
         <section className={style.MenuSection} id="Menu">
-          <MenuSection />
+          <div className={style.scrollDown}></div>
+          {/* <MenuSection /> */}
+          Menu
         </section>
 
         <section className={style.ReviewsSection} id="Reviews">
-          <div>Reviews</div>
+          <ReviewContainer/>
         </section>
 
         <section className={style.RegisterSection} id="Register">
@@ -42,7 +43,7 @@ const Landing = () => {
         </section>
       </header>
 
-      <ScrollTopButton />
+      {/* <ScrollTopButton /> */}
 
       <Footer />
     </div>

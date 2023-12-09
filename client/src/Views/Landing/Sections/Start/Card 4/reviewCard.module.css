@@ -1,0 +1,82 @@
+.card {
+    background-color: rgb(34, 34, 34);
+    width: 217px;
+    height: 266px;
+    border-radius: 20px;
+    box-shadow: 0 20px 30px -20px rgba(5, 5, 5, 0.24);
+    position: absolute;
+    animation: blur 5s ease-in-out infinite;
+    opacity: 0%;
+}
+
+@keyframes blur {
+    0%, 100% {
+        opacity: 0;
+    }
+
+    10%, 90% {
+        opacity: 1;
+    }
+}
+
+.header .image {
+    margin-top: 20px;
+    height: 6rem;
+    width: 6rem;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.stars {
+    display: flex;
+    justify-content: center;
+    gap: 0.125rem;
+    color: rgb(130, 220, 147);
+}
+
+.stars svg {
+    height: 1rem;
+    width: 1rem;
+}
+
+.name {
+    margin-top: -20px;
+    font-size: 1rem;
+    font-weight: 600;
+    color: rgb(235, 235, 235);
+}
+
+.message {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    margin: 0.5rem;
+    font-size: 15px;
+    color: rgb(174, 174, 174);
+    font-style:oblique;
+}
+
+.cardHighlight {
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    align-items: center;
+    margin-left: 11px;
+    bottom: 0;
+    height: 3px;
+    width: 90%;
+    border-radius: 50px;
+    background-color: rgb(130, 220, 147);
+    animation: fillWidth 5s linear infinite;
+    mix-blend-mode: exclusion;
+}
+
+@keyframes fillWidth {
+    0% {
+        width: 0;
+    }
+
+    100% {
+        width: 90%;
+    }
+}

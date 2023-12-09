@@ -36,7 +36,7 @@ const ClientLogin = () => {
     if (showErrorToast === true) {
       toast.error(submitErrors, {
         duration: 4000,
-        position: "bottom-right",
+        position: "top-center",
         style: {
           background: "rgb(23,23,23)",
           color: "#fff",
@@ -48,7 +48,7 @@ const ClientLogin = () => {
     if (isLoged == true) {
       toast.success("Ingresando...", {
         duration: 4000,
-        position: "bottom-right",
+        position: "top-center",
         style: {
           background: "rgb(23,23,23)",
           color: "#fff",
@@ -161,7 +161,7 @@ const ClientLogin = () => {
               type="password"
               className={!errors.password ? style.input : style.inputError}
               placeholder={
-                errors.password ? errors.password : "Ingresa tu correo"
+                errors.password ? errors.password : "Ingresa tu contraseña"
               }
               onChange={changeHandler}
               value={form.password}
@@ -213,10 +213,7 @@ const ClientLogin = () => {
           </button>
           <p className={style.p}>
             No tienes una cuenta?{" "}
-            <a
-              className={style.span}
-              onClick={() => navigate("/client/register")}
-            >
+            <a className={style.span} onClick={() => navigate("/register")}>
               Registrate
             </a>
           </p>

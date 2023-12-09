@@ -231,7 +231,7 @@
 
 .btn {
     margin-top: 40px;
-    width: 60%;
+    width: 70%;
     height: 40px;
     border-radius: 10px;
     display: flex;
@@ -240,8 +240,8 @@
     font-weight: 500;
     font-size: 15px;
     gap: 10px;
-    border: 1px solid #b4b4b4;
-    background-color: rgb(255, 255, 255);
+    border: 1.5px solid #b4b4b4;
+    background-color: transparent;
     cursor: pointer;
     transition: 0.2s ease-in-out;
 }
@@ -254,9 +254,6 @@
     transition: all 0.2s ease-in-out;
 }
 
-.btn:hover .btnSvg {
-    filter: brightness(0%);
-}
 
 .svg {
     display: flex;
@@ -280,4 +277,10 @@
 
 .svg:hover .svgCard {
     visibility: visible;
+}
+
+@media (max-width: 1000px) {
+.btn{
+    width: 100%;
+}
 }

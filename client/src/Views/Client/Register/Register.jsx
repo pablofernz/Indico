@@ -114,7 +114,7 @@ const ClientRegister = () => {
             <input
               type="text"
               className={!errors.name ? style.input : style.inputError}
-              placeholder={errors.name ? errors.name : "Nombres"}
+              placeholder={errors.name ? errors.name : "Nombre"}
               onChange={changeHandler}
               value={form.name}
               name="name"
@@ -191,7 +191,7 @@ const ClientRegister = () => {
             <input
               type="text"
               className={!errors.email ? style.input : style.inputError}
-              placeholder={errors.email ? errors.email : "Ingresa tu correo"}
+              placeholder={errors.email ? errors.email : "Ingresa un correo"}
               onChange={changeHandler}
               value={form.email}
               name="email"
@@ -243,7 +243,7 @@ const ClientRegister = () => {
               type="password"
               className={!errors.password ? style.input : style.inputError}
               placeholder={
-                errors.password ? errors.password : "Ingresa tu correo"
+                errors.password ? errors.password : "Elije una contraseña"
               }
               onChange={changeHandler}
               value={form.password}
@@ -295,7 +295,7 @@ const ClientRegister = () => {
           </button>
           <p className={style.p}>
             Ya tienes una cuenta?{" "}
-            <a className={style.span} onClick={() => navigate("/client/login")}>
+            <a className={style.span} onClick={() => navigate("/login")}>
               Inicia Sesión
             </a>
           </p>
