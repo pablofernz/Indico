@@ -10,8 +10,7 @@ Este es un proyecto de una p√°gina web para un restaurante ficticio el cual cre√
 Landing:
 <p align= "center">
 <img src="https://github.com/pablofernz/indico-restaurant/assets/122618014/7277e3ab-10aa-4fc8-8c0b-067897566b52" width="800" height="400" />
-   <p align= "center">
-   - - - -
+
 <img src="https://github.com/pablofernz/indico-restaurant/assets/122618014/b44a74cc-4330-46ec-bfc2-f5ebd7f9b8a6" width="800" height="400" />
 
 Login:
