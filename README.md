@@ -8,6 +8,8 @@ Este es un proyecto de una p√°gina web para un restaurante ficticio el cual cre√
 
 ### Screenshot
 ...
+![image](https://github.com/pablofernz/indico-restaurant/assets/122618014/7277e3ab-10aa-4fc8-8c0b-067897566b52)
+
 
 ## Tecnologias
 Algunas de las herramientas que estoy utilizando en este proyecto son:
