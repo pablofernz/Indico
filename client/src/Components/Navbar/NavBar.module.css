@@ -10,15 +10,19 @@
 }
 
 nav {
-    position: fixed;
+    position: a;
     left: 0;
     top: 0;
     width: 100%;
     height: 40px;
     background-color: rgb(235, 235, 235);
     z-index: 30;
+    transition: all 0.3s ease;
 }
 
+nav.hidden {
+    transform: translateY(-100%);
+}
 
 nav .navbar {
     display: flex;
@@ -27,8 +31,7 @@ nav .navbar {
     height: 85%;
     max-width: 100%;
     padding: 0px 80px 0px 80px;
-    backdrop-filter: blur(8px);
-    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+    background-color: rgb(255, 255, 255);
 
 }
 
@@ -196,7 +199,8 @@ nav .navbar .menu {
     align-items: center;
     justify-content: center;
     gap: 35px;
-    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;    transition: all 0.4s ease-in-out;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+    transition: all 0.4s ease-in-out;
     transform: translateX(300px);
 
 }

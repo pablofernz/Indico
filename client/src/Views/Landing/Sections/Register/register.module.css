@@ -1,0 +1,79 @@
+.container {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 60px;
+}
+
+.registerContainer {
+    flex: 0 1 28w;
+    min-width: 300px;
+    height: 350px;
+    border-radius: 20px;
+    background: rgb(35, 35, 35);
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 0px;
+    padding: 20px;
+    box-shadow: rgba(0, 0, 0, 0.56) 0px 0px 40px;
+}
+
+.img {
+    width: 100%;
+    /* Ajusta según sea necesario */
+    max-width: 250px;
+    /* Ajusta según sea necesario */
+    height: auto;
+    /* Ajusta según sea necesario */
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    margin-top: -70px;
+
+}
+
+.headTitle {
+    margin-top: 10px;
+    color: rgb(235, 235, 235);
+    font-size: 16px;
+    font-weight: 300;
+    text-align: center;
+    max-width: 300px;
+    min-width: 200px;
+}
+
+.buttonsContainer {
+    /* Ajusta según sea necesario */
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    margin-top: 275px;
+    position: absolute;
+}
+
+.button {
+    background-color: transparent;
+    font-size: 15px;
+    font-weight: 500;
+    cursor: pointer;
+    padding: 5px 15px;
+    border: 2px solid rgb(160, 250, 170);
+    border-radius: 50px;
+    transition: all 0.3s ease;
+    color: rgb(160, 250, 170);
+    width: 200px;
+}
+
+.firstbutton {
+    width: 150px;
+}
+
+.button:hover {
+    background-color: rgb(160, 250, 170);
+    color: rgb(30, 30, 30);
+    font-weight: 500;
+}

@@ -343,10 +343,22 @@
 
 .Card2 {
     background-color: rgb(30, 30, 30);
-    background-size: cover;
+    background-image: url(https://images.unsplash.com/photo-1505935428862-770b6f24f629?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDV8fGZvb2R8ZW58MHx8MHx8fDA%3D);
     height: 75%;
     width: 100%;
     border-radius: 20px;
+    background-size: cover;
+    display: flex;
+    justify-content: right;
+    align-items: center;
+}
+
+.Card2TextContainer {
+    height: 100%;
+    width: 70%;
+    background-color: aquamarine;
+    border-radius: 20px;
+
 }
 
 /* ---------------------------------------------- */

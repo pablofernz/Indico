@@ -1,9 +1,28 @@
 import React, { useState } from "react";
 import style from "./NavBar.module.css";
 import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 
 const NavBar = () => {
   const navigate = useNavigate();
+  const [prevScrollPos, setPrevScrollPos] = useState(0);
+  const [visible, setVisible] = useState(true);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollPos = window.pageYOffset;
+
+      setVisible(prevScrollPos > currentScrollPos || currentScrollPos < 40);
+
+      setPrevScrollPos(currentScrollPos);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, [prevScrollPos]);
 
   const [isOpen, setIsOpen] = useState("closed");
 
@@ -18,7 +37,7 @@ const NavBar = () => {
   };
   return (
     <div>
-      <nav>
+      <nav className={`${style.navbar} ${visible ? "" : style.hidden}`}>
         <div className={style.navbar}>
           <div className={style.logo}>
             <img

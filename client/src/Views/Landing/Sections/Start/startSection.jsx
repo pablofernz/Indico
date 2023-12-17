@@ -3,10 +3,13 @@ import { useNavigate } from "react-router-dom";
 import ReviewCard from "./Card 4/reviewCard";
 import { useState, useEffect } from "react";
 import toast, { Toaster } from "react-hot-toast";
+import { useSelector } from "react-redux";
+import MenuCard from "./Card 2/menuCard";
 
 const StartSection = () => {
   const navigate = useNavigate();
   const [notification, setNotification] = useState(false);
+  const dishes = useSelector((state) => state.menu);
 
   const notificationHandleClick = () => {
     setNotification(!notification);
@@ -116,7 +119,7 @@ const StartSection = () => {
             <p className={style.reserveText2}>mesas disponibles</p>
             <button className={style.button2}>
               Reservar
-              <button className={style.Btn}>
+              <div className={style.Btn}>
                 <svg
                   height="1.2em"
                   className={style.arrow}
@@ -124,11 +127,13 @@ const StartSection = () => {
                 >
                   <path d="M233.4 105.4c12.5-12.5 32.8-12.5 45.3 0l192 192c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L256 173.3 86.6 342.6c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3l192-192z"></path>
                 </svg>
-              </button>
+              </div>
             </button>
           </div>
 
-          <div className={style.Card2}></div>
+          <div className={style.Card2}>
+            
+          </div>
 
           {isOpen ? (
             <div className={style.Card3Open}>
@@ -149,7 +154,7 @@ const StartSection = () => {
           </div>
         </div>
       </div>
-    <div className={style.mouse}></div>
+      <div className={style.mouse}></div>
     </div>
   );
 };
