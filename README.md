@@ -28,10 +28,16 @@ Front-end:
 * Redux
   
 ## Instalación
-Aunque el proyecto sigue en desarrollo, puedes instalarlo y probar las funcionalidades del backend ingresando los siguientes comandos en la terminal
+Aunque el proyecto sigue en desarrollo, puedes instalarlo y probar las funcionalidades de la página ingresando los siguientes comandos en la terminal
 ```
 $ git clone https://github.com/pablofernz/indico-restaurant.git
+$---Back End---
 $ cd ../Indigo/api
+$ npm install
+$ npm start
+
+$---Front End---
+$ cd ../Indigo/client
 $ npm install
 $ npm start
 ```
