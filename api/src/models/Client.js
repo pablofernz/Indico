@@ -27,6 +27,10 @@ const clientSchema = mongoose.Schema({
         type: String,
         default: "Client"
     },
+    purchases:{
+        type: Number,
+        default: 0
+    },
     reviews: [reviewsSchema]
 }, {
     versionKey: false // Establecer versionKey en false para eliminar la propiedad "__v"

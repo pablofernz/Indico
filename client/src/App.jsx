@@ -5,6 +5,7 @@ import Landing from "./Views/Landing/Landing";
 import ClientLogin from "./Views/Client/Login/Login";
 import ClientRegister from "./Views/Client/Register/Register";
 import Store from "./Views/Store/Store";
+import NotFound from "./Views/404 Not Found/404";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <Route path="/login" element={<ClientLogin />} />
         <Route path="/register" element={<ClientRegister />} />
         <Route path="/store" element={<Store/>} />
+        <Route path="*" element={<NotFound />} />
 
       </Routes>
     </div>

@@ -44,21 +44,6 @@ const StartSection = () => {
   return (
     <div className={style.background}>
       <Toaster />
-      {/* <div className={style.container2}>
-        <div className={style.glass} />
-        <h1 className={style.title}>Bienvenido a Indico</h1>
-        <p className={style.subtitle}>
-          Creamos una experiencia culinaria única donde la frescura de la
-          naturaleza se fusiona con la excelencia de la alta cocina.
-          <br />
-          <b>Descubre su equilibrio perfecto.</b>
-        </p>
-        <button className={style.button} onClick={() => navigate("/store")}>
-          Ver el menú
-        </button>
-      </div>
-      <div className={style.mouse}></div> */}
-
       <div className={style.textContainer}>
         <div className={style.container2}>
           <h1 className={style.title}>Bienvenido a Indico</h1>
@@ -131,9 +116,7 @@ const StartSection = () => {
             </button>
           </div>
 
-          <div className={style.Card2}>
-            
-          </div>
+          <div className={style.Card2}></div>
 
           {isOpen ? (
             <div className={style.Card3Open}>

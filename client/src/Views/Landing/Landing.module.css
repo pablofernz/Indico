@@ -1,5 +1,7 @@
 .Landing {
-    background-color: rgb(30, 30, 30);}
+    background-color: rgb(30, 30, 30);
+    height: auto;
+}
 
 section {
     display: flex;
@@ -21,7 +23,8 @@ section {
     height: calc(75vh + 45px);
     width: 100%;
 }
-.custom{
+
+.custom {
     position: absolute;
     bottom: 0;
     left: 0;
@@ -33,7 +36,7 @@ section {
 
 .custom svg {
     position: relative;
-    display: block;
+    display: inline-block;
     width: calc(100% + 1.3px);
     height: 52px;
 }
@@ -41,4 +44,3 @@ section {
 .custom .shapeFill {
     fill: #202020;
 }
-
