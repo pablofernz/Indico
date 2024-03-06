@@ -16,8 +16,7 @@ nav {
     width: 100%;
     height: 60px;
     background-color: transparent;
-    z-index: 30;
-
+    z-index: 0;
 }
 
 nav .navbar {
@@ -25,25 +24,25 @@ nav .navbar {
     align-items: center;
     justify-content: center;
     height: 100%;
-    max-width: 95%;
+    width: 400px;
     margin: auto;
-
 }
 
 .menu {
-    background-color: rgb(30, 30, 30);
+    background-color: rgb(0, 0, 0);
     width: 35%;
     height: 40px;
     border-radius: 40px;
     display: flex;
     padding: 5px;
     gap: 10px;
-    min-width: 300px;
+    min-width: 350px;
 }
 
 .button {
     border: none;
-    display: inline-block;
+    display: flex;
+    align-items: center;
     justify-content: center;
     padding: 0px 10px 0px 10px;
     font-weight: 600;
@@ -54,11 +53,9 @@ nav .navbar {
 }
 
 
-.button:hover {
-    background-color: rgb(48, 48, 48);
-    color: whitesmoke;
+.buttonChecked {
+    background-color: rgb(130, 220, 147);
 }
-
 
 .input {
     border: none;
@@ -69,9 +66,11 @@ nav .navbar {
     height: 30px;
     width: 70px;
     border-radius: 40px;
-    transition: all 0.5s ease-out;
+    transition: all 0.5s cubic-bezier(0.455, 0.03, 0.515, 0.955);
     margin-left: auto;
     background-color: rgb(48, 48, 48);
+    text-overflow: ellipsis;
+
 }
 
 
@@ -80,4 +79,113 @@ nav .navbar {
     color: whitesmoke;
     outline: none;
     width: 80%;
+}
+
+.inputFocus {
+    border: none;
+    display: block;
+    justify-content: center;
+    padding: 0px 10px 0px 10px;
+    font-weight: 600;
+    height: 30px;
+    border-radius: 40px;
+    transition: all 0.5s cubic-bezier(0.455, 0.03, 0.515, 0.955);
+    margin-left: auto;
+    background-color: rgb(48, 48, 48);
+    text-overflow: ellipsis;
+    background-color: rgb(48, 48, 48);
+    color: whitesmoke;
+    outline: none;
+    width: 80%;
+}
+
+@media (max-width: 500px) {
+    nav {
+        position: fixed;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 60px;
+        z-index: 0;
+    }
+
+    nav .navbar {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+        width: 200px;
+        margin: auto;
+    }
+
+    .menu {
+        background-color: rgb(0, 0, 0);
+        width: 35%;
+        height: 40px;
+        border-radius: 40px;
+        display: flex;
+        padding: 5px;
+        gap: 10px;
+        min-width: 200px;
+    }
+
+    .button {
+        border: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0px 10px 0px 10px;
+        font-weight: 600;
+        height: 30px;
+        border-radius: 40px;
+        cursor: pointer;
+        transition: all 0.2s ease;
+    }
+
+
+    .buttonChecked {
+        background-color: rgb(130, 220, 147);
+    }
+
+    .input {
+        border: none;
+        display: block;
+        justify-content: center;
+        padding: 0px 10px 0px 10px;
+        font-weight: 600;
+        height: 30px;
+        width: 70px;
+        border-radius: 40px;
+        transition: all 0.5s cubic-bezier(0.455, 0.03, 0.515, 0.955);
+        margin-left: auto;
+        background-color: rgb(48, 48, 48);
+        text-overflow: ellipsis;
+    }
+
+
+    .input:focus {
+        background-color: rgb(48, 48, 48);
+        color: whitesmoke;
+        outline: none;
+        width: 80%;
+    }
+
+    .inputFocus {
+        border: none;
+        display: block;
+        justify-content: center;
+        padding: 0px 10px 0px 10px;
+        font-weight: 600;
+        height: 30px;
+        border-radius: 40px;
+        transition: all 0.5s cubic-bezier(0.455, 0.03, 0.515, 0.955);
+        margin-left: auto;
+        background-color: rgb(48, 48, 48);
+        text-overflow: ellipsis;
+        background-color: rgb(48, 48, 48);
+        color: whitesmoke;
+        outline: none;
+        width: 80%;
+
+    }
 }

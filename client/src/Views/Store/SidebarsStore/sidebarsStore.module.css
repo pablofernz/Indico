@@ -1,0 +1,238 @@
+.store {
+    background-color: rgb(199, 199, 199);
+    width: 100vw;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+body {
+    overflow-x: hidden;
+}
+
+.menuFilters {
+    background-color: rgb(0, 0, 0);
+    position: fixed;
+    width: 250px;
+    height: 100vh;
+    left: -250px;
+    top: 0;
+    transition: all 0.5s ease-in-out;
+}
+
+.open {
+    transform: translateX(0px);
+}
+
+.closed {
+    transform: translateX(250px);
+}
+
+.button {
+    position: absolute;
+    right: 0;
+    margin-right: -40px;
+    z-index: 1000;
+    width: 40px;
+    background-color: rgb(0, 0, 0);
+    border-radius: 0px 80px 80px 0px;
+    border: none;
+    font-size: 20px;
+    height: 40px;
+    margin-top: 10px;
+}
+
+.hamburger {
+    cursor: pointer;
+
+}
+
+.hamburger input {
+    display: none;
+
+}
+
+.hamburger svg {
+    /* The size of the SVG defines the overall size */
+    height: 1.8em;
+    margin-top: 3px;
+    /* Define the transition for transforming the SVG */
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.line {
+    fill: none;
+    stroke: rgb(130, 220, 147);
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-width: 3;
+    /* Define the transition for transforming the Stroke */
+    transition: stroke-dasharray 1s cubic-bezier(0.4, 0, 0.2, 1),
+        stroke-dashoffset 1s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.lineTop {
+    stroke-dasharray: 12 63;
+}
+
+
+
+
+/* ------- CART ------- */
+
+
+.menuCart {
+    background-color: rgb(0, 0, 0);
+    position: fixed;
+    width: 250px;
+    height: 100vh;
+    right: 0;
+    top: 0;
+
+    transition: all 0.5s ease-in-out;
+}
+
+.cartClosed {
+    transform: translateX(0px);
+}
+
+.cartOpen {
+    transform: translateX(250px);
+}
+
+.button2 {
+    position: absolute;
+    right: 0;
+    margin-right: 250px;
+    z-index: 1000;
+    width: 40px;
+    background-color: rgb(0, 0, 0);
+    border-radius: 80px 0px 0px 80px;
+    border: none;
+    font-size: 20px;
+    height: 40px;
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+
+.IconContainer {
+    margin-left: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+@media (max-width: 500px) {
+
+    .menuFilters {
+        background-color: rgb(0, 0, 0);
+        position: fixed;
+        width: 200px;
+        height: 100vh;
+        left: -200px;
+        top: 0;
+        transition: all 0.5s ease-in-out;
+    }
+
+    .open {
+        transform: translateX(0px);
+    }
+
+    .closed {
+        transform: translateX(200px);
+    }
+
+    .button {
+        position: absolute;
+        right: 0;
+        margin-right: -40px;
+        z-index: 1000;
+        width: 40px;
+        background-color: rgb(0, 0, 0);
+        border-radius: 0px 80px 80px 0px;
+        border: none;
+        font-size: 20px;
+        height: 40px;
+        margin-top: 10px;
+    }
+
+    .hamburger {
+        cursor: pointer;
+
+    }
+
+    .hamburger input {
+        display: none;
+
+    }
+
+    .hamburger svg {
+        /* The size of the SVG defines the overall size */
+        height: 1.8em;
+        margin-top: 3px;
+        /* Define the transition for transforming the SVG */
+        transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .line {
+        fill: none;
+        stroke: rgb(130, 220, 147);
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        stroke-width: 3;
+        /* Define the transition for transforming the Stroke */
+        transition: stroke-dasharray 1s cubic-bezier(0.4, 0, 0.2, 1),
+            stroke-dashoffset 1s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .lineTop {
+        stroke-dasharray: 12 63;
+    }
+
+    .menuCart {
+        background-color: rgb(0, 0, 0);
+        position: fixed;
+        width: 200px;
+        height: 100vh;
+        right: 0;
+        top: 0;
+
+        transition: all 0.5s ease-in-out;
+    }
+
+    .cartClosed {
+        transform: translateX(0px);
+    }
+
+    .cartOpen {
+        transform: translateX(200px);
+    }
+
+    .button2 {
+        position: absolute;
+        right: 0;
+        margin-right: 200px;
+        z-index: 1000;
+        width: 40px;
+        background-color: rgb(0, 0, 0);
+        border-radius: 80px 0px 0px 80px;
+        border: none;
+        font-size: 20px;
+        height: 40px;
+        margin-top: 10px;
+        cursor: pointer;
+    }
+
+
+    .IconContainer {
+        margin-left: 5px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}
+
