@@ -2,7 +2,7 @@ import style from "./MenuList.module.css";
 import ItemList from "./itemList/itemList";
 import { useSelector } from "react-redux";
 import { useEffect } from "react";
-import ListSkeleton from "./SkeletonList/SkeletonList";
+import SkeletonList from "./SkeletonList/SkeletonList";
 
 const MenuList = () => {
   const dishes = useSelector((state) => state.menu);
@@ -28,7 +28,11 @@ const MenuList = () => {
         </div>
       ) : (
         <div className={style.SkeletonContainer}>
-          <ListSkeleton />
+          <SkeletonList className={style.MenuComponent2} />
+          <SkeletonList className={style.MenuComponent2} />
+          <SkeletonList className={style.MenuComponent2} />
+          <SkeletonList className={style.MenuComponent2}/>
+
         </div>
       )}
     </div>

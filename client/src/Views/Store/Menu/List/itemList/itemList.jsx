@@ -24,15 +24,15 @@ export default function ItemList({
     <div className={className}>
       <div className={style.Content}>
         {discount ? (
-          <div className={style.Discount}>{`-${discount}%`}</div>
+          <div className={style.Discount}>{`-${discount}%`} OFF</div>
         ) : null}
 
         <img className={style.Img} src={image} alt="" />
 
         <div className={style.TextAndPrices}>
           <ul className={style.Text}>
-            <h1>{title}</h1>
-            <p>{description}</p>
+            <h1 title={title}>{title}</h1>
+            <p title={description}>{description}</p>
           </ul>
 
           <div className={style.Prices}>
@@ -43,6 +43,9 @@ export default function ItemList({
               )}
             </p>
           </div>
+        </div>
+        <div className={style.buttonContainer}>
+          <div className={style.buttonSeparator}></div>
           <button
             className={isAdded === false ? style.CartBtn : style.CartBtn2}
             onClick={AddHandler}

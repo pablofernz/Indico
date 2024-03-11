@@ -17,7 +17,8 @@
     display: grid;
     height: 100%;
     width: 50%;
-    background-color: skyblue;
+    justify-content: space-between;
+
 }
 
 .Discount {
@@ -30,7 +31,6 @@
     border-radius: 14px 0px 15px 0px;
     width: auto;
     height: auto;
-
     box-shadow: rgb(255, 255, 255) 0px 5px 15px;
     font-style: italic;
 }
@@ -48,22 +48,24 @@
     font-size: 15px;
     color: rgb(42, 42, 42);
     /* max-width: 210px; */
+    background-color: transparent;
 }
 
 .Text>p {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     color: rgb(116, 116, 116);
     font-size: 12px;
-    max-width: 350px;
     padding-left: 7px;
+    max-width: 320px;
+    width: 320px;
+}
 
-}
-.texttt{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
 .Prices {
+    height: 25px;
+    display: flex;
+    justify-content: safe;
+    align-items: end;
+    margin-top: 15px;
 }
 
 .Price {
@@ -73,44 +75,68 @@
     padding-left: 5px;
     color: rgb(0, 0, 0);
     font-size: 20px;
-
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 
 .strikedPrice {
     padding-left: 7px;
-    margin-top: 2px;
+    margin-top: 3px;
     color: rgb(50, 50, 50);
     font-size: 14px;
+}
 
+
+
+.buttonSeparator {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 70%;
+    width: 100%;
+    margin-right: 10px;
+    transition: all 0.4s ease;
+    border-left: 1.5px solid rgb(176, 176, 176);
 
 }
 
+.buttonContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 25%;
+    margin-right: 10px;
+    transition: all 0.4s ease;
+}
+
 .CartBtn {
+    font-size: 15px;
     width: 100px;
     height: 35px;
     border: none;
-    background-color: rgb(140, 212, 137);
-    border-radius: 20px;
+    background-color: rgb(116, 219, 160);
+    border-radius: 50px;
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
     font-weight: 600;
     position: absolute;
-    margin-left: 140px;
-    transition: all 0.2s ease-in-out;
+    transition: all 0.4s ease;
     opacity: 100%;
 }
 
 .CartBtn:hover {
-    box-shadow: rgb(145, 255, 141) 0px 0px 35px;
+    box-shadow: rgb(116, 219, 160) 0px 0px 35px;
 
 }
 
 .CartBtn2 {
     width: 50px;
-    height: 25px;
+    height: 35px;
     border: none;
     background-color: rgb(255, 143, 143);
     border-radius: 20px;
@@ -119,11 +145,9 @@
     justify-content: center;
     cursor: pointer;
     font-weight: 600;
-    position: absolute;
-    margin-top: -26px;
-    margin-left: 188px;
     transition: all 0.4s ease;
     opacity: 100%;
+    position: absolute;
 }
 
 .CartBtn2:hover {
@@ -147,10 +171,9 @@
 .CartBtn:active .IconContainer {
     opacity: 0%;
     transition: all 0.5s ease;
-
 }
 
-@media (max-width: 700px) {
+@media (max-width: 750px) {
     .Content {
         border-radius: 20px;
         height: 120px;
@@ -163,12 +186,113 @@
     }
 
     .Text>h1 {
+        max-width: 280px;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+    }
+
+    .Discount {
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 650px) {
+    .Text>h1 {
+        width: auto;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+    }
+
+    .CartBtn {
+        width: 80px;
+        height: 25px;
+        transition: all 0.4s ease;
+    }
+
+    .CartBtn2 {
+        width: 50px;
+        height: 25px;
+        border: none;
+        background-color: rgb(255, 143, 143);
+        border-radius: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        font-weight: 600;
+        position: absolute;
+        margin-top: -0px;
+        margin-left: 30px;
+        transition: all 0.4s ease;
+        opacity: 100%;
+    }
+
+
+
+    .buttonContainer {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+        width: 190px;
+        margin-right: 10px;
+        transition: all 0.4s ease;
+        margin-top: 35px;
+    }
+}
+
+@media (max-width: 350px) {
+    .Text>h1 {
         max-width: 210px;
         overflow: hidden;
         white-space: nowrap;
         text-overflow: ellipsis;
     }
-.Discount{
-    font-size: 12px;
+
 }
+
+@media (max-width: 450px) {
+    .Text>p {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        color: rgb(116, 116, 116);
+        font-size: 12px;
+        max-width: 300px;
+        padding-left: 7px;
+        max-height: 32px;
+        overflow: hidden;
+    }
+}
+
+@media (max-width: 400px) {
+    .Text>p {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        color: rgb(116, 116, 116);
+        font-size: 12px;
+        max-width: 250px;
+        padding-left: 7px;
+        max-height: 32px;
+        overflow: hidden;
+    }
+}
+
+@media (max-width: 350px) {
+    .Text>p {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        color: rgb(116, 116, 116);
+        font-size: 12px;
+        max-width: 210px;
+        padding-left: 7px;
+        max-height: 32px;
+        overflow: hidden;
+    }
+}
+
+
+@media (max-width: 850px) {
+    .buttonSeparator {
+        display: none
+    }
+
 }

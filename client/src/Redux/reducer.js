@@ -1,7 +1,7 @@
 import { GET_REVIEWS, GET_MENU, SET_GRID, SET_LIST } from "./actions";
 
 let initialstate = {
-    storeView: "list",
+    storeView: "",
     menu: [],
     reviews: []
 };

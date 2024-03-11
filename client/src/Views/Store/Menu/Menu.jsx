@@ -1,16 +1,36 @@
 import { useSelector } from "react-redux";
 import MenuGrid from "./Grid/MenuGrid";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import MenuList from "./List/MenuList";
+import { useDispatch } from "react-redux";
+import { setGrid, setList } from "../../../Redux/actions";
 
 const Menu = () => {
   const visual = useSelector((state) => state.storeView);
-  
-  useEffect(() => {
-    console.log(visual);
-  }, [visual]);
+  const dispatch = useDispatch();
+  const [esMovil, setEsMovil] = useState(window.innerWidth <= 700);
 
-  return <div> {visual == "grid" ? <MenuGrid /> : <MenuList/>}</div>;
+  useEffect(() => {
+    const actualizarEstado = () => {
+      setEsMovil(window.innerWidth <= 700);
+    };
+
+    window.addEventListener("resize", actualizarEstado);
+
+    return () => {
+      window.removeEventListener("resize", actualizarEstado);
+    };
+  }, []);
+
+  useEffect(() => {
+    if (esMovil) {
+      dispatch(setList());
+    } else {
+      dispatch(setGrid());
+    }
+  }, [esMovil]);
+
+  return <div> {visual == "grid" ? <MenuGrid /> : <MenuList />}</div>;
 };
 
 export default Menu;

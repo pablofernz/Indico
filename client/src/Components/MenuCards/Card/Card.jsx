@@ -22,7 +22,7 @@ export default function Card({
   return (
     <div className={style.Content}>
       {discount ? (
-        <div className={style.Discount}>{`-${discount}%`}</div>
+        <div className={style.Discount}>{`-${discount}%`} OFF</div>
       ) : null}
 
       <img className={style.Img} src={image} alt="" />

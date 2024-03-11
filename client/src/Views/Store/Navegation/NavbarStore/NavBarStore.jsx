@@ -20,8 +20,6 @@ const NavBarStore = () => {
   const handleChange = (event) => {
     const value = event.target.value;
     setInputValue(value);
-
-  
   };
   return (
     <div>
@@ -29,6 +27,7 @@ const NavBarStore = () => {
         <div className={style.navbar}>
           <div className={style.menu}>
             <button
+              title={"Vista de cuadrícula"}
               className={`${style.button} ${
                 visual === "grid" ? style.buttonChecked : style.button
               }`}
@@ -63,6 +62,7 @@ const NavBarStore = () => {
               </svg>
             </button>
             <button
+              title={"Vista de lista"}
               className={`${style.button} ${
                 visual === "list" ? style.buttonChecked : style.button
               }`}

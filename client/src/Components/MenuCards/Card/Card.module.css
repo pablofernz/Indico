@@ -43,7 +43,8 @@
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
-    max-width: 230px;
+    min-width: 230px;
+    background-color: transparent;
 }
 
 .Text>p {
@@ -72,7 +73,7 @@
     padding-left: 5px;
     color: rgb(0, 0, 0);
     font-size: 20px;
-    
+
 }
 
 
@@ -82,7 +83,7 @@
     margin-top: 2px;
     color: rgb(50, 50, 50);
     font-size: 14px;
-    
+
 
 }
 
@@ -90,7 +91,7 @@
     width: 80px;
     height: 25px;
     border: none;
-    background-color: rgb(140, 212, 137);
+    background-color: rgb(116, 219, 160);
     border-radius: 20px;
     display: flex;
     align-items: center;
@@ -102,10 +103,12 @@
     margin-left: 157.5px;
     transition: all 0.2s ease-in-out;
     opacity: 100%;
+    font-size: 15px;
+
 }
 
 .CartBtn:hover {
-    box-shadow: rgb(145, 255, 141) 0px 0px 35px;
+    box-shadow: rgb(116, 219, 160) 0px 0px 35px;
 
 }
 

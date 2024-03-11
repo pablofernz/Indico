@@ -1,0 +1,215 @@
+.Content {
+    margin-top: 10px;
+    border-radius: 20px;
+    height: 120px;
+    width: 82%;
+    background-color: rgb(255, 255, 255);
+    border: 5px solid rgb(255, 255, 255);
+    box-shadow: rgb(64, 64, 64) 0px 0px 25px;
+    transition: all 0.2s ease-in-out;
+    display: flex;
+    justify-content: flex-start;
+    align-items: start;
+}
+
+
+
+.Img {
+    
+    height: 100%;
+    min-width: 25%;
+    object-fit: cover;
+    cursor: pointer;
+    border-radius: 15px;
+    background-color: rgb(160, 160, 160);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.TextAndPrices {
+    padding: 5px;
+    display: grid;
+    height: 100%;
+    width: 50%;
+    justify-content: space-between;
+}
+
+h1 {
+    margin-top: -5px;
+    font-size: 15px;
+    color: rgb(42, 42, 42);
+    border-radius: 15px;
+    background-color: rgb(205, 205, 205);
+    width: 70%;
+    height: 25px;
+    color: transparent;
+}
+
+h2 {
+    margin-top: 5px;
+    border-radius: 15px;
+    color: rgb(116, 116, 116);
+    font-size: 12px;
+    padding-left: 7px;
+    width: 60%;
+    height: 10px;
+    background-color: rgb(221, 221, 221);
+}
+
+h3 {
+    margin-top: 5px;
+    border-radius: 15px;
+    color: rgb(116, 116, 116);
+    font-size: 12px;
+    padding-left: 7px;
+    width: 50%;
+    height: 10px;
+    background-color: rgb(221, 221, 221);
+}
+
+
+.Prices {
+    height: 25px;
+    display: flex;
+    justify-content: safe;
+    align-items: end;
+    margin-top: 15px;
+    background-color: rgb(205, 205, 205);
+    width: 80px;
+    border-radius: 20px;
+}
+
+.Price {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-weight: 600;
+    padding-top: 10px;
+    padding-left: 5px;
+    color: rgb(0, 0, 0);
+    font-size: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.strikedPrice {
+    padding-left: 7px;
+    margin-top: 3px;
+    color: rgb(50, 50, 50);
+    font-size: 14px;
+}
+
+
+
+.buttonSeparator {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 70%;
+    width: 100%;
+    margin-right: 10px;
+    transition: all 0.4s ease;
+    border-left: 1.5px solid rgb(176, 176, 176);
+
+}
+
+.buttonContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 25%;
+    margin-right: 10px;
+    transition: all 0.4s ease;
+}
+
+.CartBtn {
+    font-size: 15px;
+    width: 100px;
+    height: 35px;
+    border: none;
+    background-color: rgb(160, 160, 160);
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-weight: 600;
+    position: absolute;
+    transition: all 0.4s ease;
+    opacity: 100%;
+}
+
+@media (max-width: 700px) {
+    
+    .Content {
+        border-radius: 20px;
+        height: 120px;
+        width: 100%;
+        background-color: rgb(255, 255, 255);
+        border: 5px solid rgb(255, 255, 255);
+        box-shadow: rgb(64, 64, 64) 0px 0px 25px;
+        transition: all 0.2s ease-in-out;
+    }
+}
+
+
+@media (max-width: 850px) {
+
+    .buttonContainer {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+        width: 190px;
+        margin-right: 10px;
+        transition: all 0.4s ease;
+        margin-top: 35px;
+    }
+
+    .buttonSeparator {
+        display: none
+    }
+}
+
+@media (max-width: 500px) {
+    .CartBtn {
+        width: 80px;
+        height: 25px;
+        transition: all 0.4s ease;
+    }
+
+    h1 {
+        margin-top: -5px;
+        font-size: 15px;
+        color: rgb(42, 42, 42);
+        border-radius: 15px;
+        background-color: rgb(205, 205, 205);
+        width: 40%;
+        height: 25px;
+        color: transparent;
+    }
+
+    h2 {
+        margin-top: 5px;
+        border-radius: 15px;
+        color: rgb(116, 116, 116);
+        font-size: 12px;
+        padding-left: 7px;
+        width: 40%;
+        height: 10px;
+        background-color: rgb(221, 221, 221);
+    }
+
+    h3 {
+        margin-top: 5px;
+        border-radius: 15px;
+        color: rgb(116, 116, 116);
+        font-size: 12px;
+        padding-left: 7px;
+        width: 30%;
+        height: 10px;
+        background-color: rgb(221, 221, 221);
+    }
+}
