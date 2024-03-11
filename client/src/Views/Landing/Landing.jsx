@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { getMenu, getReviews } from "../../Redux/actions";
+import { getReviews } from "../../Redux/actions";
 import NavBar from "../../Components/Navbar/NavBar";
 import style from "./Landing.module.css";
 import Footer from "../../Components/Footer/Footer";
@@ -12,7 +12,6 @@ const Landing = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getMenu());
     dispatch(getReviews());
   }, [dispatch]);
 

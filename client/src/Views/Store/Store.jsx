@@ -1,14 +1,22 @@
-import NavBarStore from "./NavbarStore/NavBarStore";
-import Sidebars from "./SidebarsStore/sidebarsStore";
-import style from "./FoodComponent/foodComponent.module.css";
-import FoodComponent from "./FoodComponent/foodComponent.jsx";
+import { useEffect } from "react";
+import Menu from "./Menu/Menu";
+import NavSide from "./Navegation/NavSide";
+import style from "./Store.module.css";
+import { useDispatch } from "react-redux";
+import { getMenu } from "../../Redux/actions";
+import { useSelector } from "react-redux";
 
 const Store = () => {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getMenu());
+  }, [dispatch]);
+
   return (
     <div className={style.background}>
-      <NavBarStore />
-      <Sidebars />
-      <FoodComponent/>
+      <NavSide />
+      <Menu />
     </div>
   );
 };

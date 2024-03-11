@@ -1,5 +1,6 @@
 import axios from "axios"
-
+export const SET_GRID = 'SET_GRID'
+export const SET_LIST = 'SET_LIST'
 export const GET_REVIEWS = 'GET_REVIEWS'
 export const GET_MENU = 'GET_MENU'
 
@@ -26,6 +27,24 @@ export const getMenu = () => {
         dispatch({
             type: GET_MENU,
             payload: menu
+        })
+    }
+}
+
+export const setGrid = () => {
+    return async function (dispatch) {
+        dispatch({
+            type: SET_GRID,
+            payload: "grid"
+        })
+    }
+}
+
+export const setList = () => {
+    return async function (dispatch) {
+        dispatch({
+            type: SET_LIST,
+            payload: "list"
         })
     }
 }

@@ -1,28 +1,27 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import style from "./NavBarStore.module.css";
+import { useDispatch, useSelector } from "react-redux";
+import { setGrid, setList } from "../../../../Redux/actions";
 
 const NavBarStore = () => {
-  const [visualStyle, setVisualStyle] = useState("grid");
+  const dispatch = useDispatch();
   const [inputValue, setInputValue] = useState("");
+
+  const visual = useSelector((state) => state.storeView);
+
+  const selectGrid = () => {
+    dispatch(setGrid());
+  };
+
+  const selectList = () => {
+    dispatch(setList());
+  };
 
   const handleChange = (event) => {
     const value = event.target.value;
     setInputValue(value);
-  };
-  const changeGrid = () => {
-    setVisualStyle("grid");
-    console.log("grid");
-  };
-  const changeList = () => {
-    setVisualStyle("list");
-    console.log("list");
-  };
-  const handleSearch = () => {
-    console.log(inputValue);
-  };
 
-  const ClearInput = () => {
-    setInputValue("");
+  
   };
   return (
     <div>
@@ -31,9 +30,9 @@ const NavBarStore = () => {
           <div className={style.menu}>
             <button
               className={`${style.button} ${
-                visualStyle === "grid" ? style.buttonChecked : style.button
+                visual === "grid" ? style.buttonChecked : style.button
               }`}
-              onClick={changeGrid}
+              onClick={selectGrid}
             >
               <svg
                 enableBackground="new 0 0 0 0"
@@ -65,9 +64,9 @@ const NavBarStore = () => {
             </button>
             <button
               className={`${style.button} ${
-                visualStyle === "list" ? style.buttonChecked : style.button
+                visual === "list" ? style.buttonChecked : style.button
               }`}
-              onClick={changeList}
+              onClick={selectList}
             >
               <svg
                 fill="none"
@@ -90,7 +89,7 @@ const NavBarStore = () => {
             </button>
 
             <input
-            value={inputValue}
+              value={inputValue}
               type="text"
               className={
                 inputValue.length === 0 ? style.input : style.inputFocus

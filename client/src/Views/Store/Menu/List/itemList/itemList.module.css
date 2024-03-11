@@ -1,16 +1,23 @@
 .Content {
+    margin-top: 10px;
     border-radius: 20px;
-    height: 250px;
-    width: 250px;
+    height: 120px;
+    width: 82%;
     background-color: rgb(255, 255, 255);
     border: 5px solid rgb(255, 255, 255);
     box-shadow: rgb(64, 64, 64) 0px 0px 25px;
     transition: all 0.2s ease-in-out;
-
+    display: flex;
+    justify-content: flex-start;
+    align-items: start;
 }
 
-.selected {
-    filter: blur(5px);
+.TextAndPrices {
+    padding: 5px;
+    display: grid;
+    height: 100%;
+    width: 50%;
+    background-color: skyblue;
 }
 
 .Discount {
@@ -23,46 +30,40 @@
     border-radius: 14px 0px 15px 0px;
     width: auto;
     height: auto;
+
     box-shadow: rgb(255, 255, 255) 0px 5px 15px;
     font-style: italic;
 }
 
 .Img {
-    height: 140px;
-    width: 240px;
+    height: 100%;
+    width: 25%;
     object-fit: cover;
     cursor: pointer;
     border-radius: 15px;
 }
 
 .Text>h1 {
-    margin-top: -3px;
     padding-left: 7px;
     font-size: 15px;
     color: rgb(42, 42, 42);
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    max-width: 230px;
+    /* max-width: 210px; */
 }
 
 .Text>p {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     color: rgb(116, 116, 116);
     font-size: 12px;
-    max-width: 235px;
+    max-width: 350px;
     padding-left: 7px;
-    position: absolute;
-    /* overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis; */
 
 }
-
+.texttt{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
 .Prices {
-    position: absolute;
-    padding-top: 37px;
-
 }
 
 .Price {
@@ -72,23 +73,22 @@
     padding-left: 5px;
     color: rgb(0, 0, 0);
     font-size: 20px;
-    
+
 }
 
 
 .strikedPrice {
-    position: absolute;
     padding-left: 7px;
     margin-top: 2px;
     color: rgb(50, 50, 50);
     font-size: 14px;
-    
+
 
 }
 
 .CartBtn {
-    width: 80px;
-    height: 25px;
+    width: 100px;
+    height: 35px;
     border: none;
     background-color: rgb(140, 212, 137);
     border-radius: 20px;
@@ -98,8 +98,7 @@
     cursor: pointer;
     font-weight: 600;
     position: absolute;
-    margin-top: -26px;
-    margin-left: 157.5px;
+    margin-left: 140px;
     transition: all 0.2s ease-in-out;
     opacity: 100%;
 }
@@ -149,4 +148,27 @@
     opacity: 0%;
     transition: all 0.5s ease;
 
+}
+
+@media (max-width: 700px) {
+    .Content {
+        border-radius: 20px;
+        height: 120px;
+        width: 100%;
+        background-color: rgb(255, 255, 255);
+        border: 5px solid rgb(255, 255, 255);
+        box-shadow: rgb(64, 64, 64) 0px 0px 25px;
+        transition: all 0.2s ease-in-out;
+
+    }
+
+    .Text>h1 {
+        max-width: 210px;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+    }
+.Discount{
+    font-size: 12px;
+}
 }

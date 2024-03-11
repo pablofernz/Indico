@@ -10,7 +10,6 @@
 }
 
 nav {
-    position: fixed;
     left: 0;
     top: 0;
     width: 100%;
@@ -29,14 +28,14 @@ nav .navbar {
 }
 
 .menu {
-    background-color: rgb(0, 0, 0);
+    background-color: rgb(18, 18, 18);
     width: 35%;
     height: 40px;
     border-radius: 40px;
     display: flex;
     padding: 5px;
     gap: 10px;
-    min-width: 350px;
+    min-width: 300px;
 }
 
 .button {
@@ -101,7 +100,6 @@ nav .navbar {
 
 @media (max-width: 500px) {
     nav {
-        position: fixed;
         left: 0;
         top: 0;
         width: 100%;

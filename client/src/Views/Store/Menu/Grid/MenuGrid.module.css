@@ -1,0 +1,48 @@
+.MenuComponent {
+    height: auto;
+    width: 100vw;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 80px 5%;
+    margin-top: -90px;
+}
+
+
+.MenuContainer {
+    padding: 20px;
+    margin-top: 20px;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    grid-template-columns: repeat(auto-fit, minmax(220px, auto));
+    width: 85vw;
+    min-height: 80vh;
+    gap: 30px;
+    backdrop-filter: blur(20px);
+    border-radius: 40px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+}
+
+
+.SkeletonContainer {
+    padding: 20px;
+    margin-top: 20px;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    grid-template-columns: repeat(auto-fit, minmax(220px, auto));
+    width: 85vw;
+    min-height: 80vh;
+    gap: 30px;
+    backdrop-filter: blur(20px);
+    border-radius: 40px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+}
+
+@media (max-width: 700px) {
+    .MenuContainer {
+        width: auto;
+    }
+}
