@@ -3,6 +3,7 @@ export const SET_GRID = 'SET_GRID'
 export const SET_LIST = 'SET_LIST'
 export const GET_REVIEWS = 'GET_REVIEWS'
 export const GET_MENU = 'GET_MENU'
+export const SET_TYPE = 'SET_TYPE'
 
 export const getReviews = () => {
     return async function (dispatch) {
@@ -45,6 +46,15 @@ export const setList = () => {
         dispatch({
             type: SET_LIST,
             payload: "list"
+        })
+    }
+}
+
+export const setType = (type) => {
+    return async function (dispatch) {
+        dispatch({
+            type: SET_TYPE,
+            payload: type
         })
     }
 }

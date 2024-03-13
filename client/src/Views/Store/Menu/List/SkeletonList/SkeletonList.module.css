@@ -13,9 +13,7 @@
 }
 
 
-
 .Img {
-    
     height: 100%;
     min-width: 25%;
     object-fit: cover;
@@ -142,7 +140,7 @@ h3 {
 }
 
 @media (max-width: 700px) {
-    
+
     .Content {
         border-radius: 20px;
         height: 120px;
