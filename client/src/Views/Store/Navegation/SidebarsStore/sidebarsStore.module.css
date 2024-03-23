@@ -79,7 +79,21 @@ body {
     stroke-dasharray: 12 63;
 }
 
+.filterMenu {
+    height: 100%;
+    width: 100%;
+    background-color: rgb(226, 98, 43);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+}
 
+.filtersContainer {
+    height: calc(100%);
+    width: calc(100%);
+    background-color: seagreen;
+}
 
 
 /* ------- CART ------- */
@@ -87,8 +101,8 @@ body {
 
 .menuCart {
     background-color: rgb(0, 0, 0);
-    position: fixed;
-    width: 250px;
+    position: fixed;;
+    width: 350px;
     height: 100vh;
     right: 0;
     top: 0;
@@ -102,13 +116,13 @@ body {
 }
 
 .cartOpen {
-    transform: translateX(250px);
+    transform: translateX(350px);
 }
 
 .button2 {
     position: absolute;
     right: 0;
-    margin-right: 250px;
+    margin-right: 349px;
     z-index: 1000;
     width: 40px;
     background-color: rgb(0, 0, 0);
@@ -128,7 +142,82 @@ body {
     justify-content: center;
 }
 
+.cartCheckout {
+    height: 100%;
+    width: 100%;
+    background-color: aquamarine;
+}
 
+.foodCheckout {
+    height: 80%;
+    width: 100%;
+    background-color: rgb(0, 0, 0);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: scroll;
+}
+
+.foodContent {
+    height: calc(100% - 20px);
+    width: calc(100% - 20px);
+}
+
+.checkoutContainer {
+    height: 20%;
+    width: 100%;
+    background-color: rgb(226, 98, 43);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.checkoutContent {
+    height: calc(100% - 20px);
+    width: calc(100% - 20px);
+    background-color: seagreen;
+}
+
+.checkoutPlaceholder{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.dataContainer{
+    height: 80px;
+    width: 100%;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    border-bottom: 1px solid rgb(48, 48, 48);
+}
+
+.dataImg{
+    border-radius: 10px;
+    height: 50px;
+    width: 50px;
+}
+.dataText{
+    color: azure;
+    margin-left: 10px;
+    display: grid;
+    background-color: blueviolet;
+
+    min-width: 170px;
+
+}
+.dataTitle{
+    max-width: 160px;
+
+    font-weight: 600;
+    font-size: 12px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
 @media (max-width: 500px) {
 
     .menuFilters {
@@ -199,7 +288,7 @@ body {
     .menuCart {
         background-color: rgb(0, 0, 0);
         position: fixed;
-        width: 200px;
+        width: 80%;
         height: 100vh;
         right: 0;
         top: 0;
@@ -212,13 +301,13 @@ body {
     }
 
     .cartOpen {
-        transform: translateX(200px);
+        transform: translateX(100%);
     }
 
     .button2 {
         position: absolute;
         right: 0;
-        margin-right: 200px;
+        margin-right: 99%;
         z-index: 1000;
         width: 40px;
         background-color: rgb(0, 0, 0);

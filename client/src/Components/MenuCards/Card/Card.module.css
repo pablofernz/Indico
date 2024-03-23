@@ -88,7 +88,7 @@
 }
 
 .CartBtn {
-    width: 80px;
+    width: 70px;
     height: 25px;
     border: none;
     background-color: rgb(116, 219, 160);
@@ -100,8 +100,8 @@
     font-weight: 600;
     position: absolute;
     margin-top: -26px;
-    margin-left: 157.5px;
-    transition: all 0.2s ease-in-out;
+    margin-left: 167px;
+    transition: all 0.4s ease;
     opacity: 100%;
     font-size: 15px;
 
@@ -125,7 +125,7 @@
     font-weight: 600;
     position: absolute;
     margin-top: -26px;
-    margin-left: 188px;
+    margin-left: 187px;
     transition: all 0.4s ease;
     opacity: 100%;
 }

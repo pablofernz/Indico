@@ -28,7 +28,7 @@ nav .navbar {
 }
 
 .menu {
-    background-color: rgb(18, 18, 18);
+    backdrop-filter: blur(10px) brightness(0.9);
     width: 35%;
     height: 40px;
     border-radius: 40px;
@@ -67,15 +67,18 @@ nav .navbar {
     border-radius: 40px;
     transition: all 0.5s cubic-bezier(0.455, 0.03, 0.515, 0.955);
     margin-left: auto;
-    background-color: rgb(48, 48, 48);
-    text-overflow: ellipsis;
+    background-color:whitesmoke;
 
+    text-overflow: ellipsis;
 }
 
-
+.input::placeholder{
+    color: black;
+    font-weight: 600;
+}
 .input:focus {
-    background-color: rgb(48, 48, 48);
-    color: whitesmoke;
+    background-color:  rgb(116, 219, 160);
+    color: rgb(0, 0, 0);
     outline: none;
     width: 80%;
 }
@@ -88,12 +91,11 @@ nav .navbar {
     font-weight: 600;
     height: 30px;
     border-radius: 40px;
-    transition: all 0.5s cubic-bezier(0.455, 0.03, 0.515, 0.955);
+    transition: all 3s cubic-bezier(0.455, 0.03, 0.515, 0.955);
     margin-left: auto;
-    background-color: rgb(48, 48, 48);
+    background-color:  rgb(116, 219, 160);
     text-overflow: ellipsis;
-    background-color: rgb(48, 48, 48);
-    color: whitesmoke;
+    color: rgb(0, 0, 0);
     outline: none;
     width: 80%;
 }

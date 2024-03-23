@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import style from "./NavBarStore.module.css";
 import { useDispatch, useSelector } from "react-redux";
-import { setGrid, setList } from "../../../../Redux/actions";
+import { setGrid, setList, searchFood } from "../../../../Redux/actions";
 
 const NavBarStore = () => {
   const dispatch = useDispatch();
@@ -21,6 +21,10 @@ const NavBarStore = () => {
     const value = event.target.value;
     setInputValue(value);
   };
+
+  useEffect(() => {
+    dispatch(searchFood(inputValue));
+  }, [inputValue]);
   return (
     <div>
       <nav>
@@ -96,11 +100,6 @@ const NavBarStore = () => {
               }
               placeholder="Buscar"
               onChange={handleChange}
-              onKeyDown={(event) => {
-                if (event.key === "Enter") {
-                  handleSearch(event);
-                }
-              }}
             />
           </div>
         </div>

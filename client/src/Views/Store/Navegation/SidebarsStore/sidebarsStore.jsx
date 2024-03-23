@@ -1,3 +1,4 @@
+import { useSelector } from "react-redux";
 import NavBarStore from "../NavbarStore/NavBarStore";
 import style from "./sidebarsStore.module.css";
 import React, { useEffect, useState } from "react";
@@ -5,6 +6,10 @@ import React, { useEffect, useState } from "react";
 const Sidebars = () => {
   const [optionsStatus, setOptionsStatus] = useState("closed");
   const [cartStatus, setCartStatus] = useState("closed");
+  const [total, setTotal] = useState(0);
+
+  const cartState = useSelector((state) => state.cart);
+  const {foodInCart} = cartState
 
   const OptionStatus = () => {
     if (optionsStatus == "open") {
@@ -25,7 +30,17 @@ const Sidebars = () => {
       setOptionsStatus("closed");
     }
   };
-
+  useEffect(() => {
+    let total = 0;
+    foodInCart.forEach((item) => {
+      const price = item.price;
+      const discount = item.discount;
+      const finalPrice = price - price * (discount / 100);
+      total += finalPrice;
+      setTotal(total); // Aquí sumamos el precio final de cada artículo al total
+    });
+    console.log(foodInCart.length); // Imprimir el total después de calcularlo
+  }, [foodInCart]);
   return (
     <div className={style.store}>
       <div
@@ -44,6 +59,9 @@ const Sidebars = () => {
               <path className={style.line} d="M7 16 27 16"></path>
             </svg>
           </label>
+        </div>
+        <div className={style.filterMenu}>
+          <div className={style.filtersContainer}></div>
         </div>
       </div>
 
@@ -64,6 +82,37 @@ const Sidebars = () => {
             </svg>
           </span>
         </button>
+        {foodInCart.length !== 0 ? (
+          <div className={style.cartCheckout}>
+            <div className={style.foodCheckout}>
+              <div className={style.foodContent}>
+                {foodInCart.map(
+                  ({ id, title, description, image, price, discount }) => (
+                    <div key={id} className={style.dataContainer}>
+                      <img src={image} alt="" className={style.dataImg} />
+                      <div className={style.dataText}>
+                      <p className={style.dataTitle}>{title}</p>
+                      <p className={style.Price}>
+                        ${Math.ceil(price - price * (discount / 100))}
+                        {discount === 0 ? null : (
+                          <s className={style.strikedPrice}>${price}</s>
+                        )}
+                      </p>
+                      </div>
+                    </div>
+                  )
+                )}
+              </div>
+            </div>
+            <div className={style.checkoutContainer}>
+              <div className={style.checkoutContent}>Precio: {total}</div>
+            </div>
+          </div>
+        ) : (
+          <div className={style.checkoutPlaceholder}>
+            <img src="" alt="" />
+          </div>
+        )}
       </div>
     </div>
   );

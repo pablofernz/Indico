@@ -1,6 +1,9 @@
 // Este componente debe renderizar la informacion de cada comida del menú
 import { useEffect, useState } from "react";
 import style from "./itemList.module.css";
+import { useDispatch, useSelector } from "react-redux";
+
+import { addToCart, deleteToCart } from "../../../../../Redux/actions";
 
 export default function ItemList({
   id,
@@ -11,15 +14,39 @@ export default function ItemList({
   discount,
   className,
 }) {
+  const dispatch = useDispatch();
   const [isAdded, setIsAdded] = useState(false);
+  const foodInCart = useSelector((state) => state.foodInCart);
+
+  const foodPurchased = {
+    id,
+    title,
+    image,
+    description,
+    price,
+    discount,
+  };
 
   const AddHandler = () => {
     if (isAdded === false) {
       setIsAdded(true);
+
+      dispatch(addToCart(foodPurchased));
     } else {
       setIsAdded(false);
+      dispatch(deleteToCart(foodPurchased));
     }
   };
+  const checkIfAlreadyAdded = () => {
+    const isAlreadyAdded = foodInCart.some((item) => item.id === id);
+    if (isAlreadyAdded) {
+      setIsAdded(true);
+    }
+  };
+  useEffect(() => {
+    checkIfAlreadyAdded();
+  });
+
   return (
     <div className={className}>
       <div className={style.Content}>

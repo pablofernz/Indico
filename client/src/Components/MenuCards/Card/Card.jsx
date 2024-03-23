@@ -1,6 +1,7 @@
-// Este componente debe renderizar la informacion de cada comida del menú
 import { useEffect, useState } from "react";
 import style from "./Card.module.css";
+import { useDispatch, useSelector } from "react-redux";
+import { addToCart, deleteToCart } from "../../../Redux/actions";
 
 export default function Card({
   id,
@@ -10,19 +11,44 @@ export default function Card({
   price,
   discount,
 }) {
+  const dispatch = useDispatch();
   const [isAdded, setIsAdded] = useState(false);
+  const cartState = useSelector((state) => state.cart);
+  const { foodInCart } = cartState;
+  
+  const foodPurchased = {
+    id,
+    title,
+    image,
+    description,
+    price,
+    discount,
+  };
 
   const AddHandler = () => {
     if (isAdded === false) {
       setIsAdded(true);
+      dispatch(addToCart(foodPurchased));
     } else {
       setIsAdded(false);
+      dispatch(deleteToCart(foodPurchased));
     }
   };
+
+  const checkIfAlreadyAdded = () => {
+    const isAlreadyAdded = foodInCart.some((item) => item.id === id);
+    if (isAlreadyAdded) {
+      setIsAdded(true);
+    }
+  };
+  useEffect(() => {
+    checkIfAlreadyAdded();
+  });
+
   return (
     <div className={style.Content}>
       {discount ? (
-        <div className={style.Discount}>{`-${discount}%`} OFF</div>
+        <div className={style.Discount}>{`${discount}%`} OFF</div>
       ) : null}
 
       <img className={style.Img} src={image} alt="" />

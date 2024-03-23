@@ -4,6 +4,10 @@ export const SET_LIST = 'SET_LIST'
 export const GET_REVIEWS = 'GET_REVIEWS'
 export const GET_MENU = 'GET_MENU'
 export const SET_TYPE = 'SET_TYPE'
+export const ADD_TO_CART = 'ADD_TO_CART'
+export const DELETE_TO_CART = 'DELETE_TO_CART'
+export const SEARCH_FOOD = 'SEARCH_FOOD'
+
 
 export const getReviews = () => {
     return async function (dispatch) {
@@ -32,6 +36,14 @@ export const getMenu = () => {
     }
 }
 
+export const searchFood = (food) => {
+    return async function (dispatch) {
+        dispatch({
+            type: SEARCH_FOOD,
+            payload: food
+        })
+    }
+}
 export const setGrid = () => {
     return async function (dispatch) {
         dispatch({
@@ -58,3 +70,22 @@ export const setType = (type) => {
         })
     }
 }
+
+export const addToCart = (food) => {
+    return async function (dispatch) {
+        dispatch({
+            type: ADD_TO_CART,
+            payload: food
+        })
+    }
+}
+
+export const deleteToCart = (food) => {
+    return async function (dispatch) {
+        dispatch({
+            type: DELETE_TO_CART,
+            payload: food
+        })
+    }
+}
+

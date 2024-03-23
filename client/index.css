@@ -7,9 +7,9 @@
 
 /* Estilo del pulgar de la scrollbar */
 ::-webkit-scrollbar-thumb {
-  background-color: rgb(160, 250, 170);
+  background-color: rgb(255, 255, 255);
   /* Color del pulgar */
-  border-radius: 10px;
+  border-radius: 5px;
   /* Borde redondeado del pulgar */
 }
 
@@ -20,6 +20,10 @@
 
 /* Estilo de la barra de track (fondo de la scrollbar) */
 ::-webkit-scrollbar-track {
-  background-color: rgb(31, 31, 31);
+  background-color: rgb(0, 0, 0);
   /* Color del fondo de la scrollbar */
+}
+
+h1{
+  background-color: transparent;
 }

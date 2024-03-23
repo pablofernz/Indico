@@ -4,7 +4,7 @@
     min-height: 100vh;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: start;
     padding: 80px 5%;
     margin-top: -90px;
 }
@@ -17,8 +17,9 @@
     justify-content: center;
     align-items: start;
     grid-template-columns: repeat(auto-fit, minmax(220px, auto));
-    width: 85vw;
-    min-height: 80vh;
+    max-width: 85vw;
+    min-height: auto;
+    min-width: auto;
     gap: 30px;
     backdrop-filter: blur(20px);
     border-radius: 40px;
