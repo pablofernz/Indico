@@ -51,7 +51,9 @@ nav .navbar {
     transition: all 0.2s ease;
 }
 
-
+.button:active {
+    transform: scale(0.95);
+}
 .buttonChecked {
     background-color: rgb(116, 219, 160);
 }

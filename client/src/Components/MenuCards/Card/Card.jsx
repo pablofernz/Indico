@@ -15,7 +15,7 @@ export default function Card({
   const [isAdded, setIsAdded] = useState(false);
   const cartState = useSelector((state) => state.cart);
   const { foodInCart } = cartState;
-  
+
   const foodPurchased = {
     id,
     title,
@@ -23,6 +23,10 @@ export default function Card({
     description,
     price,
     discount,
+    quantity: 1,
+    get total() {
+      return this.price - this.price * (this.discount / 100) * this.quantity;
+    }
   };
 
   const AddHandler = () => {
@@ -39,6 +43,8 @@ export default function Card({
     const isAlreadyAdded = foodInCart.some((item) => item.id === id);
     if (isAlreadyAdded) {
       setIsAdded(true);
+    } else {
+      setIsAdded(false);
     }
   };
   useEffect(() => {

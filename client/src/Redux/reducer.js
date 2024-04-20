@@ -1,4 +1,4 @@
-import { GET_REVIEWS, GET_MENU, SET_GRID, SET_LIST, SET_TYPE, ADD_TO_CART, DELETE_TO_CART, SEARCH_FOOD } from "./actions";
+import { GET_REVIEWS, GET_MENU, SET_GRID, SET_LIST, SET_TYPE, ADD_TO_CART, DELETE_TO_CART, SEARCH_FOOD, UPDATE_ITEM_QUANTITY, SEND_ORDER, CLEAR_CART, KEEP_CART } from "./actions";
 
 let initialstate = {
     storeView: "",
@@ -7,6 +7,7 @@ let initialstate = {
     menuAux: [],
     reviews: [],
     cart: { foodInCart: [], foodInCartAux: [], amount: 0, quantity: 0 },
+    orderSent: null
 
 };
 
@@ -63,6 +64,20 @@ let reducer = (state = initialstate, action) => {
                     foodInCartAux: [...state.cart.foodInCart, action.payload]
                 }
             }
+
+        case UPDATE_ITEM_QUANTITY:
+            return {
+                ...state,
+                cart: {
+                    ...state.cart,
+                    foodInCart: state.cart.foodInCart.map(item => {
+                        if (item.id === action.payload.itemId) {
+                            return { ...item, quantity: action.payload.newQuantity };
+                        }
+                        return item;
+                    })
+                }
+            };
         case DELETE_TO_CART:
             const updatedFoodInCart = state.cart.foodInCart.filter(food => food.id !== action.payload.id);
             return {
@@ -71,10 +86,31 @@ let reducer = (state = initialstate, action) => {
                     foodInCart: updatedFoodInCart
                 }
             };
+        case CLEAR_CART: 
+        return {
+            ...state,
+            cart: {
+                foodInCart: []
+            }
+        }
+
+        case KEEP_CART: 
+        return {
+            ...state,
+            cart: {
+                foodInCart: action.payload
+            }
+        }
         case GET_REVIEWS:
             return {
                 ...state,
                 reviews: action.payload
+            }
+
+        case SEND_ORDER:
+            return {
+                ...state,
+                orderCreated: action.payload
             }
 
 

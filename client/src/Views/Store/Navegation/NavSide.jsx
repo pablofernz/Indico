@@ -1,9 +1,15 @@
+import { useSelector } from "react-redux";
 import FoodType from "./FoodType/foodType";
 import NavBarStore from "./NavbarStore/NavBarStore";
 import Sidebars from "./SidebarsStore/sidebarsStore";
 import style from "./navSide.module.css";
+import { useEffect } from "react";
 
 const NavSide = () => {
+  const cart = useSelector((state) => state.cart.foodInCart);
+
+  const test = cart.map((pedido) => pedido.quantity);
+
   return (
     <div className={style.background}>
       <div className={style.navbar}>

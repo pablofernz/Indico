@@ -100,13 +100,15 @@ body {
 
 
 .menuCart {
-    background-color: rgb(0, 0, 0);
-    position: fixed;;
+    position: fixed;
+    ;
     width: 350px;
     height: 100vh;
     right: 0;
     top: 0;
-
+    background-color: transparent;
+    backdrop-filter: blur(15px) brightness(0.12);
+    box-shadow: rgb(0, 0, 0) 0px 2px 50px;
     z-index: 9999;
     transition: all 0.5s ease-in-out;
 }
@@ -142,43 +144,91 @@ body {
     justify-content: center;
 }
 
+.IconContainer p {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: -1px 0px -10px -1.5px;
+    width: 15px;
+    height: 15px;
+    font-size: 10px;
+    position: absolute;
+    color: rgb(130, 220, 147);
+    border-radius: 20px;
+    font-weight: 1000;
+    text-align: center;
+}
+
+.cartIndicator{
+    top: 0;
+    right: 0;
+    margin-right: 5px;
+    margin-top: 5px;
+    background-color: rgb(18, 18, 18);
+    height: 12px;
+    width: 12px;
+    position: absolute;
+    border-radius: 20px;
+
+}
 .cartCheckout {
     height: 100%;
     width: 100%;
-    background-color: aquamarine;
+    background-color: rgb(19, 19, 19);
 }
 
 .foodCheckout {
-    height: 80%;
+    height: 70%;
     width: 100%;
-    background-color: rgb(0, 0, 0);
     display: flex;
     justify-content: center;
     align-items: center;
     overflow: scroll;
+
 }
 
 .foodContent {
     height: calc(100% - 20px);
     width: calc(100% - 20px);
+
 }
 
-.checkoutContainer {
-    height: 20%;
+
+.foodCheckoutFade {
+    height: 30px;
     width: 100%;
-    background-color: rgb(226, 98, 43);
-    display: flex;
-    justify-content: center;
+    background-color: transparent;
+    position: fixed;
+    margin-top: -29px;
+    background: linear-gradient(to bottom, rgba(18, 18, 18, 0) 0%, rgb(0, 0, 0) 100%);
+
+
+}
+
+.foodCheckout::-webkit-scrollbar {
+    display: none;
+}
+
+
+.checkoutContainer {
+    height: 30%;
+    width: 100%;
+    display: grid;
     align-items: center;
 }
 
 .checkoutContent {
+    margin: 0px 0px 0px 0px;
+    padding-left: 10px;
+    padding-right: 10px;
     height: calc(100% - 20px);
-    width: calc(100% - 20px);
-    background-color: seagreen;
+    width: calc(100% - 0px);
+    display: grid;
+    color: aliceblue;
+
 }
 
-.checkoutPlaceholder{
+.checkoutPlaceholder {
     height: 100%;
     width: 100%;
     display: flex;
@@ -186,38 +236,243 @@ body {
     align-items: center;
 }
 
-.dataContainer{
+.dataContainer {
     height: 80px;
     width: 100%;
     display: flex;
     justify-content: start;
     align-items: center;
-    border-bottom: 1px solid rgb(48, 48, 48);
+
 }
 
-.dataImg{
+.dataImg {
     border-radius: 10px;
     height: 50px;
     width: 50px;
+    object-fit: cover;
 }
-.dataText{
-    color: azure;
+
+.dataText {
     margin-left: 10px;
     display: grid;
-    background-color: blueviolet;
-
-    min-width: 170px;
+    width: 600px;
 
 }
-.dataTitle{
-    max-width: 160px;
 
+.dataTitle {
+    max-width: 180px;
     font-weight: 600;
     font-size: 12px;
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
+    color: azure;
+
 }
+
+.Price {
+    font-weight: 600;
+    color: rgb(203, 203, 203);
+
+}
+
+s {
+    font-size: 14px;
+    margin-left: 5px;
+    color: rgb(156, 156, 156);
+}
+
+.actionButtons {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+
+}
+
+.btnContainer {
+    height: 40%;
+    width: 80%;
+    background-color: transparent;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    border-radius: 50px;
+    color: rgb(116, 219, 160);
+    border: 2px solid rgb(116, 219, 160);
+    ;
+}
+
+.btn {
+    background-color: transparent;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    color: rgb(116, 219, 160);
+
+}
+
+.quantityIndicator {
+    font-size: 18px;
+}
+
+.checkoutText {
+    margin: 10px 0px 10px 0px;
+}
+
+.summary {
+    font-size: 15px;
+    color: whitesmoke;
+}
+
+.resume {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: rgb(135, 135, 135);
+    font-size: 14px;
+
+}
+
+.total {
+    font-size: 18px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: rgb(255, 255, 255);
+    font-weight: 600;
+}
+
+.priceCheckout {
+    font-weight: 600;
+}
+
+.payButtonContainer {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+
+}
+
+.payButton {
+    border: none;
+    background-color: rgb(255, 255, 255);
+    display: flex;
+    align-items: center;
+    color: black;
+    justify-content: center;
+    padding: 0px 10px 0px 10px;
+    font-weight: 700;
+    font-size: 15px;
+    height: 35px;
+    width: 80%;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+
+}
+
+.payButton:active {
+    transform: scale(0.95);
+
+}
+
+
+.payButton2 {
+    border: none;
+    background-color: rgb(116, 219, 160);
+    display: flex;
+    align-items: center;
+    color: black;
+    justify-content: center;
+    padding: 0px 10px 0px 10px;
+    font-weight: 700;
+    font-size: 15px;
+    height: 35px;
+    width: 80%;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+
+}
+
+.payButton2:active {
+    transform: scale(0.95);
+
+}
+
+.clearCart{
+    border: none;
+    background-color: rgb(34, 34, 34);
+    display: flex;
+    align-items: center;
+    color: black;
+    justify-content: center;
+    padding: 0px 10px 0px 10px;
+    font-weight: 700;
+    font-size: 15px;
+    height: 35px;
+    width: 10%;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.clearCart:active {
+    transform: scale(0.95);
+
+}
+.checkoutPlaceholder {
+    height: 100%;
+    width: 100%;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(18, 18, 18);
+}
+
+.placeholderContainer {
+    margin-top: -50px;
+}
+
+.imgContainer {
+    width: 250px;
+    height: 250px;
+    margin-left: 30px;
+
+}
+
+.imgCheckoutPlaceholder {
+    width: 100%;
+    height: 100%;
+
+}
+
+.checkoutPlaceholder p {
+    color: aliceblue;
+    font-weight: 600;
+    font-size: 15px;
+    text-align: center;
+
+}
+
+.payButtonChecked{
+    border: none;
+    background-color: rgb(43, 43, 43);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0px 10px 0px 10px;
+    font-weight: 700;
+    font-size: 15px;
+    height: 35px;
+    width: 90%;
+    border-radius: 10px;
+    cursor:not-allowed;
+    transition: all 0.3s ease;
+}
+
 @media (max-width: 500px) {
 
     .menuFilters {

@@ -7,7 +7,10 @@ export const SET_TYPE = 'SET_TYPE'
 export const ADD_TO_CART = 'ADD_TO_CART'
 export const DELETE_TO_CART = 'DELETE_TO_CART'
 export const SEARCH_FOOD = 'SEARCH_FOOD'
-
+export const UPDATE_ITEM_QUANTITY = 'UPDATE_ITEM_QUANTITY'
+export const SEND_ORDER = 'SEND_ORDER'
+export const CLEAR_CART = 'CLEAR_CART'
+export const KEEP_CART = 'KEEP_CART'
 
 export const getReviews = () => {
     return async function (dispatch) {
@@ -80,11 +83,45 @@ export const addToCart = (food) => {
     }
 }
 
+export const keepCart = (cart) => {
+    return async function (dispatch) {
+        dispatch({
+            type: KEEP_CART,
+            payload: cart
+        })
+    }
+}
+export const updateItemQuantity = (itemId, newQuantity,) => {
+    return {
+        type: UPDATE_ITEM_QUANTITY,
+        payload: {
+            itemId,
+            newQuantity
+        }
+    };
+};
 export const deleteToCart = (food) => {
     return async function (dispatch) {
         dispatch({
             type: DELETE_TO_CART,
             payload: food
+        })
+    }
+}
+
+export const clearCart = () => {
+    return async function (dispatch) {
+        dispatch({
+            type: CLEAR_CART,
+        })
+    }
+}
+
+export const sendTheOrder = (order) => {
+    return async function (dispatch) {
+        dispatch({
+            type: SEND_ORDER,
+            payload: order
         })
     }
 }

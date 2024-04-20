@@ -28,7 +28,7 @@
 
 
 .foodTypes {
-    border: 2px solid transparent;
+    border: none;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -42,7 +42,7 @@
 }
 
 .foodTypeChosed {
-    border: 2px solid rgb(116, 219, 160);
+    border: none;
     background-color: rgb(116, 219, 160);
     display: flex;
     align-items: center;
@@ -57,6 +57,9 @@
     transition: all 0.2s ease;
 }
 
+.foodTypes:active {
+    transform: scale(0.95);
+}
 .OrderBar {
     border: 2px solid rgb(0, 0, 0);
     background-color: rgb(0, 0, 0);

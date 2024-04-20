@@ -16,8 +16,8 @@ export default function ItemList({
 }) {
   const dispatch = useDispatch();
   const [isAdded, setIsAdded] = useState(false);
-  const foodInCart = useSelector((state) => state.foodInCart);
-
+  const cartState = useSelector((state) => state.cart);
+  const { foodInCart } = cartState;
   const foodPurchased = {
     id,
     title,

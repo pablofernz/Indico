@@ -44,7 +44,6 @@
     white-space: nowrap;
     text-overflow: ellipsis;
     min-width: 230px;
-    background-color: transparent;
 }
 
 .Text>p {
@@ -104,12 +103,15 @@
     transition: all 0.4s ease;
     opacity: 100%;
     font-size: 15px;
-
 }
 
 .CartBtn:hover {
-    box-shadow: rgb(116, 219, 160) 0px 0px 35px;
+    box-shadow: rgb(116, 219, 160) 0px 0px 15px;
 
+}
+
+.CartBtn:active {
+    transform: scale(0.95);
 }
 
 .CartBtn2 {
@@ -131,8 +133,12 @@
 }
 
 .CartBtn2:hover {
-    box-shadow: rgb(255, 143, 143) 0px 0px 35px;
+    box-shadow: rgb(255, 143, 143) 0px 0px 15px;
 
+}
+
+.CartBtn2:active {
+    transform: scale(0.95);
 }
 
 .Content:hover .CartBtn {
