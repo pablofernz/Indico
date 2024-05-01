@@ -7,14 +7,16 @@ import {
   updateItemQuantity,
   sendTheOrder,
   clearCart,
-  keepCart
+  cartStatus,
+  CART_STATUS,
 } from "../../../../Redux/actions";
 import IconLoader from "../../../../Components/iconLoader/iconLoader";
 import { useNavigate } from "react-router-dom";
 
 const Sidebars = () => {
   const [optionsStatus, setOptionsStatus] = useState("closed");
-  const [cartStatus, setCartStatus] = useState("closed");
+  // const [cartStatus, setCartStatus] = useState("closed");
+
   const navigate = useNavigate();
 
   const [orderSent, setOrderSent] = useState({
@@ -34,27 +36,31 @@ const Sidebars = () => {
   const [total, setTotal] = useState(0);
   const [amount, setAmount] = useState(0);
 
+  const cartIsOpen = useSelector((state) => state.cartIsOpen);
+
   const OptionStatus = () => {
     if (optionsStatus == "open") {
       setOptionsStatus("closed");
-      setCartStatus("closed");
+      dispatch(cartStatus(false));
     } else {
       setOptionsStatus("open");
-      setCartStatus("closed");
+      dispatch(cartStatus(false));
     }
   };
 
   const CartStatus = () => {
-    if (cartStatus == "open") {
-      setCartStatus("closed");
+    if (cartIsOpen == true) {
+      dispatch(cartStatus(false));
       setOptionsStatus("closed");
     } else {
-      setCartStatus("open");
+      dispatch(cartStatus(true));
       setOptionsStatus("closed");
     }
   };
 
   const moreQuantity = (id) => {
+    setIsOrderSent(false);
+
     const itemToUpdate = foodInCart.find((item) => item.id === id);
     const updatedQuantity = itemToUpdate.quantity + 1;
 
@@ -64,6 +70,8 @@ const Sidebars = () => {
   };
 
   const lessQuantity = (id) => {
+    setIsOrderSent(false);
+    
     const itemToUpdate = foodInCart.find((item) => item.id === id);
     const updatedQuantity = itemToUpdate.quantity - 1;
 
@@ -91,6 +99,7 @@ const Sidebars = () => {
     let totalAux = [];
     foodInCart.forEach((item) => {
       const order = {
+        id: item.id,
         title: item.title,
         description: item.description,
         image: item.image,
@@ -128,25 +137,17 @@ const Sidebars = () => {
     setAmount(foodInCart.length);
     calculateTotal();
     createOrder();
+
     const cartItemsString = JSON.stringify(foodInCart);
     window.sessionStorage.setItem("cartItems", cartItemsString);
-
   }, [foodInCart]);
-
-  useEffect(() => {
-    // Cargar datos del carrito desde sessionStorage al cargar la página
-    const cartItemsString = window.sessionStorage.getItem("cartItems");
-    if (cartItemsString) {
-      const cartItems = JSON.parse(cartItemsString);
-      dispatch(keepCart(cartItems));
-    }
-        console.log(cartItemsString)
-
-  }, []);
 
   const clearTheCart = () => {
     dispatch(clearCart());
     setIsOrderSent(false);
+    setTimeout(() => {
+      dispatch(cartStatus(false));
+    }, 1000);
     window.sessionStorage.removeItem("order");
   };
   return (
@@ -175,7 +176,7 @@ const Sidebars = () => {
 
       <div
         className={`${style.menuCart} ${
-          cartStatus === "closed" ? style.cartOpen : style.cartClosed
+          cartIsOpen == false ? style.cartOpen : style.cartClosed
         }`}
       >
         <button className={style.button2} onClick={CartStatus}>

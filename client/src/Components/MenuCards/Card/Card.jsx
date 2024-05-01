@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import style from "./Card.module.css";
 import { useDispatch, useSelector } from "react-redux";
-import { addToCart, deleteToCart } from "../../../Redux/actions";
+import { addToCart, cartStatus, deleteToCart } from "../../../Redux/actions";
 
 export default function Card({
   id,
@@ -30,6 +30,7 @@ export default function Card({
   };
 
   const AddHandler = () => {
+    dispatch(cartStatus (false));
     if (isAdded === false) {
       setIsAdded(true);
       dispatch(addToCart(foodPurchased));

@@ -1,6 +1,12 @@
 const Client = require('../models/Client');
 const addClient = require("../controllers/clientCreator")
 const bcrypt = require("bcrypt")
+const jwt = require("jsonwebtoken")
+require("dotenv").config()
+
+
+const secret = process.env.SECRET
+
 
 const createClient = async (req, res) => {
     const { name, lastname, email, password, image, reviews } = req.body
@@ -16,7 +22,7 @@ const createClient = async (req, res) => {
                 return res.status(400).send('Ya existe una cuenta con este correo. Inicia sesión');
             } else {
                 const newClient = addClient({ name, lastname, email, password, image, reviews })
-                return res.status(200).send("Cuenta creada")
+
             }
         } else {
             return res.status(400).send("Debes rellenar tus datos")
@@ -79,6 +85,18 @@ const clientLogin = async (req, res) => {
                 const passwordsMatch = await bcrypt.compare(password, existingClient.password);
 
                 if (passwordsMatch) {
+                    const tokenData = {
+                        name: existingClient.name,
+                        id: existingClient._id
+                    }
+
+                    const token = jwt.sign(
+                        {
+                            tokenData,
+                            exp: Date.now() + 60 * 1000
+                        }, secret
+                    )
+                    return res.status(200).json({ name: existingClient.name, email: existingClient.email, token: token })
                     return res.status(200).send(`Hola, ${existingClient.name}`)
                 } else {
                     return res.status(400).send("La contraseña es incorrecta.");

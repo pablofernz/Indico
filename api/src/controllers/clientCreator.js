@@ -1,4 +1,7 @@
 const clientSchema = require("../models/Client")
+const jwt = require("jsonwebtoken")
+
+const secret = process.env.SECRET
 
 const addClient = ({ name, lastname, email, password, image, reviews }, res) => {
     const newClient = clientSchema({ name, lastname, email, password, image, reviews })

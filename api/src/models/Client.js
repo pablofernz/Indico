@@ -1,5 +1,6 @@
 const mongoose = require("mongoose")
 const reviewsSchema = require("./Reviews").schema
+const purchaseSchema = require("./Store/Purchase").schema
 const bcrypt = require("bcrypt")
 
 const clientSchema = mongoose.Schema({
@@ -27,10 +28,7 @@ const clientSchema = mongoose.Schema({
         type: String,
         default: "Client"
     },
-    purchases:{
-        type: Number,
-        default: 0
-    },
+    purchases: [purchaseSchema],
     reviews: [reviewsSchema]
 }, {
     versionKey: false // Establecer versionKey en false para eliminar la propiedad "__v"

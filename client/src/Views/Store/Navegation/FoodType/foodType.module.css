@@ -145,7 +145,14 @@ select {
         justify-content: center;
         align-items: center;
     }
-
+.OrderBar{
+    border: none;
+    background-color: rgb(116, 219, 160);
+    color: black;
+}
+.OrderBar option{
+   font-weight: 600;
+}
     .menuContainer {
         height: 100vh;
         width: 80vw;

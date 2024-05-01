@@ -1,12 +1,13 @@
-import { GET_REVIEWS, GET_MENU, SET_GRID, SET_LIST, SET_TYPE, ADD_TO_CART, DELETE_TO_CART, SEARCH_FOOD, UPDATE_ITEM_QUANTITY, SEND_ORDER, CLEAR_CART, KEEP_CART } from "./actions";
+import { GET_REVIEWS, GET_MENU, SET_GRID, SET_LIST, SET_TYPE, ADD_TO_CART, DELETE_TO_CART, SEARCH_FOOD, UPDATE_ITEM_QUANTITY, SEND_ORDER, CLEAR_CART, KEEP_CART, CART_STATUS } from "./actions";
 
 let initialstate = {
-    storeView: "",
+    storeView: "list",
+    cartIsOpen: false,
     foodType: "Todos",
     menu: [],
     menuAux: [],
     reviews: [],
-    cart: { foodInCart: [], foodInCartAux: [], amount: 0, quantity: 0 },
+    cart: { foodInCart: JSON.parse(window.sessionStorage.getItem("cartItems")), foodInCartAux: [], amount: 0, quantity: 0 },
     orderSent: null
 
 };
@@ -41,6 +42,12 @@ let reducer = (state = initialstate, action) => {
             return {
                 ...state,
                 storeView: action.payload
+            }
+
+        case CART_STATUS:
+            return {
+                ...state,
+                cartIsOpen: action.payload
             }
 
 
@@ -86,21 +93,21 @@ let reducer = (state = initialstate, action) => {
                     foodInCart: updatedFoodInCart
                 }
             };
-        case CLEAR_CART: 
-        return {
-            ...state,
-            cart: {
-                foodInCart: []
+        case CLEAR_CART:
+            return {
+                ...state,
+                cart: {
+                    foodInCart: []
+                }
             }
-        }
 
-        case KEEP_CART: 
-        return {
-            ...state,
-            cart: {
-                foodInCart: action.payload
+        case KEEP_CART:
+            return {
+                ...state,
+                cart: {
+                    foodInCart: action.payload
+                }
             }
-        }
         case GET_REVIEWS:
             return {
                 ...state,

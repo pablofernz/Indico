@@ -28,6 +28,7 @@ const FoodType = () => {
 
   const handleCreated = (event) => {
     setChosenOption(event.target.value);
+    selectType(event.target.value)
   };
 
   return (
@@ -41,12 +42,16 @@ const FoodType = () => {
                 value={chosenOption}
                 className={style.OrderBar}
               >
-                <option value={"Todos"}> Todos </option>
+                <option value="Todos"> Todos </option>
                 <option value="Desayuno"> Desayuno </option>
                 <option value="Almuerzo">Almuerzo</option>
                 <option value="Cena">Cena</option>
                 <option value="Postre">Postre</option>
-                <option value="Bebidas">Bebidas</option>
+                <option
+                  value="Bebidas"
+                >
+                  Bebidas
+                </option>
               </select>
             </div>
           </div>

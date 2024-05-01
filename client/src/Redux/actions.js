@@ -11,6 +11,7 @@ export const UPDATE_ITEM_QUANTITY = 'UPDATE_ITEM_QUANTITY'
 export const SEND_ORDER = 'SEND_ORDER'
 export const CLEAR_CART = 'CLEAR_CART'
 export const KEEP_CART = 'KEEP_CART'
+export const CART_STATUS = 'CART_STATUS'
 
 export const getReviews = () => {
     return async function (dispatch) {
@@ -64,6 +65,16 @@ export const setList = () => {
         })
     }
 }
+
+export const cartStatus = (status) => {
+    return async function (dispatch) {
+        dispatch({
+            type: CART_STATUS,
+            payload: status
+        })
+    }
+}
+
 
 export const setType = (type) => {
     return async function (dispatch) {

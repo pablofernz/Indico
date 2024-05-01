@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import style from "./itemList.module.css";
 import { useDispatch, useSelector } from "react-redux";
 
-import { addToCart, deleteToCart } from "../../../../../Redux/actions";
+import { addToCart, cartStatus, deleteToCart } from "../../../../../Redux/actions";
 
 export default function ItemList({
   id,
@@ -18,29 +18,36 @@ export default function ItemList({
   const [isAdded, setIsAdded] = useState(false);
   const cartState = useSelector((state) => state.cart);
   const { foodInCart } = cartState;
-  const foodPurchased = {
+ const foodPurchased = {
     id,
     title,
     image,
     description,
     price,
     discount,
+    quantity: 1,
+    get total() {
+      return this.price - this.price * (this.discount / 100) * this.quantity;
+    }
   };
 
   const AddHandler = () => {
+    dispatch(cartStatus (false));
     if (isAdded === false) {
       setIsAdded(true);
-
       dispatch(addToCart(foodPurchased));
     } else {
       setIsAdded(false);
       dispatch(deleteToCart(foodPurchased));
     }
   };
+
   const checkIfAlreadyAdded = () => {
     const isAlreadyAdded = foodInCart.some((item) => item.id === id);
     if (isAlreadyAdded) {
       setIsAdded(true);
+    } else {
+      setIsAdded(false);
     }
   };
   useEffect(() => {
