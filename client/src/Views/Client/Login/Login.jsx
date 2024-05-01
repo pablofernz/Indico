@@ -5,6 +5,7 @@ import IconLoader from "../../../Components/iconLoader/iconLoader";
 import toast, { Toaster } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import validate from "./validations";
+import Cookies from "js-cookie";
 
 const ClientLogin = () => {
   const navigate = useNavigate();
@@ -54,9 +55,9 @@ const ClientLogin = () => {
           color: "#fff",
         },
       });
-      setTimeout(() => {
-        navigate("/store");
-      }, 1000);
+      // setTimeout(() => {
+      //   navigate("/store");
+      // }, 1000);
     }
   }, [isLoged, submitErrors, showErrorToast]);
 
@@ -77,6 +78,10 @@ const ClientLogin = () => {
           "http://localhost:3001/client/login",
           form
         );
+        Cookies.set("session_token", res.data.token);
+        const decoded = jwt.verify(Cookies.get("session_token"), secret)
+        console.log(decoded);
+
         isLoading(false);
         setIsLoged(true);
       } catch (err) {
