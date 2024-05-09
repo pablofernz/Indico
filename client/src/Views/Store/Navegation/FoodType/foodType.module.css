@@ -10,6 +10,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    
 }
 
 .foodTypeContainer {
@@ -60,6 +61,7 @@
 .foodTypes:active {
     transform: scale(0.95);
 }
+
 .OrderBar {
     border: 2px solid rgb(0, 0, 0);
     background-color: rgb(0, 0, 0);
@@ -131,11 +133,13 @@ select {
 
     }
 
-    .foodTypeContainer{
+    .foodTypeContainer {
         width: 105px;
         height: 40px;
         padding: 0px;
+        transform: scale(0.9);
     }
+
     .menuComponent {
         height: auto;
         width: 100vw;
@@ -145,14 +149,21 @@ select {
         justify-content: center;
         align-items: center;
     }
-.OrderBar{
-    border: none;
-    background-color: rgb(116, 219, 160);
-    color: black;
-}
-.OrderBar option{
-   font-weight: 600;
-}
+
+    .OrderBar {
+        border: none;
+        background-color: rgb(116, 219, 160);
+        color: black;
+    }
+
+
+    .OrderBar option {
+        font-weight: 600;
+        transform: scale(0.9);
+        font-size: 12px;
+        text-align: center;
+    }
+
     .menuContainer {
         height: 100vh;
         width: 80vw;

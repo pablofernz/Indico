@@ -1,7 +1,25 @@
-body {
-    scroll-behavior: smooth;
+.pantalla {
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    background-color: rgb(0, 0, 0);
+    z-index: 30000;
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
+.imgContainer {
+    height: 150px;
+    width: 150px;
+}
+
+.img {
+    filter: invert();
+    height: 100%;
+    width: 100%;
+}
 
 .component {
     height: 100vh;
@@ -9,23 +27,65 @@ body {
     background-image: url(https://images.unsplash.com/photo-1512911268383-f74e84ff8496?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D);
     display: flex;
     justify-content: center;
-    align-items: center
+    align-items: center;
+    overflow: hidden;
 }
 
 .contentCard {
-    height: 70vh;
+    height: 80%;
     width: 40vw;
-    min-width: 300px;
+    min-width: 450px;
     background-color: rgb(255, 252, 240);
-    border-radius: 15px;
+    border-radius: 25px;
     box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
     overflow: hidden;
+    display: flex;
+    align-items: center;
+}
+
+.contentCardanimation {
+    height: 80%;
+    width: 40vw;
+    min-width: 450px;
+    background-color: rgb(255, 252, 240);
+    border-radius: 25px;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    animation: swipeDown 1.5s ease;
+
+}
+
+@keyframes swipeDown {
+    0% {
+        transform: translateY(0%);
+        opacity: 100%;
+    }
+
+    50% {
+        transform: translateY(100px);
+        opacity: 0%;
+    }
+
+    100% {
+        transform: translateY(0%);
+    }
+
 }
 
 .orderCard {
     width: 100%;
     height: 100%;
+    transition: all 1s ease;
+}
 
+.orderCardAnimation1 {
+    transform: translateX(-300px)
+}
+
+.orderCardAnimation2 {
+    transform: translateX(300px)
 }
 
 .header {
@@ -71,28 +131,10 @@ body {
 
 .cartElements {
     width: 100%;
-    height: 50%;
+    /* height: 50%; */
+    height: 65%;
     overflow: scroll;
     overflow-x: hidden;
-
-}
-
-.foodCheckoutFade {
-    height: 20px;
-    width: 39%;
-    margin-top: -240px;
-    position: fixed;
-    background: linear-gradient(to bottom, rgba(255, 252, 240, 0) 0%, rgb(255, 252, 240) 100%);
-}
-
-.foodCheckoutFade2 {
-    height: 20px;
-    width: 39%;
-    margin-top: -2px;
-    position: fixed;
-    background-color: red;
-    background: linear-gradient(to top, rgba(255, 252, 240, 0) 0%, rgb(255, 252, 240) 100%);
-
 }
 
 .cartElements::-webkit-scrollbar-thumb {
@@ -118,8 +160,6 @@ body {
     align-items: center;
     padding: 0px 10px 0px 10px;
 }
-
-
 
 .imgContainer {
     border-radius: 10px;
@@ -150,8 +190,8 @@ body {
 
 .quantityItem {
     font-size: 15px;
-    font-weight: 400;
-    color: rgb(78, 78, 78);
+    font-weight: 600;
+    color: rgb(134, 134, 134);
 }
 
 .priceItem {
@@ -167,7 +207,7 @@ body {
     width: 100%;
     border-radius: 10px;
     display: flex;
-    justify-content: flex-end;
+    justify-content: center;
     align-items: center;
     padding: 0px 40px 0px 0px;
     gap: 20px;
@@ -240,7 +280,7 @@ body {
 
 .divisory {
     width: 100%;
-    height: 13%;
+    height: 5%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -336,13 +376,14 @@ body {
     text-align: center;
 }
 
+
 .placeholderImg {
     height: 250px;
     width: 250px;
     margin-top: 50px;
     margin-right: 30px;
-
 }
+
 
 .contentCard2 p {
     font-weight: 600;
@@ -382,4 +423,432 @@ body {
 
 .placeholderButton:active {
     transform: scale(0.95);
+}
+
+.svgEfectivo {
+    transform: translateX(10px)
+}
+
+.orderCard2 {
+    width: 100%;
+    height: 100%;
+}
+
+.orderCard2Content {
+    width: 100%;
+    height: 100%;
+}
+
+.step2Container {
+    margin-top: 10px;
+    height: 76%;
+    width: 100%;
+}
+
+.step1 {
+    font-size: 20px;
+    font-weight: 900;
+    height: 30px;
+    width: 55px;
+    background-color: black;
+    color: whitesmoke;
+    text-align: center;
+    border-radius: 30px;
+    outline: 10px solid rgb(255, 252, 240);
+    ;
+    z-index: 10;
+}
+
+.stepsNumber {
+    height: 10%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.stepsNumber::after {
+    content: "";
+    height: 1px;
+    width: 90%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(190, 190, 190);
+    z-index: 9;
+
+}
+
+.stepsNumber::before {
+
+    content: "";
+    height: 1px;
+    width: 90%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(190, 190, 190);
+}
+
+.stepsText {
+    font-weight: 600;
+    color: rgb(31, 31, 31);
+    height: 20%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.stepsText div p {
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    height: 100%;
+    width: 300px;
+
+}
+
+.finish {
+    height: 12%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.finishButton {
+    border: none;
+    display: flex;
+    align-items: center;
+    color: rgb(0, 0, 0);
+    justify-content: center;
+    background-color: rgb(116, 219, 160);
+    padding: 0px 10px 0px 10px;
+    font-weight: 700;
+    font-size: 15px;
+    height: 35px;
+    width: 40%;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    margin-top: -20px;
+}
+
+.finishButton:active {
+    transform: scale(0.95);
+}
+
+.finishButtonSending {
+    border: none;
+    display: flex;
+    align-items: center;
+    color: rgb(0, 0, 0);
+    justify-content: center;
+    background-color: rgb(33, 33, 33);
+    padding: 0px 10px 0px 10px;
+    font-weight: 700;
+    font-size: 15px;
+    height: 35px;
+    width: 40%;
+    border-radius: 10px;
+    cursor: not-allowed;
+    transition: all 0.5s ease;
+    margin-top: -20px;
+}
+
+.finishButtonSuccess {
+    border: none;
+    display: flex;
+    align-items: center;
+    color: rgb(0, 0, 0);
+    justify-content: center;
+    background-color: rgb(116, 219, 160);
+    padding: 0px 10px 0px 10px;
+    font-weight: 700;
+    font-size: 15px;
+    height: 35px;
+    width: 50%;
+    border-radius: 10px;
+    cursor: default;
+    transition: all 0.2s ease;
+    margin-top: -20px;
+}
+
+.orderCard3 {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    animation: opacity 0s ease;
+    background-color: rgb(255, 255, 255);
+}
+
+.orderCard3Content {
+    width: calc(100% - 30px);
+    height: calc(100% - 30px);
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    animation: opacity 0s ease;
+
+
+}
+
+.backgroundOrderCard3 {
+    width: 100%;
+    height: 100vh;
+
+}
+
+.contentCard3 {
+    height: 100%;
+    width: 100%;
+    min-width: 300px;
+    background-color: rgb(255, 252, 240);
+    border-radius: 15px;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.step3buttonContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.step3button {
+    padding: 0px 15px 0px 15px;
+    height: 35px;
+    width: auto;
+    border: none;
+    background-color: rgb(116, 219, 160);
+
+    color: black;
+    font-weight: 900;
+    font-size: 15px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.step3buttonAux {
+    padding: 0px 15px 0px 15px;
+    height: 35px;
+    width: auto;
+    border: 2px solid rgb(99, 99, 99);
+    background-color: transparent;
+    color: rgb(99, 99, 99);
+    font-weight: 900;
+    font-size: 15px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    opacity: 105%;
+}
+
+.placeholderImg2 {
+    height: 350px;
+    width: 350px;
+}
+
+.step3Text {
+    font-size: 20px;
+    font-weight: 600;
+    color: rgb(54, 54, 54);
+    text-shadow: rgb(116, 219, 160) 0px 0px 1px;
+}
+
+.step3TextContainer {
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+@keyframes opacity {
+    0% {
+        transform: translateX(100%);
+    }
+
+    100% {
+        transform: translateX(0%);
+    }
+}
+
+@media (max-width: 600px) {
+    .step3button {
+
+        font-size: 13px;
+
+    }
+
+    .placeholderImg2 {
+        height: 250px;
+        width: 250px;
+    }
+
+    .step3Text {
+        width: 150px;
+        font-size: 18px;
+        font-weight: 600;
+    }
+
+    .stepsText div p {
+        width: 250px;
+    }
+
+    .finishButtonSuccess {
+        width: 70%;
+
+    }
+
+    .finishButton {
+        width: 65%;
+    }
+
+    .stepsText {
+        font-size: 14px;
+    }
+
+    .contentCard {
+        height: 80%;
+        width: 40vw;
+        min-width: 300px;
+        background-color: rgb(255, 252, 240);
+        border-radius: 25px;
+        box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+        overflow: hidden;
+    }
+
+    .contentCardanimation {
+        height: 80%;
+        width: 40vw;
+        min-width: 300px;
+        background-color: rgb(255, 252, 240);
+        border-radius: 25px;
+        box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        animation: swipeDown 1.5s ease
+    }
+
+    .contentCard3 {
+        height: 80%;
+        width: 40vw;
+        min-width: 300px;
+        background-color: rgb(255, 252, 240);
+        border-radius: 25px;
+        box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+        overflow: hidden;
+    }
+
+    .resumeContent {
+        height: 10%;
+        width: 100%;
+        border-radius: 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 0px 40px 0px 0px;
+        gap: 20px;
+    }
+
+    .svgEfectivo {
+        display: none;
+    }
+
+
+    .titleItem {
+        color: rgb(52, 52, 52);
+        font-weight: 600;
+        font-size: 13px;
+    }
+
+    .quantityItem {
+        font-size: 15px;
+        font-weight: 400;
+        color: rgb(78, 78, 78);
+        font-size: 13px;
+
+    }
+
+    .priceItem {
+        color: rgb(143, 143, 143);
+        font-size: 13px;
+
+    }
+
+    .totalItem {
+        font-weight: 600;
+        font-size: 13px;
+
+    }
+
+    .totalNumber {
+        color: rgb(34, 34, 34);
+        font-size: 15px;
+        font-weight: 900;
+        margin-right: 10px;
+    }
+
+    .totalText {
+        color: rgb(34, 34, 34);
+        font-size: 15px;
+        font-weight: 900;
+    }
+
+    .svgModal p {
+        font-weight: 600;
+        color: rgb(86, 86, 86);
+    }
+
+    .svgModal {
+        opacity: 1;
+        height: 40px;
+        width: 120px;
+        position: absolute;
+        background-color: rgb(222, 222, 222);
+        border-radius: 5px;
+        display: grid;
+        justify-content: center;
+        align-items: center;
+        margin-right: 55px;
+        margin-top: -80px;
+        transition: all 0.2s ease;
+    }
+
+    .svgModal::after {
+        content: '';
+        height: 0px;
+        width: 0px;
+        margin-top: 0px;
+        margin-left: 45px;
+        border-left: 7px solid transparent;
+        border-right: 7px solid transparent;
+        border-bottom: 7px solid rgb(222, 222, 222);
+        transform: rotate(180deg);
+    }
+
+    .svgModalHidden {
+        opacity: 0;
+        transition: all 0.2s ease;
+
+    }
+
+    .svgModal p {
+        font-size: 13px;
+    }
 }

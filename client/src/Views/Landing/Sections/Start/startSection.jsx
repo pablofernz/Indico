@@ -5,6 +5,8 @@ import { useState, useEffect } from "react";
 import toast, { Toaster } from "react-hot-toast";
 import { useSelector } from "react-redux";
 import MenuCard from "./Card 2/menuCard";
+import SwipeBottomMiddle from "../../../../Components/pageAnimations/swipeUp/Exit/swipeUp";
+import SwipeMiddleBottom from "../../../../Components/pageAnimations/swipeDown/Start/swipeDown";
 
 const StartSection = () => {
   const navigate = useNavigate();
@@ -41,8 +43,10 @@ const StartSection = () => {
       setIsOpen(true);
     }
   }, []);
+  const [isExit, setExit] = useState(false);
   return (
     <div className={style.background}>
+      {isExit == true && <SwipeBottomMiddle />}
       <Toaster />
       <div className={style.textContainer}>
         <div className={style.container2}>
@@ -53,7 +57,15 @@ const StartSection = () => {
             <br />
             <b>Descubre su equilibrio perfecto.</b>
           </p>
-          <button className={style.button} onClick={() => navigate("/store")}>
+          <button
+            className={style.button}
+            onClick={() => {
+              setExit(true);
+              setTimeout(() => {
+                navigate("/store");
+              }, 500);
+            }}
+          >
             Ver el menú
           </button>
         </div>

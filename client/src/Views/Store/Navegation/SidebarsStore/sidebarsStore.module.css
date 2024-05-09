@@ -1,3 +1,13 @@
+.pantalla {
+    width: 100vw;
+    height: 200vh;
+    position: absolute;
+    background-color: rgb(0, 0, 0);
+    z-index: 300000000;
+    position: fixed;
+
+}
+
 .store {
     background-color: rgb(199, 199, 199);
     width: 100vw;
@@ -7,9 +17,6 @@
     justify-content: center;
 }
 
-body {
-    overflow-x: hidden;
-}
 
 .menuFilters {
     background-color: rgb(0, 0, 0);
@@ -46,6 +53,12 @@ body {
     margin-top: 10px;
 }
 
+.filterSvg {
+
+    margin-top: 6px;
+    margin-left: 3px;
+}
+
 .hamburger {
     cursor: pointer;
 
@@ -56,33 +69,9 @@ body {
 
 }
 
-.hamburger svg {
-    /* The size of the SVG defines the overall size */
-    height: 1.8em;
-    margin-top: 3px;
-    /* Define the transition for transforming the SVG */
-    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.line {
-    fill: none;
-    stroke: rgb(116, 219, 160);
-    stroke-linecap: round;
-    stroke-linejoin: round;
-    stroke-width: 3;
-    /* Define the transition for transforming the Stroke */
-    transition: stroke-dasharray 1s cubic-bezier(0.4, 0, 0.2, 1),
-        stroke-dashoffset 1s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.lineTop {
-    stroke-dasharray: 12 63;
-}
-
 .filterMenu {
     height: 100%;
     width: 100%;
-    background-color: rgb(226, 98, 43);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -92,9 +81,48 @@ body {
 .filtersContainer {
     height: calc(100%);
     width: calc(100%);
-    background-color: seagreen;
 }
 
+.filterTitle {
+    width: 100%;
+    height: 50px;
+    text-align: left;
+}
+
+.filterTitle p {
+    font-size: 30px;
+    font-weight: 600;
+    color: rgb(130, 220, 147);
+}
+
+.filterPriceButtons {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    gap: 10px;
+}
+
+.filterPriceButtons button {
+    border: 2px solid rgb(130, 220, 147);
+    border-radius: 20px;
+    background-color: transparent;
+    color: rgb(130, 220, 147);
+    cursor: pointer;
+    padding: 2px 10px 2px 10px;
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.filterPriceButtons button:active {
+    border: 2px solid rgb(130, 220, 147);
+    border-radius: 20px;
+    background-color: rgb(130, 220, 147);
+    color: black;
+    cursor: pointer;
+    padding: 2px 10px 2px 10px;
+    font-size: 15px;
+    font-weight: 600;
+}
 
 /* ------- CART ------- */
 
@@ -108,7 +136,7 @@ body {
     top: 0;
     background-color: transparent;
     backdrop-filter: blur(15px) brightness(0.12);
-    box-shadow: rgb(0, 0, 0) 0px 2px 50px;
+    /* box-shadow: rgb(0, 0, 0) 0px 2px 50px; */
     z-index: 9999;
     transition: all 0.5s ease-in-out;
 }
@@ -159,7 +187,7 @@ body {
     text-align: center;
 }
 
-.cartIndicator{
+.cartIndicator {
     top: 0;
     right: 0;
     margin-right: 5px;
@@ -171,6 +199,7 @@ body {
     border-radius: 20px;
 
 }
+
 .cartCheckout {
     height: 100%;
     width: 100%;
@@ -402,7 +431,7 @@ s {
 
 }
 
-.clearCart{
+.clearCart {
     border: none;
     background-color: rgb(34, 34, 34);
     display: flex;
@@ -423,6 +452,7 @@ s {
     transform: scale(0.95);
 
 }
+
 .checkoutPlaceholder {
     height: 100%;
     width: 100%;
@@ -457,7 +487,7 @@ s {
 
 }
 
-.payButtonChecked{
+.payButtonChecked {
     border: none;
     background-color: rgb(43, 43, 43);
     display: flex;
@@ -469,7 +499,7 @@ s {
     height: 35px;
     width: 90%;
     border-radius: 10px;
-    cursor:not-allowed;
+    cursor: not-allowed;
     transition: all 0.3s ease;
 }
 
@@ -478,9 +508,9 @@ s {
     .menuFilters {
         background-color: rgb(0, 0, 0);
         position: fixed;
-        width: 200px;
+        width: 250px;
         height: 100vh;
-        left: -200px;
+        left: -250px;
         top: 0;
         transition: all 0.5s ease-in-out;
     }
@@ -490,13 +520,12 @@ s {
     }
 
     .closed {
-        transform: translateX(200px);
+        transform: translateX(250px);
     }
 
     .button {
         position: absolute;
         right: 0;
-        margin-right: -40px;
         z-index: 1000;
         width: 40px;
         background-color: rgb(0, 0, 0);
@@ -505,6 +534,9 @@ s {
         font-size: 20px;
         height: 40px;
         margin-top: 10px;
+        margin-right: -35px;
+        transform: scale(0.9);
+
     }
 
     .hamburger {
@@ -520,7 +552,6 @@ s {
     .hamburger svg {
         /* The size of the SVG defines the overall size */
         height: 1.8em;
-        margin-top: 3px;
         /* Define the transition for transforming the SVG */
         transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
     }
@@ -572,6 +603,8 @@ s {
         height: 40px;
         margin-top: 10px;
         cursor: pointer;
+        margin-left: -35px;
+        transform: scale(0.9);
     }
 
 

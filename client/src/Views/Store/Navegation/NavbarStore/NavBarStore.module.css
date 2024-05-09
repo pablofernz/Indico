@@ -35,7 +35,9 @@ nav .navbar {
     display: flex;
     padding: 5px;
     gap: 10px;
-    min-width: 300px;
+    max-width: 300px;
+    position: fixed;
+    z-index: 19999;
 }
 
 .button {
@@ -54,8 +56,9 @@ nav .navbar {
 .button:active {
     transform: scale(0.95);
 }
+
 .buttonChecked {
-    background-color: rgb(116, 219, 160);
+    background-color: #74dba0;
 }
 
 .input {
@@ -69,17 +72,18 @@ nav .navbar {
     border-radius: 40px;
     transition: all 0.5s cubic-bezier(0.455, 0.03, 0.515, 0.955);
     margin-left: auto;
-    background-color:whitesmoke;
+    background-color: whitesmoke;
 
     text-overflow: ellipsis;
 }
 
-.input::placeholder{
+.input::placeholder {
     color: black;
     font-weight: 600;
 }
+
 .input:focus {
-    background-color:  rgb(116, 219, 160);
+    background-color: rgb(116, 219, 160);
     color: rgb(0, 0, 0);
     outline: none;
     width: 80%;
@@ -95,7 +99,7 @@ nav .navbar {
     border-radius: 40px;
     transition: all 3s cubic-bezier(0.455, 0.03, 0.515, 0.955);
     margin-left: auto;
-    background-color:  rgb(116, 219, 160);
+    background-color: rgb(116, 219, 160);
     text-overflow: ellipsis;
     color: rgb(0, 0, 0);
     outline: none;
@@ -116,8 +120,8 @@ nav .navbar {
         align-items: center;
         justify-content: center;
         height: 100%;
-        width: 200px;
-        margin: auto;
+        width: 180px;
+        transform: scale(0.9);
     }
 
     .menu {
@@ -127,7 +131,7 @@ nav .navbar {
         display: flex;
         padding: 5px;
         gap: 10px;
-        min-width: 200px;
+        min-width: 190px;
     }
 
     .button {
@@ -160,10 +164,10 @@ nav .navbar {
         transition: all 0.5s cubic-bezier(0.455, 0.03, 0.515, 0.955);
         margin-left: auto;
         text-overflow: ellipsis;
-       
+
 
     }
 
 
-   
+
 }

@@ -23,6 +23,21 @@ const createClient = async (req, res) => {
             } else {
                 const newClient = addClient({ name, lastname, email, password, image, reviews })
 
+                const tokenData = {
+                    name: newClient.name,
+                    lastname: newClient.lastname,
+                    id: newClient._id,
+                    email: newClient.email
+                }
+
+                const token = jwt.sign(
+                    {
+                        tokenData,
+                        exp: Date.now() + 60 * 1000 * 60 * 24 * 7
+                    }, secret
+                )
+                return res.status(200).json({ name: newClient.name, email: newClient.email, token: token })
+
             }
         } else {
             return res.status(400).send("Debes rellenar tus datos")
@@ -87,13 +102,15 @@ const clientLogin = async (req, res) => {
                 if (passwordsMatch) {
                     const tokenData = {
                         name: existingClient.name,
-                        id: existingClient._id
+                        lastname: existingClient.lastname,
+                        id: existingClient._id,
+                        email: existingClient.email
                     }
 
                     const token = jwt.sign(
                         {
                             tokenData,
-                            exp: Date.now() + 60 * 1000
+                            exp: Date.now() + 60 * 1000 * 60 * 24 * 7
                         }, secret
                     )
                     return res.status(200).json({ name: existingClient.name, email: existingClient.email, token: token })

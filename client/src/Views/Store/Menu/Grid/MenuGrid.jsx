@@ -6,8 +6,6 @@ import CardSkeleton from "../../../../Components/MenuCards/CardSkeleton/CardSkel
 
 const MenuGrid = () => {
   const dishes = useSelector((state) => state.menu);
- 
-  
 
   return (
     <div className={style.MenuComponent}>

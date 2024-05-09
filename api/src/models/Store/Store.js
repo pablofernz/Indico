@@ -1,12 +1,14 @@
 const mongoose = require("mongoose")
 const reviewsSchema = require("../Reviews").schema
 const purchaseSchema = require("../Store/Purchase").schema
-const clientSchema = require("../Client").schema
+const Client = require("../Client")
 
 const storeSchema = mongoose.Schema({
-    purchases: [purchaseSchema],
     reviews: [reviewsSchema],
-    clients: [clientSchema]
+    clients: [{
+        type: Schema.Types.ObjectId,
+        ref: "Client"
+    }]
 }, {
     versionKey: false // Establecer versionKey en false para eliminar la propiedad "__v"
 })

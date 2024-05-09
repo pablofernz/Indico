@@ -7,7 +7,7 @@ import ClientRegister from "./Views/Client/Register/Register";
 import Store from "./Views/Store/Store";
 import NotFound from "./Views/404 Not Found/404";
 import Pay from "./Views/Store/Pay/Pay";
-
+import Reviews from "./Views/Reviews/Reviews";
 function App() {
   return (
     <div className="App">
@@ -19,6 +19,7 @@ function App() {
         <Route path="/store" element={<Store />} />
         <Route path="/store/pay" element={<Pay />} />
         <Route path="*" element={<NotFound />} />
+        <Route path="/reviews" element={<Reviews />} />
       </Routes>
     </div>
   );

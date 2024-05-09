@@ -1,5 +1,6 @@
 import { GET_REVIEWS, GET_MENU, SET_GRID, SET_LIST, SET_TYPE, ADD_TO_CART, DELETE_TO_CART, SEARCH_FOOD, UPDATE_ITEM_QUANTITY, SEND_ORDER, CLEAR_CART, KEEP_CART, CART_STATUS } from "./actions";
 
+let cartItemsFromStorage = JSON.parse(window.sessionStorage.getItem("cartItems"));
 let initialstate = {
     storeView: "list",
     cartIsOpen: false,
@@ -7,10 +8,17 @@ let initialstate = {
     menu: [],
     menuAux: [],
     reviews: [],
-    cart: { foodInCart: JSON.parse(window.sessionStorage.getItem("cartItems")), foodInCartAux: [], amount: 0, quantity: 0 },
+    cart: { foodInCart: window.sessionStorage.getItem("purchase_completed") == "true" ? [] : cartItemsFromStorage, foodInCartAux: [], amount: 0, quantity: 0 },
     orderSent: null
-
 };
+
+if (JSON.parse(window.sessionStorage.getItem("cartItems"))) {
+    let initialstate = {
+        cart: {
+            foodInCart: JSON.parse(window.sessionStorage.getItem("cartItems"))
+        }
+    }
+}
 
 let reducer = (state = initialstate, action) => {
     switch (action.type) {

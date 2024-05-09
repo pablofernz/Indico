@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 
 const RegisterSection = () => {
   const navigate = useNavigate();
-  const [index, setIndex] = useState(0)
+  const [index, setIndex] = useState(0);
 
   return (
     <div className={style.container}>

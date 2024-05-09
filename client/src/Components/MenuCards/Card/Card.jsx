@@ -26,11 +26,11 @@ export default function Card({
     quantity: 1,
     get total() {
       return this.price - this.price * (this.discount / 100) * this.quantity;
-    }
+    },
   };
 
   const AddHandler = () => {
-    dispatch(cartStatus (false));
+    dispatch(cartStatus(false));
     if (isAdded === false) {
       setIsAdded(true);
       dispatch(addToCart(foodPurchased));

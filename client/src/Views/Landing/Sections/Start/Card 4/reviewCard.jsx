@@ -6,29 +6,8 @@ const ReviewCard = () => {
   const reviews = useSelector((state) => state.reviews);
   const [currentIndex, setCurrentIndex] = useState(0);
 
-  useEffect(() => {
-    // Actualizar el índice de la revisión cada 5 segundos
-    const intervalId = setInterval(() => {
-      setCurrentIndex((prevIndex) =>
-        prevIndex < reviews.length - 1 ? prevIndex + 1 : 0
-      );
-    }, 5000);
+  const test = reviews[0];
 
-    // Limpiar el intervalo al desmontar el componente
-    return () => clearInterval(intervalId);
-  }, [reviews]);
-
-  // Verificar si reviews está definido y no está vacío
-  if (!reviews || reviews.length === 0) {
-    return null; // Otra acción, mensaje de carga, etc.
-  }
-
-  const test = reviews[currentIndex];
-
-  // Verificar si test está definido antes de acceder a sus propiedades
-  if (!test) {
-    return null; // Otra acción, mensaje de carga, etc.
-  }
 
   const generateStars = (stars) => {
     const starIcons = [];
@@ -50,7 +29,6 @@ const ReviewCard = () => {
   return (
     <div>
       <div className={style.card}>
-      <span className={style.cardHighlight}></span>
         <div className={style.header}>
           {/* Verificar si test.image está definido antes de acceder a la propiedad */}
           {test.image && (

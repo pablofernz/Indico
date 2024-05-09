@@ -1,24 +1,12 @@
 const mongoose = require("mongoose")
 
 const purchaseSchema = mongoose.Schema({
-    name: {
-        type: String,
-        required: true
-    },
-    lastname: {
-        type: String,
-        required: true
-    },
-    email: {
-        type: String,
-        required: true
-    },
     order: {
         type: Array,
         required: true
     },
     date: {
-        type: Date,
+        type: String,
         required: true
     }
 }, {

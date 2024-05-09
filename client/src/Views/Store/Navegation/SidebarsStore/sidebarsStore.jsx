@@ -8,12 +8,16 @@ import {
   sendTheOrder,
   clearCart,
   cartStatus,
-  CART_STATUS,
 } from "../../../../Redux/actions";
 import IconLoader from "../../../../Components/iconLoader/iconLoader";
 import { useNavigate } from "react-router-dom";
+import { motion, LayoutGroup } from "framer-motion";
 
 const Sidebars = () => {
+  const priceFilter = () => {};
+
+  // - - - - - - - - - - C A R T - - - - - - - - - - - - - - - - -
+
   const [optionsStatus, setOptionsStatus] = useState("closed");
   // const [cartStatus, setCartStatus] = useState("closed");
 
@@ -71,7 +75,7 @@ const Sidebars = () => {
 
   const lessQuantity = (id) => {
     setIsOrderSent(false);
-    
+
     const itemToUpdate = foodInCart.find((item) => item.id === id);
     const updatedQuantity = itemToUpdate.quantity - 1;
 
@@ -82,6 +86,13 @@ const Sidebars = () => {
     }
   };
 
+  useEffect(() => {
+    if (foodInCart.length == 0) {
+      setTimeout(() => {
+        dispatch(cartStatus(false));
+      }, 1000);
+    }
+  }, [foodInCart]);
   const calculateTotal = () => {
     let total = 0;
     foodInCart.forEach((item) => {
@@ -150,8 +161,34 @@ const Sidebars = () => {
     }, 1000);
     window.sessionStorage.removeItem("order");
   };
+
+  const [isExit, setExit] = useState(false);
+  const exitHandler = () => {
+    setExit(true);
+    setTimeout(() => {
+      navigate("/store/pay");
+    }, 500);
+  };
+
+  useEffect(() => {
+    if (window.sessionStorage.getItem("purchase_completed") == "true") {
+      dispatch(cartStatus(false));
+      dispatch(clearCart());
+      window.sessionStorage.setItem("purchase_completed", "false");
+    }
+  }, []);
+
   return (
     <div className={style.store}>
+      {isExit == true && (
+        <motion.div
+          className={style.pantalla}
+          initial={{ y: -800 }} // Estilo inicial
+          animate={{ y: 0 }}
+          exit={{ y: 0 }} // Estilo final cuando el componente se monta // Estilo final cuando el componente se desmonta
+          transition={{ duration: 0.5 }} // Duración de la transición
+        />
+      )}
       <div
         className={`${style.menuFilters} ${
           optionsStatus === "closed" ? style.open : style.closed
@@ -160,17 +197,32 @@ const Sidebars = () => {
         <div className={style.button}>
           <label htmlFor="toggleMenu" className={style.hamburger}>
             <input id="toggleMenu" type="checkbox" onClick={OptionStatus} />
-            <svg viewBox="0 0 32 32">
-              <path
-                className={`${style.line} ${style.lineTop}`}
-                d="M27 10 13 10C10.8 10 9 8.2 9 6 9 3.5 10.8 2 13 2 15.2 2 17 3.8 17 6L17 26C17 28.2 18.8 30 21 30 23.2 30 25 28.2 25 26 25 23.8 23.2 22 21 22L7 22"
-              ></path>
-              <path className={style.line} d="M7 16 27 16"></path>
-            </svg>
+
+            <div className={style.filterSvg}>
+              <svg viewBox="0 0 2292 2292" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M1595 295q17 41-14 70l-493 493v742q0 42-39 59-13 5-25 5-27 0-45-19l-256-256q-19-19-19-45V858L211 365q-31-29-14-70 17-39 59-39h1280q42 0 59 39z"
+                  fill="#74dba0"
+                  class="fill-000000"
+                ></path>
+              </svg>
+            </div>
           </label>
         </div>
         <div className={style.filterMenu}>
-          <div className={style.filtersContainer}></div>
+          <div className={style.filtersContainer}>
+            <div className={style.filterTitle}>
+              <p>Filtros</p>
+            </div>
+
+            <div className={style.orderOptions}>
+              <p>Ordenar por:</p>
+              <div className={style.filterPriceButtons}>
+                <button onClick={priceFilter}>Mas caro</button>
+                <button>Mas barato</button>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -198,9 +250,16 @@ const Sidebars = () => {
           </span>
         </button>
         {foodInCart.length !== 0 ? (
-          <div className={style.cartCheckout}>
+          <motion.div
+            className={style.cartCheckout}
+            initial={{ opacity: 0 }} // Estilo inicial
+            animate={{ opacity: 1 }}
+            exit={{ y: 0 }} // Estilo final cuando el componente se monta // Estilo final cuando el componente se desmonta
+            transition={{ duration: 0.5 }}
+          >
             <div className={style.foodCheckout}>
               <div className={style.foodContent}>
+                <LayoutGroup />
                 {foodInCart.map(
                   ({ id, title, image, price, discount, quantity, total }) => (
                     <div key={id} className={style.dataContainer}>
@@ -285,10 +344,7 @@ const Sidebars = () => {
                   </svg>
                 </button>
                 {isOrderSent ? (
-                  <button
-                    className={style.payButton2}
-                    onClick={() => navigate("/pay")}
-                  >
+                  <button className={style.payButton2} onClick={exitHandler}>
                     Pagar
                   </button>
                 ) : (
@@ -303,7 +359,7 @@ const Sidebars = () => {
                 )}
               </div>
             </div>
-          </div>
+          </motion.div>
         ) : (
           <div className={style.checkoutPlaceholder}>
             <div className={style.placeholderContainer}>
@@ -322,5 +378,4 @@ const Sidebars = () => {
     </div>
   );
 };
-
 export default Sidebars;

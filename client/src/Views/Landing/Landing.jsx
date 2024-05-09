@@ -7,6 +7,8 @@ import Footer from "../../Components/Footer/Footer";
 
 import StartSection from "./Sections/Start/startSection";
 import RegisterSection from "./Sections/Register/register";
+import SwipeMiddleTop from "../../Components/pageAnimations/swipeDown/Exit/swipeDown";
+import SwipeBottomMiddle from "../../Components/pageAnimations/swipeUp/Exit/swipeUp";
 
 const Landing = () => {
   const dispatch = useDispatch();
@@ -17,6 +19,8 @@ const Landing = () => {
 
   return (
     <div className={style.Landing}>
+      <SwipeMiddleTop />
+      
       <NavBar />
 
       <header>
@@ -61,7 +65,6 @@ const Landing = () => {
         </section>
       </header>
 
-      
       <Footer />
     </div>
   );
