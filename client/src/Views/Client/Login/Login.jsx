@@ -62,7 +62,7 @@ const ClientLogin = () => {
       setTimeout(() => {
         setExit(true);
         setTimeout(() => {
-          navigate("/landing");
+          navigate("/home");
         }, 1000);
       }, 1000);
     }

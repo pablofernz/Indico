@@ -19,7 +19,7 @@ const testToken = async (req, res) => {
                 if (Date.now() > decodedToken.exp) {
                     return res.status(401).send("Token expirado")
                 } else {
-                    return res.status(200).send(`${"Bienvenido"} ${decodedToken.tokenData.name}`)
+                    return res.status(200).send("El token es válido")
                 }
             } else {
                 return res.status(400).send("Token perdido o invalido")

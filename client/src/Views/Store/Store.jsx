@@ -86,14 +86,7 @@ const Store = () => {
         }}
         whileTap={{ scale: 0.95 }}
         whileHover={{ scale: 1.05 }}
-        animate={{
-          y: [-5, 5, -5],
-          transition: {
-            duration: 5,
-            repeat: Infinity,
-            ease: "easeInOut",
-          },
-        }}
+        
         className={style.reviewModalButtonContainer}
       >
         <div className={style.reviewButtonBack} />

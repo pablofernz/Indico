@@ -14,7 +14,7 @@ nav {
     left: 0;
     top: 0;
     width: 100%;
-    height: 40px;
+    height: 35px;
     background-color: rgb(235, 235, 235);
     z-index: 30;
     transition: all 0.3s ease;
@@ -28,11 +28,17 @@ nav .navbar {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    height: 85%;
+    height: 100%;
     max-width: 100%;
-    padding: 0px 80px 0px 80px;
+    padding: 0px 40px 0px 40px;
     background-color: rgb(255, 255, 255);
 
+}
+
+.enterButtons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 nav .navbar .logo {
@@ -59,6 +65,8 @@ nav .navbar .logo a {
 
 nav .navbar .menu {
     display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .navbar .menu li {
@@ -131,7 +139,95 @@ nav .navbar .menu {
     display: none;
 }
 
+.userImgContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0px;
 
+}
+
+.dropdownContainer {
+    position: absolute;
+    width: 200px;
+    height: 135px;
+    background-color: rgb(255, 255, 255);
+    margin-left: -140px;
+    margin-top: 20px;
+    border-radius: 15px;
+    padding: 5px;
+    z-index: 5;
+
+}
+
+.dropdownOption {
+    width: 100%;
+    height: 38px;
+    background-color: rgb(220, 220, 220);
+    margin-bottom: 5px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    border: none;
+
+}
+
+.dropdownOption:hover {
+    background-color: rgb(207, 207, 207);
+}
+
+.dropdownOptionsText {
+    font-weight: 600;
+    font-size: 15px;
+    width: 70%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.dropdownOptionsIcon {
+    width: 20%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.divider {
+    width: 100%;
+    height: 2px;
+    margin-top: 12px;
+    margin-bottom: 12px;
+}
+
+
+.dropdownContainer2 {
+    width: 200px;
+    height: 48px;
+    background-color: rgb(0, 0, 0);
+    margin-left: -5px;
+    margin-top: -15px;
+    border-radius: 15px;
+    padding: 5px;
+    z-index: -4;
+    display: flex;
+    color: whitesmoke;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    border: none;
+
+}
+.dropdownContainer2:hover{
+    transform: scale(0.9)
+
+}
+
+/* - - - - - - - - - - - - -- - - - - - -  */
 
 .burger {
     position: relative;
@@ -142,6 +238,7 @@ nav .navbar .menu {
     display: block;
     transform: scale(0.6);
     transition: all 0.5s ease;
+    z-index: 2;
 }
 
 .burger:active {
@@ -186,7 +283,7 @@ nav .navbar .menu {
 
 
 .menuSmall {
-    z-index: -2;
+    z-index: 0;
     margin-left: -180px;
     margin-top: -40px;
     width: 250px;
@@ -252,7 +349,18 @@ nav .navbar .menu {
     color: rgb(233, 233, 233);
 }
 
-@media (max-width: 800px) {
+@media (max-width: 600px) {
+    .userContainer {
+        margin-right: 10px;
+        transform: scale(0.8);
+
+    }
+
+    .dropdownContainer {
+        margin-top: 25px;
+        margin-left: -90px;
+    }
+
     .navbar2 {
         display: block;
     }
@@ -261,7 +369,7 @@ nav .navbar .menu {
         display: flex;
         align-items: center;
         justify-content: space-between;
-        height: 80%;
+        height: 100%;
         max-width: 100%;
         padding: 0px 10px 0px 10px;
 

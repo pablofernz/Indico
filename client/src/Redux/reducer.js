@@ -8,7 +8,7 @@ let initialstate = {
     menu: [],
     menuAux: [],
     reviews: [],
-    cart: { foodInCart: window.sessionStorage.getItem("purchase_completed") == "true" ? [] : cartItemsFromStorage, foodInCartAux: [], amount: 0, quantity: 0 },
+    cart: { foodInCart: window.sessionStorage.getItem("purchase_completed") == "true" || !window.sessionStorage.getItem("purchase_completed") ? [] : cartItemsFromStorage, foodInCartAux: [], amount: 0, quantity: 0 },
     orderSent: null
 };
 

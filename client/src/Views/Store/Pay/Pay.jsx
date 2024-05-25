@@ -381,7 +381,7 @@ const Pay = () => {
                       finish();
                       setExit(true);
                       setTimeout(() => {
-                        navigate("/landing");
+                        navigate("/home");
                       }, 1000);
                     }}
                   >
@@ -394,6 +394,9 @@ const Pay = () => {
                       setTimeout(() => {
                         finish();
                         navigate("/store");
+                        setTimeout(() => {
+                          finish();
+                        }, 500);
                       }, 500);
                     }}
                   >

@@ -9,6 +9,7 @@ import StartSection from "./Sections/Start/startSection";
 import RegisterSection from "./Sections/Register/register";
 import SwipeMiddleTop from "../../Components/pageAnimations/swipeDown/Exit/swipeDown";
 import SwipeBottomMiddle from "../../Components/pageAnimations/swipeUp/Exit/swipeUp";
+import VerifyToken from "../../Verifications/Token/verifyToken";
 
 const Landing = () => {
   const dispatch = useDispatch();
@@ -19,16 +20,17 @@ const Landing = () => {
 
   return (
     <div className={style.Landing}>
+      <VerifyToken />
       <SwipeMiddleTop />
-      
+
       <NavBar />
 
-      <header>
-        <section className={style.HomeSection} id="Start">
-          <StartSection />
-        </section>
+      <section className={style.HomeSection} id="Start">
+        <StartSection />
+      </section>
+      {/* <header>
 
-        {/* <section className={style.MenuSection} id="Menu">
+        <section className={style.MenuSection} id="Menu">
           <div className={style.scrollDown}></div>
           <MenuSection />
           Menu
@@ -36,7 +38,7 @@ const Landing = () => {
 
         <section className={style.ReviewsSection} id="Reviews">
           <ReviewContainer/>
-        </section> */}
+        </section>
         <div className={style.custom}>
           <svg
             data-name="Layer 1"
@@ -63,7 +65,7 @@ const Landing = () => {
         <section className={style.RegisterSection} id="Register">
           <RegisterSection />
         </section>
-      </header>
+      </header> */}
 
       <Footer />
     </div>

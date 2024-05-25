@@ -8,12 +8,13 @@ import Store from "./Views/Store/Store";
 import NotFound from "./Views/404 Not Found/404";
 import Pay from "./Views/Store/Pay/Pay";
 import Reviews from "./Views/Reviews/Reviews";
+
 function App() {
   return (
     <div className="App">
       <Routes>
-        <Route path="/" element={<Navigate to={"/landing"} />} />
-        <Route path="/landing" element={<Landing />} />
+        <Route path="/" element={<Navigate to={"/home"} />} />
+        <Route path="/home" element={<Landing />} />
         <Route path="/login" element={<ClientLogin />} />
         <Route path="/register" element={<ClientRegister />} />
         <Route path="/store" element={<Store />} />

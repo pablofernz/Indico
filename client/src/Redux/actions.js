@@ -137,3 +137,25 @@ export const sendTheOrder = (order) => {
     }
 }
 
+export const validateToken = async (token) => {
+    try {
+        if (token) {
+            const config = {
+                headers: {
+                    Authorization: `Bearer ${token}`, // Agrega el token JWT al encabezado de autorización
+                    "Content-Type": "application/json", // Establece el tipo de contenido como JSON
+                },
+            };
+
+            // Realiza la solicitud al servidor para validar el token
+            const res = await axios.get("http://localhost:3001/test/token", config)
+
+            // Retorna el resultado de la validación
+            return res;
+        } else {
+            return "No hay token"
+        }
+    } catch (error) {
+        return (error.response);
+    }
+}

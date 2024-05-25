@@ -4,6 +4,6 @@ const testToken = require("../handlers/testHandler")
 const testRouter = Router();
 
 
-testRouter.get("/token/", testToken)
+testRouter.get("/token", testToken)
 
 module.exports = testRouter;
