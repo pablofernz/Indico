@@ -9,6 +9,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 import SwipeMiddleTop from "../../Components/pageAnimations/swipeDown/Exit/swipeDown";
 import SwipeBottomMiddle from "../../Components/pageAnimations/swipeUp/Exit/swipeUp";
+import VerifyToken from "../../Verifications/Token/verifyToken";
 
 const Store = () => {
   const dispatch = useDispatch();
@@ -21,6 +22,7 @@ const Store = () => {
   const [isExit, setExit] = useState(false);
   return (
     <div className={style.background}>
+      <VerifyToken />
       <SwipeMiddleTop />
       {isExit == true && <SwipeBottomMiddle />}
       <AnimatePresence>
@@ -86,7 +88,6 @@ const Store = () => {
         }}
         whileTap={{ scale: 0.95 }}
         whileHover={{ scale: 1.05 }}
-        
         className={style.reviewModalButtonContainer}
       >
         <div className={style.reviewButtonBack} />

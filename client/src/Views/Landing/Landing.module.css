@@ -1,6 +1,8 @@
 .Landing {
-    background-color: rgb(30, 30, 30);
-    height: auto;
+    background-position: center center;
+    background-image: url(https://res.cloudinary.com/dnrprmypf/image/upload/q_auto:low/v1717532382/lucy-joy-Otc-BYz-A22z-M-unsplash_xydbrc.webp);
+    background-size: cover;
+
 }
 
 section {
@@ -14,33 +16,552 @@ section {
     font-size: 70px;
 }
 
-.HomeSection {
-    height: 100vh;
-    width: 100%;
+.section1 {
+    height: calc(100vh - 60px);
+    width: 100vw;
+    padding: 30px;
+    background-color: blueviolet;
+}
+
+
+.shapeDivider svg {
+    width: 100vw;
 }
 
 .RegisterSection {
-    height: calc(75vh + 45px);
+    height: calc(72vh);
+    width: 100%;
+    background-color: rgba(139, 28, 28, 0.934);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.background {
+    background-size: cover;
+    height: 100%;
+    width: 100%;
+    z-index: 10
+        /* animation: move 360s linear infinite; */
+}
+
+
+.background2 {
+    background-image: linear-gradient(to bottom, transparent, black);
+    height: 100%;
+    width: 100%;
+    background-position: center center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+
+}
+
+
+.section1Container {
+    width: 100%;
+    height: calc(100vh - 60px);
+    display: flex;
+    flex-direction: row;
+    padding: 30px;
+
+}
+
+.sectionLeft {
+    width: 45%;
+    height: 100%;
+
+}
+
+.sectionLeftTop {
+    width: 100%;
+    height: 60%;
+    padding: 0px 10px 10px 0px;
+}
+
+.navbarrr {
+    z-index: 1000;
+}
+
+.sectionLeftBottom {
+    width: 100%;
+    height: 40%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.card1Left {
+    height: 100%;
+    width: 100%;
+    border-radius: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: transparent;
+    backdrop-filter: blur(20px);
+    outline: 1px solid rgb(118, 118, 118);
+
+}
+
+
+.textContainer {
+    height: 100%;
+    width: 100%;
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+
+
+}
+
+.container2 {
+    height: 60%;
+    display: grid;
+    align-items: center;
+    justify-content: center;
+}
+
+.title,
+.subtitle,
+.subtitle2,
+.button {
+    text-align: center;
+    margin: auto;
+}
+
+.title {
+    font-size: 50px;
+    font-family: Real Line;
+    line-height: 1;
+    color: rgb(31, 31, 31);
+    display: flex;
+    justify-content: center;
+    cursor: default;
+    font-weight: 100;
+    background-color: transparent;
+}
+
+.subtitle {
+    color: rgba(33, 33, 33, 0.752);
+
+    font-weight: 500;
+    font-size: 15px;
+    text-align: center;
+    max-width: 700px;
+    min-width: 200px;
+    padding: 20px;
+    cursor: default;
+    font-style: italic;
+}
+
+.subtitle b {
+    font-size: 18px;
+    font-style: normal;
+    color: rgb(31, 31, 31);
+}
+
+
+/* ---------------card 2 -------------------------- */
+
+.card2Left {
+    height: 100%;
+    width: 50%;
+    padding: 10px 10px 0px 0px;
+}
+
+.card2LeftContent {
+    height: 100%;
+    width: 100%;
+    background-image: url(https://res.cloudinary.com/dnrprmypf/image/upload/c_scale,q_auto:low,w_460/v1717532858/premium_photo-1667682209935-b6c87cced668_ivqgmi.webp);
+    background-size: cover;
+    background-position: center center;
+    border-radius: 35px;
+
+}
+
+.card3LeftContainer {
+    height: 100%;
     width: 100%;
 }
 
-.custom {
-    position: absolute;
-    bottom: 0;
-    left: 0;
+.card3Left {
+    height: 100%;
+    width: 50%;
+    padding: 10px 10px 0px 10px;
+    cursor: pointer;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+}
+
+.card3LeftContent {
+    height: 100%;
+    width: 100%;
+    background-color: rgb(0, 0, 0);
+    border-radius: 25px;
+    padding: 10px 10px 10px 10px;
+    border: none;
+
+}
+
+.goStoreComponent {
+    height: 100%;
+    width: 100%;
+    cursor: pointer;
+}
+
+.topComponent {
+    width: 100%;
+    height: 15%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 10px;
+    color: rgb(255, 255, 255);
+    font-weight: 900;
+    padding: 0px 0px 0px 5px;
+    cursor: pointer;
+
+}
+
+.iconContainer {
+    display: flex;
+    align-items: center;
+    justify-content: right;
+    height: 100%;
+    width: 35px;
+    border-radius: 10px;
+    margin-top: 10px;
+
+}
+
+.iconContainer {
+    transform: rotate(45deg);
+    transition: all 0.5s ease;
+}
+
+.card3Left:hover .iconContainer {
+    transform: rotate(405deg);
+}
+
+.midComponent {
+    width: 100%;
+    height: 15%;
+    padding: 0px 0px 0px 5px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    cursor: pointer;
+
+}
+
+
+.text2 {
+    color: rgba(245, 245, 245, 0.54);
+    font-size: 13px;
+    font-weight: 500;
+    margin-top: -5px;
+}
+
+.text1 {
+    color: rgb(255, 255, 255);
+    font-size: 18px;
+    font-weight: 900;
+}
+
+.bottomComponent {
+    width: 100%;
+    height: 70%;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    border-radius: 15px;
+    background-image: url(https://res.cloudinary.com/dnrprmypf/image/upload/c_scale,q_auto:low,w_743/v1717533021/photo-1464093515883-ec948246accb_dvtfzr.webp);
+    background-position: center center;
+    background-size: cover;
+    cursor: pointer;
+
+}
+
+
+.sectionRight {
+    width: 55%;
+    height: 100%;
+
+}
+
+
+.sectionRightTop {
+    width: 100%;
+    height: 100%;
+    padding: 0px 0px 0px 20px;
+
+}
+
+.sectionRightBottom {
+    width: auto;
+    height: 70px;
+    padding: 5px 5px 75px 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    overflow: scroll;
+
+    background-image: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.528));
+}
+
+.test {
+    width: calc(200px * 6);
+    height: 100%;
+    display: flex;
+    align-items: center;
+    -webkit-box-orient: horizontal;
+    word-break: break-word;
+    display: -webkit-box;
+}
+
+
+.card1Right {
+    height: 100%;
+    width: 100%;
+    background-image: url(https://res.cloudinary.com/dnrprmypf/image/upload/q_61/v1717533155/photo-1591728534642-b68f534bfee5_oecmcq.webp);
+    background-size: cover;
+    background-position: center center;
+    border-radius: 35px;
+    display: flex;
+    justify-content: center;
+    align-items: end;
+    overflow: hidden;
+}
+
+.card2Right {
+    height: 60px;
+    width: 200px;
+    border-radius: 20px;
+    background-color: rgba(255, 255, 255, 0.891);
+    padding: 8px;
+    backdrop-filter: blur(10px);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transform: scale(0.9);
+    cursor: default;
+}
+
+
+.iconStatsContainer {
+    border-radius: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 45px;
+    height: 45px;
+    background-color: rgb(4, 60, 0);
+}
+
+
+
+.statsTextContainer {
+    border-radius: 15px;
+    width: calc(100% - 50px);
+    height: 100%;
+}
+
+.primaryText {
+    display: flex;
+    align-items: center;
+    height: 50%;
+    width: 100%;
+    font-size: 20px;
+    font-weight: 900;
+    color: rgb(33, 33, 33);
+
+}
+
+.xd {
+    font-size: 18px;
+}
+
+.secondText {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    color: rgb(118, 118, 118);
+    font-size: 14px;
+    font-weight: 500;
+
+    -webkit-box-orient: vertical;
+
+    -webkit-line-clamp: 2;
+    word-break: break-word;
+    display: -webkit-box;
+    overflow: visible;
+
+}
+
+.secondTextAnimation {
+    animation: showText 5s ease infinite;
+}
+
+@keyframes showText {
+    0%, 60% {
+        transform: translateY(0px);
+    }
+
+    10%, 50% {
+        transform: translateY(-20px);
+    }
+}
+
+.text2Container {
+    height: 50%;
     width: 100%;
     overflow: hidden;
-    line-height: 0;
-    transform: rotate(180deg);
 }
 
-.custom svg {
-    position: relative;
-    display: inline-block;
-    width: calc(100% + 1.3px);
-    height: 52px;
+.text2Container2 {
+    height: 100%;
+    width: 100%;
+    overflow: visible;
+    transform: translateY(-20px);
+
 }
 
-.custom .shapeFill {
-    fill: #202020;
+
+
+
+
+
+
+.section3 {
+    width: 100vw;
+    height: 70vh;
+    background-color: rgb(30, 173, 113);
+}
+
+@media (max-width: 1200px) {
+    .title {
+        font-size: 35px;
+    }
+
+    .subtitle b {
+        font-size: 15px;
+    }
+
+    .text1 {
+        font-size: 15px;
+
+    }
+}
+
+@media (max-width: 850px) {
+
+    .title {
+        font-size: 40px;
+    }
+
+    .subtitle b {
+        font-size: 14px;
+    }
+
+    .container2 {
+        height: 80%;
+        display: grid;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .text1 {
+        font-size: 12px;
+
+    }
+
+    .text2 {
+        color: rgba(245, 245, 245, 0.474);
+        font-size: 13px;
+        font-weight: 600;
+    }
+}
+
+@media (max-width: 800px) {
+    .section1Container {
+        flex-direction: column;
+        height: calc(200vh - 120px);
+        gap: 60px;
+        /* Para contener ambos divs */
+    }
+
+    .sectionLeft, .sectionRight {
+        width: 100%;
+        height: 100vh;
+        /* Cada div ocupa la mitad del height del contenedor */
+    }
+
+    .sectionRightTop {
+        padding: 0px 0px 5px 0px;
+    }
+
+    .sectionRightBottom {
+        padding: 5px 5px 75px 10px;
+    }
+
+    .sectionLeftTop {
+
+        padding: 0px 0px 5px 0px;
+    }
+
+    .card3Left {
+        height: 100%;
+        width: 50%;
+        padding: 10px 10px 0px 10px;
+    }
+
+    .title {
+        font-size: 50px;
+    }
+
+    .subtitle b {
+        font-size: 20px;
+    }
+
+
+
+    .text1 {
+        font-size: 18px;
+    }
+}
+
+
+@media (max-width: 550px) {
+
+    .title {
+        font-size: 40px;
+    }
+
+    .subtitle b {
+        font-size: 14px;
+    }
+
+    .container2 {
+        height: 80%;
+        display: grid;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .text1 {
+        font-size: 14px;
+    }
+
+    .text2 {
+        font-size: 12px;
+    }
+
 }

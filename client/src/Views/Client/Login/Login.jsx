@@ -50,7 +50,7 @@ const ClientLogin = () => {
       setShowErrorToast(false);
     }
 
-    if (isLoged == true) {
+    if (isLoged === true) {
       toast.success("Ingresando...", {
         duration: 1000,
         position: "top-center",
@@ -66,7 +66,7 @@ const ClientLogin = () => {
         }, 1000);
       }, 1000);
     }
-  }, [isLoged, submitErrors, showErrorToast]);
+  }, [isLoged, submitErrors, showErrorToast, navigate]);
 
   const submitHandler = async (event) => {
     event.preventDefault();
@@ -88,10 +88,11 @@ const ClientLogin = () => {
 
         isLoading(false);
         setIsLoged(true);
+        console.log(res.data);
       } catch (err) {
         isLoading(false);
         console.log(err);
-        setSubmitErrors(err.response);
+        setSubmitErrors(err.response?.data);
         setShowErrorToast(true);
       }
     } else {

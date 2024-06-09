@@ -10,7 +10,8 @@ const seeReviews = async (req, res) => {
             name: cliente.name,
             lastname: cliente.lastname,
             image: cliente.image,
-            reviews: cliente.reviews
+            reviews: cliente.reviews,
+            purchases: cliente.purchases.length
         }))
 
         if (reviewClients) {

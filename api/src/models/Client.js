@@ -22,34 +22,38 @@ const clientSchema = mongoose.Schema({
     },
     image: {
         type: String,
-        default: 'https://cdn.icon-icons.com/icons2/1378/PNG/512/avatardefault_92824.png'
+        default: 'https://www.texture-fabrics.com/content/images/thumbs/0048095_cayman-seagreen.jpeg'
     },
     role: {
         type: String,
         default: "Client"
     },
     purchases: [purchaseSchema],
-    reviews: [reviewsSchema]
+    reviews: [reviewsSchema],
+    createdAt: {
+        type: String,
+        required: true
+    }
 }, {
     versionKey: false // Establecer versionKey en false para eliminar la propiedad "__v"
 })
 
 clientSchema.pre('save', async function (next) {
     try {
-      // Verificar si la contraseña ya está hasheada
-      if (!this.isModified('password')) {
-        return next();
-      }
-  
-      // Generar un salt (valor aleatorio) para hashear la contraseña
-      const salt = await bcrypt.genSalt(10);
-  
-      // Hashear la contraseña y reemplazarla en el campo 'password'
-      this.password = await bcrypt.hash(this.password, salt);
-      next();
+        // Verificar si la contraseña ya está hasheada
+        if (!this.isModified('password')) {
+            return next();
+        }
+
+        // Generar un salt (valor aleatorio) para hashear la contraseña
+        const salt = await bcrypt.genSalt(10);
+
+        // Hashear la contraseña y reemplazarla en el campo 'password'
+        this.password = await bcrypt.hash(this.password, salt);
+        next();
     } catch (error) {
-      return next(error);
+        return next(error);
     }
-  });
+});
 
 module.exports = mongoose.model("Client", clientSchema)

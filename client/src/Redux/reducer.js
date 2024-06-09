@@ -1,7 +1,8 @@
-import { GET_REVIEWS, GET_MENU, SET_GRID, SET_LIST, SET_TYPE, ADD_TO_CART, DELETE_TO_CART, SEARCH_FOOD, UPDATE_ITEM_QUANTITY, SEND_ORDER, CLEAR_CART, KEEP_CART, CART_STATUS } from "./actions";
+import { GET_REVIEWS, GET_MENU, SET_GRID, SET_LIST, SET_TYPE, ADD_TO_CART, DELETE_TO_CART, SEARCH_FOOD, UPDATE_ITEM_QUANTITY, SEND_ORDER, CLEAR_CART, KEEP_CART, CART_STATUS, GET_USERS } from "./actions";
 
 let cartItemsFromStorage = JSON.parse(window.sessionStorage.getItem("cartItems"));
 let initialstate = {
+    users: "",
     storeView: "list",
     cartIsOpen: false,
     foodType: "Todos",
@@ -22,6 +23,12 @@ if (JSON.parse(window.sessionStorage.getItem("cartItems"))) {
 
 let reducer = (state = initialstate, action) => {
     switch (action.type) {
+        case GET_USERS:
+            return {
+                ...state,
+                users: action.payload,
+            }
+
         case GET_MENU:
             return {
                 ...state,

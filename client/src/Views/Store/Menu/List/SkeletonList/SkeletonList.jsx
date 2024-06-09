@@ -28,11 +28,11 @@ export default function SkeletonList({
           <IconLoader />
         </div>
         <div className={style.TextAndPrices}>
-          <h1 className={style.h1}>
+          <div className={style.h1}>
             joooooooooooooooooooooooooooooooooooooooooooooooo
-          </h1>
-          <h2></h2>
-          <h3></h3>
+          </div>
+          <div className={style.h2}></div>
+          <div className={style.h3}></div>
           <div className={style.Prices}>
             <p className={style.Price}></p>
           </div>

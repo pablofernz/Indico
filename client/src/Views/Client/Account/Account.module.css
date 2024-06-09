@@ -1,0 +1,380 @@
+.accountComponent {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.background {
+    height: 100vh;
+    width: 100vw;
+    position: fixed;
+    background-image: url(https://images.unsplash.com/photo-1546554137-f86b9593a222?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D);
+    background-size: cover;
+    filter: brightness(0.4);
+}
+
+.back {
+    position: absolute;
+    border-radius: 50px;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.accountCard {
+    height: 550px;
+    width: 550px;
+    background-color: rgb(233, 233, 233);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    border-radius: 30px;
+    backdrop-filter: blur(0px);
+    overflow: hidden;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.accountCardContent {
+    height: 100%;
+    width: 100%;
+    border-radius: 10px;
+}
+
+.CardSlider {
+    position: absolute;
+    height: 550px;
+    width: 550px;
+    background-color: rgb(233, 233, 233);
+    z-index: 1;
+    margin: -20px;
+    box-shadow: 0px 0px 100px rgb(233, 233, 233);
+
+}
+
+
+/* - - - - - - - - - - - - H E A D E R - - - - - - - - - - - - - - - - - - - - - - - */
+
+
+.photoSection {
+    height: 30%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.userPhoto {
+    height: 80px;
+    width: 80px;
+    border-radius: 50px;
+    background-color: rgb(255, 255, 255);
+    object-fit: cover;
+    outline: 3px solid rgb(0, 0, 0);
+}
+
+.photoSkeleton {
+    height: 80px;
+    width: 80px;
+    border-radius: 50px;
+    background-color: rgb(208, 208, 208);
+    object-fit: cover;
+}
+
+.headerContent {
+    height: 100%;
+    width: 100%;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.photoContainer {
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.xd {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 350px;
+}
+
+.name {
+
+    font-size: 20px;
+    font-weight: 600;
+    margin-top: -10px;
+    max-width: 100%;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+
+}
+
+
+.nameSkeleton {
+    padding: 10px;
+    width: 250px;
+    height: 20px;
+    background-color: rgb(214, 213, 213);
+    margin-top: -10px;
+    border-radius: 10px;
+}
+
+.createdAt {
+    font-size: 13px;
+    font-weight: 600;
+    margin-top: -18px;
+    color: rgba(0, 0, 0, 0.555);
+}
+
+.createdAtSkeleton {
+    margin-left: 22px;
+    width: 200px;
+    height: 15px;
+    background-color: rgb(221, 220, 220);
+    margin-top: -10px;
+    border-radius: 10px;
+}
+
+/* - - - - - - - - - - - - O P T I O N S - - - - - - - - - - - - - - - - - - - - - - - */
+
+
+.optionsSection {
+    width: 100%;
+    height: 70%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 0px 0px 0px;
+
+}
+
+.optionsContainer {
+    width: 80%;
+    height: 100%;
+    padding: 10px;
+
+}
+
+.dropdownOption {
+    width: 100%;
+    height: 50px;
+    background-color: rgb(255, 255, 255);
+    margin-bottom: 10px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border: none;
+}
+
+.dropdownOption:hover {
+    background-color: rgba(0, 0, 0, 0.052);
+
+}
+
+.dropdownOption:active {
+    transform: scale(0.98);
+
+}
+
+
+.logout {
+    width: 100%;
+    height: 50px;
+    background-color: rgb(31, 31, 31);
+    margin-bottom: 10px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border: none;
+    color: white;
+}
+
+.logout:active {
+    transform: scale(0.98);
+
+}
+
+.dropdownOptionsText {
+    font-weight: 600;
+    font-size: 16px;
+    width: 70%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.dropdownOptionsIcon {
+    width: 20%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+
+
+
+/* - - - - - - - L O G O U T    M O D A L - - - - - - - - - - - - - - - - - - - - - - */
+
+
+.reviewOpenModal {
+    height: 100vh;
+    width: 100vw;
+    position: fixed;
+    backdrop-filter: blur(20px) brightness(0.5);
+    z-index: 20000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.reviewOpenModal2 {
+    height: 100vh;
+    width: 100vw;
+    position: fixed;
+    background-color: transparent;
+    z-index: 20000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.reviewContainer {
+    height: 300px;
+    width: 400px;
+    background-color: white;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-size: cover;
+}
+
+.reviewModalContent {
+    height: 100%;
+    width: 100%;
+}
+
+.imgReviewContainer {
+    height: 60%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.imgReview {
+    height: 300px;
+    width: 300px;
+    margin-top: -60px;
+}
+
+.reviewTextContainer {
+    height: 20%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.reviewText {
+    width: 80%;
+    font-size: 16px;
+    text-align: center;
+    font-weight: 600;
+}
+
+.reviewButtonContainer {
+    height: 20%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.primaryButton {
+    border: none;
+    border-radius: 20px;
+    background-color: rgb(155, 235, 157);
+    color: black;
+    cursor: pointer;
+    padding: 5px 15px 5px 15px;
+    font-size: 15px;
+    font-weight: 600;
+    margin: 0px 10px 0px 10px;
+}
+
+.secundaryButton {
+    border: none;
+    background-color: transparent;
+    color: black;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: 600;
+    margin: 0px 10px 0px 10px;
+}
+
+
+
+
+@media (max-width: 600px) {
+    .accountCard {
+        height: 550px;
+        width: 300px;
+    }
+
+    .optionsContainer {
+        width: 100%;
+        height: 100%;
+        padding: 10px;
+
+    }
+
+    .dropdownOptionsText {
+        font-weight: 600;
+        font-size: 14px;
+        width: 70%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+    }
+
+    .dropdownOptionsIcon {
+        width: 20%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transform: scale(0.8);
+
+    }
+
+    .reviewContainer {
+        transform: scale(0.9);
+
+    }
+
+    .xd {
+
+        width: 220px;
+    }
+
+    .name {
+        font-size: 18px;
+    }
+}

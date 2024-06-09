@@ -30,7 +30,7 @@ export default function Card({
   };
 
   const AddHandler = () => {
-    dispatch(cartStatus(false));
+    dispatch(cartStatus(true));
     if (isAdded === false) {
       setIsAdded(true);
       dispatch(addToCart(foodPurchased));
@@ -58,7 +58,7 @@ export default function Card({
         <div className={style.Discount}>{`${discount}%`} OFF</div>
       ) : null}
 
-      <img className={style.Img} src={image} alt="" />
+      <img className={style.Img} src={image} alt="" loading="lazy" />
       <div>
         <ul className={style.Text}>
           <h1>{title}</h1>

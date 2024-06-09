@@ -22,7 +22,7 @@ const VerifyToken = () => {
       }
     } catch (error) {
       console.log(error);
-      window.alert(error)
+      window.alert(error);
     }
   };
   useEffect(() => {

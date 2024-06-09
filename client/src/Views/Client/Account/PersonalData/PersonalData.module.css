@@ -1,0 +1,613 @@
+.accountComponent {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.background {
+
+    height: 100vh;
+    width: 100vw;
+    position: fixed;
+    background-image: url(https://images.unsplash.com/photo-1546554137-f86b9593a222?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D);
+    background-size: cover;
+    filter: brightness(0.4);
+
+}
+
+.cardContainer {
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.Card {
+    height: 550px;
+    width: 550px;
+    background-color: rgb(233, 233, 233);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    word-break: break-word;
+    display: -webkit-box;
+    border-radius: 30px;
+    backdrop-filter: blur(50px) brightness(1.7);
+    overflow: hidden;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    gap: 20px;
+}
+
+.CardContent {
+    height: 100%;
+    width: 100%;
+    border-radius: 10px;
+}
+
+.back {
+    position: absolute;
+    border-radius: 50px;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.CardSlider {
+    position: absolute;
+    height: 550px;
+    width: 550px;
+    background-color: rgb(233, 233, 233);
+    z-index: 1;
+    margin: -20px;
+    box-shadow: 0px 0px 200px rgb(233, 233, 233);
+}
+
+/* - - - - - - - - - - - - H E A D E R - - - - - - - - - - - - - - - - - - - - - - - */
+
+
+.photoSection {
+    height: 30%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.userPhoto {
+    height: 80px;
+    width: 80px;
+    border-radius: 50px;
+    background-color: rgb(255, 255, 255);
+    object-fit: cover;
+    outline: 3px solid rgb(0, 0, 0);
+}
+
+.photoSkeleton {
+    height: 80px;
+    width: 80px;
+    border-radius: 50px;
+    background-color: rgb(208, 208, 208);
+    object-fit: cover;
+}
+
+.headerContent {
+    height: 100%;
+    width: 100%;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.photoContainer {
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.changePhotoIconContainer {
+    border-radius: 50px;
+    height: 80px;
+    width: 80px;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.changePhotoIconInput {
+    background-color: blue;
+    height: 100%;
+    width: 100%;
+    border-radius: 50px;
+    opacity: 0;
+    z-index: 1;
+    cursor: pointer;
+}
+
+.changePhotoIcon {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* left: 100px; */
+    background-color: rgb(160, 250, 170);
+    height: 30px;
+    width: 30px;
+    border-radius: 50px;
+}
+
+.xd {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 350px;
+}
+
+.name {
+
+    font-size: 20px;
+    font-weight: 600;
+    margin-top: -10px;
+    max-width: 100%;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+
+}
+
+
+.nameSkeleton {
+    padding: 10px;
+    width: 250px;
+    height: 20px;
+    background-color: rgb(214, 213, 213);
+    margin-top: -10px;
+    border-radius: 10px;
+}
+
+.createdAt {
+    font-size: 13px;
+    font-weight: 600;
+    margin-top: -18px;
+    color: rgba(0, 0, 0, 0.555);
+}
+
+.createdAtSkeleton {
+    margin-left: 22px;
+    width: 200px;
+    height: 15px;
+    background-color: rgb(221, 220, 220);
+    margin-top: -10px;
+    border-radius: 10px;
+}
+
+/* - - - - - - - - - - - - - U S E R  D A T A - - - - - - - - - - - - - - - - - - */
+
+.userDataContainer {
+    height: 60%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.contentBox {
+    height: 90%;
+    width: 90%;
+}
+
+
+.nameLastnameBox {
+    width: 100%;
+    height: 25%;
+    display: flex;
+    justify-content: space-between;
+
+}
+
+
+
+.box {
+    width: 48%;
+    height: 100%;
+
+}
+
+.label {
+    width: 100%;
+    height: 45%;
+    font-weight: 600;
+    font-size: 14px;
+    color: rgb(88, 88, 88);
+}
+
+.inputContainer {
+    width: 100%;
+    height: 55%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.input {
+    font-size: 15px;
+    padding: 5px;
+    width: 100%;
+    height: 100%;
+    color: rgb(120, 120, 120);
+    font-weight: 600;
+    border-radius: 5px;
+    border: 2px solid rgb(190, 190, 190);
+    background-color: transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.3s ease;
+    white-space: word;
+
+}
+
+.failed {
+    border: 2px solid rgba(96, 0, 0, 0.678);
+
+}
+
+.input:focus {
+    outline: none;
+    border: 2px solid rgb(0, 0, 0);
+    color: black;
+}
+
+.input:hover {
+    outline: none;
+    border: 2px solid rgb(0, 0, 0);
+    color: black;
+}
+
+.input::placeholder {
+    color: rgba(102, 0, 0, 0.678);
+}
+
+
+.viewInput {
+    font-size: 15px;
+    padding: 5px;
+    width: 100%;
+    height: 100%;
+    color: rgb(120, 120, 120);
+    font-weight: 600;
+    border: 2px solid rgb(190, 190, 190);
+    border-radius: 5px;
+    cursor: default;
+    background-color: transparent;
+
+}
+
+.viewInputText {
+    margin-top: 1px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.emailBox {
+    margin-top: 20px;
+
+    width: 100%;
+    height: 25%;
+    display: flex;
+    justify-content: space-between;
+}
+
+
+.box2 {
+    width: 100%;
+    height: 100%;
+
+}
+
+.passwordBox {
+    width: 100%;
+    height: 20%;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+
+}
+
+.changePasswordButton {
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: 600;
+    color: black;
+    background-color: transparent;
+    border: none;
+}
+
+
+.changePassword {
+    width: 40%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.passwordInput {
+    font-size: 15px;
+    padding: 5px;
+    width: 100%;
+    height: 120%;
+    color: rgb(120, 120, 120);
+    font-weight: 600;
+    border-radius: 5px;
+    border: 2px solid rgb(190, 190, 190);
+    background-color: transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.3s ease;
+    white-space: word;
+}
+
+.passwordInput:focus {
+    outline: none;
+    border: 2px solid rgb(0, 0, 0);
+    color: black;
+}
+
+.passwordInput:hover {
+    outline: none;
+    border: 2px solid rgb(0, 0, 0);
+    color: black;
+}
+
+.passwordInput::placeholder {
+    color: rgba(102, 0, 0, 0.678);
+}
+
+.seePasswordButton {
+    cursor: pointer;
+    border: none;
+    position: fixed;
+    margin-left: 180px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.otherButtonsBox {
+    margin-top: 40px;
+    width: 100%;
+    height: 35%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.buttonsContainer {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.editButton {
+    background-color: transparent;
+    color: white;
+    font-weight: 900;
+    font-size: 15px;
+    border: none;
+    position: absolute;
+    left: 495px;
+    cursor: pointer;
+    border-radius: 50px;
+    transition: transform 0.5s ease;
+}
+
+.editButton:active {
+    transform: scale(0.9);
+}
+
+
+.deleteButton {
+    background-color: transparent;
+    padding: 5px 10px 5px 10px;
+    color: rgb(179, 0, 0);
+    font-weight: 600;
+    font-size: 15px;
+    border-radius: 10px;
+    transition: all 0.4s ease;
+    cursor: pointer;
+    border: none;
+    border: 2px dashed transparent;
+
+}
+
+.deleteButton:hover {
+    border: 2px dashed rgb(179, 0, 0);
+}
+
+
+
+/* - - - - - - - L O G O U T    M O D A L - - - - - - - - - - - - - - - - - - - - - - */
+
+
+.deleteOpenModal {
+    height: 100vh;
+    width: 100vw;
+    position: fixed;
+    backdrop-filter: blur(20px) brightness(0.5);
+    z-index: 20000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.deleteOpenModal2 {
+    height: 100vh;
+    width: 100vw;
+    position: fixed;
+    background-color: transparent;
+    z-index: 20000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.deleteContainer {
+    height: 350px;
+    width: 400px;
+    background-color: white;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-size: cover;
+}
+
+.deleteModalContent {
+    height: 100%;
+    width: 100%;
+}
+
+.imgDeleteContainer {
+    height: 60%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.imgDelete {
+    height: 300px;
+    width: 300px;
+    margin-top: -60px;
+}
+
+.deleteTextContainer {
+    height: 20%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.deleteText {
+    width: 80%;
+    font-size: 16px;
+    text-align: center;
+    font-weight: 600;
+}
+
+.deleteButtonContainer {
+    height: 20%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.primaryButton {
+    border: none;
+    border-radius: 10px;
+    background-color: rgb(155, 235, 157);
+    color: black;
+    cursor: pointer;
+    padding: 5px 15px 5px 15px;
+    font-size: 15px;
+    font-weight: 600;
+    margin: 0px 10px 0px 10px;
+}
+
+.secundaryButton {
+    border: none;
+    outline: 2px dashed transparent;
+    background-color: transparent;
+    color: black;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: 900;
+    margin: 0px 10px 0px 10px;
+    padding: 3px 13px 3px 13px;
+    border-radius: 10px;
+    transition: all 0.2s ease;
+}
+
+.secundaryButton:hover {
+    outline: 2px dashed rgb(179, 0, 0);
+    color: rgb(118, 0, 0);
+}
+
+@media (max-width: 600px) {
+    .Card {
+        height: 550px;
+        width: 300px;
+    }
+
+    .editButton {
+        left: 245px;
+    }
+
+    .input::placeholder {
+        width: 100%;
+        color: rgba(102, 0, 0, 0.678);
+        font-size: 12px;
+        text-overflow: ellipsis;
+    }
+
+    .xd {
+
+        width: 220px;
+    }
+
+    .name {
+        font-size: 18px;
+    }
+
+    .seePasswordButton {
+        margin-left: 80px;
+    }
+
+    .changePassword {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+    }
+
+    .changePasswordButton {
+        width: 300px;
+        cursor: pointer;
+        font-size: 15px;
+        font-weight: 600;
+        color: black;
+        background-color: transparent;
+        border: none;
+    }
+
+    .passwordBox {
+        width: 100%;
+        height: 35%;
+        display: flex;
+        justify-content: space-between;
+        margin-top: 20px;
+    }
+
+    .passwordInput {
+        font-size: 14px;
+        width: 100%;
+        height: 65%;
+    }
+
+    .input {
+        font-size: 14px;
+    }
+}

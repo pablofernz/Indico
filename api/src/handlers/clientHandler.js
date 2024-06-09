@@ -11,6 +11,16 @@ const secret = process.env.SECRET
 const createClient = async (req, res) => {
     const { name, lastname, email, password, image, reviews } = req.body
 
+    const getDay = () => {
+        const today = new Date();
+        const day = String(today.getDate()).padStart(2, '0');
+        const month = String(today.getMonth() + 1).padStart(2, '0');
+        const year = today.getFullYear();
+        const hours = String(today.getHours()).padStart(2, '0');
+        const minutes = String(today.getMinutes()).padStart(2, '0');
+        const formattedDateTime = `${day}-${month}-${year} ${hours}:${minutes}`;
+        return formattedDateTime
+    }
     try {
         if (name && lastname && email && password) {
 
@@ -21,13 +31,14 @@ const createClient = async (req, res) => {
             if (existingClient) {
                 return res.status(400).send('Ya existe una cuenta con este correo. Inicia sesión');
             } else {
-                const newClient = addClient({ name, lastname, email, password, image, reviews })
+                const newClient = addClient({ name, lastname, email, password, image, reviews, createdAt: getDay() })
 
                 const tokenData = {
                     name: newClient.name,
                     lastname: newClient.lastname,
                     id: newClient._id,
-                    email: newClient.email
+                    email: newClient.email,
+                    createdAt: newClient.createdAt
                 }
 
                 const token = jwt.sign(
@@ -36,7 +47,7 @@ const createClient = async (req, res) => {
                         exp: Date.now() + 60 * 1000 * 60 * 24 * 7
                     }, secret
                 )
-                return res.status(200).json({ name: newClient.name, email: newClient.email, token: token })
+                return res.status(200).json({ name: newClient.name, email: newClient.email, createdAt: newClient.createdAt, token: token })
 
             }
         } else {
@@ -50,25 +61,49 @@ const createClient = async (req, res) => {
 
 const updateClient = async (req, res) => {
     const { id } = req.params
-    const { name, lastname, email, password, image } = req.body
-    const updateData = { name, lastname, email, password, image }
+    const { name, lastname, email, newPassword, image } = req.body
+    let token = null
+    const authorization = req.get('authorization')
+
+    const hashPassword = async () => {
+        const saltRounds = 10;
+        const hash = await bcrypt.hash(newPassword, saltRounds);
+        return hash;
+    }
 
     try {
-        const oldClient = await Client.findById(id)
-        const updatedClient = await Client.findByIdAndUpdate(id, updateData, { new: true })
+        if (authorization && authorization.toLowerCase().startsWith('bearer')) {
+            token = authorization.split(" ")[1]
+            const decodedToken = jwt.verify(token, secret)
 
-        const hasChanged = (
-            updatedClient.name !== oldClient.name ||
-            updatedClient.lastname !== oldClient.lastname ||
-            updatedClient.email !== oldClient.email ||
-            updatedClient.password !== oldClient.password ||
-            updatedClient.image !== oldClient.image
-        )
+            if (decodedToken) {
+                if (Date.now() > decodedToken.exp) {
+                    return res.status(401).send("Token expirado")
+                } else {
+                    const oldClient = await Client.findById(id)
+                    const updateData = { name, lastname, email, password: newPassword ? await hashPassword() : oldClient.password, image }
 
-        if (!hasChanged) {
-            return res.status(400).send("No se realizaron cambios")
+                    const updatedClient = await Client.findByIdAndUpdate(id, updateData, { new: true })
+
+                    const hasChanged = (
+                        updatedClient.name !== oldClient.name ||
+                        updatedClient.lastname !== oldClient.lastname ||
+                        updatedClient.email !== oldClient.email ||
+                        updatedClient.password !== oldClient.password ||
+                        updatedClient.image !== oldClient.image
+                    )
+
+                    if (!hasChanged) {
+                        return res.status(400).send("No se realizaron cambios")
+                    } else {
+                        return res.status(200).send("Información de usuario actualizada")
+                    }
+                }
+            } else {
+                return res.status(400).send("Token perdido o invalido")
+            }
         } else {
-            return res.status(200).send("Información de usuario actualizada")
+            return res.status(401).send("No autorizado")
         }
 
     } catch (error) {
@@ -78,10 +113,29 @@ const updateClient = async (req, res) => {
 
 const deleteClient = async (req, res) => {
     const { id } = req.params
+    let token = null
+    const authorization = req.get('authorization')
 
     try {
-        await Client.deleteOne({ _id: id })
-        return res.status(200).send("Usuario eliminado")
+
+        if (authorization && authorization.toLowerCase().startsWith('bearer')) {
+            token = authorization.split(" ")[1]
+            const decodedToken = jwt.verify(token, secret)
+
+            if (decodedToken) {
+                if (Date.now() > decodedToken.exp) {
+                    return res.status(401).send("Token expirado")
+                } else {
+
+                    await Client.deleteOne({ _id: id })
+                    return res.status(200).send("Usuario eliminado")
+                }
+            } else {
+                return res.status(400).send("Token perdido o invalido")
+            }
+        } else {
+            return res.status(401).send("No autorizado")
+        }
 
     } catch (error) {
         return res.status(400).json(error.message)

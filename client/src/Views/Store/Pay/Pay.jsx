@@ -63,7 +63,7 @@ const Pay = () => {
           order,
           config
         );
-
+        console.log(res.data);
         // console.time(res.data);
         setPayState("Sent");
       } catch (err) {

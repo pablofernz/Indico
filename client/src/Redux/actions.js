@@ -12,6 +12,8 @@ export const SEND_ORDER = 'SEND_ORDER'
 export const CLEAR_CART = 'CLEAR_CART'
 export const KEEP_CART = 'KEEP_CART'
 export const CART_STATUS = 'CART_STATUS'
+export const GET_USERS = 'GET_USERS'
+
 
 export const getReviews = () => {
     return async function (dispatch) {
@@ -148,7 +150,7 @@ export const validateToken = async (token) => {
             };
 
             // Realiza la solicitud al servidor para validar el token
-            const res = await axios.get("http://localhost:3001/test/token", config)
+            const res = await axios.get("http://localhost:3001/token/test", config)
 
             // Retorna el resultado de la validación
             return res;
@@ -159,3 +161,42 @@ export const validateToken = async (token) => {
         return (error.response);
     }
 }
+
+export const getUserDataWithToken = async (token) => {
+    try {
+        if (token) {
+            const config = {
+                headers: {
+                    Authorization: `Bearer ${token}`, // Agrega el token JWT al encabezado de autorización
+                    "Content-Type": "application/json", // Establece el tipo de contenido como JSON
+                },
+            };
+
+            // Realiza la solicitud al servidor para validar el token
+            const res = await axios.get("http://localhost:3001/token/getuserdata", config)
+
+            // Retorna el resultado de la validación
+            return res;
+        } else {
+            return "No hay token"
+        }
+    } catch (error) {
+        return (error.response);
+    }
+}
+
+export const getDataUsers = (waiting) => {
+    return async (dispatch) => {
+        try {
+            const response = await axios.get(`http://localhost:3001/store/clients?waiting=${waiting}`);
+            const users = response.data;
+
+            dispatch({
+                type: GET_USERS,
+                payload: users,
+            });
+        } catch (error) {
+            console.error(error);
+        }
+    };
+};

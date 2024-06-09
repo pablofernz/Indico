@@ -1,0 +1,195 @@
+.accountComponent {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.background {
+
+    height: 100vh;
+    width: 100vw;
+    position: fixed;
+    background-image: url(https://images.unsplash.com/photo-1546554137-f86b9593a222?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D);
+    background-size: cover;
+    filter: brightness(0.4);
+
+}
+
+.cardContainer {
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.Card {
+    height: 550px;
+    width: 550px;
+    background-color: rgb(233, 233, 233);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    word-break: break-word;
+    display: -webkit-box;
+    border-radius: 30px;
+    backdrop-filter: blur(50px) brightness(1.7);
+    overflow: hidden;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    gap: 20px;
+}
+
+.CardContent {
+    height: 100%;
+    width: 100%;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.back {
+    position: absolute;
+    border-radius: 50px;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.CardSlider {
+    position: absolute;
+    height: 550px;
+    width: 550px;
+    background-color: rgb(233, 233, 233);
+    z-index: 1;
+    margin: -20px;
+    box-shadow: 0px 0px 200px rgb(233, 233, 233);
+}
+
+.noPurchaseContainer {
+    width: 90%;
+    height: 90%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    animation: opacity 0s ease;
+}
+
+.orderCard3Content {
+    width: calc(100% - 30px);
+    height: calc(100% - 30px);
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    animation: opacity 0s ease;
+}
+
+.contentCard3 {
+    height: 100%;
+    width: 100%;
+    min-width: 300px;
+    border-radius: 15px;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.step3buttonContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    margin-top: 10px;
+
+}
+
+.step3button {
+    padding: 0px 15px 0px 15px;
+    min-height: 35px;
+    max-height: auto;
+    width: auto;
+    border: none;
+    background-color: rgb(116, 219, 160);
+
+    color: black;
+    font-weight: 900;
+    font-size: 15px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.step3buttonAux {
+    padding: 0px 15px 0px 15px;
+    min-height: 35px;
+    max-height: auto;
+    width: auto;
+    border: none;
+    background-color: transparent;
+    color: rgb(99, 99, 99);
+    font-weight: 900;
+    font-size: 15px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    opacity: 105%;
+}
+
+.placeholderImg2 {
+    height: 250px;
+    width: 250px;
+}
+
+.step3Text {
+    font-size: 15px;
+    font-weight: 600;
+    color: rgb(107, 107, 107);
+}
+
+.step3Text1 {
+    margin-top: -40px;
+    font-size: 25px;
+    font-weight: 600;
+    color: rgb(35, 35, 35);
+}
+
+.step3TextContainer {
+    margin-top: 10px;
+
+    height: auto;
+}
+
+
+
+@media (max-width: 600px) {
+    .Card {
+        height: 550px;
+        width: 300px;
+    }
+
+    .noPurchaseImg {
+        height: 200px;
+        width: 200px;
+    }
+
+    .step3Text {
+        margin-top: 5px;
+        font-size: 13px;
+        font-weight: 600;
+        color: rgb(107, 107, 107);
+    }
+
+    .step3Text1 {
+        margin-top: -40px;
+        font-size: 20px;
+        font-weight: 600;
+        color: rgb(35, 35, 35);
+    }
+
+}

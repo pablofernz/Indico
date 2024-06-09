@@ -125,6 +125,17 @@ const Sidebars = () => {
       totalAux.push(order.total);
       ordersAux.push(order);
     });
+    const getDay = () => {
+      const today = new Date();
+      const day = String(today.getDate()).padStart(2, "0");
+      const month = String(today.getMonth() + 1).padStart(2, "0");
+      const year = today.getFullYear();
+      const hours = String(today.getHours()).padStart(2, "0");
+      const minutes = String(today.getMinutes()).padStart(2, "0");
+      const formattedDateTime = `${day}-${month}-${year} ${hours}:${minutes}`;
+      return formattedDateTime;
+    };
+
     const suma = totalAux.reduce((total, numbers) => total + numbers, 0);
     setOrderSent((prevState) => ({
       ...prevState,
@@ -134,6 +145,7 @@ const Sidebars = () => {
         service: Math.floor((suma * (1 * 5)) / 100),
         allTogether: suma + Math.floor((suma * (1 * 5)) / 100),
       },
+      
     }));
   };
 
@@ -142,6 +154,7 @@ const Sidebars = () => {
     dispatch(sendTheOrder(orderSent));
     const arrayString = JSON.stringify(orderSent);
     window.sessionStorage.setItem("order", arrayString);
+    
   };
 
   useEffect(() => {
@@ -203,7 +216,6 @@ const Sidebars = () => {
                 <path
                   d="M1595 295q17 41-14 70l-493 493v742q0 42-39 59-13 5-25 5-27 0-45-19l-256-256q-19-19-19-45V858L211 365q-31-29-14-70 17-39 59-39h1280q42 0 59 39z"
                   fill="#74dba0"
-                  class="fill-000000"
                 ></path>
               </svg>
             </div>

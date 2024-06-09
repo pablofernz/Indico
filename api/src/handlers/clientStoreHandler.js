@@ -44,6 +44,17 @@ const addReview = async (req, res) => {
     const { text, stars } = req.body
     const clientID = id
 
+    const getDay = () => {
+        const today = new Date();
+        const day = String(today.getDate()).padStart(2, '0');
+        const month = String(today.getMonth() + 1).padStart(2, '0');
+        const year = today.getFullYear();
+        const hours = String(today.getHours()).padStart(2, '0');
+        const minutes = String(today.getMinutes()).padStart(2, '0');
+        const formattedDateTime = `${day}-${month}-${year} ${hours}:${minutes}`;
+        return formattedDateTime
+    }
+
     try {
         const client = await Client.findById(clientID)
 
@@ -54,7 +65,7 @@ const addReview = async (req, res) => {
                 return res.status(400).send("Ya tienes una reseña parecida, sabemos que puedes ser mucho más creativo :)")
 
             } else {
-                const review = new Review({ text, stars });
+                const review = new Review({ text, stars, date: getDay() });
                 client.reviews.push(review);
 
                 await client.save();
@@ -70,6 +81,8 @@ const addReview = async (req, res) => {
 
 const myReviews = async (req, res) => {
     const { id } = req.params
+
+
     try {
         const client = await Client.findById(id)
 

@@ -3,7 +3,9 @@ const Client = require('../models/Client');
 const foodAdd = require('../controllers/foodAdder');
 
 const seeClients = async (req, res) => {
+    const { waiting } = req.query
     try {
+
         const clients = await Client.find();
         if (clients.length) {
 
@@ -11,10 +13,15 @@ const seeClients = async (req, res) => {
                 name: client.name,
                 lastname: client.lastname,
                 email: client.email,
-                image: client.image,
-                reviews: client.reviews
+                // image: client.image,
+                reviews: client.reviews,
+                purchases: client.purchases
             }))
-            return res.status(200).json(clientsFilteredData)
+            if (waiting == "amount") {
+                return res.status(200).json(clientsFilteredData.length)
+            } else {
+                return res.status(200).json(clientsFilteredData)
+            }
         } else {
             throw Error("No hay clientes")
         }
