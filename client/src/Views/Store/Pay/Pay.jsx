@@ -59,7 +59,7 @@ const Pay = () => {
           },
         };
         const res = await axios.post(
-          "http://localhost:3001/client/pay",
+          "https://indico-backend.up.railway.app/client/pay",
           order,
           config
         );

@@ -66,7 +66,7 @@ const PersonalData = () => {
         };
 
         const response = await axios.put(
-          `http://localhost:3001/client/update/${userData.id}`,
+          `https://indico-backend.up.railway.app/client/update/${userData.id}`,
           newData,
           config
         );
@@ -137,7 +137,7 @@ const PersonalData = () => {
       };
 
       const response = await axios.delete(
-        `http://localhost:3001/client/delete/${userData.id}`,
+        `https://indico-backend.up.railway.app/client/delete/${userData.id}`,
         config
       );
 

@@ -15,33 +15,21 @@ const RegisterSection = () => {
     target: firstDivRef,
     offset: ["start end", "center start"],
   });
-  const translateY1 = useTransform(
-    scrollYProgress1,
-    [0, 0.1],
-    [1000, 0]
-  );
+  const translateY1 = useTransform(scrollYProgress1, [0, 0.1], [1000, 0]);
 
   const secondDivRef = useRef(null);
   const { scrollYProgress: scrollYProgress2 } = useScroll({
     target: secondDivRef,
     offset: ["start end", "center start"],
   });
-  const translateY2 = useTransform(
-    scrollYProgress2,
-    [0, 0.2],
-    [1000, 0,]
-  );
+  const translateY2 = useTransform(scrollYProgress2, [0, 0.2], [1000, 0]);
 
   const thirdDivRef = useRef(null);
   const { scrollYProgress: scrollYProgress3 } = useScroll({
     target: thirdDivRef,
     offset: ["start end", "center start"],
   });
-  const translateY3 = useTransform(
-    scrollYProgress3,
-    [0, 0.3],
-    [1000, 0]
-  );
+  const translateY3 = useTransform(scrollYProgress3, [0, 0.3], [1000, 0]);
 
   return (
     <div className={style.bigContainer} ref={containerRef}>

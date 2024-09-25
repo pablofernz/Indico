@@ -17,7 +17,7 @@ nav {
     height: 35px;
     z-index: 3000;
     transition: all 0.3s ease;
-    
+
 
 }
 
@@ -34,7 +34,8 @@ nav .navbar {
     padding: 0px 40px 0px 40px;
     z-index: 3000;
 
-    background-color:rgba(245, 245, 245, 0.495);    backdrop-filter: blur(10px);
+    background-color: rgba(245, 245, 245, 0.495);
+    backdrop-filter: blur(10px);
 
 }
 

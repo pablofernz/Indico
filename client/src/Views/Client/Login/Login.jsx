@@ -81,7 +81,7 @@ const ClientLogin = () => {
     if (Object.keys(validationErrors).length === 0) {
       try {
         const res = await axios.post(
-          "http://localhost:3001/client/login",
+          "https://indico-backend.up.railway.app/client/login",
           form
         );
         Cookies.set("session_token", res.data.token);

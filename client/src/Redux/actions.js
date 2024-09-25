@@ -17,7 +17,7 @@ export const GET_USERS = 'GET_USERS'
 
 export const getReviews = () => {
     return async function (dispatch) {
-        const response = await axios.get('http://localhost:3001/store/reviews')
+        const response = await axios.get('https://indico-backend.up.railway.app/store/reviews')
         const reviews = response.data
         // const data = reviews.map(rev => rev.reviews)
         // console.log(reviews)
@@ -31,7 +31,7 @@ export const getReviews = () => {
 
 export const getMenu = () => {
     return async function (dispatch) {
-        const response = await axios.get('http://localhost:3001/store/menu')
+        const response = await axios.get('https://indico-backend.up.railway.app/store/menu')
         const menu = response.data
         // console.log(menu)
 
@@ -150,7 +150,7 @@ export const validateToken = async (token) => {
             };
 
             // Realiza la solicitud al servidor para validar el token
-            const res = await axios.get("http://localhost:3001/token/test", config)
+            const res = await axios.get("https://indico-backend.up.railway.app/token/test", config)
 
             // Retorna el resultado de la validación
             return res;
@@ -173,7 +173,7 @@ export const getUserDataWithToken = async (token) => {
             };
 
             // Realiza la solicitud al servidor para validar el token
-            const res = await axios.get("http://localhost:3001/token/getuserdata", config)
+            const res = await axios.get("https://indico-backend.up.railway.app/token/getuserdata", config)
 
             // Retorna el resultado de la validación
             return res;
@@ -188,7 +188,7 @@ export const getUserDataWithToken = async (token) => {
 export const getDataUsers = (waiting) => {
     return async (dispatch) => {
         try {
-            const response = await axios.get(`http://localhost:3001/store/clients?waiting=${waiting}`);
+            const response = await axios.get(`https://indico-backend.up.railway.app/store/clients?waiting=${waiting}`);
             const users = response.data;
 
             dispatch({

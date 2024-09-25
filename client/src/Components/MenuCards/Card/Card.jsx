@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import style from "./Card.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import { addToCart, cartStatus, deleteToCart } from "../../../Redux/actions";
+import { motion } from "framer-motion";
 
 export default function Card({
   id,
@@ -53,7 +54,8 @@ export default function Card({
   });
 
   return (
-    <div className={style.Content}>
+    <motion.div 
+    className={style.Content}>
       {discount ? (
         <div className={style.Discount}>{`${discount}%`} OFF</div>
       ) : null}
@@ -93,6 +95,6 @@ export default function Card({
           )}
         </button>
       </div>
-    </div>
+    </motion.div>
   );
 }
