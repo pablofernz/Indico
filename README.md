@@ -25,10 +25,12 @@ Back-end:
 
 Autenticación (en proceso):
 * Firebase
+* Json Web Token (JWT)
 
 Front-end:
 * React
 * Redux
+* Framer Motion
   
 ## Instalación
 Aunque el proyecto sigue en desarrollo, puedes instalarlo y probar las funcionalidades de la página ingresando los siguientes comandos en la terminal
