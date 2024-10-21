@@ -10,7 +10,7 @@
     height: 100vh;
     width: 100vw;
     position: fixed;
-    background-image: url(https://images.unsplash.com/photo-1546554137-f86b9593a222?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D);
+    background-image: url(https://res.cloudinary.com/dnrprmypf/image/upload/q_10/v1728881924/Projects%20Images/Indico/Store%20image%20backgrounds_utils/Account%20pages%20background.webp);
     background-size: cover;
     filter: brightness(0.4);
 }
@@ -35,6 +35,8 @@
     backdrop-filter: blur(0px);
     overflow: hidden;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    outline: 2px solid black;
+
 }
 
 .accountCardContent {
@@ -109,7 +111,7 @@
 .name {
 
     font-size: 20px;
-    font-weight: 600;
+    font-weight: 600 !important;
     margin-top: -10px;
     max-width: 100%;
     text-overflow: ellipsis;
@@ -176,6 +178,7 @@
     cursor: pointer;
     transition: all 0.2s ease;
     border: none;
+    position: relative;
 }
 
 .dropdownOption:hover {
@@ -335,7 +338,7 @@
 @media (max-width: 600px) {
     .accountCard {
         height: 550px;
-        width: 300px;
+        width: 90dvw;
     }
 
     .optionsContainer {
@@ -347,7 +350,7 @@
 
     .dropdownOptionsText {
         font-weight: 600;
-        font-size: 14px;
+        font-size: 15px;
         width: 70%;
         height: 100%;
         display: flex;

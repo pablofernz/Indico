@@ -1,6 +1,6 @@
 import { GET_REVIEWS, GET_MENU, SET_GRID, SET_LIST, SET_TYPE, ADD_TO_CART, DELETE_TO_CART, SEARCH_FOOD, UPDATE_ITEM_QUANTITY, SEND_ORDER, CLEAR_CART, KEEP_CART, CART_STATUS, GET_USERS } from "./actions";
 
-let cartItemsFromStorage = JSON.parse(window.sessionStorage.getItem("cartItems"));
+let cartItemsFromStorage = window.sessionStorage.getItem("cartItems") ? JSON.parse(window.sessionStorage.getItem("cartItems")) : [];
 let initialstate = {
     users: "",
     storeView: "list",

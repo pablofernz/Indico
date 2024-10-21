@@ -1,15 +1,32 @@
 import style from "./IconLoader.module.css";
+import { motion } from "framer-motion";
 
-const IconLoader = () => {
+const IconLoader = ({ color, scale }) => {
   return (
-    <div>
-      <div className={style.dotWave}>
-        <div className={style.dotWaveDot}></div>
-        <div className={style.dotWaveDot}></div>
-        <div className={style.dotWaveDot}></div>
-        <div className={style.dotWaveDot}></div>
+    <motion.div
+      initial={{ opacity: 0, scale: 0 }}
+      exit={{ opacity: 0, scale: 0 }}
+      animate={{ opacity: 1, scale: 1 }}
+    >
+      <div className={style.dotWave} style={{ scale: scale || "1" }}>
+        <div
+          className={style.dotWaveDot}
+          style={{ backgroundColor: color || " rgb(235,235,235)" }}
+        />
+        <div
+          className={style.dotWaveDot}
+          style={{ backgroundColor: color || " rgb(235,235,235)" }}
+        />
+        <div
+          className={style.dotWaveDot}
+          style={{ backgroundColor: color || " rgb(235,235,235)" }}
+        />
+        <div
+          className={style.dotWaveDot}
+          style={{ backgroundColor: color || " rgb(235,235,235)" }}
+        />
       </div>
-    </div>
+    </motion.div>
   );
 };
 

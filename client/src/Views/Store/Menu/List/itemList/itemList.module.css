@@ -35,6 +35,20 @@
     font-style: italic;
 }
 
+
+.Like {
+    border: none;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    padding: 5px;
+    color: rgb(210, 210, 210);
+    background-color: rgb(75, 4, 4);
+    width: 40px;
+    height: auto;
+    cursor: pointer;
+}
+
 .Img {
     height: 100%;
     width: 25%;

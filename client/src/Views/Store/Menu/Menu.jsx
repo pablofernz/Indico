@@ -1,8 +1,8 @@
 import { useSelector } from "react-redux";
-import MenuGrid from "./Grid/MenuGrid";
-import { useEffect, useState } from "react";
-import MenuList from "./List/MenuList";
+import { useEffect, useState, lazy, Suspense, startTransition } from "react";
 import { useDispatch } from "react-redux";
+const MenuGrid = lazy(() => import("./Grid/MenuGrid"));
+const MenuList = lazy(() => import("./List/MenuList"));
 import { setGrid, setList } from "../../../Redux/actions";
 
 const Menu = () => {
@@ -12,7 +12,9 @@ const Menu = () => {
 
   useEffect(() => {
     const actualizarEstado = () => {
-      setEsMovil(window.innerWidth <= 700);
+      startTransition(() => {
+        setEsMovil(window.innerWidth <= 700);
+      });
     };
 
     window.addEventListener("resize", actualizarEstado);
@@ -23,14 +25,24 @@ const Menu = () => {
   }, []);
 
   useEffect(() => {
-    if (esMovil) {
-      dispatch(setList());
-    } else {
-      dispatch(setGrid());
-    }
-  }, [esMovil]);
+    startTransition(() => {
+      if (esMovil) {
+        dispatch(setList());
+      } else {
+        dispatch(setGrid());
+      }
+    });
+  }, [esMovil, dispatch]);
 
-  return <div> {visual == "grid" ? <MenuGrid /> : <MenuList />}</div>;
+  return (
+    <div>
+      {/* Envuelve el renderizado perezoso en un Suspense con fallback */}
+      <Suspense fallback={<div>Loading...</div>}>
+        {visual === "grid" && <MenuGrid />}
+        {visual === "list" && <MenuList />}
+      </Suspense>
+    </div>
+  );
 };
 
 export default Menu;

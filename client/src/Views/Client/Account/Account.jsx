@@ -1,11 +1,29 @@
 import style from "./Account.module.css";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import Cookies from "js-cookie";
 import { getUserDataWithToken } from "../../../Redux/actions";
 import { AnimatePresence, motion } from "framer-motion";
 import SwipeBottomMiddle from "../../../Components/pageAnimations/swipeUp/Exit/swipeUp";
 import SwipeMiddleTop from "../../../Components/pageAnimations/swipeDown/Exit/swipeDown";
+
+export async function getUserData() {
+  const token = Cookies.get("session_token");
+
+  try {
+    const response = await getUserDataWithToken(token);
+    const userData = {
+      ...response.data,
+      createdAt: response.data.createdAt.split(" ")[0].replace(/-/g, "/"),
+    };
+
+    window.localStorage.setItem("userData", JSON.stringify(userData));
+    return userData;
+  } catch (error) {
+    console.log(error);
+    window.alert(error);
+  }
+}
 
 const AccountPage = () => {
   const [isExit, setExit] = useState(false);
@@ -15,34 +33,16 @@ const AccountPage = () => {
   const navigate = useNavigate();
   const [userData, setUserData] = useState(null);
 
-  const getUserData = async () => {
-    const token = Cookies.get("session_token");
-    try {
-      if (token) {
-        const response = await getUserDataWithToken(token);
-        setUserData({
-          id: response.data.id,
-          name: response.data.name,
-          lastname: response.data.lastname,
-          image: response.data.image,
-          email: response.data.email,
-          reviews: response.data.reviews,
-          purchases: response.data.purchases,
-          createdAt: response.data.createdAt.split(" ")[0].replace(/-/g, "/"),
-        });
-      }
-    } catch (error) {
-      console.log(error);
-      window.alert(error);
-    }
+  const fetchData = async () => {
+    const response = await getUserData();
+    setUserData(response);
   };
   useEffect(() => {
-    getUserData();
-    // console.log(userData)
+    Cookies.get("session_token") ? fetchData() : navigate("/login");
   }, []);
 
   useEffect(() => {
-    window.sessionStorage.setItem("userData", JSON.stringify(userData));
+    // window.sessionStorage.setItem("userData", JSON.stringify(userData));
     setTimeout(() => {
       window.sessionStorage.removeItem("from_landing");
     }, 1000);
@@ -64,6 +64,7 @@ const AccountPage = () => {
           ></motion.div>
         )}
       </AnimatePresence>
+
       <AnimatePresence>
         {logoutOpen == true && (
           <motion.div
@@ -78,7 +79,7 @@ const AccountPage = () => {
                 <div className={style.imgReviewContainer}>
                   <img
                     className={style.imgReview}
-                    src="https://i.ibb.co/VH8kxH1/Quitting-a-job-bro.png"
+                    src="https://res.cloudinary.com/dnrprmypf/image/upload/q_0/v1728882785/Projects%20Images/Indico/Store%20image%20backgrounds_utils/Logout%20Image.webp"
                     alt="LogoutImage"
                   />
                 </div>
@@ -250,12 +251,12 @@ const AccountPage = () => {
               </button>
               <button
                 className={style.dropdownOption}
-                // onClick={() => {
-                //   setExit(true);
-                //   setTimeout(() => {
-                //     navigate("/reviews");
-                //   }, 500);
-                // }}
+                onClick={() => {
+                  setExit(true);
+                  setTimeout(() => {
+                    navigate("/account/reviews");
+                  }, 500);
+                }}
               >
                 <p className={style.dropdownOptionsIcon}>
                   <svg
@@ -279,12 +280,12 @@ const AccountPage = () => {
               </button>
               <button
                 className={style.dropdownOption}
-                // onClick={() => {
-                //   setExit(true);
-                //   setTimeout(() => {
-                //     navigate("/reviews");
-                //   }, 500);
-                // }}
+                onClick={() => {
+                  setExit(true);
+                  setTimeout(() => {
+                    navigate("/account/favorites");
+                  }, 500);
+                }}
               >
                 <p className={style.dropdownOptionsIcon}>
                   <svg
@@ -304,7 +305,7 @@ const AccountPage = () => {
                   </svg>
                 </p>
 
-                <p className={style.dropdownOptionsText}>Comidas favoritas</p>
+                <p className={style.dropdownOptionsText}>Mis comidas favoritas</p>
               </button>
 
               <button

@@ -1,0 +1,334 @@
+.accountComponent {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.background {
+    height: 100vh;
+    width: 100vw;
+    position: fixed;
+    background-image: url(https://res.cloudinary.com/dnrprmypf/image/upload/q_10/v1728881924/Projects%20Images/Indico/Store%20image%20backgrounds_utils/Account%20pages%20background.webp);
+    background-size: cover;
+    filter: brightness(0.4);
+
+}
+
+.cardContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.CardSlider {
+    position: absolute;
+    height: 550px;
+    width: 550px;
+    background-color: rgb(233, 233, 233);
+    z-index: 1;
+    margin: -20px;
+    box-shadow: 0px 0px 200px rgb(233, 233, 233);
+}
+
+.Card {
+    height: 550px;
+    width: 550px;
+    background-color: rgb(233, 233, 233);
+    padding: 20px;
+    border-radius: 30px;
+    backdrop-filter: blur(50px) brightness(1.7);
+    overflow: hidden;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    gap: 3%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    outline: 2px solid black;
+}
+
+
+
+.back {
+    margin: 20px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-radius: 50px;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.Card>header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 6%;
+    width: 100%;
+}
+
+.Card>header>p {
+    font-weight: 600;
+    font-size: 20px;
+}
+
+
+.Card>main {
+    padding-top: 10px;
+    display: flex;
+    align-items: start;
+    padding-left: 20px;
+    justify-content: start;
+    height: 90%;
+    width: 100%;
+    background-color: transparent;
+    border-radius: 20px;
+    flex-wrap: wrap;
+    overflow-y: scroll;
+    gap: 25px;
+    padding-bottom: 20px;
+    position: relative;
+}
+
+.upperShadow {
+    margin-right: 25px;
+    z-index: 2;
+    margin-top: 67px;
+    position: fixed;
+    top: 0;
+    left: 3%;
+    height: 10px;
+    width: calc(100% - 40px);
+    background-image: linear-gradient(to bottom, rgb(233, 233, 233), transparent);
+}
+
+.bottomShadow {
+    margin-right: 25px;
+    z-index: 2;
+    margin-bottom: 20px;
+    position: fixed;
+    bottom: 0;
+    left: 3%;
+    height: 20px;
+    width: calc(100% - 40px);
+    background-image: linear-gradient(to top, rgb(233, 233, 233), transparent);
+    /* background-color: red; */
+}
+
+
+.Card>main::-webkit-scrollbar {
+    display: block;
+    height: 20px;
+    width: 5px;
+}
+
+.Card>main::-webkit-scrollbar-thumb {
+    background-color: rgb(209, 209, 209);
+    height: 50px;
+
+}
+
+.Card>main::-webkit-scrollbar-thumb:hover {
+    background-color: rgb(152, 152, 152);
+}
+
+.Card>main::-webkit-scrollbar-track {
+    background-color: transparent;
+}
+
+
+.foodCard {
+    height: 180px;
+    width: 220px;
+    border-radius: 20px;
+    background-color: rgb(255, 255, 255);
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    flex-direction: column;
+    position: relative;
+    user-select: none;
+    /* outline: 2px solid rgb(200, 200, 200); */
+    box-shadow: 0px 10px 10px rgba(66, 66, 66, 0.512);
+}
+
+.Discount {
+    position: absolute;
+    left: 0;
+    font-size: 15px;
+    padding: 5px 10px 5px 10px;
+    font-weight: 600;
+    color: black;
+    background-color: rgb(255, 255, 255);
+    border-radius: 20px 0px 15px 0px;
+    width: auto;
+    height: auto;
+    /* box-shadow: rgb(255, 255, 255) 5px 5px 15px; */
+    font-style: italic;
+}
+
+.Like {
+    border: none;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    position: absolute;
+    right: 0%;
+    font-size: 15px;
+    padding: 5px;
+    color: rgb(210, 210, 210);
+    background-color: rgb(255, 255, 255);
+    border-radius: 0px 20px 0px 15px;
+    width: 40px;
+    height: auto;
+    cursor: pointer;
+    margin-right: 3px;
+    margin-top: 3px;
+}
+
+.Like:focus {
+    outline: none;
+}
+
+.imageContainer {
+    padding: 5px;
+    height: 60%;
+    width: 100%;
+    border-radius: 10px;
+}
+
+.imageContainer>img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 15px;
+}
+
+.foodTitle {
+    color: rgb(42, 42, 42);
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    max-width: 200px;
+    font-weight: 600;
+
+}
+
+.priceAndButton {
+    position: absolute;
+    bottom: 0;
+    width: 95%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin-bottom: 10px;
+
+}
+
+
+.Price {
+    font-weight: 600;
+    padding-left: 5px;
+    color: rgb(0, 0, 0);
+    font-variant-numeric: tabular-nums;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+
+.button {
+    padding: 0px 15px;
+    height: 25px;
+    border: none;
+    background-color: rgb(116, 219, 160);
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.4s ease;
+    opacity: 100%;
+    font-size: 15px;
+}
+
+.button:hover {
+    box-shadow: rgb(116, 219, 160) 0px 0px 15px;
+
+}
+
+.button:active {
+    transform: scale(0.95);
+}
+
+
+.errorComponent {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 50px;
+    padding-right: 20px;
+}
+
+.gifContainer {
+    height: 200px;
+    width: 200px;
+}
+
+.gifContainer>img {
+    height: 100%;
+    width: 100%;
+    border-radius: 30px;
+    outline: 2px solid black;
+    box-shadow: 10px 10px 0px rgb(0, 0, 0);
+}
+
+.errorText {
+    text-align: center;
+    font-size: 20px;
+}
+
+.errorText>label {
+    font-weight: 600;
+}
+
+.errorButton {
+    padding: 5px 10px 5px 10px;
+    background-color: transparent;
+    border-radius: 10px;
+    font-size: 18px;
+    color: black;
+    /* outline: 1px solid black; */
+    box-shadow: 5px 5px 0px black;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border: 2px solid black;
+}
+
+.errorButton:active {
+    box-shadow: 0px 0px 0px black;
+    transform: translateX(5px) translateY(5px);
+}
+
+
+@media (max-width: 600px) {
+    .Card {
+        height: 550px;
+        width: 90dvw;
+    }
+
+    .gifContainer {
+        height: 150px;
+        width: 150px;
+    }
+
+}

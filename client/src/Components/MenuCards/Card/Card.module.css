@@ -6,7 +6,7 @@
     border: 5px solid rgb(255, 255, 255);
     box-shadow: rgb(64, 64, 64) 0px 0px 25px;
     transition: all 0.2s ease-in-out;
-
+    position: relative;
 }
 
 .selected {
@@ -16,7 +16,7 @@
 .Discount {
     position: absolute;
     font-size: 15px;
-    padding: 5px;
+    padding: 5px 10px 5px 5px;
     font-weight: 600;
     color: black;
     background-color: rgb(255, 255, 255);
@@ -27,11 +27,32 @@
     font-style: italic;
 }
 
+.Like {
+    border: none;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    position: absolute;
+    right: 0%;
+    font-size: 15px;
+    padding: 5px;
+    color: rgb(210, 210, 210);
+    background-color: rgb(255, 255, 255);
+    border-radius: 0px 13px 0px 15px;
+    width: 40px;
+    height: auto;
+    cursor: pointer;
+}
+
+.Like:focus {
+    outline: none;
+}
+
 .Img {
     height: 140px;
     width: 240px;
     object-fit: cover;
-    cursor: pointer;
+    /* cursor: pointer; */
     border-radius: 15px;
 }
 

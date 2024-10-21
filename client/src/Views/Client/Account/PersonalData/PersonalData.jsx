@@ -22,7 +22,7 @@ const PersonalData = () => {
   const [seeNewPassword, setSeeNewPassword] = useState(false);
 
   const [userData, setUserData] = useState(
-    JSON.parse(window.sessionStorage.getItem("userData"))
+    JSON.parse(window.localStorage.getItem("userData"))
   );
   const token = Cookies.get("session_token");
 
@@ -66,7 +66,7 @@ const PersonalData = () => {
         };
 
         const response = await axios.put(
-          `https://indico-backend.up.railway.app/client/update/${userData.id}`,
+          `https://indico-backend.up.railway.app/client/${userData.id}/update`,
           newData,
           config
         );
@@ -94,7 +94,6 @@ const PersonalData = () => {
     }
   };
 
-  useEffect(() => {}, []);
   const [imageSrc, setImageSrc] = useState(null);
 
   const handleFileChange = (event) => {
@@ -137,7 +136,7 @@ const PersonalData = () => {
       };
 
       const response = await axios.delete(
-        `https://indico-backend.up.railway.app/client/delete/${userData.id}`,
+        `https://indico-backend.up.railway.app/client/${userData.id}/delete`,
         config
       );
 
@@ -298,7 +297,7 @@ const PersonalData = () => {
                 </button>
                 <button
                   type="button"
-                  style={{ left: "500px" }}
+                  // style={{ left: "500px" }}
                   className={style.editButton}
                   onClick={() => {
                     setEditorMode(true);

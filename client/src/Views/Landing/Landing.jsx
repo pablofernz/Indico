@@ -13,6 +13,8 @@ import VerifyToken from "../../Verifications/Token/verifyToken";
 import { motion, AnimatePresence } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 import Section3 from "./Sections/Section3/section3";
+import { getUserData } from "../Client/Account/Account";
+import Cookies from "js-cookie";
 
 const Landing = () => {
   const dispatch = useDispatch();
@@ -62,6 +64,9 @@ const Landing = () => {
 
   const [isExit, setExit] = useState(false);
 
+  useEffect(() => {
+    Cookies.get("session_token") && getUserData();
+  }, []);
   return (
     <motion.div className={style.Landing}>
       <VerifyToken />
@@ -74,7 +79,7 @@ const Landing = () => {
         <div className={style.section1Container}>
           <div className={style.sectionLeft}>
             <header className={style.sectionLeftTop}>
-              <motion.div
+              {/* <motion.div
                 initial={{ scale: 0.01, x: -300 }}
                 animate={{ scale: 1, x: 0 }}
                 transition={{ duration: 1, delay: 0.8, type: "spring" }}
@@ -92,7 +97,7 @@ const Landing = () => {
                     </p>
                   </div>
                 </div>
-              </motion.div>
+              </motion.div> */}
             </header>
 
             <footer className={style.sectionLeftBottom}>

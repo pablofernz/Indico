@@ -3,7 +3,7 @@
     height: 200vh;
     position: absolute;
     background-color: rgb(0, 0, 0);
-    z-index: 300000000;
+    z-index: 4;
     position: fixed;
 
 }
@@ -27,7 +27,7 @@
     top: 0;
     transition: all 0.5s ease-in-out;
 
-    z-index: 9999;
+    z-index: 3;
 
 }
 
@@ -43,7 +43,7 @@
     position: absolute;
     right: 0;
     margin-right: -40px;
-    z-index: 1000;
+    z-index: 3;
     width: 40px;
     background-color: rgb(0, 0, 0);
     border-radius: 0px 80px 80px 0px;
@@ -69,6 +69,7 @@
 
 }
 
+/* 
 .filterMenu {
     height: 100%;
     width: 100%;
@@ -122,22 +123,21 @@
     padding: 2px 10px 2px 10px;
     font-size: 15px;
     font-weight: 600;
-}
+} */
 
 /* ------- CART ------- */
 
 
 .menuCart {
     position: fixed;
-    ;
+
     width: 350px;
     height: 100vh;
     right: 0;
     top: 0;
     background-color: transparent;
-    backdrop-filter: blur(15px) brightness(0.12);
     /* box-shadow: rgb(0, 0, 0) 0px 2px 50px; */
-    z-index: 9999;
+    z-index: 3;
     transition: all 0.5s ease-in-out;
 }
 
@@ -153,7 +153,7 @@
     position: absolute;
     right: 0;
     margin-right: 349px;
-    z-index: 1000;
+    z-index: 3;
     width: 40px;
     background-color: rgb(0, 0, 0);
     border-radius: 80px 0px 0px 80px;
@@ -203,7 +203,9 @@
 .cartCheckout {
     height: 100%;
     width: 100%;
-    background-color: rgb(19, 19, 19);
+    background-color: rgba(19, 19, 19, 0.979);
+    padding: 5px;
+    border-radius: 15px 0px 0px 15px;
 }
 
 .foodCheckout {
@@ -328,9 +330,7 @@ s {
     justify-content: space-evenly;
     align-items: center;
     border-radius: 50px;
-    color: rgb(116, 219, 160);
-    border: 2px solid rgb(116, 219, 160);
-    ;
+    background-color: rgb(116, 219, 160);
 }
 
 .btn {
@@ -338,12 +338,16 @@ s {
     border: none;
     font-size: 20px;
     cursor: pointer;
-    color: rgb(116, 219, 160);
+    color: rgb(42, 79, 58);
+    font-weight: 600;
 
 }
 
 .quantityIndicator {
     font-size: 18px;
+    color: rgb(42, 79, 58);
+    font-weight: 600;
+
 }
 
 .checkoutText {
@@ -526,7 +530,7 @@ s {
     .button {
         position: absolute;
         right: 0;
-        z-index: 1000;
+        z-index: 3;
         width: 40px;
         background-color: rgb(0, 0, 0);
         border-radius: 0px 80px 80px 0px;
@@ -594,7 +598,7 @@ s {
         position: absolute;
         right: 0;
         margin-right: 99%;
-        z-index: 1000;
+        z-index: 3;
         width: 40px;
         background-color: rgb(0, 0, 0);
         border-radius: 80px 0px 0px 80px;

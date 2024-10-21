@@ -63,7 +63,7 @@ const Pay = () => {
           order,
           config
         );
-        console.log(res.data);
+        console.log(order);
         // console.time(res.data);
         setPayState("Sent");
       } catch (err) {
@@ -93,7 +93,7 @@ const Pay = () => {
     const intervalId = setInterval(() => {
       now = new Date();
       if (now > futureTime) {
-        clearInterval(intervalId); // Detener el intervalo
+        clearInterval(intervalId);
         setOrderReady(true);
       }
     }, 1000);
@@ -113,20 +113,12 @@ const Pay = () => {
   };
 
   const finish = () => {
-    // window.localStorage.clear();
-    // window.sessionStorage.clear();
     window.sessionStorage.removeItem("order");
     window.sessionStorage.removeItem("order");
     window.sessionStorage.removeItem("cartItems");
     window.localStorage.removeItem("cartItems");
-
-    // const uniqueParam = Date.now(); // Generar un parámetro de consulta único
-    // navigate(`/store?refresh`);
   };
 
-  // useEffect(() => {
-  //   console.log(payState);
-  // }, [payState]);
   const [isExit, setExit] = useState(false);
   const exitHandler = () => {
     setExit(true);
@@ -135,12 +127,7 @@ const Pay = () => {
     }, 500);
   };
   return (
-    <div
-      className={style.component}
-      // initial={{ scale: 5 }}
-      // animate={{ scale: 1 }}
-      // transition={{ duration: 0.8 }}
-    >
+    <div className={style.component}>
       <motion.div
         className={style.pantalla}
         initial={{ y: 0 }} // Estilo inicial
@@ -364,7 +351,7 @@ const Pay = () => {
               <div className={style.orderCard3Content}>
                 <div className={style.placeholderImg2Container}>
                   <img
-                    src="https://i.ibb.co/1rz024h/Pizza-sharing-bro.png"
+                    src="https://res.cloudinary.com/dnrprmypf/image/upload/q_10/v1729184359/Projects%20Images/Indico/Store%20image%20backgrounds_utils/Pay%20finished.webp"
                     alt=""
                     className={style.placeholderImg2}
                   />

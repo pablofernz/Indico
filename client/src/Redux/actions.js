@@ -19,8 +19,6 @@ export const getReviews = () => {
     return async function (dispatch) {
         const response = await axios.get('https://indico-backend.up.railway.app/store/reviews')
         const reviews = response.data
-        // const data = reviews.map(rev => rev.reviews)
-        // console.log(reviews)
 
         dispatch({
             type: GET_REVIEWS,
@@ -173,8 +171,10 @@ export const getUserDataWithToken = async (token) => {
             };
 
             // Realiza la solicitud al servidor para validar el token
-            const res = await axios.get("https://indico-backend.up.railway.app/token/getuserdata", config)
-
+            const res = await axios.get(
+                // "http://localhost:3001/token/getuserdata"
+                "https://indico-backend.up.railway.app/token/getuserdata"
+                , config)
             // Retorna el resultado de la validación
             return res;
         } else {

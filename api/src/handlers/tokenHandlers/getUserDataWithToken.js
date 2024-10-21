@@ -31,7 +31,8 @@ const getUserDataWithToken = async (req, res) => {
                         image: userData.image,
                         reviews: userData.reviews,
                         purchases: userData.purchases,
-                        createdAt: userData.createdAt
+                        createdAt: userData.createdAt,
+                        favoriteFoods: userData.favoriteFoods
                     }
                     // return res.status(200).json({ message: "El token es válido", data: userData })
                     return res.status(200).json(userDataFiltered)

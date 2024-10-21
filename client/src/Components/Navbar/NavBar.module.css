@@ -14,8 +14,8 @@ nav {
     left: 0;
     top: 0;
     width: 100%;
-    height: 35px;
-    z-index: 3000;
+    height: 50px;
+    z-index: 30;
     transition: all 0.3s ease;
 
 
@@ -31,8 +31,8 @@ nav .navbar {
     justify-content: space-between;
     height: 100%;
     max-width: 100%;
-    padding: 0px 40px 0px 40px;
-    z-index: 3000;
+    padding: 0px 50px 0px 25px;
+    z-index: 30;
 
     background-color: rgba(245, 245, 245, 0.495);
     backdrop-filter: blur(10px);
@@ -143,6 +143,8 @@ nav .navbar .menu {
     display: none;
 }
 
+
+
 .userImgContainer {
     width: 35px;
     height: 35px;
@@ -153,7 +155,21 @@ nav .navbar .menu {
     display: flex;
     align-items: center;
     justify-content: center;
+    object-fit: cover;
+    position: relative;
+    border: none;
+    cursor: pointer;
+}
 
+.dropdownIndicator {
+    position: absolute;
+    height: auto;
+    width: auto;
+    left: 100%;
+    margin-left: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .dropdownContainer {
@@ -161,11 +177,10 @@ nav .navbar .menu {
     width: 200px;
     height: 135px;
     background-color: rgb(255, 255, 255);
-    margin-left: -140px;
+    margin-left: -120px;
     margin-top: 20px;
     border-radius: 15px;
     padding: 5px;
-    z-index: 5;
 }
 
 .dropdownOption {
@@ -212,28 +227,6 @@ nav .navbar .menu {
     margin-bottom: 12px;
 }
 
-
-.dropdownContainer2 {
-    width: 200px;
-    height: 48px;
-    background-color: rgb(0, 0, 0);
-    margin-left: -5px;
-    margin-top: -15px;
-    border-radius: 15px;
-    padding: 5px;
-    z-index: -4;
-    display: flex;
-    color: whitesmoke;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-    border: none;
-
-}
-
-.dropdownContainer2:hover {
-    transform: scale(0.9)
-}
 
 /* - - - - - - - - - - - - -- - - - - - -  */
 
@@ -291,7 +284,7 @@ nav .navbar .menu {
 
 
 .menuSmall {
-    z-index: 0;
+    z-index: 5;
     margin-left: -180px;
     margin-top: -40px;
     width: 250px;
@@ -360,13 +353,13 @@ nav .navbar .menu {
 @media (max-width: 600px) {
     .userContainer {
         margin-right: 10px;
-        transform: scale(0.8);
-
+        transform: scale(0.85);
+        margin-right: 20px;
     }
 
     .dropdownContainer {
         margin-top: 25px;
-        margin-left: -90px;
+        margin-left: -130px;
     }
 
     .navbar2 {
@@ -379,7 +372,7 @@ nav .navbar .menu {
         justify-content: space-between;
         height: 100%;
         max-width: 100%;
-        padding: 0px 10px 0px 10px;
+        padding: 0px 20px 0px 20px;
 
         backdrop-filter: blur(30px);
 

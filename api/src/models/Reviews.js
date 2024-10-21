@@ -13,7 +13,6 @@ const reviewsSchema = mongoose.Schema({
     },
     date: {
         type: String,
-        required: true
     }
 }, {
     versionKey: false // Establecer versionKey en false para eliminar la propiedad "__v"

@@ -127,11 +127,9 @@ const deleteReview = async (req, res) => {
     }
 }
 
-
 const purchaseFood = async (req, res) => {
-    const { data } = req.body
-    const authorization = req.headers.authorization
-    const order = req.body
+    const authorization = req.headers.authorization;
+    const { orders, payData } = req.body;  // Asegúrate de que payData esté presente y sea un objeto.
 
     const getDay = () => {
         const today = new Date();
@@ -141,51 +139,119 @@ const purchaseFood = async (req, res) => {
         const hours = String(today.getHours()).padStart(2, '0');
         const minutes = String(today.getMinutes()).padStart(2, '0');
         const formattedDateTime = `${day}-${month}-${year} ${hours}:${minutes}`;
-        return formattedDateTime
-    }
+        return formattedDateTime;
+    };
+
     try {
-
         if (authorization && authorization.toLowerCase().startsWith('bearer')) {
-            token = authorization.split(" ")[1]
-            const decodedToken = jwt.verify(token, secret)
+            const token = authorization.split(" ")[1];
+            const decodedToken = jwt.verify(token, secret);
 
-            if (decodedToken) {
-                if (Date.now() > decodedToken.exp) {
-                    return res.status(401).send("Token expirado, inicia sesión denuevo")
-                } else {
+            if (!decodedToken) return res.status(400).send("Token perdido o invalido");
 
-                    const client = await Client.findById(decodedToken.tokenData.id)
+            if (Date.now() > decodedToken.exp) return res.status(401).send("Token expirado, inicia sesión de nuevo");
 
-                    if (client) {
-                        const foodOrder = {
-                            order: order,
-                            date: getDay(),
+            const client = await Client.findById(decodedToken.tokenData.id);
 
-                        }
-                        const purchase = new Purchase(foodOrder);
-                        client.purchases.push(purchase);
+            if (!client) return res.status(404).send('Cliente no encontrado');
 
-                        await client.save();
-                        return res.status(200).json(purchase);
-
-                    } else {
-                        return res.status(404).send('Cliente no encontrado');
-                    }
-                }
-            } else {
-                return res.status(400).send("Token perdido o invalido")
+            if (!payData || !payData.food || !payData.service || !payData.allTogether) {
+                return res.status(400).send("Datos de pago incompletos.");
             }
+
+            const purchase = new Purchase({
+                orders: orders,
+                payData: {
+                    food: payData.food,
+                    service: payData.service,
+                    allTogether: payData.allTogether
+                },
+                date: getDay()
+            });
+            const newPurchase = await purchase.save();
+            client.purchases.push(newPurchase);
+            await client.save();
+            return res.status(200).json(purchase);
+
         } else {
-            return res.status(401).send("No autorizado")
+            return res.status(401).send("No autorizado");
         }
     } catch (error) {
-        return res.status(400).json(error.message)
+        return res.status(400).json({ message: error.message });
+    }
+};
+
+const getMyPurchases = async (req, res) => {
+    const { id } = req.params
+    if (!id) return res.status(400).send("ID not provided")
+
+    try {
+        const existingClient = await Client.findById(id)
+        if (!existingClient) return res.status(404).send("User not found.")
+
+
+        return res.status(200).json(existingClient.purchases)
+
+    } catch (error) {
+        return res.status(400).send(error)
     }
 }
+
+const setFavoriteFood = async (req, res) => {
+    const { id } = req.params
+    const { _id, title } = req.body
+
+
+    try {
+        let existingClient = await Client.findById(id);
+
+        if (!existingClient) return res.status(404).send("Client not found");
+
+
+        const existingFavorite = existingClient.favoriteFoods.some(dish => dish._id == _id);
+
+        if (existingFavorite) {
+
+            existingClient.favoriteFoods = existingClient.favoriteFoods.filter(dish => dish._id != _id);
+            await existingClient.save();
+            return res.status(200).json(existingClient.favoriteFoods);
+        } else {
+            existingClient.favoriteFoods.push({ _id, title });
+            await existingClient.save();
+            return res.status(200).json(existingClient.favoriteFoods);
+        }
+
+    } catch (error) {
+        return res.status(400).json({ message: error.message });
+    }
+}
+
+const getFavoriteFood = async (req, res) => {
+    const { id } = req.params
+    if (!id) return res.status(400).send("ID not provided")
+
+    try {
+        const existingClient = await Client.findById(id)
+        if (!existingClient) return res.status(404).send("User not found.")
+
+        const favoriteFoodsIDArray = existingClient.favoriteFoods.map((food) => food._id)
+        if (!favoriteFoodsIDArray.length) return res.status(404).json("This user doesn't have favorite foods.")
+
+        const foodData = await Menu.find({ _id: { $in: favoriteFoodsIDArray } })
+        return res.status(200).json(foodData)
+
+    } catch (error) {
+        return res.status(400).send(error)
+    }
+}
+
 module.exports = {
     getMenu,
     addReview,
     myReviews,
     deleteReview,
-    purchaseFood
+    purchaseFood,
+    getMyPurchases,
+    setFavoriteFood,
+    getFavoriteFood
 }

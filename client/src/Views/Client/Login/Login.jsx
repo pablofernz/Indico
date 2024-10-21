@@ -88,7 +88,6 @@ const ClientLogin = () => {
 
         isLoading(false);
         setIsLoged(true);
-        console.log(res.data);
       } catch (err) {
         isLoading(false);
         console.log(err);

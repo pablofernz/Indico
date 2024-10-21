@@ -11,7 +11,7 @@
     height: 100vh;
     width: 100vw;
     position: fixed;
-    background-image: url(https://images.unsplash.com/photo-1546554137-f86b9593a222?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D);
+    background-image: url(https://res.cloudinary.com/dnrprmypf/image/upload/q_10/v1728881924/Projects%20Images/Indico/Store%20image%20backgrounds_utils/Account%20pages%20background.webp);
     background-size: cover;
     filter: brightness(0.4);
 
@@ -39,12 +39,15 @@
     overflow: hidden;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     gap: 20px;
+    outline: 2px solid black;
+
 }
 
 .CardContent {
     height: 100%;
     width: 100%;
     border-radius: 10px;
+    position: relative;
 }
 
 .back {
@@ -407,7 +410,8 @@
     font-size: 15px;
     border: none;
     position: absolute;
-    left: 495px;
+    /* left: 495px; */
+    right: 0;
     cursor: pointer;
     border-radius: 50px;
     transition: transform 0.5s ease;
@@ -549,11 +553,11 @@
 @media (max-width: 600px) {
     .Card {
         height: 550px;
-        width: 300px;
+        width: 90dvw;
     }
 
     .editButton {
-        left: 245px;
+        margin-right: -5px;
     }
 
     .input::placeholder {
@@ -581,6 +585,7 @@
         height: 100%;
         display: flex;
         align-items: center;
+        justify-content: center;
     }
 
     .changePasswordButton {
@@ -609,5 +614,9 @@
 
     .input {
         font-size: 14px;
+    }
+
+    .deleteButton {
+        margin-bottom: 70px;
     }
 }

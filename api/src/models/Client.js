@@ -1,6 +1,7 @@
 const mongoose = require("mongoose")
 const reviewsSchema = require("./Reviews").schema
 const purchaseSchema = require("./Store/Purchase").schema
+const favoriteFoodsSchema = require("./Store/FavoriteFoods").schema
 const bcrypt = require("bcrypt")
 
 const clientSchema = mongoose.Schema({
@@ -22,7 +23,7 @@ const clientSchema = mongoose.Schema({
     },
     image: {
         type: String,
-        default: 'https://www.texture-fabrics.com/content/images/thumbs/0048095_cayman-seagreen.jpeg'
+        default: 'https://res.cloudinary.com/dnrprmypf/image/upload/q_auto:low/v1728605983/Projects%20Images/Indico/Clients%20Photos/User%20default%20photo.webp'
     },
     role: {
         type: String,
@@ -30,6 +31,7 @@ const clientSchema = mongoose.Schema({
     },
     purchases: [purchaseSchema],
     reviews: [reviewsSchema],
+    favoriteFoods: [favoriteFoodsSchema],
     createdAt: {
         type: String,
         required: true

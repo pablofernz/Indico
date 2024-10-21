@@ -1,10 +1,25 @@
 const mongoose = require("mongoose")
 
+const payDataSchema = mongoose.Schema({
+    food: {
+        type: Number,
+    },
+    service: {
+        type: Number,
+    },
+    allTogether: {
+        type: Number,
+    }
+})
 const purchaseSchema = mongoose.Schema({
-    order: {
+    orders: {
         type: Array,
         required: true
     },
+    payData: {
+        type: payDataSchema,
+    },
+
     date: {
         type: String,
         required: true

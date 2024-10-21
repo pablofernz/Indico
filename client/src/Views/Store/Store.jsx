@@ -10,6 +10,7 @@ import { useNavigate } from "react-router-dom";
 import SwipeMiddleTop from "../../Components/pageAnimations/swipeDown/Exit/swipeDown";
 import SwipeBottomMiddle from "../../Components/pageAnimations/swipeUp/Exit/swipeUp";
 import VerifyToken from "../../Verifications/Token/verifyToken";
+import NotLoginModal from "../../Components/NotLoginModal/notLoginModal";
 
 const Store = () => {
   const dispatch = useDispatch();
@@ -20,6 +21,8 @@ const Store = () => {
 
   const [reviewsOpen, setReviewsOpen] = useState(false);
   const [isExit, setExit] = useState(false);
+
+  
   return (
     <div className={style.background}>
       <VerifyToken />

@@ -128,23 +128,44 @@ const NavBar = () => {
               </div>
             ) : (
               <div className={style.userContainer}>
-                <div className={style.userImgContainer}>
+                <button
+                  onClick={userDropdownHandler}
+                  className={style.userImgContainer}
+                >
                   {userData && (
                     <img
                       width="35"
                       height="35"
-                      style={{
-                        borderRadius: "50px",
-                        outline: "solid black 2px",
-                        cursor: "pointer",
-                        objectFit: "cover",
-                      }}
                       src={userData.image}
                       alt="user-male-circle"
-                      onClick={userDropdownHandler}
                     />
                   )}
-                </div>
+                  <div className={style.dropdownIndicator}>
+                    <motion.svg
+                      animate={{
+                        rotate: isUserDropdownOpen == true ? 180 : 0,
+                        strokeWidth: 3,
+                      }}
+                      transition={{
+                        type: "spring",
+                        stiffness: 500,
+                        damping: 25,
+                      }}
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="black "
+                      width="18"
+                      height="18"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="m19.5 8.25-7.5 7.5-7.5-7.5"
+                      />
+                    </motion.svg>
+                  </div>
+                </button>
                 <AnimatePresence>
                   {isUserDropdownOpen == true && (
                     <div style={{ scale: "1.1" }}>
@@ -209,9 +230,9 @@ const NavBar = () => {
                               >
                                 <path d="M5.223 2.25c-.497 0-.974.198-1.325.55l-1.3 1.298A3.75 3.75 0 0 0 7.5 9.75c.627.47 1.406.75 2.25.75.844 0 1.624-.28 2.25-.75.626.47 1.406.75 2.25.75.844 0 1.623-.28 2.25-.75a3.75 3.75 0 0 0 4.902-5.652l-1.3-1.299a1.875 1.875 0 0 0-1.325-.549H5.223Z" />
                                 <path
-                                  fill-rule="evenodd"
+                                  fillRule="evenodd"
                                   d="M3 20.25v-8.755c1.42.674 3.08.673 4.5 0A5.234 5.234 0 0 0 9.75 12c.804 0 1.568-.182 2.25-.506a5.234 5.234 0 0 0 2.25.506c.804 0 1.567-.182 2.25-.506 1.42.674 3.08.675 4.5.001v8.755h.75a.75.75 0 0 1 0 1.5H2.25a.75.75 0 0 1 0-1.5H3Zm3-6a.75.75 0 0 1 .75-.75h3a.75.75 0 0 1 .75.75v3a.75.75 0 0 1-.75.75h-3a.75.75 0 0 1-.75-.75v-3Zm8.25-.75a.75.75 0 0 0-.75.75v5.25c0 .414.336.75.75.75h3a.75.75 0 0 0 .75-.75v-5.25a.75.75 0 0 0-.75-.75h-3Z"
-                                  clip-rule="evenodd"
+                                  clipRule="evenodd"
                                 />
                               </svg>
                             </p>
@@ -223,7 +244,7 @@ const NavBar = () => {
                             onClick={() => {
                               setExit(true);
                               setTimeout(() => {
-                                navigate("/reviews");
+                                navigate("/store/reviews");
                               }, 500);
                             }}
                           >
@@ -248,106 +269,12 @@ const NavBar = () => {
                             <p></p>
                           </div>
                         </div>
-                        <AnimatePresence>
-                          {/* <motion.button
-                            initial={{ y: 10, opacity: 0 }}
-                            animate={{ y: 0, opacity: 100 }}
-                            exit={{ y: 10, opacity: 0 }}
-                            transition={{ duration: 0.25, delay: 0.25 }}
-                            className={style.dropdownContainer2}
-                          >
-                            <p className={style.dropdownOptionsIcon}>
-                              <svg
-                                viewBox="0 0 512 512"
-                                fill="currentColor"
-                                width="18"
-                                height="18"
-                                style={{ transform: "rotate(180deg)" }}
-                              >
-                                <path d="M377.9 105.9L500.7 228.7c7.2 7.2 11.3 17.1 11.3 27.3s-4.1 20.1-11.3 27.3L377.9 406.1c-6.4 6.4-15 9.9-24 9.9c-18.7 0-33.9-15.2-33.9-33.9l0-62.1-128 0c-17.7 0-32-14.3-32-32l0-64c0-17.7 14.3-32 32-32l128 0 0-62.1c0-18.7 15.2-33.9 33.9-33.9c9 0 17.6 3.6 24 9.9zM160 96L96 96c-17.7 0-32 14.3-32 32l0 256c0 17.7 14.3 32 32 32l64 0c17.7 0 32 14.3 32 32s-14.3 32-32 32l-64 0c-53 0-96-43-96-96L0 128C0 75 43 32 96 32l64 0c17.7 0 32 14.3 32 32s-14.3 32-32 32z"></path>
-                              </svg>
-                            </p>
-                            <p className={style.dropdownOptionsText}>
-                              Cerrar sesión
-                            </p>
-                          </motion.button> */}
-                        </AnimatePresence>
                       </motion.div>
                     </div>
                   )}
                 </AnimatePresence>
               </div>
             )}
-
-            <div className={style.navbar2}>
-              <label className={style.burger} htmlFor="burger">
-                <input type="checkbox" onClick={handleclick} id="burger" />
-                <span></span>
-                <span></span>
-                <span></span>
-              </label>
-
-              <ul
-                className={`${style.menuSmall} ${
-                  isOpen === "open" ? style.open : style.closed
-                }`}
-              >
-                <a
-                  href="#Menu"
-                  className={style.btnsnav2}
-                  onClick={handleclick}
-                >
-                  Menú
-                </a>
-                <a
-                  href="#Reviews"
-                  className={style.btnsnav2}
-                  onClick={handleclick}
-                >
-                  Reseñas
-                </a>
-                {!Cookies.get("session_token") && (
-                  <a
-                    href="#Register"
-                    className={style.btnsnav2}
-                    onClick={handleclick}
-                  >
-                    Regístrate
-                  </a>
-                )}
-
-                {!Cookies.get("session_token") && (
-                  <a
-                    className={style.Login2}
-                    onClick={() => navigate("/login")}
-                  >
-                    Inicia Sesión
-                  </a>
-                )}
-              </ul>
-
-              {/* {isOpen === "open" ? (
-                <div className={style.menuSmallContainer}>
-                  <ul className={style.menuSmall}>
-                    <a href="#Menu" className={style.btnsnav2}>
-                      Menú
-                    </a>
-                    <a href="#Reviews" className={style.btnsnav2}>
-                      Reseñas
-                    </a>
-                    <a href="#Register" className={style.btnsnav2}>
-                      Regístrate
-                    </a>
-                    <a
-                      className={style.Login2}
-                      onClick={() => navigate("/registro")}
-                    >
-                      Inicia Sesión
-                    </a>
-                  </ul>
-                </div>
-              ) : null} */}
-            </div>
           </ul>
         </div>
       </nav>

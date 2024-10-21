@@ -11,14 +11,14 @@ import {
 } from "../../../../Redux/actions";
 import IconLoader from "../../../../Components/iconLoader/iconLoader";
 import { useNavigate } from "react-router-dom";
-import { motion, LayoutGroup } from "framer-motion";
+import { motion, LayoutGroup, AnimatePresence } from "framer-motion";
 
 const Sidebars = () => {
   const priceFilter = () => {};
 
   // - - - - - - - - - - C A R T - - - - - - - - - - - - - - - - -
 
-  const [optionsStatus, setOptionsStatus] = useState("closed");
+  // const [optionsStatus, setOptionsStatus] = useState("closed");
   // const [cartStatus, setCartStatus] = useState("closed");
 
   const navigate = useNavigate();
@@ -42,25 +42,34 @@ const Sidebars = () => {
 
   const cartIsOpen = useSelector((state) => state.cartIsOpen);
 
-  const OptionStatus = () => {
-    if (optionsStatus == "open") {
-      setOptionsStatus("closed");
-      dispatch(cartStatus(false));
-    } else {
-      setOptionsStatus("open");
-      dispatch(cartStatus(false));
-    }
-  };
+  // const OptionStatus = () => {
+  //   if (optionsStatus == "open") {
+  //     setOptionsStatus("closed");
+  //     dispatch(cartStatus(false));
+  //   } else {
+  //     setOptionsStatus("open");
+  //     dispatch(cartStatus(false));
+  //   }
+  // };
 
   const CartStatus = () => {
     if (cartIsOpen == true) {
       dispatch(cartStatus(false));
-      setOptionsStatus("closed");
+      // setOptionsStatus("closed");
     } else {
       dispatch(cartStatus(true));
-      setOptionsStatus("closed");
+      // setOptionsStatus("closed");
     }
   };
+
+  useEffect(() => {
+    if (window.sessionStorage.getItem("favorite_purchase")) {
+      dispatch(cartStatus(true));
+      setTimeout(() => {
+        window.sessionStorage.removeItem("favorite_purchase");
+      }, 1000);
+    }
+  }, []);
 
   const moreQuantity = (id) => {
     setIsOrderSent(false);
@@ -84,15 +93,28 @@ const Sidebars = () => {
     if (updatedQuantity < 1) {
       dispatch(deleteToCart(itemToUpdate));
     }
+    if (JSON.parse(window.sessionStorage.getItem("cartItems")).length === 1) {
+      window.sessionStorage.setItem("cartItems", "[]");
+      setAmount(0)
+    }
   };
 
   useEffect(() => {
-    if (foodInCart.length == 0) {
-      setTimeout(() => {
+    setTimeout(() => {
+      if (foodInCart.length < 1) {
         dispatch(cartStatus(false));
-      }, 1000);
-    }
+      }
+    }, 1500);
   }, [foodInCart]);
+
+  useEffect(() => {
+    setTimeout(() => {
+      if (foodInCart.length > 0) {
+        dispatch(cartStatus(true));
+      }
+    }, 1500);
+  }, []);
+
   const calculateTotal = () => {
     let total = 0;
     foodInCart.forEach((item) => {
@@ -145,7 +167,6 @@ const Sidebars = () => {
         service: Math.floor((suma * (1 * 5)) / 100),
         allTogether: suma + Math.floor((suma * (1 * 5)) / 100),
       },
-      
     }));
   };
 
@@ -154,20 +175,25 @@ const Sidebars = () => {
     dispatch(sendTheOrder(orderSent));
     const arrayString = JSON.stringify(orderSent);
     window.sessionStorage.setItem("order", arrayString);
-    
   };
 
   useEffect(() => {
-    setAmount(foodInCart.length);
-    calculateTotal();
-    createOrder();
+    // Solo ejecuta si foodInCart tiene elementos
+    if (foodInCart.length > 0) {
+      setAmount(foodInCart.length);
+      calculateTotal();
+      createOrder();
 
-    const cartItemsString = JSON.stringify(foodInCart);
-    window.sessionStorage.setItem("cartItems", cartItemsString);
+      // Actualiza el sessionStorage solo si foodInCart no está vacío
+      window.sessionStorage.setItem("cartItems", JSON.stringify(foodInCart));
+      console.log(foodInCart);
+    }
   }, [foodInCart]);
 
   const clearTheCart = () => {
     dispatch(clearCart());
+    window.sessionStorage.setItem("cartItems", "[]");
+
     setIsOrderSent(false);
     setTimeout(() => {
       dispatch(cartStatus(false));
@@ -202,7 +228,9 @@ const Sidebars = () => {
           transition={{ duration: 0.5 }} // Duración de la transición
         />
       )}
-      <div
+
+      {/*- -------- FILTERS BUTTON --------------- */}
+      {/* <div
         className={`${style.menuFilters} ${
           optionsStatus === "closed" ? style.open : style.closed
         }`}
@@ -236,7 +264,7 @@ const Sidebars = () => {
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
 
       <div
         className={`${style.menuCart} ${
@@ -261,60 +289,83 @@ const Sidebars = () => {
             ) : null}
           </span>
         </button>
+
+        {/* --------- FOOD IN CART COMPONENT ----------------- */}
         {foodInCart.length !== 0 ? (
           <motion.div
             className={style.cartCheckout}
-            initial={{ opacity: 0 }} // Estilo inicial
+            initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            exit={{ y: 0 }} // Estilo final cuando el componente se monta // Estilo final cuando el componente se desmonta
+            exit={{ y: 0 }}
             transition={{ duration: 0.5 }}
           >
             <div className={style.foodCheckout}>
               <div className={style.foodContent}>
-                <LayoutGroup />
-                {foodInCart.map(
-                  ({ id, title, image, price, discount, quantity, total }) => (
-                    <div key={id} className={style.dataContainer}>
-                      <div>
-                        <img src={image} alt="" className={style.dataImg} />
-                      </div>
-                      <div className={style.dataText}>
-                        <p className={style.dataTitle}>{title}</p>
-                        <p className={style.Price}>
-                          $
-                          {Math.ceil(price - price * (discount / 100)) *
-                            quantity}
-                          {discount === 0 ? null : (
-                            <s className={style.strikedPrice}>
-                              ${price * quantity}
-                            </s>
-                          )}
-                        </p>
-                      </div>
-                      <div className={style.actionButtons}>
-                        <div className={style.btnContainer}>
-                          <button
-                            className={style.btn}
-                            onClick={() => lessQuantity(id)}
-                            title="Disminuir"
-                          >
-                            -
-                          </button>
-                          <div className={style.quantityIndicator}>
-                            {quantity}
-                          </div>
-                          <button
-                            className={style.btn}
-                            onClick={() => moreQuantity(id)}
-                            title="Aumentar"
-                          >
-                            +
-                          </button>
+                <AnimatePresence mode="popLayout">
+                  {foodInCart?.map(
+                    ({
+                      id,
+                      title,
+                      image,
+                      price,
+                      discount,
+                      quantity,
+                      total,
+                    }) => (
+                      <motion.div
+                        key={id}
+                        layout
+                        initial={{ opacity: 0, scale: 0 }}
+                        exit={{ opacity: 0, scale: 0 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        transition={{
+                          type: "spring",
+                          damping: 20,
+                          stiffness: 200,
+                        }}
+                        className={style.dataContainer}
+                      >
+                        <div>
+                          <img src={image} alt="" className={style.dataImg} />
                         </div>
-                      </div>
-                    </div>
-                  )
-                )}
+                        <div className={style.dataText}>
+                          <p className={style.dataTitle}>{title}</p>
+                          <p className={style.Price}>
+                            $
+                            {Math.ceil(price - price * (discount / 100)) *
+                              quantity}
+                            {discount === 0 ? null : (
+                              <s className={style.strikedPrice}>
+                                ${price * quantity}
+                              </s>
+                            )}
+                          </p>
+                        </div>
+                        <div className={style.actionButtons}>
+                          <div className={style.btnContainer}>
+                            <button
+                              className={style.btn}
+                              onClick={() => lessQuantity(id)}
+                              title="Disminuir"
+                            >
+                              -
+                            </button>
+                            <div className={style.quantityIndicator}>
+                              {quantity}
+                            </div>
+                            <button
+                              className={style.btn}
+                              onClick={() => moreQuantity(id)}
+                              title="Aumentar"
+                            >
+                              +
+                            </button>
+                          </div>
+                        </div>
+                      </motion.div>
+                    )
+                  )}
+                </AnimatePresence>
               </div>
             </div>
             <div className={style.foodCheckoutFade} />
@@ -378,7 +429,7 @@ const Sidebars = () => {
               <div className={style.imgContainer}>
                 <img
                   className={style.imgCheckoutPlaceholder}
-                  src="https://i.ibb.co/jfjrfym/Empty-cuate-1.png"
+                  src="https://res.cloudinary.com/dnrprmypf/image/upload/q_40/v1729184547/Projects%20Images/Indico/Store%20image%20backgrounds_utils/Empty%20shopping%20cart.webp"
                   alt=""
                 />
               </div>
