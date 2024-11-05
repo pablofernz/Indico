@@ -1,4 +1,5 @@
 import axios from "axios"
+export const SET_NETWORK_ERROR = 'SET_NETWORK_ERROR'
 export const SET_GRID = 'SET_GRID'
 export const SET_LIST = 'SET_LIST'
 export const GET_REVIEWS = 'GET_REVIEWS'
@@ -15,23 +16,47 @@ export const CART_STATUS = 'CART_STATUS'
 export const GET_USERS = 'GET_USERS'
 
 
+export const setNetworkConnectionError = () => {
+    return async function (dispatch) {
+        dispatch({
+            type: SET_NETWORK_ERROR,
+        })
+    }
+}
 export const getReviews = () => {
     return async function (dispatch) {
-        const response = await axios.get('https://indico-backend.up.railway.app/store/reviews')
-        const reviews = response.data
+        try {
+            const response = await axios.get(
+                'https://indico-backend.onrender.com/store/reviews'
+                // 'http://localhost:3001/store/reviews'
+            );
 
-        dispatch({
-            type: GET_REVIEWS,
-            payload: reviews
-        })
+            if (response) {
+                const reviews = response.data;
+                dispatch({
+                    type: GET_REVIEWS,
+                    payload: reviews
+                });
+            } else {
+                dispatch(setNetworkConnectionError());
+            }
+
+        } catch (error) {
+            console.error("Error fetching reviews:", error);
+            dispatch(setNetworkConnectionError());
+        }
     }
 }
 
 export const getMenu = () => {
     return async function (dispatch) {
-        const response = await axios.get('https://indico-backend.up.railway.app/store/menu')
+        const response = await axios.get('https://indico-backend.onrender.com/store/menu')
+        // if (response) {
+        //     const menu = response.data
+        //     console.log(menu)
+        // }
         const menu = response.data
-        // console.log(menu)
+
 
         dispatch({
             type: GET_MENU,
@@ -148,7 +173,7 @@ export const validateToken = async (token) => {
             };
 
             // Realiza la solicitud al servidor para validar el token
-            const res = await axios.get("https://indico-backend.up.railway.app/token/test", config)
+            const res = await axios.get("https://indico-backend.onrender.com/token/test", config)
 
             // Retorna el resultado de la validación
             return res;
@@ -173,7 +198,7 @@ export const getUserDataWithToken = async (token) => {
             // Realiza la solicitud al servidor para validar el token
             const res = await axios.get(
                 // "http://localhost:3001/token/getuserdata"
-                "https://indico-backend.up.railway.app/token/getuserdata"
+                "https://indico-backend.onrender.com/token/getuserdata"
                 , config)
             // Retorna el resultado de la validación
             return res;
@@ -188,7 +213,7 @@ export const getUserDataWithToken = async (token) => {
 export const getDataUsers = (waiting) => {
     return async (dispatch) => {
         try {
-            const response = await axios.get(`https://indico-backend.up.railway.app/store/clients?waiting=${waiting}`);
+            const response = await axios.get(`https://indico-backend.onrender.com/store/clients?waiting=${waiting}`);
             const users = response.data;
 
             dispatch({

@@ -245,6 +245,8 @@ const getFavoriteFood = async (req, res) => {
     }
 }
 
+
+
 module.exports = {
     getMenu,
     addReview,
@@ -253,5 +255,6 @@ module.exports = {
     purchaseFood,
     getMyPurchases,
     setFavoriteFood,
-    getFavoriteFood
+    getFavoriteFood,
+
 }

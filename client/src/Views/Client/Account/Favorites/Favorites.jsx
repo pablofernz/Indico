@@ -122,7 +122,7 @@ const Favorites = () => {
   const getFavoriteFoodsData = async () => {
     try {
       const response = await axios.get(
-        `https://indico-backend.up.railway.app/client/${userData.id}/favoritefoods`
+        `https://indico-backend.onrender.com/client/${userData.id}/favoritefoods`
         // `http://localhost:3001/client/favoritefoods/${userData.id}`
       );
       setFoodsData(response.data.length ? response.data : null);

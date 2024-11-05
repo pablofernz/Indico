@@ -1,8 +1,10 @@
-import { React, lazy } from "react";
-import "./App.css";
-import { Routes, Route, Navigate } from "react-router-dom";
+import { React, lazy, useEffect } from "react";
+import style from "./App.module.css";
+import { Routes, Route, Navigate, useLocation } from "react-router-dom";
+import { motion, AnimatePresence } from "framer-motion";
 
 import Landing from "./Views/Landing/Landing";
+import { useSelector } from "react-redux";
 const MyReviews = lazy(() =>
   import("./Views/Client/Account/MyReviews/MyReviews")
 );
@@ -24,27 +26,60 @@ const Favorites = lazy(() =>
 );
 
 function App() {
+  const networkError = useSelector((state) => state.errors.network_connection);
+
+  useEffect(() => {
+    if (networkError) {
+      document.body.style.overflow = "hidden";
+      return () => {
+        document.body.style.overflow = "auto";
+      };
+    }
+  }, [networkError]);
+
   return (
     <div className="App">
-      <Routes>
-        <Route path="/" element={<Navigate to={"/home"} />} />
-        <Route path="/home" element={<Landing />} />
-        <Route path="/store/reviews" element={<Reviews />} />
-
-        <Route path="/login" element={<ClientLogin />} />
-        <Route path="/register" element={<ClientRegister />} />
-
-        <Route path="/account" element={<AccountPage />} />
-        <Route path="/account/myinformation" element={<PersonalData />} />
-        <Route path="/account/purchases" element={<MyPurchases />} />
-        <Route path="/account/favorites" element={<Favorites />} />
-        <Route path="/account/reviews" element={<MyReviews />} />
-
-        <Route path="/store" element={<Store />} />
-        <Route path="/store/pay" element={<Pay />} />
-
-        <Route path="*" element={<NotFound />} />
-      </Routes>
+      <AnimatePresence mode="popLayout">
+        {networkError === true ? (
+          <motion.div className={style.errorBackground}>
+            <div className={style.reviewContainer}>
+              <div className={style.reviewModalContent}>
+                <div className={style.imgReviewContainer}>
+                  <img
+                    className={style.imgReview}
+                    src="https://res.cloudinary.com/dnrprmypf/image/upload/q_10/v1730479229/Projects%20Images/Indico/Store%20image%20backgrounds_utils/Maintenance-bro_xjdfa6.webp"
+                    alt="LogoutImage"
+                  />
+                </div>
+                <p className={style.primaryText}>
+                  La página está fuera de servicio por mantenimiento.
+                </p>
+                <p className={style.secondaryText}>
+                  Pronto volverá todo a la normalidad
+                </p>
+              </div>
+            </div>
+          </motion.div>
+        ) : (
+          <>
+            <Routes>
+              <Route path="/" element={<Navigate to={"/home"} />} />
+              <Route path="/home" element={<Landing />} />
+              <Route path="/store/reviews" element={<Reviews />} />
+              <Route path="/login" element={<ClientLogin />} />
+              <Route path="/register" element={<ClientRegister />} />
+              <Route path="/account" element={<AccountPage />} />
+              <Route path="/account/myinformation" element={<PersonalData />} />
+              <Route path="/account/purchases" element={<MyPurchases />} />
+              <Route path="/account/favorites" element={<Favorites />} />
+              <Route path="/account/reviews" element={<MyReviews />} />
+              <Route path="/store" element={<Store />} />
+              <Route path="/store/pay" element={<Pay />} />
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+          </>
+        )}
+      </AnimatePresence>
     </div>
   );
 }

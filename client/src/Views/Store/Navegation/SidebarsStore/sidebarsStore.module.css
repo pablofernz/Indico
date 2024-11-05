@@ -15,6 +15,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    position: relative;
 }
 
 
@@ -39,18 +40,30 @@
     transform: translateX(250px);
 }
 
-.button {
-    position: absolute;
-    right: 0;
-    margin-right: -40px;
-    z-index: 3;
-    width: 40px;
-    background-color: rgb(0, 0, 0);
-    border-radius: 0px 80px 80px 0px;
+
+.backButton>button {
+    position: fixed;
+    top: 0;
+    left: 0;
+    margin-top: 20px;
+    margin-left: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     border: none;
-    font-size: 20px;
-    height: 40px;
-    margin-top: 10px;
+    background-color: whitesmoke;
+    padding: 10px;
+    color: rgb(0, 0, 0);
+    cursor: pointer;
+    border-radius: 9999px;
+    outline: 2px solid black;
+    box-shadow: 4px 4px 0px rgb(0, 0, 0);
+    transition: all 0.2s ease
+}
+
+.backButton>button:active {
+    box-shadow: 0px 0px 0px black;
+    transform: translateX(4px) translateY(4px);
 }
 
 .filterSvg {
@@ -135,7 +148,8 @@
     height: 100vh;
     right: 0;
     top: 0;
-    background-color: transparent;
+    background-color: rgba(19, 19, 19, 0.979);
+    border-radius: 15px 0px 0px 15px;
     /* box-shadow: rgb(0, 0, 0) 0px 2px 50px; */
     z-index: 3;
     transition: all 0.5s ease-in-out;
@@ -149,67 +163,216 @@
     transform: translateX(350px);
 }
 
-.button2 {
-    position: absolute;
+.buttonsContainer {
+    position: fixed;
+    top: 0;
     right: 0;
-    margin-right: 349px;
     z-index: 3;
-    width: 40px;
-    background-color: rgb(0, 0, 0);
-    border-radius: 80px 0px 0px 80px;
+    width: 120px;
+    background-color: whitesmoke;
+    backdrop-filter: blur(10px);
+    border-radius: 80px;
     border: none;
     font-size: 20px;
-    height: 40px;
-    margin-top: 10px;
+    height: 45px;
+    margin-top: 20px;
+    margin-right: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 5px;
+    box-shadow: 5px 5px 0px rgb(0, 0, 0);
+    outline: 2px solid black;
+
+}
+
+.buttonsContainer>p {
+    font-weight: 300;
+    color: rgb(204, 204, 204);
+
+}
+
+.button2 {
+    aspect-ratio: 1/1;
+    height: 100%;
+    background-color: rgb(24, 62, 28);
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
     cursor: pointer;
 }
 
 
-.IconContainer {
-    margin-left: 5px;
+.IconCartContainer {
+    margin-left: -0.3px;
+    margin-top: -3px;
     display: flex;
     align-items: center;
+    position: relative;
     justify-content: center;
 }
 
-.IconContainer p {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: -1px 0px -10px -1.5px;
-    width: 15px;
-    height: 15px;
-    font-size: 10px;
-    position: absolute;
-    color: rgb(130, 220, 147);
-    border-radius: 20px;
-    font-weight: 1000;
-    text-align: center;
-}
 
 .cartIndicator {
     top: 0;
     right: 0;
-    margin-right: 5px;
-    margin-top: 5px;
-    background-color: rgb(18, 18, 18);
-    height: 12px;
-    width: 12px;
+    margin-right: -10px;
+    margin-top: -6px;
+    color: black;
+    height: 16px;
+    width: 16px;
     position: absolute;
     border-radius: 20px;
+    background-color: whitesmoke;
+    font-size: 12px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    outline: 2px solid rgb(24, 62, 28);
+}
 
+
+.IconUserContainer {
+    margin-top: -92px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+
+
+.userImgContainer {
+    /* margin-top: -2px; */
+    height: 37px;
+    border-radius: 50px;
+    background-color: rgb(214, 214, 214);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    object-fit: cover;
+    position: relative;
+    cursor: pointer;
+    border: none;
+}
+
+.userImgContainer>img {
+    height: 100%;
+    width: 100%;
+    border: 2px solid black;
+}
+
+
+.dropdownIndicator {
+    position: absolute;
+    height: auto;
+    width: auto;
+    left: 100%;
+    margin-left: -40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: black;
+    border-radius: 20px;
+    padding: 2px;
+    margin-top: 22px;
+}
+
+
+.dropdownContainer {
+    position: absolute;
+    width: 200px;
+    height: 90px;
+    background-color: rgb(255, 255, 255);
+    margin-left: -165px;
+    margin-top: 20px;
+    border-radius: 15px;
+    padding: 5px;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
+
+.dropdownOption {
+    width: 100%;
+    height: 38px;
+    background-color: rgb(220, 220, 220);
+    margin-bottom: 5px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    border: none;
+
+}
+
+.dropdownOption:hover {
+    background-color: rgb(207, 207, 207);
+}
+
+.dropdownOptionsText {
+    font-weight: 600;
+    font-size: 15px;
+    width: 70%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.dropdownOptionsIcon {
+    width: 20%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.divider {
+    width: 100%;
+    height: 2px;
+    margin-top: 12px;
+    margin-bottom: 12px;
 }
 
 .cartCheckout {
     height: 100%;
     width: 100%;
-    background-color: rgba(19, 19, 19, 0.979);
     padding: 5px;
-    border-radius: 15px 0px 0px 15px;
+}
+
+.cartCheckout>header {
+    position: relative;
+    height: 8%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cartCheckout>header>p {
+    font-weight: 600;
+    color: rgb(190, 190, 190);
+    font-size: 20px;
+}
+
+.cartCheckout>header>button {
+    position: absolute;
+    left: 0;
+    margin-left: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border: none;
+    color: rgb(189, 189, 189);
+    background-color: transparent;
 }
 
 .foodCheckout {
-    height: 70%;
+    height: 62%;
     width: 100%;
     display: flex;
     justify-content: center;
@@ -265,6 +428,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    border-radius: 15px 0px 0px 15px;
+
 }
 
 .dataContainer {
@@ -507,115 +672,123 @@ s {
     transition: all 0.3s ease;
 }
 
+.smallViewportCartButton {
+    position: fixed;
+    padding: 5px 5px;
+    background-color: whitesmoke;
+    border-radius: 90px;
+    border: none;
+    color: rgb(0, 0, 0);
+    outline: 2px solid black;
+    font-weight: 600;
+    box-shadow: 5px 5px 0px rgb(0, 0, 0);
+    bottom: 0;
+    z-index: 3;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    cursor: pointer;
+
+    box-shadow: 5px 5px 0px black, rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px, rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+}
+
+.smallViewportCartButton>div {
+    aspect-ratio: 1/1;
+    height: 25px;
+    background-color: rgb(24, 62, 28);
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    cursor: pointer;
+}
+
+.smallViewportCartButton>p {
+    margin-right: 5px;
+}
+
 @media (max-width: 500px) {
-
-    .menuFilters {
-        background-color: rgb(0, 0, 0);
-        position: fixed;
-        width: 250px;
-        height: 100vh;
-        left: -250px;
-        top: 0;
-        transition: all 0.5s ease-in-out;
-    }
-
-    .open {
-        transform: translateX(0px);
-    }
-
-    .closed {
-        transform: translateX(250px);
-    }
-
-    .button {
-        position: absolute;
-        right: 0;
-        z-index: 3;
-        width: 40px;
-        background-color: rgb(0, 0, 0);
-        border-radius: 0px 80px 80px 0px;
-        border: none;
-        font-size: 20px;
-        height: 40px;
-        margin-top: 10px;
-        margin-right: -35px;
-        transform: scale(0.9);
-
-    }
-
-    .hamburger {
-        cursor: pointer;
-
-    }
-
-    .hamburger input {
-        display: none;
-
-    }
-
-    .hamburger svg {
-        /* The size of the SVG defines the overall size */
-        height: 1.8em;
-        /* Define the transition for transforming the SVG */
-        transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-
-    .line {
-        fill: none;
-        stroke: rgb(116, 219, 160);
-        stroke-linecap: round;
-        stroke-linejoin: round;
-        stroke-width: 3;
-        /* Define the transition for transforming the Stroke */
-        transition: stroke-dasharray 1s cubic-bezier(0.4, 0, 0.2, 1),
-            stroke-dashoffset 1s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-
-    .lineTop {
-        stroke-dasharray: 12 63;
-    }
 
     .menuCart {
         background-color: rgb(0, 0, 0);
         position: fixed;
-        width: 90%;
+        width: 100%;
         height: 100vh;
         right: 0;
         top: 0;
-
+        transform: translateX(100%);
         transition: all 0.5s ease-in-out;
     }
 
     .cartClosed {
-        transform: translateX(0px);
+        transform: translateY(0%);
     }
 
     .cartOpen {
-        transform: translateX(100%);
+        transform: translateY(100%);
     }
 
-    .button2 {
-        position: absolute;
-        right: 0;
-        margin-right: 99%;
-        z-index: 3;
-        width: 40px;
-        background-color: rgb(0, 0, 0);
-        border-radius: 80px 0px 0px 80px;
-        border: none;
-        font-size: 20px;
-        height: 40px;
+    .buttonsContainer {
+        width: 45px;
+        box-shadow: 0px 0px 0px black;
+        scale: 0.8;
         margin-top: 10px;
-        cursor: pointer;
-        margin-left: -35px;
-        transform: scale(0.9);
+        margin-right: 10px;
+
     }
 
+    .IconCartContainer {
+        margin-left: 0px;
+        margin-top: -2.5px;
+        /* background-color: red; */
 
-    .IconContainer {
-        margin-left: 5px;
         display: flex;
         align-items: center;
+        position: relative;
         justify-content: center;
+    }
+
+    .userImgContainer {
+        margin-left: -6px;
+        height: 47px;
+        width: 47px;
+        border: none;
+        outline: none;
+    }
+
+    .dropdownIndicator {
+        margin-left: -20px;
+        margin-top: 35px;
+        padding: 3px;
+    }
+
+    .bottomShadow {
+        position: absolute;
+        width: 100%;
+        height: 50px;
+        position: fixed;
+        bottom: 0;
+        background-image: linear-gradient(to top, rgb(34, 34, 34), transparent);
+        z-index: 2;
+    }
+
+    .dropdownContainer {
+        /* scale: 0.8; */
+        margin-left: -160px;
+        margin-top: 15px;
+    }
+
+    .backButton>button {
+        scale: 0.85;
+        margin-top: 10px;
+        margin-left: 10px;
+        z-index: 3;
+    }
+
+    .cartIndicator {
+        scale: 0.8
     }
 }

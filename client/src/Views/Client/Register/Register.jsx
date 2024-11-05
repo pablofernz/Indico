@@ -8,12 +8,15 @@ import validate from "./validations";
 import Cookies from "js-cookie";
 import SwipeMiddleTop from "../../../Components/pageAnimations/swipeDown/Exit/swipeDown";
 import SwipeTopMiddle from "../../../Components/pageAnimations/swipeUp/Start/swipeUp";
+import { useDispatch } from "react-redux";
+import { setNetworkConnectionError } from "../../../Redux/actions";
 
 const ClientRegister = () => {
   const navigate = useNavigate();
   const [Loading, isLoading] = useState(false);
   const [isRegistered, setIsRegistered] = useState(false);
   const [isExit, setExit] = useState(false);
+  const dispatch = useDispatch()
 
   const [form, setForm] = useState({
     name: "",
@@ -86,14 +89,20 @@ const ClientRegister = () => {
     if (Object.keys(validationErrors).length === 0) {
       try {
         const res = await axios.post(
-          "https://indico-backend.up.railway.app/client/register",
+          "https://indico-backend.onrender.com/client/register",
           // "http://localhost:3001/client/register",
           form
         );
-        Cookies.set("session_token", res.data.token);
-        isLoading(false);
-        setIsRegistered(true);
+        if (res) {
+          Cookies.set("session_token", res.data.token);
+          isLoading(false);
+          setIsRegistered(true);
+        } else {
+          dispatch(setNetworkConnectionError  ());
+        }
       } catch (err) {
+        dispatch(setNetworkConnectionError());
+
         isLoading(false);
         setSubmitErrors(err.response.data);
         setShowErrorToast(true);

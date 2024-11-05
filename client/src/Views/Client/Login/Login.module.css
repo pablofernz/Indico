@@ -34,7 +34,7 @@
     z-index: 0;
     background-size: cover;
     background-position: center center;
-    background-image: url(https://images.unsplash.com/photo-1613274554329-70f997f5789f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80);
+    background-image: url(https://res.cloudinary.com/dnrprmypf/image/upload/q_23/v1729605245/Projects%20Images/Indico/Store%20image%20backgrounds_utils/Login%20background.webp);
     filter: brightness(50%);
 }
 
@@ -51,7 +51,7 @@
     color: rgb(31, 31, 31);
     background-size: cover;
     background-position: center center;
-    background-image: url(https://images.unsplash.com/photo-1516541196182-6bdb0516ed27?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80);
+    background-image: url(https://res.cloudinary.com/dnrprmypf/image/upload/q_30/v1729605070/Projects%20Images/Indico/Store%20image%20backgrounds_utils/paper%20png%20login-register.webp);
     height: 80vh;
     width: 32vw;
     box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
@@ -251,13 +251,14 @@
     font-size: 14px;
     margin-top: -90px;
     margin-left: -140px;
-    background-color: #b4b4b4;
-    padding: 2px 5px 2px 5px;
+    background-color: #d1d1d1;
+    padding: 5px 10px;
     border-radius: 5px;
     display: inline-block;
     justify-content: center;
     align-items: center;
     visibility: hidden;
+    
 }
 
 .svg:hover .svgCard {
@@ -267,5 +268,11 @@
 @media (max-width: 1000px) {
     .btn {
         width: 100%;
+    }
+}
+
+@media (max-width: 500px) {
+    .login {
+        width: 90dvw;
     }
 }

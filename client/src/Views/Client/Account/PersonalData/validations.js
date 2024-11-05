@@ -21,7 +21,7 @@ const validate = async (userData, newData, passwordEditor) => {
         }
 
         if (userData.email !== newData.email) {
-            const response = await axios.get(`https://indico-backend.up.railway.app/client/exist?email=${newData.email}`);
+            const response = await axios.get(`https://indico-backend.onrender.com/client/exist?email=${newData.email}`);
             if (response.data) {
                 errors.email = "Este correo está en uso"; // Mensaje de error si el correo está en uso
             }
@@ -62,7 +62,7 @@ const validate = async (userData, newData, passwordEditor) => {
                 actualPassword: newData.actualPassword,
                 newPassword: newData.newPassword
             }
-            const response = await axios.post(`https://indico-backend.up.railway.app/client/password?email=${newData.email}`, passwords);
+            const response = await axios.post(`https://indico-backend.onrender.com/client/password?email=${newData.email}`, passwords);
             if (response.data === false) {
                 errors.actualPassword = "Contraseña incorrecta"
             }

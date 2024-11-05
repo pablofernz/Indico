@@ -69,7 +69,7 @@ export default function ItemList({
       try {
         const favoriteFood = { _id: id, title };
         const response = await axios.patch(
-          `https://indico-backend.up.railway.app/client/${userData.id}/favoritefoods`,
+          `https://indico-backend.onrender.com/client/${userData.id}/favoritefoods`,
           favoriteFood
         );
 

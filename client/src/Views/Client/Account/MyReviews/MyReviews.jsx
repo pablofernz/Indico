@@ -8,7 +8,7 @@ import { useNavigate } from "react-router-dom";
 import useViewportWidth from "../../../../Hooks/useViewportWidth";
 import Cookies from "js-cookie";
 
-const ReviewCard = ({
+export function ReviewCard({
   clientID,
   image,
   date,
@@ -16,7 +16,7 @@ const ReviewCard = ({
   stars,
   id,
   getMyReviews,
-}) => {
+}) {
   const generateStars = (stars) => {
     const starIcons = [];
     for (let i = 0; i < stars; i++) {
@@ -48,7 +48,7 @@ const ReviewCard = ({
       setIsDeleting(true);
       try {
         await axios.delete(
-          `https://indico-backend.up.railway.app/client/${clientID}/review/delete/${id}`
+          `https://indico-backend.onrender.com/client/${clientID}/review/delete/${id}`
         );
         getMyReviews();
       } catch (error) {
@@ -213,7 +213,7 @@ const ReviewCard = ({
       </AnimatePresence>
     </div>
   );
-};
+}
 
 const MyReviews = () => {
   const navigate = useNavigate();
@@ -224,7 +224,7 @@ const MyReviews = () => {
   const getMyReviews = async () => {
     try {
       const response = await axios.get(
-        `https://indico-backend.up.railway.app/client/${userData.id}/reviews`
+        `https://indico-backend.onrender.com/client/${userData.id}/reviews`
       );
       setReviewsData(response.data);
     } catch (error) {

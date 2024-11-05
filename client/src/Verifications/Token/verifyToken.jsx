@@ -5,24 +5,24 @@ import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import SwipeBottomMiddle from "../../Components/pageAnimations/swipeUp/Exit/swipeUp";
 import Cookies from "js-cookie";
-import { validateToken } from "../../Redux/actions";
+import { setNetworkConnectionError, validateToken } from "../../Redux/actions";
 
 const VerifyToken = () => {
   const navigate = useNavigate();
   const [isExit, setExit] = useState(false);
   const [isTokenValid, setTokenValid] = useState(true);
+  const dispatch = useDispatch();
   const tokenValidation = async () => {
     const token = Cookies.get("session_token");
     try {
       if (token) {
         const response = await validateToken(token);
-        if (response.status !== 200) {
-          setTokenValid(false);
-        }
+        if (!response) dispatch(setNetworkConnectionError());
+        if (response.status !== 200) setTokenValid(false);
       }
     } catch (error) {
       console.log(error);
-      window.alert(error);
+      // window.alert(error);
     }
   };
   useEffect(() => {

@@ -66,7 +66,7 @@ const PersonalData = () => {
         };
 
         const response = await axios.put(
-          `https://indico-backend.up.railway.app/client/${userData.id}/update`,
+          `https://indico-backend.onrender.com/client/${userData.id}/update`,
           newData,
           config
         );
@@ -136,7 +136,7 @@ const PersonalData = () => {
       };
 
       const response = await axios.delete(
-        `https://indico-backend.up.railway.app/client/${userData.id}/delete`,
+        `https://indico-backend.onrender.com/client/${userData.id}/delete`,
         config
       );
 

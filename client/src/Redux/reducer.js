@@ -1,4 +1,4 @@
-import { GET_REVIEWS, GET_MENU, SET_GRID, SET_LIST, SET_TYPE, ADD_TO_CART, DELETE_TO_CART, SEARCH_FOOD, UPDATE_ITEM_QUANTITY, SEND_ORDER, CLEAR_CART, KEEP_CART, CART_STATUS, GET_USERS } from "./actions";
+import { SET_NETWORK_ERROR, GET_REVIEWS, GET_MENU, SET_GRID, SET_LIST, SET_TYPE, ADD_TO_CART, DELETE_TO_CART, SEARCH_FOOD, UPDATE_ITEM_QUANTITY, SEND_ORDER, CLEAR_CART, KEEP_CART, CART_STATUS, GET_USERS } from "./actions";
 
 let cartItemsFromStorage = window.sessionStorage.getItem("cartItems") ? JSON.parse(window.sessionStorage.getItem("cartItems")) : [];
 let initialstate = {
@@ -10,7 +10,9 @@ let initialstate = {
     menuAux: [],
     reviews: [],
     cart: { foodInCart: window.sessionStorage.getItem("purchase_completed") == "true" || !window.sessionStorage.getItem("purchase_completed") ? [] : cartItemsFromStorage, foodInCartAux: [], amount: 0, quantity: 0 },
-    orderSent: null
+    orderSent: null,
+    errors: { network_connection: false }
+
 };
 
 if (JSON.parse(window.sessionStorage.getItem("cartItems"))) {
@@ -23,6 +25,12 @@ if (JSON.parse(window.sessionStorage.getItem("cartItems"))) {
 
 let reducer = (state = initialstate, action) => {
     switch (action.type) {
+
+        case SET_NETWORK_ERROR:
+            return {
+                ...state,
+                errors: { ...state, network_connection: true },
+            }
         case GET_USERS:
             return {
                 ...state,

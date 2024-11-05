@@ -2,7 +2,8 @@
     height: 100vh;
     width: 100vw;
     background-color: rgba(0, 0, 0, 0.686);
-    z-index: 29999;
+    backdrop-filter: blur(5px);
+    z-index: 299;
     position: fixed;
     top: 0;
     display: flex;
@@ -10,10 +11,121 @@
     justify-content: center;
 }
 
-.card {
-    height: 250px;
+.reviewOpenModal2 {
+    height: 100vh;
+    width: 100vw;
+    position: fixed;
+    background-color: transparent;
+    z-index: 20;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.exitButton {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 9999px;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.reviewContainer {
+    position: relative;
+    height: 320px;
     width: 400px;
-    background-color: whitesmoke;
+    background-color: white;
     border-radius: 20px;
-    z-index: 29999
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-size: cover;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+}
+
+.reviewModalContent {
+    height: 100%;
+    width: 100%;
+}
+
+.imgReviewContainer {
+    height: 60%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.imgReview {
+    height: 250px;
+    width: 250px;
+    margin-top: -60px;
+    background-color: rgb(255, 255, 255);
+    border-radius: 20px;
+}
+
+.reviewTextContainer {
+    height: 20%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.reviewText {
+    width: 80%;
+    font-size: 16px;
+    text-align: center;
+    font-weight: 600;
+    color: rgb(54, 54, 54);
+}
+
+.reviewButtonContainer {
+    height: 20%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.primaryButton {
+    border: none;
+    border-radius: 20px;
+    background-color: rgb(166, 253, 179);
+    color: black;
+    cursor: pointer;
+    padding: 5px 15px 5px 15px;
+    font-size: 15px;
+    font-weight: 600;
+    margin: 0px 10px 0px 10px;
+}
+
+.secundaryButton {
+    border: none;
+    background-color: transparent;
+    color: rgb(71, 71, 71);
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: 600;
+    margin: 0px 10px 0px 10px;
+}
+
+
+@media (max-width: 500px){
+   .reviewContainer{
+    scale: 0.8;
+    width: 100dvw;
+    
+   }
+   .imgReview{
+    height: 200px;
+    width: 200px;
+    margin-top: -0px;
+    background-color: transparent;
+   }
 }

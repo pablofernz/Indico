@@ -5,12 +5,18 @@ import { useEffect } from "react";
 import Cookies from "js-cookie";
 import { motion, AnimatePresence } from "framer-motion";
 import SwipeBottomMiddle from "../pageAnimations/swipeUp/Exit/swipeUp";
-import { getUserDataWithToken, validateToken } from "../../Redux/actions";
+import {
+  getUserDataWithToken,
+  setNetworkConnectionError,
+  validateToken,
+} from "../../Redux/actions";
+import { useDispatch, useSelector } from "react-redux";
 
 const NavBar = () => {
   const navigate = useNavigate();
   const [prevScrollPos, setPrevScrollPos] = useState(0);
   const [visible, setVisible] = useState(true);
+  const dispatch = useDispatch();
 
   // useEffect(() => {
   //   const handleScroll = () => {
@@ -56,31 +62,36 @@ const NavBar = () => {
     try {
       if (token) {
         const response = await getUserDataWithToken(token);
-        setUserData({
-          id: response.data.id,
-          name: response.data.name,
-          lastname: response.data.lastname,
-          image: response.data.image,
-          email: response.data.email,
-          reviews: response.data.reviews,
-          purchases: response.data.purchases,
-          createdAt: response.data.createdAt.split(" ")[0].replace(/-/g, "/"),
-        });
+        if (response) {
+          setUserData({
+            id: response.data.id,
+            name: response.data.name,
+            lastname: response.data.lastname,
+            image: response.data.image,
+            email: response.data.email,
+            reviews: response.data.reviews,
+            purchases: response.data.purchases,
+            createdAt: response.data.createdAt.split(" ")[0].replace(/-/g, "/"),
+          });
+        } else {
+          dispatch(setNetworkConnectionError());
+        }
       }
     } catch (error) {
-      console.log(error);
-      window.alert(error);
+      // console.log(error);
+      // window.alert(error);
     }
   };
   useEffect(() => {
     getUserData();
   }, []);
 
+  const networkError = useSelector((state) => state.errors.network_connection);
   return (
     <motion.div
-      initial={{ y: -300 }}
-      animate={{ y: 0 }}
-      transition={{ duration: 0.5, delay: 1.5 }}
+      // initial={{ y: -300 }}
+      // animate={{ y: !networkError && 0 }}
+      // transition={{ duration: 0.5, delay: 1.5 }}
     >
       {isExit == true && <SwipeBottomMiddle />}
       <nav className={`${style.navbar} ${visible ? "" : style.hidden}`}>
@@ -134,6 +145,7 @@ const NavBar = () => {
                 >
                   {userData && (
                     <img
+                      style={{ borderRadius: "999px" }}
                       width="35"
                       height="35"
                       src={userData.image}

@@ -18,7 +18,7 @@ export async function likesHandlerFunction(
     try {
       const favoriteFood = { _id: id, title };
       const response = await axios.patch(
-        `https://indico-backend.up.railway.app/client/${userData.id}/favoritefoods`,
+        `https://indico-backend.onrender.com/client/${userData.id}/favoritefoods`,
         favoriteFood
       );
 
@@ -103,7 +103,10 @@ export default function Card({
     <motion.div key={title} className={style.Content}>
       <AnimatePresence>
         {notLoginModalOpen && (
-          <NotLoginModal setNotLoginModalOpen={setNotLoginModalOpen} />
+          <NotLoginModal
+            setNotLoginModalOpen={setNotLoginModalOpen}
+            text="Debes estar logueado para poder añadir platos favoritos"
+          />
         )}
       </AnimatePresence>
 
@@ -147,7 +150,7 @@ export default function Card({
         </AnimatePresence>
       </motion.button>
 
-      <img className={style.Img} src={image} alt="" loading="lazy" />
+      <img className={style.Img} src={image} alt="foodImage" loading="lazy" />
       <div>
         <ul className={style.Text}>
           <h1>{title}</h1>

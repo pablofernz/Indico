@@ -1,7 +1,7 @@
 const { Router } = require('express');
 const { getMenu } = require("../handlers/clientStoreHandler");
 const { seeReviews } = require('../handlers/reviewsHandler');
-const { seeClients } = require('../handlers/ownerActionsHandler');
+const { seeClients, getNumberOfPurchases } = require('../handlers/ownerActionsHandler');
 const storeRouter = Router();
 
 storeRouter.get("/menu", getMenu)

@@ -22,7 +22,6 @@ const Store = () => {
   const [reviewsOpen, setReviewsOpen] = useState(false);
   const [isExit, setExit] = useState(false);
 
-  
   return (
     <div className={style.background}>
       <VerifyToken />
@@ -84,41 +83,6 @@ const Store = () => {
           </motion.div>
         )}
       </AnimatePresence>
-      <motion.div
-        initial={{ y: 0 }}
-        onClick={() => {
-          setReviewsOpen(!reviewsOpen);
-        }}
-        whileTap={{ scale: 0.95 }}
-        whileHover={{ scale: 1.05 }}
-        className={style.reviewModalButtonContainer}
-      >
-        <div className={style.reviewButtonBack} />
-        <button className={style.reviewButtonModal}>
-          {reviewsOpen == false ? (
-            <img
-              className={style.img2}
-              src="https://i.ibb.co/9v9fDz5/Sin-t-tulo-1.png"
-              alt="reviewIcon"
-            />
-          ) : (
-            <svg
-              style={{
-                scale: "0.75",
-              }}
-              viewBox="0 0 24 24"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M12 1a11 11 0 1 0 11 11A11 11 0 0 0 12 1Zm6 12H8.414l2.293 2.293a1 1 0 1 1-1.414 1.414l-4-4a1 1 0 0 1 0-1.414l4-4a1 1 0 1 1 1.414 1.414L8.414 11H18a1 1 0 0 1 0 2Z"
-                fill="#74dba0"
-                width="20px"
-                height="20px"
-              ></path>
-            </svg>
-          )}
-        </button>
-      </motion.div>
 
       <div>
         <NavSide />

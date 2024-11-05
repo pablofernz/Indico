@@ -31,7 +31,7 @@ const PurchaseReceipt = ({ userData, dataForReceipt, setReceiptOpen }) => {
     >
       {width > 800 && (
         <p className={style.exitp}>
-          Press
+          Presiona
           <button onClick={() => setReceiptOpen(false)}>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -45,7 +45,7 @@ const PurchaseReceipt = ({ userData, dataForReceipt, setReceiptOpen }) => {
               />
             </svg>
           </button>
-          key to exit
+          para salir
         </p>
       )}
       <div className={style.receiptCard}>
@@ -319,7 +319,7 @@ const MyPurchases = () => {
   const getPurchasesData = async () => {
     try {
       const response = await axios.get(
-        `https://indico-backend.up.railway.app/client/${userData.id}/mypurchases`
+        `https://indico-backend.onrender.com/client/${userData.id}/mypurchases`
         // `http://localhost:3001/client/${userData.id}/mypurchases`
       );
       setPurchasesData(response.data.length ? response.data : null);

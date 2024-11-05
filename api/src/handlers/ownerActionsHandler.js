@@ -19,6 +19,17 @@ const seeClients = async (req, res) => {
             }))
             if (waiting == "amount") {
                 return res.status(200).json(clientsFilteredData.length)
+            }
+
+            if (waiting == "purchases") {
+
+                let totalPurchases = 0
+                clientsFilteredData.forEach((user) => {
+                    totalPurchases += user.purchases.length;
+
+                });
+
+                return res.status(200).json(totalPurchases)
             } else {
                 return res.status(200).json(clientsFilteredData)
             }
@@ -100,5 +111,5 @@ module.exports = {
     seeClients,
     addFood,
     updateFood,
-    deleteFood
+    deleteFood,
 }

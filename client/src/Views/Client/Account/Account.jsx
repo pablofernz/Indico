@@ -2,30 +2,41 @@ import style from "./Account.module.css";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import Cookies from "js-cookie";
-import { getUserDataWithToken } from "../../../Redux/actions";
+import {
+  getUserDataWithToken,
+  setNetworkConnectionError,
+} from "../../../Redux/actions";
 import { AnimatePresence, motion } from "framer-motion";
 import SwipeBottomMiddle from "../../../Components/pageAnimations/swipeUp/Exit/swipeUp";
 import SwipeMiddleTop from "../../../Components/pageAnimations/swipeDown/Exit/swipeDown";
+import { useDispatch } from "react-redux";
 
-export async function getUserData() {
+export async function getUserData(dispatch) {
   const token = Cookies.get("session_token");
 
   try {
     const response = await getUserDataWithToken(token);
-    const userData = {
-      ...response.data,
-      createdAt: response.data.createdAt.split(" ")[0].replace(/-/g, "/"),
-    };
+    if (response) {
+      const userData = {
+        ...response.data,
+        createdAt: response.data.createdAt.split(" ")[0].replace(/-/g, "/"),
+      };
 
-    window.localStorage.setItem("userData", JSON.stringify(userData));
-    return userData;
+      window.localStorage.setItem("userData", JSON.stringify(userData));
+      return userData;
+    } else {
+      dispatch(setNetworkConnectionError());
+    }
   } catch (error) {
-    console.log(error);
-    window.alert(error);
+    // console.log(error);
+    // window.alert(error);
+    dispatch(setNetworkConnectionError());
   }
 }
 
 const AccountPage = () => {
+  const dispatch = useDispatch();
+
   const [isExit, setExit] = useState(false);
   const [goLanding, setGoLanding] = useState(false);
   const [logoutOpen, setlogoutOpen] = useState(false);
@@ -34,7 +45,7 @@ const AccountPage = () => {
   const [userData, setUserData] = useState(null);
 
   const fetchData = async () => {
-    const response = await getUserData();
+    const response = await getUserData(dispatch);
     setUserData(response);
   };
   useEffect(() => {
@@ -305,7 +316,9 @@ const AccountPage = () => {
                   </svg>
                 </p>
 
-                <p className={style.dropdownOptionsText}>Mis comidas favoritas</p>
+                <p className={style.dropdownOptionsText}>
+                  Mis comidas favoritas
+                </p>
               </button>
 
               <button

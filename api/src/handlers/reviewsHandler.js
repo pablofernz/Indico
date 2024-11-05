@@ -7,11 +7,12 @@ const seeReviews = async (req, res) => {
         const reviews = allClients.filter((client) => client.reviews.length > 0)
 
         const reviewClients = reviews.map((cliente) => ({
+            id: cliente._id,
             name: cliente.name,
             lastname: cliente.lastname,
             image: cliente.image,
             reviews: cliente.reviews,
-            purchases: cliente.purchases.length
+            purchases: cliente.purchases
         }))
 
         if (reviewClients) {

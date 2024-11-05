@@ -6,7 +6,9 @@ import Cookies from "js-cookie";
 import IconLoader from "../../../Components/iconLoader/iconLoader";
 import { motion, transform } from "framer-motion";
 import SwipeBottomMiddle from "../../../Components/pageAnimations/swipeUp/Exit/swipeUp";
+
 const Pay = () => {
+  const [orderNumber, setOrderNumber] = useState(0);
   const [payState, setPayState] = useState("notSend");
   const order = JSON.parse(window.sessionStorage.getItem("order"));
   const navigate = useNavigate();
@@ -47,6 +49,18 @@ const Pay = () => {
     }
   };
 
+  const fetchOrderNumber = async () => {
+    const response = await axios.get(
+      `https://indico-backend.onrender.com/store/clients?waiting=${purchases}`
+      // `http://localhost:3001/store/clients?waiting=purchases`
+    );
+    setOrderNumber(response.data + 1);
+  };
+
+  useEffect(() => {
+    fetchOrderNumber();
+  }, []);
+  
   const paySuccess = async () => {
     if (payState == "notSend") {
       setPayState("Sending");
@@ -59,12 +73,11 @@ const Pay = () => {
           },
         };
         const res = await axios.post(
-          "https://indico-backend.up.railway.app/client/pay",
+          "https://indico-backend.onrender.com/client/pay",
           order,
           config
         );
         console.log(order);
-        // console.time(res.data);
         setPayState("Sent");
       } catch (err) {
         console.log(err.response);
@@ -163,7 +176,7 @@ const Pay = () => {
                       <path d="M233.4 105.4c12.5-12.5 32.8-12.5 45.3 0l192 192c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L256 173.3 86.6 342.6c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3l192-192z"></path>
                     </svg>
                   </button>
-                  <p>Orden #104</p>
+                  <p>Orden #{orderNumber}</p>
                   <div style={{ filter: "opacity(0)" }}>ba</div>
                 </div>
               </div>
@@ -249,7 +262,7 @@ const Pay = () => {
                 </button>
                 <button className={style.mercadoPago}>
                   <img
-                    src="https://camo.githubusercontent.com/e337b2417e4d45fad3aabe6d38451fdfbfea2c4d4ddec6d5f55d0cd15fb0c0b9/68747470733a2f2f7365656b6c6f676f2e636f6d2f696d616765732f4d2f6d65726361646f7061676f2d6c6f676f2d464339424137343230452d7365656b6c6f676f2e636f6d2e706e67"
+                    src="https://res.cloudinary.com/dnrprmypf/image/upload/v1730731882/Projects%20Images/Indico/Store%20image%20backgrounds_utils/MP_RGB_HANDSHAKE_color-azul_hori-izq_bmpcqk.png"
                     alt=""
                     className={style.mpImg}
                   />
