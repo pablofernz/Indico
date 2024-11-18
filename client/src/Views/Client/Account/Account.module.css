@@ -34,7 +34,8 @@
     border-radius: 30px;
     backdrop-filter: blur(0px);
     overflow: hidden;
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    /* box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; */
+    box-shadow: 10px 10px 0px black;
     outline: 2px solid black;
 
 }
@@ -179,6 +180,7 @@
     transition: all 0.2s ease;
     border: none;
     position: relative;
+    outline: 1px solid rgb(220,220,220);
 }
 
 .dropdownOption:hover {

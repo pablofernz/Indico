@@ -1,4 +1,5 @@
 import axios from "axios"
+export const SET_SLOWNETWORK_POPUP = 'SET_SLOWNETWORK_POPUP'
 export const SET_NETWORK_ERROR = 'SET_NETWORK_ERROR'
 export const SET_GRID = 'SET_GRID'
 export const SET_LIST = 'SET_LIST'
@@ -15,7 +16,14 @@ export const KEEP_CART = 'KEEP_CART'
 export const CART_STATUS = 'CART_STATUS'
 export const GET_USERS = 'GET_USERS'
 
-
+export const setSlowNetworkPopup = (boolean) => {
+    return async function (dispatch) {
+        dispatch({
+            type: SET_SLOWNETWORK_POPUP,
+            payload: boolean
+        })
+    }
+}
 export const setNetworkConnectionError = () => {
     return async function (dispatch) {
         dispatch({
@@ -50,20 +58,35 @@ export const getReviews = () => {
 
 export const getMenu = () => {
     return async function (dispatch) {
-        const response = await axios.get('https://indico-backend.onrender.com/store/menu')
-        // if (response) {
-        //     const menu = response.data
-        //     console.log(menu)
-        // }
-        const menu = response.data
+        let elapsedSeconds = 0;
 
+        // Temporizador en tiempo real
+        const timer = setInterval(() => {
+            elapsedSeconds++;
+            // console.log(`Time elapsed: ${elapsedSeconds} seconds`);
+            if (elapsedSeconds === 5) {
+                clearInterval(timer); // Limpia el temporizador si alcanza 5 segundos
+                dispatch(setSlowNetworkPopup(true)); // Acción para indicar red lenta
+            }
+        }, 1000);
 
-        dispatch({
-            type: GET_MENU,
-            payload: menu
-        })
-    }
-}
+        try {
+            const response = await axios.get('https://indico-backend.onrender.com/store/menu');
+            const menu = response.data;
+            dispatch(setSlowNetworkPopup(false)); // Acción para indicar red lenta
+
+            clearInterval(timer);
+
+            dispatch({
+                type: GET_MENU,
+                payload: menu,
+            });
+        } catch (error) {
+            clearInterval(timer);
+            console.error('Error en la petición:', error.message);
+        }
+    };
+};
 
 export const searchFood = (food) => {
     return async function (dispatch) {

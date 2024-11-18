@@ -181,6 +181,9 @@ body {
 
 
 @media (max-width:500px) {
+    .background {
+        animation: none
+    }
 
     .reviewButton {
         height: 50px;

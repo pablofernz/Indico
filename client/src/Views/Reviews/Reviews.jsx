@@ -310,7 +310,7 @@ const Reviews = () => {
                 }, 500);
               }}
             >
-              Ir a la Tienda
+              {viewportWidth > 400 ? " Ir a la Tienda" : "Tienda"}
             </button>
           </div>
         </header>
@@ -433,7 +433,9 @@ const Reviews = () => {
                   <header className={style.primaryTextMetricsCard}>
                     {storeData.averageScore}
                   </header>
-                  <footer className={style.secondText}>{viewportWidth < 500 ? "De media" : "Puntuación media"}</footer>
+                  <footer className={style.secondText}>
+                    {viewportWidth < 500 ? "De media" : "Puntuación media"}
+                  </footer>
                 </div>
               </div>
             </>
@@ -450,6 +452,7 @@ const Reviews = () => {
                   animate={{ opacity: 1, scale: 1 }}
                   key={index}
                   className={style.reviewCard}
+                  layout
                 >
                   <div className={style.userDataSide}>
                     <picture>

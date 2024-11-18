@@ -37,7 +37,7 @@
     border-radius: 30px;
     backdrop-filter: blur(50px) brightness(1.7);
     overflow: hidden;
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    box-shadow: 10px 10px 0px black;
     gap: 20px;
     outline: 2px solid black;
 

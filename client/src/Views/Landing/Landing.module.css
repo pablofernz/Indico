@@ -1,15 +1,35 @@
 .Landing {
     background-position: center center;
-    background-image: url(https://res.cloudinary.com/dnrprmypf/image/upload/q_auto:low/v1717532382/lucy-joy-Otc-BYz-A22z-M-unsplash_xydbrc.webp);
+    /* background-image: url(https://res.cloudinary.com/dnrprmypf/image/upload/q_auto:low/v1717532382/lucy-joy-Otc-BYz-A22z-M-unsplash_xydbrc.webp); */
     background-size: cover;
-
+    background-color: white;
 }
 
-.heroSection {
-    height: calc(100vh - 50px);
+.popupsContainer {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    margin-bottom: 20px;
+    margin-right: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.heroSectionContainer {
+    height: calc(100vh - 60px);
     width: 100vw;
-    padding: 30px;
-    background-color: transparent;
+    padding: 0px 15px 15px 15px;
+}
+
+.heroSectionContent {
+    height: 100%;
+    width: 100%;
+    background-color: rgb(184, 246, 201);
+    border-radius: 20px;
+
 }
 
 .carousel {
@@ -128,4 +148,17 @@
     width: 100%;
     overflow: visible;
     transform: translateY(-20px);
+}
+
+@media (max-width: 600px) {
+    .heroSectionContainer {
+        padding: 0;
+    }
+
+    .popupsContainer {
+        align-items: end;
+        margin-bottom: 0px;
+        margin-right: 0px;
+        padding: 10px;
+    }
 }

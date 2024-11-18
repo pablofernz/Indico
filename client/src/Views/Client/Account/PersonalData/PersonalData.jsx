@@ -66,7 +66,8 @@ const PersonalData = () => {
         };
 
         const response = await axios.put(
-          `https://indico-backend.onrender.com/client/${userData.id}/update`,
+          // `https://indico-backend.onrender.com/client/${userData.id}/update`,
+          `http://localhost:3001/client/${userData.id}/update`,
           newData,
           config
         );

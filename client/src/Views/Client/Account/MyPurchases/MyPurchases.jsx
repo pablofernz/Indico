@@ -218,7 +218,9 @@ const PurchaseFoodCard = ({
               {purchasesData.orders.length - 1}{" "}
               {purchasesData.orders[0].title.length > 20
                 ? "más."
-                : "pedidos más."}
+                : purchasesData.orders.length - 1 > 1
+                ? "pedidos más."
+                : "pedido más."}
             </p>
           ) : (
             <p>{purchasesData.orders[0].title}.</p>

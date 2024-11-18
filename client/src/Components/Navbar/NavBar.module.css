@@ -10,11 +10,10 @@
 }
 
 nav {
-
     left: 0;
     top: 0;
     width: 100%;
-    height: 50px;
+    height: 60px;
     z-index: 30;
     transition: all 0.3s ease;
 
@@ -34,8 +33,6 @@ nav .navbar {
     padding: 0px 50px 0px 25px;
     z-index: 30;
 
-    background-color: rgba(245, 245, 245, 0.495);
-    backdrop-filter: blur(10px);
 
 }
 
@@ -161,6 +158,16 @@ nav .navbar .menu {
     cursor: pointer;
 }
 
+.hamburguerMenu {
+    background-color: transparent;
+    margin-left: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    cursor: pointer;
+}
+
 .dropdownIndicator {
     position: absolute;
     height: auto;
@@ -175,19 +182,20 @@ nav .navbar .menu {
 .dropdownContainer {
     position: absolute;
     width: 200px;
-    height: 135px;
+    height: auto;
     background-color: rgb(255, 255, 255);
-    margin-left: -120px;
+    margin-left: -135px;
     margin-top: 20px;
     border-radius: 15px;
     padding: 5px;
 }
 
+
 .dropdownOption {
     width: 100%;
-    height: 38px;
+    height: 40px;
     background-color: rgb(220, 220, 220);
-    margin-bottom: 5px;
+    /* margin-bottom: 5px; */
     border-radius: 10px;
     display: flex;
     align-items: center;
@@ -221,10 +229,12 @@ nav .navbar .menu {
 }
 
 .divider {
+
     width: 100%;
     height: 2px;
-    margin-top: 12px;
-    margin-bottom: 12px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    border-bottom:2px dashed rgb(234, 234, 234);
 }
 
 
@@ -353,13 +363,18 @@ nav .navbar .menu {
 @media (max-width: 600px) {
     .userContainer {
         margin-right: 10px;
-        transform: scale(0.85);
+        transform: scale(0.9);
         margin-right: 20px;
     }
 
     .dropdownContainer {
         margin-top: 25px;
         margin-left: -130px;
+    }
+
+    .userImgContainer {
+        margin-right: 20px;
+
     }
 
     .navbar2 {
@@ -372,7 +387,7 @@ nav .navbar .menu {
         justify-content: space-between;
         height: 100%;
         max-width: 100%;
-        padding: 0px 20px 0px 20px;
+        padding: 0px 0px 0px 15px;
 
         backdrop-filter: blur(30px);
 

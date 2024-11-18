@@ -9,6 +9,8 @@ import {
   deleteToCart,
 } from "../../../../../Redux/actions";
 import NotLoginModal from "../../../../../Components/NotLoginModal/notLoginModal";
+import axios from "axios";
+import useViewportWidth from "../../../../../Hooks/useViewportWidth";
 
 export default function ItemList({
   id,
@@ -19,6 +21,7 @@ export default function ItemList({
   discount,
   className,
 }) {
+  const viewportWidth = useViewportWidth();
   const dispatch = useDispatch();
   const [isAdded, setIsAdded] = useState(false);
   const cartState = useSelector((state) => state.cart);
@@ -118,7 +121,7 @@ export default function ItemList({
           <div className={style.Prices}>
             <p className={style.Price}>
               ${Math.ceil(price - price * (discount / 100))}
-              {discount === 0 ? null : (
+              {viewportWidth > 400 && discount !== 0 && (
                 <s className={style.strikedPrice}>${price}</s>
               )}
             </p>
@@ -126,7 +129,11 @@ export default function ItemList({
         </div>
         <div className={style.buttonContainer}>
           <div className={style.buttonSeparator}></div>
-          <motion.button className={style.Like} onClick={likesHandler}>
+          <motion.button
+            animate={{ right: viewportWidth < 500 && isAdded === true ? "70px" : "100px" }}
+            className={style.Like}
+            onClick={likesHandler}
+          >
             <AnimatePresence mode="wait">
               {isLiked === true ? (
                 <motion.svg

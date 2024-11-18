@@ -4,8 +4,10 @@ import { AnimatePresence, motion, spring } from "framer-motion";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import IconLoader from "../../../Components/iconLoader/iconLoader";
+import useViewportWidth from "../../../Hooks/useViewportWidth";
 
 const CreateReviewForm = ({ setReviewFormOpen, setUpdateSignal }) => {
+  const width = useViewportWidth()
   const userData = JSON.parse(window.localStorage.getItem("userData"));
   const [form, setForm] = useState({
     stars: 0,
@@ -96,11 +98,11 @@ const CreateReviewForm = ({ setReviewFormOpen, setUpdateSignal }) => {
       );
       setSendingReviewStatus("sent");
       setTimeout(() => {
-        setReviewFormOpen(false)
-        setUpdateSignal(true)
+        setReviewFormOpen(false);
+        setUpdateSignal(true);
         setTimeout(() => {
-          setUpdateSignal(false)
-        }, 500);;
+          setUpdateSignal(false);
+        }, 500);
       }, 3000);
     } catch (error) {
       console.log(error);
@@ -117,6 +119,25 @@ const CreateReviewForm = ({ setReviewFormOpen, setUpdateSignal }) => {
       animate={{ opacity: 1 }}
       className={style.background}
     >
+      {width > 800 && (
+        <p className={style.exitp}>
+          Presiona
+          <button onClick={() => setReviewFormOpen(false)}>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="20px"
+              height="20px"
+              viewBox="0 0 24 24"
+            >
+              <path
+                fill="currentColor"
+                d="M1 7h6v2H3v2h4v2H3v2h4v2H1zm10 0h4v2h-4v2h2a2 2 0 0 1 2 2v2c0 1.11-.89 2-2 2H9v-2h4v-2h-2a2 2 0 0 1-2-2V9c0-1.1.9-2 2-2m8 0h2a2 2 0 0 1 2 2v1h-2V9h-2v6h2v-1h2v1c0 1.11-.89 2-2 2h-2a2 2 0 0 1-2-2V9c0-1.1.9-2 2-2"
+              />
+            </svg>
+          </button>
+          para salir
+        </p>
+      )}
       <motion.div
         initial={{ y: "150dvh" }}
         exit={{ y: "150dvh" }}
@@ -164,14 +185,14 @@ const CreateReviewForm = ({ setReviewFormOpen, setUpdateSignal }) => {
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
                   viewBox="0 0 24 24"
-                  stroke-width="1.5"
+                  strokeWidth="1.5"
                   stroke="currentColor"
                   height="20"
                   width="20"
                 >
                   <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
                     d="M6 18 18 6M6 6l12 12"
                   />
                 </svg>

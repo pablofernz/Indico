@@ -25,6 +25,7 @@ const NavBarStore = () => {
   useEffect(() => {
     dispatch(searchFood(inputValue));
   }, [inputValue]);
+
   return (
     <div>
       <nav>

@@ -60,7 +60,7 @@ const Pay = () => {
   useEffect(() => {
     fetchOrderNumber();
   }, []);
-  
+
   const paySuccess = async () => {
     if (payState == "notSend") {
       setPayState("Sending");
@@ -378,10 +378,10 @@ const Pay = () => {
                   <button
                     className={style.step3buttonAux}
                     onClick={() => {
-                      finish();
                       setExit(true);
                       setTimeout(() => {
                         navigate("/home");
+                        finish();
                       }, 1000);
                     }}
                   >
@@ -392,7 +392,6 @@ const Pay = () => {
                     onClick={() => {
                       setExit(true);
                       setTimeout(() => {
-                        finish();
                         navigate("/store");
                         setTimeout(() => {
                           finish();

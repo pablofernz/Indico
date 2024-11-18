@@ -66,8 +66,9 @@ export default function Card({
   };
 
   const AddHandler = () => {
-    dispatch(cartStatus(true));
     if (isAdded === false) {
+      // dispatch(cartStatus(true));
+
       setIsAdded(true);
       dispatch(addToCart(foodPurchased));
     } else {
@@ -100,7 +101,15 @@ export default function Card({
   const [notLoginModalOpen, setNotLoginModalOpen] = useState(false);
 
   return (
-    <motion.div key={title} className={style.Content}>
+    <motion.div
+      key={title}
+      initial={{ opacity: 0, scale: 0 }}
+      exit={{ opacity: 0, scale: 0 }}
+      animate={{ opacity: 1, scale: 1 }}
+      transition={{duration: 0.2}}
+      layout
+      className={style.Content}
+    >
       <AnimatePresence>
         {notLoginModalOpen && (
           <NotLoginModal

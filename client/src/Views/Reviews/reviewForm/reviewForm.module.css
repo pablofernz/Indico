@@ -376,3 +376,45 @@
         width: 2.5rem;
     }
 }
+
+
+.exitp {
+
+    font-weight: 600;
+    font-family: Basier Square;
+    color: rgb(182, 182, 182);
+    bottom: 2%;
+    left: 1.5%;
+    font-size: 15px;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+
+}
+
+.exitp>button {
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0px 3px;
+    background-color: transparent;
+    outline: 2px solid rgb(183, 183, 183);
+    color: rgb(182, 182, 182);
+    cursor: pointer;
+    border-radius: 2px;
+    position: relative;
+}
+
+.exitp>button::after {
+    position: absolute;
+    content: "";
+    height: 100%;
+    border-radius: 6px;
+
+    border-bottom: 2px solid rgb(183, 183, 183);
+    width: calc(100% + 4px);
+    margin-top: 5px;
+}

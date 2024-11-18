@@ -31,6 +31,7 @@
     margin-bottom: 500px;
     object-fit: cover;
     text-align: center;
+    max-width: 90%;
 }
 
 .page p {
@@ -56,12 +57,11 @@
     transition: all 0.3s ease;
     display: flex;
     align-items: center;
-    justify-content:center;
-    width: 150px;
+    justify-content: center;
     text-align: center;
     border: 2px solid rgb(30, 30, 30);
     background-color: transparent;
-    padding: 2px 0px 2px 0px;
+    padding: 5px 15px 5px 15px;
     font-size: 20px;
     font-weight: 600;
     cursor: pointer;
@@ -71,7 +71,6 @@
     color: rgb(30, 30, 30);
     position: absolute;
     margin-top: 500px;
-    width: 250px;
 }
 
 .button2:hover {
@@ -111,7 +110,6 @@
 
     .button2 {
         font-size: 18px;
-        width: 120px;
         border: 2px solid rgb(29, 29, 29);
         position: absolute;
         margin-top: 450px;

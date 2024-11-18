@@ -3,10 +3,15 @@ const addClient = require("../controllers/clientCreator")
 const bcrypt = require("bcrypt")
 const jwt = require("jsonwebtoken")
 require("dotenv").config()
-
+const cloudinary = require("cloudinary")
 
 const secret = process.env.SECRET
 
+cloudinary.config({
+    cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+    api_key: process.env.CLOUDINARY_API_KEY,
+    api_secret: process.env.CLOUDINARY_API_SECRET,
+});
 
 const createClient = async (req, res) => {
     const { name, lastname, email, password, image, reviews } = req.body
@@ -80,8 +85,20 @@ const updateClient = async (req, res) => {
                 if (Date.now() > decodedToken.exp) {
                     return res.status(401).send("Token expirado")
                 } else {
+                    const result = await cloudinary.uploader.upload(image, {
+                        folder: 'Projects Images/Indico/Clients Photos',
+                        resource_type: 'image'
+                    });
+                    let imageUrl = result.secure_url;
+
+                    const quality = "upload/q_auto:low/";
+                    let modifiedUrl = imageUrl
+                        .split("upload/")
+                        .join(quality)
+                        .replace(/\.(jpg|png)$/, ".webp");
+
                     const oldClient = await Client.findById(id)
-                    const updateData = { name, lastname, email, password: newPassword ? await hashPassword() : oldClient.password, image }
+                    const updateData = { name, lastname, email, password: newPassword ? await hashPassword() : oldClient.password, image: modifiedUrl }
 
                     const updatedClient = await Client.findByIdAndUpdate(id, updateData, { new: true })
 

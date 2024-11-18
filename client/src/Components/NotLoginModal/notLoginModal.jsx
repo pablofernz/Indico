@@ -41,14 +41,14 @@ const NotLoginModal = ({ setNotLoginModalOpen, text, exit }) => {
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
               viewBox="0 0 24 24"
-              stroke-width="2"
+              strokeWidth="2"
               stroke="currentColor"
               height="25"
               width="25"
             >
               <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
+                strokeLinecap="round"
+                strokeLinejoin="round"
                 d="M6 18 18 6M6 6l12 12"
               />
             </svg>

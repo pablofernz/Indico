@@ -3,7 +3,7 @@
     width: 100vw;
     background-color: rgba(0, 0, 0, 0.686);
     backdrop-filter: blur(5px);
-    z-index: 299;
+    z-index: 19;
     position: fixed;
     top: 0;
     display: flex;

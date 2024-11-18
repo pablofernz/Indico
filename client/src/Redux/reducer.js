@@ -1,4 +1,4 @@
-import { SET_NETWORK_ERROR, GET_REVIEWS, GET_MENU, SET_GRID, SET_LIST, SET_TYPE, ADD_TO_CART, DELETE_TO_CART, SEARCH_FOOD, UPDATE_ITEM_QUANTITY, SEND_ORDER, CLEAR_CART, KEEP_CART, CART_STATUS, GET_USERS } from "./actions";
+import { SET_NETWORK_ERROR, GET_REVIEWS, GET_MENU, SET_GRID, SET_LIST, SET_TYPE, ADD_TO_CART, DELETE_TO_CART, SEARCH_FOOD, UPDATE_ITEM_QUANTITY, SEND_ORDER, CLEAR_CART, KEEP_CART, CART_STATUS, GET_USERS, SET_SLOWNETWORK_POPUP } from "./actions";
 
 let cartItemsFromStorage = window.sessionStorage.getItem("cartItems") ? JSON.parse(window.sessionStorage.getItem("cartItems")) : [];
 let initialstate = {
@@ -6,13 +6,14 @@ let initialstate = {
     storeView: "list",
     cartIsOpen: false,
     foodType: "Todos",
+    isSearching: false,
     menu: [],
     menuAux: [],
     reviews: [],
     cart: { foodInCart: window.sessionStorage.getItem("purchase_completed") == "true" || !window.sessionStorage.getItem("purchase_completed") ? [] : cartItemsFromStorage, foodInCartAux: [], amount: 0, quantity: 0 },
     orderSent: null,
-    errors: { network_connection: false }
-
+    errors: { network_connection: false },
+    popups: { cookies: false, slowNetwork: false }
 };
 
 if (JSON.parse(window.sessionStorage.getItem("cartItems"))) {
@@ -26,6 +27,12 @@ if (JSON.parse(window.sessionStorage.getItem("cartItems"))) {
 let reducer = (state = initialstate, action) => {
     switch (action.type) {
 
+        case SET_SLOWNETWORK_POPUP:
+            console.log(action.payload)
+            return {
+                ...state,
+                popups: { ...state, slowNetwork: action.payload },
+            }
         case SET_NETWORK_ERROR:
             return {
                 ...state,
@@ -49,9 +56,11 @@ let reducer = (state = initialstate, action) => {
             const aux2 = [...state.menuAux];
             const foodSearched = action.payload.trim() === "" ? aux2 : aux2.filter((food) =>
                 food.title.toLowerCase().includes(action.payload.toLowerCase()))
+
             return {
                 ...state,
-                menu: foodSearched
+                menu: foodSearched,
+                isSearching: action.payload ? true : false
             };
 
 

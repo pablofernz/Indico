@@ -23,6 +23,9 @@ dependencies:
   jsonwebtoken:
     specifier: ^9.0.2
     version: 9.0.2
+  lenis:
+    specifier: ^1.1.16
+    version: 1.1.16(react@18.2.0)
   pnpm:
     specifier: ^8.8.0
     version: 8.8.0
@@ -7115,6 +7118,20 @@ packages:
     dependencies:
       picocolors: 1.0.0
       shell-quote: 1.8.1
+    dev: false
+
+  /lenis@1.1.16(react@18.2.0):
+    resolution: {integrity: sha512-bGS8IxJW3x310gTwFylgYU6bGzeVnTALmgyLP8RZ9DFSYC/hN3fi+urCWspr5otljbDAGF4ND2GKCFtemAd45Q==}
+    peerDependencies:
+      react: '>=17.0.0'
+      vue: '>=3.0.0'
+    peerDependenciesMeta:
+      react:
+        optional: true
+      vue:
+        optional: true
+    dependencies:
+      react: 18.2.0
     dev: false
 
   /leven@3.1.0:

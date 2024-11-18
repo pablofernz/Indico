@@ -23,6 +23,7 @@
     gap: 30px;
     backdrop-filter: blur(5px);
     border-radius: 40px;
+
     /* box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset; */
 }
 
@@ -38,13 +39,65 @@
     min-height: 80vh;
     gap: 30px;
     backdrop-filter: blur(20px);
-    
+
     border-radius: 40px;
     /* box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset; */
+}
+
+.notFoundContainer {
+    padding: 20px;
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 85vw;
+    min-height: 75dvh;
+}
+
+.notFound {
+    padding: 10px 10px;
+
+    width: 300px;
+    height: 300px;
+    background-color: white;
+    box-shadow: 8px 8px 0px black;
+    outline: 2px solid black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    border-radius: 20px;
+    gap: 30px;
+}
+
+.notFound>p {
+    font-weight: 600;
+    font-size: 15px;
+    max-width: 100%;
+    text-align: center;
+    margin: 0;
 }
 
 @media (max-width: 700px) {
     .MenuContainer {
         width: auto;
     }
+
+}
+
+@media (max-width: 500px) {
+    .notFoundContainer {
+        /* background-color: red; */
+        width: 100%;
+        padding: 0;
+    }
+
+    .notFound {
+        width: 100%;
+
+        scale: 0.8;
+        padding: 10px;
+
+    }
+
 }

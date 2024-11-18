@@ -12,11 +12,42 @@ import VerifyToken from "../../Verifications/Token/verifyToken";
 
 import { motion, AnimatePresence } from "framer-motion";
 import { useNavigate } from "react-router-dom";
-import Section3 from "./Sections/Section3/section3";
 import { getUserData } from "../Client/Account/Account";
 import Cookies from "js-cookie";
+import Lenis from "lenis";
+import CookiesPopup from "../Popups/Cookies popup/cookiesPopup";
+import SlowNetworkPopup from "../Popups/Slow Network popup/slowNetworkPopup";
 
 const Landing = () => {
+  // useEffect(() => {
+  //   const lenis = new Lenis({
+  //     duration: 2,
+  //     easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+  //     direction: "vertical", // vertical, horizontal
+  //     gestureDirection: "both", // vertical, horizontal, both
+  //     smooth: true,
+  //     smoothTouch: false,
+  //     touchMultiplier: 2,
+  //   });
+
+  //   function raf(time) {
+  //     lenis.raf(time);
+  //     requestAnimationFrame(raf);
+  //   }
+
+  //   requestAnimationFrame(raf);
+
+  //   // if (modalsOpen) {
+  //   //   lenis.stop();
+  //   // }
+  //   return () => {
+  //     lenis.destroy();
+  //   };
+  // }, []);
+  const [cookiesPopupOpen, setCookiesPopup] = useState(
+    window.sessionStorage.getItem("slowNetwork_popup_closed") ? false : true
+  );
+
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const dishes = useSelector((state) => state.menu);
@@ -32,7 +63,7 @@ const Landing = () => {
   useEffect(() => {
     if (!Cookies.get("session_token")) {
       window.localStorage.clear();
-      window.sessionStorage.clear();
+      // window.sessionStorage.clear();
     }
   }, []);
 
@@ -74,15 +105,31 @@ const Landing = () => {
   useEffect(() => {
     Cookies.get("session_token") && getUserData();
   }, []);
+
   return (
     <motion.div className={style.Landing}>
+      <div className={style.popupsContainer}>
+        <AnimatePresence mode="popLayout">
+          {!window.sessionStorage.getItem("cookie_popup_closed") &&
+            cookiesPopupOpen && (
+              <CookiesPopup
+                close={() => {
+                  setCookiesPopup(false);
+                }}
+              />
+            )}
+        </AnimatePresence>
+      </div>
+
       <VerifyToken />
       <SwipeMiddleTop />
       {isExit == true && <SwipeBottomMiddle />}
 
       <NavBar />
 
-      <section className={style.heroSection}></section>
+      <section className={style.heroSectionContainer}>
+        <div className={style.heroSectionContent}></div>
+      </section>
 
       <div className={style.carousel}>
         <motion.header

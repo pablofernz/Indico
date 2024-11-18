@@ -1,10 +1,13 @@
-import { React, lazy, useEffect } from "react";
+import { React, lazy, useEffect, useState } from "react";
 import style from "./App.module.css";
 import { Routes, Route, Navigate, useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 
 import Landing from "./Views/Landing/Landing";
 import { useSelector } from "react-redux";
+import CookiesPopup from "./Views/Popups/Cookies popup/cookiesPopup";
+import SlowNetworkPopup from "./Views/Popups/Slow Network popup/slowNetworkPopup";
+import { setSlowNetworkPopup } from "./Redux/actions";
 const MyReviews = lazy(() =>
   import("./Views/Client/Account/MyReviews/MyReviews")
 );
@@ -27,6 +30,7 @@ const Favorites = lazy(() =>
 
 function App() {
   const networkError = useSelector((state) => state.errors.network_connection);
+  const slowNetwork = useSelector((state) => state.popups.slowNetwork);
 
   useEffect(() => {
     if (networkError) {
@@ -37,6 +41,9 @@ function App() {
     }
   }, [networkError]);
 
+  useEffect(() => {
+    console.log(slowNetwork);
+  }, [slowNetwork]);
   return (
     <div className="App">
       <AnimatePresence mode="popLayout">
@@ -79,6 +86,16 @@ function App() {
             </Routes>
           </>
         )}
+
+        <div className={style.popupsContainer}>
+          <AnimatePresence mode="popLayout">
+            {slowNetwork === true && (
+              <>
+                <SlowNetworkPopup />
+              </>
+            )}
+          </AnimatePresence>
+        </div>
       </AnimatePresence>
     </div>
   );
