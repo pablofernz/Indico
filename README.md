@@ -34,6 +34,7 @@ Front-end:
 * React
 * Redux
 * Framer Motion
+* CSS
   
 ## Instalación
 Aunque el proyecto sigue en desarrollo, puedes instalarlo y probar las funcionalidades de la página ingresando los siguientes comandos en la terminal
