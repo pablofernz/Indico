@@ -25,6 +25,7 @@ Back-end:
 * Mongoose
 * MongoDB Compass (interfaz gráfica de la base de datos)
 * Node.js
+* Cloudinary (Alojamiento de imágenes)
 
 Autenticación (en proceso):
 * Firebase
@@ -32,7 +33,7 @@ Autenticación (en proceso):
 
 Front-end:
 * React
-* Redux
+* Redux (Gestión de estados globales)
 * Framer Motion
 * CSS
   
