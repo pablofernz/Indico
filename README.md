@@ -27,8 +27,8 @@ Back-end:
 * Node.js
 * Cloudinary (Alojamiento de imágenes)
 
-Autenticación (en proceso):
-* Firebase
+Autenticación:
+* Firebase (en proceso)
 * Json Web Token (JWT)
 
 Front-end:
@@ -38,16 +38,16 @@ Front-end:
 * CSS
   
 ## Instalación
-Aunque el proyecto sigue en desarrollo, puedes instalarlo y probar las funcionalidades de la página ingresando los siguientes comandos en la terminal
+Puedes instalarlo y probar las funcionalidades de la página ingresando los siguientes comandos en la terminal
 ```
 $ git clone https://github.com/pablofernz/indico-restaurant.git
 $---Back End---
-$ cd ../Indigo/api
+$ cd ../Indico/api
 $ npm install
 $ npm start
 
 $---Front End---
-$ cd ../Indigo/client
+$ cd ../Indico/client
 $ npm install
 $ npm start
 ```
