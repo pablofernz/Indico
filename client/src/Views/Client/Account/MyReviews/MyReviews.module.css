@@ -1,14 +1,14 @@
 .accountComponent {
-    height: 100vh;
-    width: 100vw;
+    height: 100dvh;
+    width: 100dvw;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
 .background {
-    height: 100vh;
-    width: 100vw;
+    height: 100dvh;
+    width: 100dvw;
     position: fixed;
     background-image: url(https://res.cloudinary.com/dnrprmypf/image/upload/q_10/v1728881924/Projects%20Images/Indico/Store%20image%20backgrounds_utils/Account%20pages%20background.webp);
     background-size: cover;

@@ -4,10 +4,10 @@ import { useDispatch } from "react-redux";
 import { setSlowNetworkPopup } from "../../../Redux/actions";
 
 const SlowNetworkPopup = ({ close }) => {
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   const closeHandler = () => {
     // window.sessionStorage.setItem("slowNetwork_popup_closed", true);
-    dispatch(setSlowNetworkPopup(false))
+    dispatch(setSlowNetworkPopup(false));
   };
   return (
     <motion.div
@@ -21,7 +21,7 @@ const SlowNetworkPopup = ({ close }) => {
       animate={{
         opacity: 1,
         x: 0,
-        transition: { duration: 1, delay: 2 },
+        transition: { duration: 0.3 },
       }}
       className={style.card}
       layout
@@ -29,8 +29,8 @@ const SlowNetworkPopup = ({ close }) => {
       <div className={style.leftSide}>
         <h1>Conexión lenta 🐌 </h1>
         <p>
-          Los datos están alojados en un servicio gratuito en la nube, lo que
-          puede afectar la velocidad de carga.
+          Nuestros datos están alojados en un servicio gratuito en la nube, lo
+          que puede afectar la velocidad de carga.
         </p>
         <button onClick={closeHandler}>No hay problema</button>
       </div>

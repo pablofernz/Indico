@@ -62,6 +62,9 @@ const VerifyToken = () => {
                     onClick={() => {
                       setExit(true);
                       setTimeout(() => {
+                        Cookies.remove("session_token")
+                        window.localStorage.clear()
+                        window.sessionStorage.clear()
                         navigate("/login");
                       }, 500);
                     }}

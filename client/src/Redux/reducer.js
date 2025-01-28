@@ -1,4 +1,4 @@
-import { SET_NETWORK_ERROR, GET_REVIEWS, GET_MENU, SET_GRID, SET_LIST, SET_TYPE, ADD_TO_CART, DELETE_TO_CART, SEARCH_FOOD, UPDATE_ITEM_QUANTITY, SEND_ORDER, CLEAR_CART, KEEP_CART, CART_STATUS, GET_USERS, SET_SLOWNETWORK_POPUP } from "./actions";
+import { SET_NETWORK_ERROR, GET_REVIEWS, GET_MENU, SET_GRID, SET_LIST, SET_TYPE, ADD_TO_CART, DELETE_TO_CART, SEARCH_FOOD, UPDATE_ITEM_QUANTITY, SEND_ORDER, CLEAR_CART, KEEP_CART, CART_STATUS, GET_USERS, SET_SLOWNETWORK_POPUP, SET_COOKIES_POPUP } from "./actions";
 
 let cartItemsFromStorage = window.sessionStorage.getItem("cartItems") ? JSON.parse(window.sessionStorage.getItem("cartItems")) : [];
 let initialstate = {
@@ -27,8 +27,12 @@ if (JSON.parse(window.sessionStorage.getItem("cartItems"))) {
 let reducer = (state = initialstate, action) => {
     switch (action.type) {
 
+        case SET_COOKIES_POPUP:
+            return {
+                ...state,
+                popups: { ...state, cookies: action.payload },
+            }
         case SET_SLOWNETWORK_POPUP:
-            console.log(action.payload)
             return {
                 ...state,
                 popups: { ...state, slowNetwork: action.payload },

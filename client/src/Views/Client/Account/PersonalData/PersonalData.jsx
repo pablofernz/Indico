@@ -66,15 +66,15 @@ const PersonalData = () => {
         };
 
         const response = await axios.put(
-          // `https://indico-backend.onrender.com/client/${userData.id}/update`,
-          `http://localhost:3001/client/${userData.id}/update`,
+          `https://indico-backend.onrender.com/client/${userData.id}/update`,
+          // `http://localhost:3001/client/${userData.id}/update`,
           newData,
           config
         );
 
         setUpdatedData(true);
       } catch (error) {
-        // console.error("Error al actualizar:", error);
+        console.error(error);
 
         if (error.response.data === "No se realizaron cambios") {
           toast("No se realizaron cambios", {
@@ -194,7 +194,7 @@ const PersonalData = () => {
                 <div className={style.imgDeleteContainer}>
                   <img
                     className={style.imgDelete}
-                    src="https://i.ibb.co/6vTVpGd/Warning-cuate.png"
+                    src="https://res.cloudinary.com/dnrprmypf/image/upload/q_0/v1735320046/Projects%20Images/Indico/Store%20image%20backgrounds_utils/delete%20account%20image.webp"
                     alt="DeleteAccountImage"
                   />
                 </div>

@@ -1,4 +1,4 @@
-import style from "./IconLoader.module.css";
+import style from "./iconLoader.module.css";
 import { motion } from "framer-motion";
 
 const IconLoader = ({ color, scale }) => {

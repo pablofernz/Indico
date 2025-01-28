@@ -1,16 +1,6 @@
-.pantalla {
-    width: 100vw;
-    height: 200vh;
-    position: absolute;
-    background-color: rgb(0, 0, 0);
-    z-index: 210;
-    position: fixed;
-
-}
-
 .store {
     background-color: rgb(199, 199, 199);
-    width: 100vw;
+    width: 100dvw;
     height: auto;
     display: flex;
     align-items: center;
@@ -18,17 +8,14 @@
     position: relative;
 }
 
-
-.menuFilters {
+.pantalla {
+    width: 100dvw;
+    height: 100dvh;
+    position: absolute;
     background-color: rgb(0, 0, 0);
+    z-index: 210;
     position: fixed;
-    width: 250px;
-    height: 100vh;
-    left: -250px;
     top: 0;
-    transition: all 0.5s ease-in-out;
-
-    z-index: 3;
 
 }
 
@@ -56,9 +43,10 @@
     color: rgb(0, 0, 0);
     cursor: pointer;
     border-radius: 9999px;
-    outline: 2px solid black;
-    box-shadow: 4px 4px 0px rgb(0, 0, 0);
-    transition: all 0.2s ease
+    border: 2px solid black;
+    box-shadow: 5px 5px 0px rgb(0, 0, 0);
+    transition: all 0.2s ease;
+    z-index: 2;
 }
 
 .backButton>button:active {
@@ -148,7 +136,7 @@
     height: 100vh;
     right: 0;
     top: 0;
-    background-color: rgba(19, 19, 19, 0.979);
+    background-color: rgb(0, 0, 0);
     border-radius: 15px 0px 0px 15px;
     /* box-shadow: rgb(0, 0, 0) 0px 2px 50px; */
     z-index: 3;
@@ -157,6 +145,7 @@
 
 .cartClosed {
     transform: translateX(0px);
+    box-shadow: 0px 0px 50px black;
 }
 
 .cartOpen {
@@ -181,8 +170,7 @@
     align-items: center;
     justify-content: space-between;
     padding: 5px;
-    box-shadow: 5px 5px 0px rgb(0, 0, 0);
-    outline: 2px solid black;
+    box-shadow: 0px 0px 3px rgb(0, 0, 0);
 
 }
 
@@ -231,7 +219,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    outline: 2px solid rgb(24, 62, 28);
+    border: 2px solid rgb(24, 62, 28);
 }
 
 .cartIndicator>p {
@@ -250,6 +238,7 @@
 .userImgContainer {
     /* margin-top: -2px; */
     height: 37px;
+    aspect-ratio: 1/1;
     border-radius: 50px;
     background-color: rgb(214, 214, 214);
     display: flex;
@@ -259,12 +248,30 @@
     position: relative;
     cursor: pointer;
     border: none;
+
 }
 
 .userImgContainer>img {
     height: 100%;
     width: 100%;
     border: 2px solid black;
+    object-fit: cover;
+    border-radius: 999px;
+}
+
+
+.test {
+    /* border: 2px solid black; */
+    height: 37px;
+    width: 37px;
+    background-color: rgb(187, 255, 195);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 9999px;
+    font-weight: 600;
+    font-family: Basier Square;
+    font-size: 20px;
 }
 
 
@@ -293,7 +300,8 @@
     margin-top: 20px;
     border-radius: 15px;
     padding: 5px;
-    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+    box-shadow: 8px 8px 0px rgb(0, 0, 0), rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+    border: 2px solid black;
 }
 
 .dropdownOption {
@@ -322,6 +330,7 @@
     height: 100%;
     display: flex;
     align-items: center;
+    color: black;
 }
 
 .dropdownOptionsIcon {
@@ -330,6 +339,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    color: black;
 
 }
 
@@ -634,7 +644,7 @@ s {
     display: grid;
     justify-content: center;
     align-items: center;
-    background-color: rgb(18, 18, 18);
+    background-color: rgb(0, 0, 0);
 }
 
 .placeholderContainer {
@@ -685,11 +695,11 @@ s {
     border-radius: 90px;
     border: none;
     color: rgb(0, 0, 0);
-    outline: 2px solid black;
+    border: 2px solid black;
     font-weight: 600;
     box-shadow: 5px 5px 0px rgb(0, 0, 0);
     bottom: 0;
-    z-index: 3;
+    z-index: 2;
     margin-bottom: 20px;
     display: flex;
     align-items: center;
@@ -722,21 +732,20 @@ s {
         background-color: rgb(0, 0, 0);
         position: fixed;
         width: 100%;
-        height: 100vh;
-        right: 0;
-        top: 0;
+        height: 100%;
+
+
         border-radius: 0px;
-        transform: translateX(100%);
         transition: all 0.5s ease-in-out;
     }
 
+
     .cartClosed {
-        transform: translateY(0%);
+        transform: translateY(0dvh);
     }
 
     .cartOpen {
-        /* border-radius: 2000px; */
-        transform: translateY(100%);
+        transform: translateY(100dvh);
     }
 
     .buttonsContainer {
@@ -775,7 +784,7 @@ s {
 
     .bottomShadow {
         position: absolute;
-        width: 100%;
+        width: 100dvw;
         height: 50px;
         position: fixed;
         bottom: 0;
@@ -785,8 +794,9 @@ s {
 
     .dropdownContainer {
         /* scale: 0.8; */
-        margin-left: -160px;
+        margin-left: -180px;
         margin-top: 15px;
+
     }
 
     .backButton>button {

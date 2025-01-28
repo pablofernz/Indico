@@ -13,16 +13,15 @@ nav {
     left: 0;
     top: 0;
     width: 100%;
-    height: 60px;
-    background-color: transparent;
+    height: 80px;
 }
 
-nav>.navbar {
+.navbar {
     display: flex;
     align-items: center;
     justify-content: center;
     height: 100%;
-    width: 400px;
+    width: auto;
     margin: auto;
 }
 
@@ -51,6 +50,8 @@ nav>.navbar {
     cursor: pointer;
     transition: all 0.2s ease;
     position: relative;
+    outline: 2px solid transparent;
+
 }
 
 .button:active {
@@ -59,6 +60,7 @@ nav>.navbar {
 
 .buttonChecked {
     background-color: #74dba0;
+
 }
 
 .checkedBackground {
@@ -68,6 +70,7 @@ nav>.navbar {
     background-color: #74dba0;
     border-radius: 40px;
     z-index: 1;
+
 }
 
 .input {
@@ -82,7 +85,6 @@ nav>.navbar {
     transition: all 0.5s cubic-bezier(0.455, 0.03, 0.515, 0.955);
     margin-left: auto;
     background-color: whitesmoke;
-
     text-overflow: ellipsis;
 }
 
@@ -115,7 +117,7 @@ nav>.navbar {
     width: 80%;
 }
 
-@media (max-width: 500px) {
+@media (max-width: 600px) {
     nav {
         left: 0;
         top: 0;
@@ -128,10 +130,10 @@ nav>.navbar {
         display: flex;
         align-items: center;
         justify-content: center;
-        height: 100%;
-        width: 180px;
         transform: scale(0.9);
     }
+
+
 
     .menu {
         width: 35%;
@@ -173,10 +175,6 @@ nav>.navbar {
         transition: all 0.5s cubic-bezier(0.455, 0.03, 0.515, 0.955);
         margin-left: auto;
         text-overflow: ellipsis;
-
-
     }
-
-
 
 }

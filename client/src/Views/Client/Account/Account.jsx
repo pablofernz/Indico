@@ -21,7 +21,7 @@ export async function getUserData(dispatch) {
         ...response.data,
         createdAt: response.data.createdAt.split(" ")[0].replace(/-/g, "/"),
       };
-
+      console.log(userData);
       window.localStorage.setItem("userData", JSON.stringify(userData));
       return userData;
     } else {
@@ -104,8 +104,8 @@ const AccountPage = () => {
                     whileTap={{ scale: 0.95 }}
                     className={style.secundaryButton}
                     onClick={() => {
+                      setGoLanding(true);
                       setTimeout(() => {
-                        setGoLanding(true);
                         Cookies.remove("session_token");
                         navigate("/");
                       }, 500);
@@ -149,7 +149,7 @@ const AccountPage = () => {
             onClick={() => {
               setGoLanding(true);
               setTimeout(() => {
-                navigate("/");
+                navigate(window.sessionStorage.getItem("page_aux"));
               }, 500);
             }}
           >
@@ -325,16 +325,12 @@ const AccountPage = () => {
                 className={style.logout}
                 onClick={() => {
                   setlogoutOpen(true);
-                  // setExit(true);
-                  // setTimeout(() => {
-                  //   navigate("/reviews");
-                  // }, 500);
                 }}
               >
                 <p className={style.dropdownOptionsIcon}>
                   <svg
                     viewBox="0 0 512 512"
-                    fill="currentColor"
+                    fill="white"
                     width="25"
                     height="25"
                     style={{ transform: "rotate(180deg)" }}
@@ -343,7 +339,7 @@ const AccountPage = () => {
                   </svg>
                 </p>
 
-                <p className={style.dropdownOptionsText}>Cerrar sesión</p>
+                <p className={style.dropdownOptionsText} style={{color: "white"}}>Cerrar sesión</p>
               </button>
             </div>
           </main>

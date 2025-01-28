@@ -5,7 +5,7 @@ const MenuGrid = lazy(() => import("./Grid/MenuGrid"));
 const MenuList = lazy(() => import("./List/MenuList"));
 import { setGrid, setList } from "../../../Redux/actions";
 
-const Menu = () => {
+const Menu = ({setExit}) => {
   const visual = useSelector((state) => state.storeView);
   const dispatch = useDispatch();
   const [esMovil, setEsMovil] = useState(window.innerWidth <= 700);
@@ -38,7 +38,7 @@ const Menu = () => {
     <div>
       {/* Envuelve el renderizado perezoso en un Suspense con fallback */}
       <Suspense fallback={<div>Loading...</div>}>
-        {visual === "grid" && <MenuGrid />}
+        {visual === "grid" && <MenuGrid setExit={setExit} />}
         {visual === "list" && <MenuList />}
       </Suspense>
     </div>

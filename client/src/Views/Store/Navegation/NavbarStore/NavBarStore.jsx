@@ -76,7 +76,7 @@ const NavBarStore = () => {
               <svg
                 fill="none"
                 height="25"
-                stroke="currentColor"
+                stroke="black"
                 strokeLinecap="round"
                 strokeLinejoin="round"
                 strokeWidth="3"

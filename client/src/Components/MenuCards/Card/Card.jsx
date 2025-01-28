@@ -5,6 +5,7 @@ import { addToCart, cartStatus, deleteToCart } from "../../../Redux/actions";
 import { AnimatePresence, motion } from "framer-motion";
 import NotLoginModal from "../../NotLoginModal/notLoginModal";
 import axios from "axios";
+import Cookies from "js-cookie";
 
 export async function likesHandlerFunction(
   setIsLiked,
@@ -39,6 +40,7 @@ export default function Card({
   description,
   price,
   discount,
+  setExit,
 }) {
   const dispatch = useDispatch();
   const [isAdded, setIsAdded] = useState(false);
@@ -50,7 +52,12 @@ export default function Card({
   const userData = JSON.parse(localStorage.getItem("userData"));
 
   const likesHandler = () => {
-    likesHandlerFunction(setIsLiked, isLiked, userData, id, title);
+    if (!userData || !Cookies.get("session_token")) {
+      setNotLoginModalOpen(true);
+      console.log({ userData, token: Cookies.get("session_token") });
+    } else {
+      likesHandlerFunction(setIsLiked, isLiked, userData, id, title);
+    }
   };
   const foodPurchased = {
     id,
@@ -103,10 +110,10 @@ export default function Card({
   return (
     <motion.div
       key={title}
-      initial={{ opacity: 0, scale: 0 }}
+      initial={{ opacity: 0 }}
       exit={{ opacity: 0, scale: 0 }}
-      animate={{ opacity: 1, scale: 1 }}
-      transition={{duration: 0.2}}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.2 }}
       layout
       className={style.Content}
     >
@@ -115,15 +122,22 @@ export default function Card({
           <NotLoginModal
             setNotLoginModalOpen={setNotLoginModalOpen}
             text="Debes estar logueado para poder añadir platos favoritos"
+            exit={setExit}
           />
         )}
       </AnimatePresence>
 
       {discount ? (
-        <div className={style.Discount}>{`${discount}%`} OFF</div>
+        <div className={style.Discount}>
+          <div className={style.corner3} />
+          <div className={style.corner4} />
+          <p>{`${discount}%`} OFF</p>
+        </div>
       ) : null}
 
       <motion.button className={style.Like} onClick={likesHandler}>
+        <div className={style.corner1} />
+        <div className={style.corner2} />
         <AnimatePresence mode="wait">
           {isLiked === true ? (
             <motion.svg

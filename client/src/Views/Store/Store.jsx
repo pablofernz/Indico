@@ -19,6 +19,10 @@ const Store = () => {
     dispatch(getMenu());
   }, [dispatch]);
 
+  useEffect(() => {
+    window.sessionStorage.setItem("page_aux", "/store");
+  }, []);
+
   const [reviewsOpen, setReviewsOpen] = useState(false);
   const [isExit, setExit] = useState(false);
 
@@ -38,55 +42,10 @@ const Store = () => {
           ></motion.div>
         )}
       </AnimatePresence>
-      <AnimatePresence>
-        {reviewsOpen == true && (
-          <motion.div
-            className={style.reviewOpenModal2}
-            initial={{ y: -1000 }}
-            animate={{ y: 0 }}
-            exit={{ y: 1000 }}
-            transition={{ duration: 0.5 }}
-          >
-            <div className={style.reviewContainer}>
-              <div className={style.reviewModalContent}>
-                <div className={style.imgReviewContainer}>
-                  <img
-                    className={style.imgReview}
-                    src="https://i.ibb.co/rkSgpJT/Conversation-pana.png"
-                    alt="Conversation-pana"
-                  />
-                </div>
-                <div className={style.reviewTextContainer}>
-                  <p className={style.reviewText}>
-                    ¿Quieres saber lo que opinan los demás sobre nosotros?
-                    Tambien puedes dejarnos tu opinión.
-                  </p>
-                </div>
-                <motion.div
-                  className={style.reviewButtonContainer}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  <button
-                    className={style.reviewButton}
-                    onClick={() => {
-                      setExit(true);
-                      setTimeout(() => {
-                        navigate("/reviews");
-                      }, 500);
-                    }}
-                  >
-                    Claro!
-                  </button>
-                </motion.div>
-              </div>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
 
       <div>
         <NavSide />
-        <Menu />
+        <Menu setExit={setExit} />
       </div>
     </div>
   );

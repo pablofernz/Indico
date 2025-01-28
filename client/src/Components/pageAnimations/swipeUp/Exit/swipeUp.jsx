@@ -6,14 +6,15 @@ const SwipeBottomMiddle = () => {
   return (
     <motion.div
       className={style.swipeUp}
-      initial={{ y: 1000 }}
-      animate={{ y: 0 }}
-      exit={{ y: 0 }}
+      initial={{ y: "100dvh" }}
+      animate={{ y: "0dvh" }}
+      exit={{ y: "0dvh" }}
+
       transition={{ duration: 0.5 }}
     >
       <div className={style.imgContainer}>
         <img
-          src="https://i.ibb.co/1TZQrh7/Logo-light.png"
+          src="https://res.cloudinary.com/dnrprmypf/image/upload/q_0/v1718654737/Logo-light_v11oio.webp"
           alt="logo-bold-2"
           className={style.img}
         />

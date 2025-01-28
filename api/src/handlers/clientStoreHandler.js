@@ -2,6 +2,7 @@ const Menu = require('../models/Menu');
 const Client = require('../models/Client');
 const Review = require('../models/Reviews');
 const Purchase = require('../models/Store/Purchase');
+const payWithMP = require("../services/mercadopago")
 const jwt = require("jsonwebtoken")
 require("dotenv").config()
 
@@ -245,6 +246,17 @@ const getFavoriteFood = async (req, res) => {
     }
 }
 
+const purchaseFoodWithMercadoPago = async (req, res) => {
+    try {
+        const orders = req.body
+        const response = await payWithMP(orders)
+
+        return res.status(200).send(response)
+    } catch (error) {
+        console.log(error)
+    }
+}
+
 
 
 module.exports = {
@@ -253,6 +265,7 @@ module.exports = {
     myReviews,
     deleteReview,
     purchaseFood,
+    purchaseFoodWithMercadoPago,
     getMyPurchases,
     setFavoriteFood,
     getFavoriteFood,

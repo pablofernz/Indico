@@ -1,10 +1,11 @@
 import { motion } from "framer-motion";
 import style from "./cookiesPopup.module.css";
+import { setCookiesPopup } from "../../../Redux/actions";
 
-const CookiesPopup = ({ close }) => {
+const CookiesPopup = ({ setCookiesPopup }) => {
   const closeHandler = () => {
     window.sessionStorage.setItem("cookie_popup_closed", true);
-    close();
+    setCookiesPopup(false);
   };
 
   return (

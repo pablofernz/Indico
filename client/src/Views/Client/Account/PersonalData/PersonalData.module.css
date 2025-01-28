@@ -1,15 +1,14 @@
 .accountComponent {
-    height: 100vh;
-    width: 100vw;
+    height: 100dvh;
+    width: 100dvw;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
 .background {
-
-    height: 100vh;
-    width: 100vw;
+    height: 100dvh;
+    width: 100dvw;
     position: fixed;
     background-image: url(https://res.cloudinary.com/dnrprmypf/image/upload/q_10/v1728881924/Projects%20Images/Indico/Store%20image%20backgrounds_utils/Account%20pages%20background.webp);
     background-size: cover;
@@ -137,10 +136,14 @@
 
 .changePhotoIcon {
     position: absolute;
+    bottom: 0;
+    right: 0;
+    margin: -2.5px;
     display: flex;
     justify-content: center;
     align-items: center;
-    /* left: 100px; */
+    outline: 2px solid rgb(233, 233, 233);
+    border: 2px solid black;
     background-color: rgb(160, 250, 170);
     height: 30px;
     width: 30px;
@@ -449,7 +452,7 @@
     height: 100vh;
     width: 100vw;
     position: fixed;
-    backdrop-filter: blur(20px) brightness(0.5);
+    backdrop-filter: blur(10px) brightness(0.5);
     z-index: 20000;
     display: flex;
     align-items: center;
@@ -619,4 +622,38 @@
     .deleteButton {
         margin-bottom: 70px;
     }
+
+
+    .deleteContainer {
+        height: 250px;
+        width: 300px;
+        background-color: white;
+        border-radius: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-size: cover;
+    }
+
+    .imgDelete {
+        height: 200px;
+        width: 200px;
+        margin-top: -60px;
+    }
+
+    .deleteText {
+        width: 80%;
+        font-size: 14px;
+        text-align: center;
+        font-weight: 600;
+    }
+    
+.deleteTextContainer {
+    height: 20%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 20px;
+}
+
 }

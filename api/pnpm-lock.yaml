@@ -32,6 +32,9 @@ dependencies:
   jsonwebtoken:
     specifier: ^9.0.2
     version: 9.0.2
+  mercadopago:
+    specifier: ^2.2.0
+    version: 2.2.0
   mongoose:
     specifier: ^7.5.2
     version: 7.5.2
@@ -1056,6 +1059,15 @@ packages:
     dev: false
     optional: true
 
+  /mercadopago@2.2.0:
+    resolution: {integrity: sha512-hMk8CyUpkd4B7MFLaaVICR121e+HXTLCxSYtMhA5CKHj0oBx24BRSf1ztyJoQIDW4/IRhV+jNirOxeA6tM5HzQ==}
+    dependencies:
+      node-fetch: 2.7.0
+      uuid: 9.0.1
+    transitivePeerDependencies:
+      - encoding
+    dev: false
+
   /merge-descriptors@1.0.1:
     resolution: {integrity: sha512-cCi6g3/Zr1iqQi6ySbseM1Xvooa98N0w31jzUYrXPX2xqObmFGHJ0tQ5u74H3mVh7wLouTseZyYIq39g8cNp1w==}
     dev: false
@@ -1883,6 +1895,11 @@ packages:
 
   /uuid@8.3.2:
     resolution: {integrity: sha512-+NYs2QeMWy+GWFOEm9xnn6HCDp0l7QBD7ml8zLUmJ+93Q5NF0NocErnwkTkXVFNiX3/fpC6afS8Dhb/gz7R7eg==}
+    hasBin: true
+    dev: false
+
+  /uuid@9.0.1:
+    resolution: {integrity: sha512-b+1eJOlsR9K8HJpow9Ok3fiWOWSIcIzXodvv0rQjVoOVNpWMpxf1wZNpt4y9h10odCNrqnYp1OBzRktckBe3sA==}
     hasBin: true
     dev: false
 

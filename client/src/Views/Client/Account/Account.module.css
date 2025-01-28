@@ -1,14 +1,14 @@
 .accountComponent {
-    height: 100vh;
-    width: 100vw;
+    height: 100dvh;
+    width: 100dvw;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
 .background {
-    height: 100vh;
-    width: 100vw;
+    height: 100dvh;
+    width: 100dvw;
     position: fixed;
     background-image: url(https://res.cloudinary.com/dnrprmypf/image/upload/q_10/v1728881924/Projects%20Images/Indico/Store%20image%20backgrounds_utils/Account%20pages%20background.webp);
     background-size: cover;
@@ -180,7 +180,7 @@
     transition: all 0.2s ease;
     border: none;
     position: relative;
-    outline: 1px solid rgb(220,220,220);
+    outline: 1px solid rgb(220, 220, 220);
 }
 
 .dropdownOption:hover {
@@ -197,7 +197,7 @@
 .logout {
     width: 100%;
     height: 50px;
-    background-color: rgb(31, 31, 31);
+    background-color: rgb(0, 0, 0);
     margin-bottom: 10px;
     border-radius: 10px;
     display: flex;
@@ -221,6 +221,7 @@
     height: 100%;
     display: flex;
     align-items: center;
+    color: black;
 }
 
 .dropdownOptionsIcon {
@@ -229,6 +230,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    color: black;
 
 }
 

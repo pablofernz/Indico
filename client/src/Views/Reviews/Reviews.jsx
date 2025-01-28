@@ -10,6 +10,7 @@ import SwipeBottomMiddle from "../../Components/pageAnimations/swipeUp/Exit/swip
 import CreateReviewForm from "./reviewForm/reviewForm";
 import Cookies from "js-cookie";
 import NotLoginModal from "../../Components/NotLoginModal/notLoginModal";
+import IconLoader from "../../Components/iconLoader/iconLoader";
 
 const Reviews = () => {
   const viewportWidth = useViewportWidth();
@@ -65,7 +66,7 @@ const Reviews = () => {
     averageScore: ratingPoints(),
   };
 
-  const test = () => {
+  const getTotalReviews = () => {
     let totalReviews = [];
 
     usersWithReviews.forEach((user) => {
@@ -111,6 +112,7 @@ const Reviews = () => {
           viewBox="0 0 20 20"
           xmlns="http://www.w3.org/2000/svg"
         >
+          <div></div>
           <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
         </svg>
       );
@@ -123,46 +125,66 @@ const Reviews = () => {
       stars: 5,
       color: "rgb(91, 216, 100)",
       width:
-        test().filter((review) => review.stars === 5).length * 10 < 65
-          ? `${test().filter((review) => review.stars === 5).length * 10}%`
+        getTotalReviews().filter((review) => review.stars === 5).length * 10 <
+        65
+          ? `${
+              getTotalReviews().filter((review) => review.stars === 5).length *
+              10
+            }%`
           : "65%",
-      amount: test().filter((review) => review.stars === 5).length,
+      amount: getTotalReviews().filter((review) => review.stars === 5).length,
     },
     {
       stars: 4,
       color: "rgb(191, 216, 91)",
       width:
-        test().filter((review) => review.stars === 4).length * 10 < 65
-          ? `${test().filter((review) => review.stars === 4).length * 10}%`
+        getTotalReviews().filter((review) => review.stars === 4).length * 10 <
+        65
+          ? `${
+              getTotalReviews().filter((review) => review.stars === 4).length *
+              10
+            }%`
           : "65%",
-      amount: test().filter((review) => review.stars === 4).length,
+      amount: getTotalReviews().filter((review) => review.stars === 4).length,
     },
     {
       stars: 3,
       color: "rgb(230, 231, 91)",
       width:
-        test().filter((review) => review.stars === 3).length * 10 < 65
-          ? `${test().filter((review) => review.stars === 3).length * 10}%`
+        getTotalReviews().filter((review) => review.stars === 3).length * 10 <
+        65
+          ? `${
+              getTotalReviews().filter((review) => review.stars === 3).length *
+              10
+            }%`
           : "65%",
-      amount: test().filter((review) => review.stars === 3).length,
+      amount: getTotalReviews().filter((review) => review.stars === 3).length,
     },
     {
       stars: 2,
       color: "rgb(216, 151, 91)",
       width:
-        test().filter((review) => review.stars === 2).length * 10 < 65
-          ? `${test().filter((review) => review.stars === 2).length * 10}%`
+        getTotalReviews().filter((review) => review.stars === 2).length * 10 <
+        65
+          ? `${
+              getTotalReviews().filter((review) => review.stars === 2).length *
+              10
+            }%`
           : "65%",
-      amount: test().filter((review) => review.stars === 2).length,
+      amount: getTotalReviews().filter((review) => review.stars === 2).length,
     },
     {
       stars: 1,
       color: "rgb(216, 91, 91)",
       width:
-        test().filter((review) => review.stars === 1).length * 10 < 65
-          ? `${test().filter((review) => review.stars === 1).length * 10}%`
+        getTotalReviews().filter((review) => review.stars === 1).length * 10 <
+        65
+          ? `${
+              getTotalReviews().filter((review) => review.stars === 1).length *
+              10
+            }%`
           : "65%",
-      amount: test().filter((review) => review.stars === 1).length,
+      amount: getTotalReviews().filter((review) => review.stars === 1).length,
     },
   ];
 
@@ -172,6 +194,22 @@ const Reviews = () => {
     } else {
       setReviewFormOpen(true);
     }
+  };
+
+  const backHandler = () => {
+    setExit(true);
+    setTimeout(() => {
+      if (window.sessionStorage.getItem("page_aux") !== "/store/reviews") {
+        navigate(window.sessionStorage.getItem("page_aux"));
+        // window.sessionStorage.removeItem("page_aux");
+      } else {
+        if (window.sessionStorage.getItem("page_aux") == "/store/reviews") {
+          window.history.back();
+        } else {
+          navigate("/");
+        }
+      }
+    }, 500);
   };
   return (
     <div className={style.Component}>
@@ -200,15 +238,7 @@ const Reviews = () => {
         <aside className={style.leftSide}>
           <header>
             <div className={style.logoAndName}>
-              <button
-                className={style.back}
-                onClick={() => {
-                  setExit(true);
-                  setTimeout(() => {
-                    navigate("/home");
-                  }, 500);
-                }}
-              >
+              <button className={style.back} onClick={backHandler}>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
@@ -317,95 +347,175 @@ const Reviews = () => {
         <div className={style.metricsContainer}>
           {viewportWidth > 800 && (
             <>
-              {" "}
               <div className={style.totalReviews}>
-                <p>Reseñas totales</p>
-                <p>
-                  {storeData.reviewsAmount}
-                  <label>
-                    +31%
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      strokeWidth="3"
-                      stroke="currentColor"
-                      height="18"
-                      width="18"
+                <AnimatePresence mode="popLayout">
+                  {reviews.length == 0 ? (
+                    <motion.div
+                      initial={{ opactiy: 1, scale: 1 }}
+                      exit={{ opactiy: 0, scale: 0 }}
+                      className={style.totalReviewsSkeleton}
+                      key="totalReviewsSkeleton"
                     >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        d="M2.25 18 9 11.25l4.306 4.306a11.95 11.95 0 0 1 5.814-5.518l2.74-1.22m0 0-5.94-2.281m5.94 2.28-2.28 5.941"
-                      />
-                    </svg>
-                  </label>
-                </p>
-                <p></p>
+                      <p>Reseñas totales</p>
+                      <p>
+                        <span>00</span>
+                        <label>
+                          +31%
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            strokeWidth="3"
+                            stroke="currentColor"
+                            height="18"
+                            width="18"
+                          >
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              d="M2.25 18 9 11.25l4.306 4.306a11.95 11.95 0 0 1 5.814-5.518l2.74-1.22m0 0-5.94-2.281m5.94 2.28-2.28 5.941"
+                            />
+                          </svg>
+                        </label>
+                      </p>
+                    </motion.div>
+                  ) : (
+                    <motion.div
+                      key="totalReviews"
+                      initial={{ opacity: 0, scale: 0 }}
+                      exit={{ opacity: 0, scale: 0 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                    >
+                      <p>Reseñas totales</p>
+                      <p>
+                        {storeData.reviewsAmount}
+                        <label>
+                          +31%
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            strokeWidth="3"
+                            stroke="currentColor"
+                            height="18"
+                            width="18"
+                          >
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              d="M2.25 18 9 11.25l4.306 4.306a11.95 11.95 0 0 1 5.814-5.518l2.74-1.22m0 0-5.94-2.281m5.94 2.28-2.28 5.941"
+                            />
+                          </svg>
+                        </label>
+                      </p>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
               </div>
+
               <div className={style.averageReviewsScore}>
-                <p>Puntuación promedio</p>
-                <p>
-                  {storeData.averageScore}
-                  <label className={style.fakeStars}>
-                    {generateStars(5)}
-                    <label className={style.stars}>
-                      {generateStars(Math.floor(storeData.averageScore))}
-                    </label>
-                  </label>
-                </p>
-              </div>
-              <div className={style.reviewsScoreGraphic}>
-                {averageScoreAux.map((score, index) => (
-                  <div key={index} className={style.test}>
-                    <div className={style.starsSide}>
-                      <label className={style.starGraphic}>
-                        {generateStars(1)}
-                      </label>
-                      <p>{score.stars}</p>
-                    </div>
-                    <div
-                      className={style.barContainer}
-                      style={{
-                        width: score.width,
-                        backgroundColor: score.color,
-                      }}
+                <AnimatePresence mode="popLayout">
+                  {reviews.length == 0 ? (
+                    <motion.div
+                      key="averageReviewsScoreSkeleton"
+                      initial={{ opacity: 1 }}
+                      exit={{ opacity: 0, scale: 0 }}
+                      className={style.averageReviewsScoreSkeleton}
                     >
-                      <div className={style.bar}></div>
-                    </div>
-                    <p className={style.number}>
-                      {score.amount > 0 ? score.amount : null}
-                    </p>
-                  </div>
-                ))}
+                      <p>Puntuación promedio</p>
+                      <p>
+                        <span> 5.0</span>
+                        <label className={style.fakeStars}></label>
+                      </p>
+                    </motion.div>
+                  ) : (
+                    <motion.div
+                      key="averageReviewsScore"
+                      initial={{ opacity: 0, scale: 0 }}
+                      exit={{ opacity: 0, scale: 0 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                    >
+                      <p>Puntuación promedio</p>
+                      <p>
+                        {storeData.averageScore}
+                        <label className={style.fakeStars}>
+                          {generateStars(5)}
+                          <label className={style.stars}>
+                            {generateStars(Math.floor(storeData.averageScore))}
+                          </label>
+                        </label>
+                      </p>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
               </div>
+
+              {reviews.length > 0 && (
+                <motion.div
+                  initial={{ opacity: 0, scale: 0 }}
+                  exit={{ opacity: 0, scale: 0 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  className={style.reviewsScoreGraphic}
+                >
+                  {averageScoreAux.map((score, index) => (
+                    <div key={index} className={style.test}>
+                      <div className={style.starsSide}>
+                        <label className={style.starGraphic}>
+                          {generateStars(1)}
+                        </label>
+                        <p>{score.stars}</p>
+                      </div>
+                      <div
+                        className={style.barContainer}
+                        style={{
+                          width: score.width,
+                          backgroundColor: score.color,
+                        }}
+                      >
+                        <div className={style.bar}></div>
+                      </div>
+                      <p className={style.number}>
+                        {score.amount > 0 ? score.amount : null}
+                      </p>
+                    </div>
+                  ))}
+                </motion.div>
+              )}
             </>
           )}
 
           {viewportWidth < 800 && (
             <>
               <div className={style.card2Right}>
-                <div className={style.iconStatsContainer}>
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 24 24"
-                    width="30"
-                    height="30"
-                    fill="rgb(178, 255, 187)"
-                  >
-                    <path
-                      fillRule="evenodd"
-                      d="M4.804 21.644A6.707 6.707 0 0 0 6 21.75a6.721 6.721 0 0 0 3.583-1.029c.774.182 1.584.279 2.417.279 5.322 0 9.75-3.97 9.75-9 0-5.03-4.428-9-9.75-9s-9.75 3.97-9.75 9c0 2.409 1.025 4.587 2.674 6.192.232.226.277.428.254.543a3.73 3.73 0 0 1-.814 1.686.75.75 0 0 0 .44 1.223ZM8.25 10.875a1.125 1.125 0 1 0 0 2.25 1.125 1.125 0 0 0 0-2.25ZM10.875 12a1.125 1.125 0 1 1 2.25 0 1.125 1.125 0 0 1-2.25 0Zm4.875-1.125a1.125 1.125 0 1 0 0 2.25 1.125 1.125 0 0 0 0-2.25Z"
-                      clipRule="evenodd"
-                    />
-                  </svg>
-                </div>
-                <div className={style.statsTextContainer}>
-                  <header className={style.primaryTextMetricsCard}>
-                    {storeData.reviewsAmount}
-                  </header>
-                  <footer className={style.secondText}>Reseñas</footer>
-                </div>
+                {reviews.length > 0 ? (
+                  <>
+                    <div className={style.iconStatsContainer}>
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 24 24"
+                        width="30"
+                        height="30"
+                        fill="rgb(178, 255, 187)"
+                      >
+                        <path
+                          fillRule="evenodd"
+                          d="M4.804 21.644A6.707 6.707 0 0 0 6 21.75a6.721 6.721 0 0 0 3.583-1.029c.774.182 1.584.279 2.417.279 5.322 0 9.75-3.97 9.75-9 0-5.03-4.428-9-9.75-9s-9.75 3.97-9.75 9c0 2.409 1.025 4.587 2.674 6.192.232.226.277.428.254.543a3.73 3.73 0 0 1-.814 1.686.75.75 0 0 0 .44 1.223ZM8.25 10.875a1.125 1.125 0 1 0 0 2.25 1.125 1.125 0 0 0 0-2.25ZM10.875 12a1.125 1.125 0 1 1 2.25 0 1.125 1.125 0 0 1-2.25 0Zm4.875-1.125a1.125 1.125 0 1 0 0 2.25 1.125 1.125 0 0 0 0-2.25Z"
+                          clipRule="evenodd"
+                        />
+                      </svg>
+                    </div>
+                    <div className={style.statsTextContainer}>
+                      <header className={style.primaryTextMetricsCard}>
+                        {storeData.reviewsAmount}
+                      </header>
+                      <footer className={style.secondText}>Reseñas</footer>
+                    </div>
+                  </>
+                ) : (
+                  <div className={style.loaderCards}>
+                    <IconLoader color="rgb(255, 255, 255)" scale="1" />
+                  </div>
+                )}
               </div>
 
               <div
@@ -414,107 +524,154 @@ const Reviews = () => {
                 transition={{ duration: 1, delay: 2, type: "spring" }}
                 className={style.card2Right}
               >
-                <div className={style.iconStatsContainer}>
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 24 24"
-                    fill="rgb(178, 255, 187)"
-                    width="30"
-                    height="30"
-                  >
-                    <path
-                      fillRule="evenodd"
-                      d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.006 5.404.434c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.434 2.082-5.005Z"
-                      clipRule="evenodd"
-                    />
-                  </svg>
-                </div>
-                <div className={style.statsTextContainer}>
-                  <header className={style.primaryTextMetricsCard}>
-                    {storeData.averageScore}
-                  </header>
-                  <footer className={style.secondText}>
-                    {viewportWidth < 500 ? "De media" : "Puntuación media"}
-                  </footer>
-                </div>
+                {reviews.length > 0 ? (
+                  <>
+                    <div className={style.iconStatsContainer}>
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 24 24"
+                        fill="rgb(178, 255, 187)"
+                        width="30"
+                        height="30"
+                      >
+                        <path
+                          fillRule="evenodd"
+                          d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.006 5.404.434c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.434 2.082-5.005Z"
+                          clipRule="evenodd"
+                        />
+                      </svg>
+                    </div>
+                    <div className={style.statsTextContainer}>
+                      <header className={style.primaryTextMetricsCard}>
+                        {storeData.averageScore}
+                      </header>
+                      <footer className={style.secondText}>
+                        {viewportWidth < 500 ? "De media" : "Puntuación media"}
+                      </footer>
+                    </div>
+                  </>
+                ) : (
+                  <div className={style.loaderCards}>
+                    <IconLoader color="rgb(255, 255, 255)" scale="1" />
+                  </div>
+                )}
               </div>
             </>
           )}
         </div>
         <main>
-          <div className={style.cardsContainer}>
-            <div className={style.upperShadow}></div>
-            <AnimatePresence mode="popLayout">
-              {users.map((user, index) => (
-                <motion.div
-                  initial={{ opacity: 0, scale: 0 }}
-                  exit={{ opacity: 0, scale: 0 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  key={index}
-                  className={style.reviewCard}
-                  layout
-                >
-                  <div className={style.userDataSide}>
-                    <picture>
-                      <img src={user.image} alt="userImage" />
-                      {userData?.id === user.id && (
-                        <p className={style.userIndicator}>Yo</p>
-                      )}
-                    </picture>
-                    <div>
-                      <p className={style.name}>
-                        {user.name} {user.lastname}
-                      </p>
-                      {viewportWidth > 800 && (
-                        <>
-                          <p className={style.totalPurchases}>
-                            {user.purchases.length}{" "}
-                            {user.purchases.length > 1
-                              ? "compras realizadas"
-                              : "compra realizada"}
+          <AnimatePresence mode="popLayout">
+            {reviews.length > 0 ? (
+              <motion.div
+                initial={{ opacity: 0, scale: 0 }}
+                animate={{ opacity: 1, scale: 1 }}
+                className={style.cardsContainer}
+                key="cardsContainer"
+              >
+                <div className={style.upperShadow}></div>
+                <AnimatePresence mode="popLayout">
+                  {users.map((user, index) => (
+                    <motion.div key={index} className={style.reviewCard} layout>
+                      <div className={style.userDataSide}>
+                        <picture>
+                          <img src={user.image} alt="userImage" />
+                          {userData?.id === user.id && (
+                            <p className={style.userIndicator}>Yo</p>
+                          )}
+                        </picture>
+                        <div>
+                          <p className={style.name}>
+                            {user.name} {user.lastname}
                           </p>
-                          <p className={style.userTotalReviews}>
-                            Escribió{" "}
-                            {
-                              usersWithReviews.filter(
-                                (test) => test.id == user.id
-                              )[0].reviews.length
-                            }{" "}
-                            {usersWithReviews.filter(
-                              (test) => test.id == user.id
-                            )[0].reviews.length > 1
-                              ? "reseñas"
-                              : "reseña"}
+                          {viewportWidth > 800 && (
+                            <>
+                              <p className={style.totalPurchases}>
+                                {user.purchases.length == 0
+                                  ? `No hizo compras`
+                                  : user.purchases.length == 1
+                                  ? `${user.purchases.length} compra realizada`
+                                  : `${user.purchases.length} compras realizadas`}
+                              </p>
+                              <p className={style.userTotalReviews}>
+                                Escribió{" "}
+                                {
+                                  usersWithReviews.filter(
+                                    (test) => test.id == user.id
+                                  )[0].reviews.length
+                                }{" "}
+                                {usersWithReviews.filter(
+                                  (test) => test.id == user.id
+                                )[0].reviews.length > 1
+                                  ? "reseñas"
+                                  : "reseña"}
+                              </p>
+                            </>
+                          )}
+                        </div>
+                      </div>
+                      <div className={style.userReviewSide}>
+                        <header>
+                          <label className={style.fakeStarsReviews}>
+                            {generateStars(5)}
+                            <label className={style.starsReviews}>
+                              {generateStars(user.reviews[0].stars)}
+                            </label>
+                          </label>
+                          <p className={style.reviewDate}>
+                            {user.reviews[0].date?.split(" ")[0]}
                           </p>
-                        </>
-                      )}
-                    </div>
-                  </div>
-                  <div className={style.userReviewSide}>
-                    <header>
-                      <label className={style.fakeStarsReviews}>
-                        {generateStars(5)}
-                        <label className={style.starsReviews}>
-                          {generateStars(user.reviews[0].stars)}
-                        </label>
-                      </label>
-                      <p className={style.reviewDate}>
-                        {user.reviews[0].date?.split(" ")[0]}
-                      </p>
-                    </header>
-                    <footer>
-                      <p className={style.reviewText}>{user.reviews[0].text}</p>
-                    </footer>
-                  </div>
-                </motion.div>
-              ))}
-            </AnimatePresence>
-            <div className={style.lowerShadow}></div>
-          </div>
+                        </header>
+                        <footer>
+                          <p className={style.reviewText}>
+                            {user.reviews[0].text}
+                          </p>
+                        </footer>
+                      </div>
+                    </motion.div>
+                  ))}
+                </AnimatePresence>
+                <div className={style.lowerShadow}></div>
+              </motion.div>
+            ) : (
+              <motion.div
+                initial={{ opactiy: 1, scale: 1 }}
+                exit={{ opactiy: 0, scale: 0 }}
+                className={style.loaderCards}
+                key="iconLoader"
+              >
+                <IconLoader color="rgb(200,200,200)" scale="1.5" />
+              </motion.div>
+            )}
+          </AnimatePresence>
         </main>
 
         {viewportWidth < 800 && (
           <div className={style.createButtonContainer}>
+            <button
+              onClick={() => {
+                setExit(true);
+                setTimeout(() => {
+                  navigate(window.sessionStorage.getItem("page_aux"));
+                }, 500);
+              }}
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="2.5"
+                stroke="currentColor"
+                height="15"
+                width="15"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18"
+                />
+              </svg>
+              Volver
+            </button>
             <button onClick={openFormHandler}>Dejar una reseña</button>
           </div>
         )}

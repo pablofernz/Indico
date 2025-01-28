@@ -4,8 +4,9 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import Cookies from "js-cookie";
 import IconLoader from "../../../Components/iconLoader/iconLoader";
-import { motion, transform } from "framer-motion";
+import { motion } from "framer-motion";
 import SwipeBottomMiddle from "../../../Components/pageAnimations/swipeUp/Exit/swipeUp";
+import { initMercadoPago, Wallet } from "@mercadopago/sdk-react";
 
 const Pay = () => {
   const [orderNumber, setOrderNumber] = useState(0);
@@ -24,11 +25,13 @@ const Pay = () => {
       ? window.sessionStorage.getItem("purchase_completed")
       : window.sessionStorage.setItem("purchase_completed", "false")
   );
+
   useEffect(() => {
     if (purchaseCompleted == "true") {
       setStep(3);
     }
   }, []);
+
   const changeSteps = () => {
     switch (step) {
       case 1:
@@ -51,7 +54,7 @@ const Pay = () => {
 
   const fetchOrderNumber = async () => {
     const response = await axios.get(
-      `https://indico-backend.onrender.com/store/clients?waiting=${purchases}`
+      `https://indico-backend.onrender.com/store/clients?waiting=purchases`
       // `http://localhost:3001/store/clients?waiting=purchases`
     );
     setOrderNumber(response.data + 1);
@@ -135,19 +138,94 @@ const Pay = () => {
   const [isExit, setExit] = useState(false);
   const exitHandler = () => {
     setExit(true);
+    window.sessionStorage.setItem("noPreviousPage", true);
     setTimeout(() => {
       navigate("/store");
     }, 500);
   };
+
+  useEffect(() => {
+    (!Cookies.get("session_token") ||
+      !window.localStorage.getItem("userData")) &&
+      navigate("/store");
+  }, []);
+
+  //  ----------------- MERCADO PAGO ------------------------------
+
+  useEffect(() => {
+    initMercadoPago(
+      "TEST-b873d01f-14fe-4dab-8b9a-31f9f07457de",
+      // "APP_USR-30152766-1452-4f76-946c-ac0b592a2e00",
+       {
+      locale: "es-AR",
+    });
+  }, []);
+
+  const [preferenceId, setPreferenceId] = useState(null);
+
+  useEffect(() => {
+    const payWithMP = async () => {
+      try {
+        const orderDataFiltered = order.orders.map((order) => ({
+          title: order.title,
+          unit_price: order.price - (order.price * order.discount) / 100,
+          quantity: order.quantity,
+          description: order.description,
+          id: order.id,
+        }));
+        orderDataFiltered.push({
+          title: "Servicio de mesa",
+          unit_price: order.payData.service,
+          quantity: 1,
+          description: "Monto adicional por servicio de mesa",
+        });
+
+        const response = await axios.post(
+          `https://indico-backend.onrender.com/client/pay/mercadopago`,
+          // `http://localhost:3001/client/pay/mercadopago`,
+          orderDataFiltered
+        );
+
+        setPreferenceId(response.data.id);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    payWithMP();
+  }, []);
+
+  useEffect(() => {
+    if (preferenceId) {
+      const mp = new window.MercadoPago(
+        "TEST-b873d01f-14fe-4dab-8b9a-31f9f07457de",
+        // "APP_USR-30152766-1452-4f76-946c-ac0b592a2e00",
+        {
+          locale: "es-AR",
+        }
+      );
+
+      mp.checkout({
+        preference: {
+          id: preferenceId,
+        },
+        render: {
+          container: "#buttoncontainer",
+          label: "Pagar con Mercado Pago", // Contenedor para el botón
+        },
+      });
+    }
+  }, [preferenceId]);
+
   return (
     <div className={style.component}>
       <motion.div
         className={style.pantalla}
         initial={{ y: 0 }} // Estilo inicial
-        animate={{ y: 1000 }}
+        animate={{ y: "100dvh" }}
         exit={{ y: 0 }} // Estilo final cuando el componente se monta // Estilo final cuando el componente se desmonta
         transition={{ duration: 0.5, delay: 0.5 }} // Duración de la transición
       />
+
       {isExit == true && <SwipeBottomMiddle />}
       {order ? (
         <div
@@ -180,6 +258,7 @@ const Pay = () => {
                   <div style={{ filter: "opacity(0)" }}>ba</div>
                 </div>
               </div>
+
               <div className={style.cartElements}>
                 {order.orders.map(
                   ({ id, title, price, discount, image, quantity, total }) => (
@@ -260,13 +339,18 @@ const Pay = () => {
                   </svg>
                   Efectivo
                 </button>
-                <button className={style.mercadoPago}>
-                  <img
-                    src="https://res.cloudinary.com/dnrprmypf/image/upload/v1730731882/Projects%20Images/Indico/Store%20image%20backgrounds_utils/MP_RGB_HANDSHAKE_color-azul_hori-izq_bmpcqk.png"
-                    alt=""
-                    className={style.mpImg}
+                {/* {preferenceId && (
+                  <Wallet
+                    initialization={{
+                      preferenceId: preferenceId,
+                      redirectMode: 'blank',
+                    }}
+                    customization={{ texts: { valueProp: "smart_option" } }}
                   />
-                </button>
+                )} */}
+                <div className={style.mercadoPago} id="buttoncontainer">
+                  {!preferenceId && <IconLoader />}
+                </div>
               </div>
             </motion.div>
           )}
@@ -283,7 +367,7 @@ const Pay = () => {
                       <path d="M233.4 105.4c12.5-12.5 32.8-12.5 45.3 0l192 192c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L256 173.3 86.6 342.6c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3l192-192z"></path>
                     </svg>
                   </button>
-                  <p>Orden #104</p>
+                  <p>Orden #{orderNumber}</p>
                   <div style={{ filter: "opacity(0)" }}>ba</div>
                 </div>
               </div>
@@ -409,8 +493,8 @@ const Pay = () => {
       ) : (
         <div className={style.contentCard2}>
           <img
-            src="https://i.ibb.co/55SsrX2/Order-food-bro.png"
-            alt=""
+            src="https://res.cloudinary.com/dnrprmypf/image/upload/q_auto:low/v1732393673/Projects%20Images/Indico/Store%20image%20backgrounds_utils/Order-food-bro_olifzs.webp"
+            alt="noOrder"
             className={style.placeholderImg}
           />
           <p>Aún no hiciste ningún pedido, pásate por la tienda!</p>

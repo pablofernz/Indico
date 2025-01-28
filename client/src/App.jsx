@@ -31,6 +31,7 @@ const Favorites = lazy(() =>
 function App() {
   const networkError = useSelector((state) => state.errors.network_connection);
   const slowNetwork = useSelector((state) => state.popups.slowNetwork);
+  const [cookiesPopup, setCookiesPopup] = useState(true);
 
   useEffect(() => {
     if (networkError) {
@@ -41,13 +42,20 @@ function App() {
     }
   }, [networkError]);
 
+  const location = useLocation();
+
   useEffect(() => {
-    console.log(slowNetwork);
-  }, [slowNetwork]);
+    // console.log(window.history);
+    // window.sessionStorage.setItem(
+    //   "previous_page",
+    //   JSON.stringify(location.pathname)
+    // );
+  }, [location]);
+
   return (
-    <div className="App">
-      <AnimatePresence mode="popLayout">
-        {networkError === true ? (
+    <div className={style.App}>
+      {/* <AnimatePresence mode="popLayout"> */}
+      {/* {networkError === true ? (
           <motion.div className={style.errorBackground}>
             <div className={style.reviewContainer}>
               <div className={style.reviewModalContent}>
@@ -68,35 +76,43 @@ function App() {
             </div>
           </motion.div>
         ) : (
-          <>
-            <Routes>
-              <Route path="/" element={<Navigate to={"/home"} />} />
-              <Route path="/home" element={<Landing />} />
-              <Route path="/store/reviews" element={<Reviews />} />
-              <Route path="/login" element={<ClientLogin />} />
-              <Route path="/register" element={<ClientRegister />} />
-              <Route path="/account" element={<AccountPage />} />
-              <Route path="/account/myinformation" element={<PersonalData />} />
-              <Route path="/account/purchases" element={<MyPurchases />} />
-              <Route path="/account/favorites" element={<Favorites />} />
-              <Route path="/account/reviews" element={<MyReviews />} />
-              <Route path="/store" element={<Store />} />
-              <Route path="/store/pay" element={<Pay />} />
-              <Route path="*" element={<NotFound />} />
-            </Routes>
-          </>
-        )}
+          <> */}
+      <Routes>
+        <Route path="/" element={<Navigate to={"/home"} />} />
+        <Route path="/home" element={<Landing />} />
+        <Route path="/store/reviews" element={<Reviews />} />
+        <Route path="/login" element={<ClientLogin />} />
+        <Route path="/register" element={<ClientRegister />} />
+        <Route path="/account" element={<AccountPage />} />
+        <Route path="/account/myinformation" element={<PersonalData />} />
+        <Route path="/account/purchases" element={<MyPurchases />} />
+        <Route path="/account/favorites" element={<Favorites />} />
+        <Route path="/account/reviews" element={<MyReviews />} />
+        <Route path="/store" element={<Store />} />
+        <Route path="/store/pay" element={<Pay />} />
+        <Route path="*" element={<NotFound />} />
+      </Routes>
+      {/* </>
+        )} */}
 
-        <div className={style.popupsContainer}>
-          <AnimatePresence mode="popLayout">
-            {slowNetwork === true && (
+      <div className={style.popupsContainer}>
+        <AnimatePresence mode="popLayout">
+          {!window.sessionStorage.getItem("cookie_popup_closed") &&
+            cookiesPopup && (
               <>
-                <SlowNetworkPopup />
+                <CookiesPopup setCookiesPopup={setCookiesPopup} />
               </>
             )}
-          </AnimatePresence>
-        </div>
-      </AnimatePresence>
+        </AnimatePresence>
+        <AnimatePresence mode="popLayout">
+          {slowNetwork === true && (
+            <>
+              <SlowNetworkPopup />
+            </>
+          )}
+        </AnimatePresence>
+      </div>
+      {/* </AnimatePresence> */}
     </div>
   );
 }

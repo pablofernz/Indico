@@ -11,6 +11,7 @@ import {
 import NotLoginModal from "../../../../../Components/NotLoginModal/notLoginModal";
 import axios from "axios";
 import useViewportWidth from "../../../../../Hooks/useViewportWidth";
+import Cookies from "js-cookie";
 
 export default function ItemList({
   id,
@@ -67,9 +68,9 @@ export default function ItemList({
   const userData = JSON.parse(localStorage.getItem("userData"));
 
   const likesHandler = async () => {
-    setIsLiked(!isLiked);
-    if (userData) {
+    if (userData || Cookies.get("session_token")) {
       try {
+        setIsLiked(!isLiked);
         const favoriteFood = { _id: id, title };
         const response = await axios.patch(
           `https://indico-backend.onrender.com/client/${userData.id}/favoritefoods`,
@@ -103,7 +104,10 @@ export default function ItemList({
       <div className={style.Content}>
         <AnimatePresence>
           {notLoginModalOpen && (
-            <NotLoginModal setNotLoginModalOpen={setNotLoginModalOpen} />
+            <NotLoginModal
+              setNotLoginModalOpen={setNotLoginModalOpen}
+              text="Debes estar logueado para poder añadir platos favoritos"
+            />
           )}
         </AnimatePresence>
         {discount ? (
@@ -130,7 +134,9 @@ export default function ItemList({
         <div className={style.buttonContainer}>
           <div className={style.buttonSeparator}></div>
           <motion.button
-            animate={{ right: viewportWidth < 500 && isAdded === true ? "70px" : "100px" }}
+            animate={{
+              right: viewportWidth < 500 && isAdded === true ? "70px" : "100px",
+            }}
             className={style.Like}
             onClick={likesHandler}
           >

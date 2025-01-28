@@ -186,7 +186,7 @@ const CreateReviewForm = ({ setReviewFormOpen, setUpdateSignal }) => {
                   fill="none"
                   viewBox="0 0 24 24"
                   strokeWidth="1.5"
-                  stroke="currentColor"
+                  stroke="black"
                   height="20"
                   width="20"
                 >

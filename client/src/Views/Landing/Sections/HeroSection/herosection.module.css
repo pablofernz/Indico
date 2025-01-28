@@ -1,0 +1,570 @@
+.heroSection {
+    width: calc(100%);
+    height: calc(100%);
+}
+
+.container {
+    height: calc(100dvh);
+    padding: 0px 20px 20px 20px;
+    border-radius: 0px 0px 20px 20px;
+    width: 100%;
+
+}
+
+.upper {
+    width: 100%;
+    height: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.left {
+    height: 90%;
+    width: 25%;
+    display: flex;
+    align-items: end;
+    justify-content: space-around;
+}
+
+.right {
+    height: 90%;
+    width: 25%;
+    display: flex;
+    align-items: start;
+    justify-content: space-around;
+}
+
+.card2 {
+    height: 150px;
+    width: 150px;
+    border-radius: 20px;
+    background-color: rgb(231, 231, 231);
+}
+
+
+.card2Right {
+    cursor: grab;
+    height: auto;
+    width: 60px;
+    border-radius: 15px;
+    background-color: rgb(255, 255, 255);
+    outline: 2px solid black;
+    padding: 5px;
+    backdrop-filter: blur(10px);
+    display: flex;
+    justify-content: start;
+    flex-direction: column;
+    align-items: center;
+    /* transform: scale(0.7); */
+}
+
+.card2Right:active {
+    cursor: grabbing;
+}
+
+
+.iconStatsContainer {
+    border-radius: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 50px;
+    gap: 5px;
+    background-color: rgb(4, 60, 0);
+}
+
+.statsTextContainer {
+    border-radius: 15px;
+    width: calc(100%);
+    height: 30%;
+    padding-left: 5px;
+    text-align: center;
+}
+
+.primaryText {
+    font-size: 20px;
+    font-weight: 800;
+    color: rgb(178, 255, 187);
+
+}
+
+.secondText {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    color: rgb(127, 127, 127);
+    font-size: 14px;
+    font-weight: 500;
+
+    word-break: break-word;
+    display: -webkit-box;
+    overflow: visible;
+
+}
+
+.secondTextAnimation {
+    animation: showText 5s ease infinite;
+}
+
+@keyframes showText {
+    0%, 60% {
+        transform: translateY(0px);
+    }
+
+    10%, 50% {
+        transform: translateY(-20px);
+    }
+}
+
+.text2Container {
+    height: 50%;
+    width: 100%;
+    overflow: hidden;
+}
+
+.text2Container2 {
+    height: 100%;
+    width: 100%;
+    overflow: visible;
+    transform: translateY(-20px);
+}
+
+.container2 {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin-bottom: 50px;
+}
+
+.container2>b {
+    text-align: center;
+}
+
+.container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+.leftSide {
+    outline: 2px solid black;
+    height: calc(100% - 4px);
+    width: calc(50% - 4px);
+    background-image: url(https://res.cloudinary.com/dnrprmypf/image/upload/q_auto:low/v1735169479/Projects%20Images/Indico/Store%20image%20backgrounds_utils/photo-1600676074626-e1f6b5981f25_hkkuj5.webp);
+    background-size: cover;
+    background-position: center;
+    border-radius: 30px;
+    display: flex;
+    align-items: end;
+    justify-content: start;
+    padding: 15px;
+    position: relative;
+    overflow: hidden;
+}
+
+.leftSide>button {
+    height: 45px;
+    width: 45%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    border-radius: 5px 30px 30px 25px;
+    border: none;
+    font-size: 15px;
+    outline: 2px solid black;
+    background-color: rgba(255, 255, 255, 0.759);
+    backdrop-filter: blur(20px);
+    cursor: pointer;
+    position: relative;
+}
+
+.leftSide>button>p {
+    padding-left: 15px;
+    font-weight: 600;
+}
+
+.doodle5 {
+    position: absolute;
+    color: rgb(0, 0, 0);
+    bottom: 100%;
+    right: 90%;
+    rotate: 0deg;
+    transform: rotateX(180deg);
+    height: 50px;
+    width: 50px;
+    margin: 10px 0px;
+}
+
+.rightSide {
+    height: 100%;
+    width: 50%;
+    background-size: cover;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    /* overflow: hidden; */
+    gap: 10px;
+}
+
+.top {
+    width: 100%;
+    height: 70%;
+    /* background-color: rgb(204, 240, 213); */
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    position: inherit;
+}
+
+
+.textContainer {
+    height: calc(100% - 50px);
+    width: calc(100% - 50px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    position: relative;
+    gap: 50px;
+}
+
+.doodlesContainer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 110%;
+    width: 100%;
+}
+
+.doodle1 {
+    position: absolute;
+    color: black;
+    top: 0;
+    left: 0;
+    height: 50px;
+    width: 50px;
+}
+
+.doodle2 {
+    position: absolute;
+    color: rgb(0, 0, 0);
+    bottom: 0;
+    right: 0;
+    height: 50px;
+    width: 50px;
+    margin: 0px 100px;
+}
+
+.doodle3 {
+    position: absolute;
+    color: rgb(0, 0, 0);
+    bottom: 0;
+    left: 0;
+    height: 50px;
+    width: 50px;
+    margin: 0px 100px;
+}
+
+.doodle4 {
+    position: absolute;
+    color: rgb(0, 0, 0);
+    top: 0;
+    right: 0;
+    height: 50px;
+    width: 50px;
+    margin: 0px -5px;
+}
+
+.title {
+    font-size: 60px;
+    font-family: Real Line;
+    line-height: 1;
+    color: rgb(31, 31, 31);
+    display: flex;
+    justify-content: center;
+    cursor: default;
+    font-weight: 100;
+    text-align: center;
+    position: relative;
+}
+
+.subtitle {
+    color: rgb(38, 38, 38);
+    font-weight: 500;
+    font-size: 15px;
+    max-width: 80%;
+    text-align: center;
+    margin-bottom: 25px;
+
+}
+
+.subtitle b {
+    color: rgb(45, 45, 45);
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.subtitle>b>span {
+    position: absolute;
+    color: rgb(227, 227, 227);
+    bottom: -80%;
+    height: 10px;
+    width: 20%;
+}
+
+
+
+.bottom {
+    width: 100%;
+    height: 30%;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+.bottomLeft {
+    border: 3px solid black;
+    width: 50%;
+    height: 100%;
+    border-radius: 20px;
+    border-top-right-radius: 30px;
+    background-image: url(https://res.cloudinary.com/dnrprmypf/image/upload/q_0/v1735169540/Projects%20Images/Indico/Store%20image%20backgrounds_utils/photo-1706295331428-3c9970571e95_l40v8k.webp);
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    display: flex;
+    align-items: end;
+    justify-content: start;
+}
+
+.customersContainer {
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 45px;
+    padding: 5px;
+    width: auto;
+    margin: 10px;
+    border-radius: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    background-color: rgba(255, 255, 255, 0.554);
+    backdrop-filter: blur(10px);
+}
+
+.circle {
+    user-select: none;
+    height: 35px;
+    margin-left: -12px;
+    aspect-ratio: 1/1;
+    border-radius: 9999px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 900;
+    font-size: 15px;
+    overflow: hidden;
+}
+
+.circle>img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    border: 2px solid black;
+    border-radius: 9999px;
+
+}
+
+.circle:first-child {
+    margin-left: 0;
+    /* El primer círculo no necesita margen negativo */
+}
+
+.circle:last-child {
+    background-color: rgb(255, 255, 255);
+}
+
+.bottomRight {
+    width: calc(50% - 6px);
+    height: calc(100% - 6px);
+    border-radius: 20px;
+    outline: 3px solid black;
+    position: relative;
+    overflow: hidden;
+}
+
+.buttonsContainer {
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 10px;
+    background-color: black;
+    border-radius: 100px;
+    z-index: 1;
+}
+
+.buttonsContainer>button {
+    display: flex;
+    align-items: center;
+    color: rgb(255, 255, 255);
+    justify-content: center;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.foodTypeCard {
+    width: 100%;
+    height: 100%;
+
+}
+
+.foodTypeCard>img {
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
+    filter: brightness(0.8);
+    will-change: opacity;
+    border-radius: 15px;
+}
+
+.foodTypeText {
+    position: absolute;
+    bottom: 0;
+    padding: 0;
+    /* margin: 5px 10px; */
+    font-size: 20px;
+    color: white;
+    font-weight: 600;
+    padding: 5px 10px;
+    letter-spacing: -0px;
+    z-index: 1;
+}
+
+.bottomShadow {
+    position: absolute;
+    width: 100%;
+    height: 80px;
+    background-image: linear-gradient(to bottom, transparent, rgb(39, 39, 39));
+    bottom: 0;
+    border-radius: 15px;
+    z-index: 0;
+}
+
+
+@media (max-width: 800px) {
+
+    .container {
+        padding: 10px;
+    }
+
+    .rightSide {
+        width: 100%;
+    }
+
+    .bottom {
+        gap: 10px;
+    }
+
+    .textContainer {
+        height: calc(100%);
+        width: calc(100% - 20px);
+        gap: 50px;
+    }
+
+    .title {
+        font-size: 60px;
+    }
+
+    .subtitle {
+        font-size: 15px;
+        max-width: 70%;
+    }
+
+    .foodTypeText {
+        font-size: 15px;
+    }
+
+    .customersContainer {
+
+        height: 45px;
+
+    }
+
+    .circle {
+        height: 35px;
+        margin-left: -15px;
+        font-size: 16px;
+    }
+
+}
+
+@media (max-width: 520px) {
+
+    .container {
+        padding: 10px;
+    }
+
+    .rightSide {
+        width: 100%;
+    }
+
+    .bottom {
+        gap: 10px;
+    }
+
+    .textContainer {
+        height: calc(100%);
+        width: calc(100% - 20px);
+        gap: 50px;
+    }
+
+    .title {
+        font-size: 45px;
+    }
+
+    .subtitle {
+        font-size: 13px;
+        max-width: 100%;
+    }
+
+    .foodTypeText {
+        font-size: 15px;
+    }
+
+    .customersContainer {
+
+        height: 35px;
+
+    }
+
+    .circle {
+
+        height: 25px;
+        margin-left: -8px;
+
+        font-size: 12px;
+    }
+
+}

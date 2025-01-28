@@ -5,7 +5,7 @@ import { useEffect } from "react";
 import CardSkeleton from "../../../../Components/MenuCards/CardSkeleton/CardSkeleton";
 import { motion, AnimatePresence } from "framer-motion";
 
-const MenuGrid = () => {
+const MenuGrid = ({setExit}) => {
   const dishes = useSelector((state) => state.menu);
   const isSearching = useSelector((state) => state.isSearching);
 
@@ -52,6 +52,7 @@ const MenuGrid = () => {
                         description={description}
                         price={price}
                         discount={discount}
+                        setExit={setExit}
                       />
                     </motion.div>
                   );

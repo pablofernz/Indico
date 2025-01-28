@@ -1,6 +1,6 @@
 .background {
-    height: 100vh;
-    width: 100vw;
+    height: 100dvh;
+    width: 100dvw;
     background-color: rgba(0, 0, 0, 0.72);
     backdrop-filter: blur(5px);
     z-index: 3;
@@ -18,7 +18,7 @@
     background-color: whitesmoke;
     border-radius: 20px;
     padding: 0px 20px;
-    outline: 2px solid black;
+    border: 2px solid black;
     box-shadow: 10px 10px 0px black;
     display: flex;
     align-items: center;
@@ -145,9 +145,10 @@
     width: 4rem;
 }
 
-.setStarsButton:hover{
+.setStarsButton:hover {
     scale: 1.3
 }
+
 .starsButtons:has(.setStarsButton:hover) .setStarsButton:not(:hover) {
     opacity: 0.5;
 }
@@ -363,17 +364,20 @@
     justify-content: center;
 }
 
-@media (max-width: 500px){
-    .card{
+@media (max-width: 500px) {
+    .card {
         scale: 0.9
     }
-    .starstextContainer>h1{
-        font-size: 20px;
+
+    .starstextContainer>h1 {
+        font-size: 5.5dvw;
         text-align: center;
     }
+    
+
     .setStarsButton svg {
-        height: 2.5rem;
-        width: 2.5rem;
+        height: 14dvw;
+        width: 14dvw;
     }
 }
 

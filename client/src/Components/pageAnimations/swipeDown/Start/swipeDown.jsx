@@ -13,7 +13,7 @@ const SwipeMiddleBottom = () => {
     >
       <div className={style.imgContainer}>
         <img
-          src="https://i.ibb.co/1TZQrh7/Logo-light.png"
+          src="https://res.cloudinary.com/dnrprmypf/image/upload/q_0/v1718654737/Logo-light_v11oio.webp"
           alt="logo-bold-2"
           className={style.img}
         />

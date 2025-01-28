@@ -1,4 +1,5 @@
 import axios from "axios"
+export const SET_COOKIES_POPUP = 'SET_COOKIES_POPUP'
 export const SET_SLOWNETWORK_POPUP = 'SET_SLOWNETWORK_POPUP'
 export const SET_NETWORK_ERROR = 'SET_NETWORK_ERROR'
 export const SET_GRID = 'SET_GRID'
@@ -16,6 +17,14 @@ export const KEEP_CART = 'KEEP_CART'
 export const CART_STATUS = 'CART_STATUS'
 export const GET_USERS = 'GET_USERS'
 
+export const setCookiesPopup = (boolean) => {
+    return async function (dispatch) {
+        dispatch({
+            type: SET_COOKIES_POPUP,
+            payload: boolean
+        })
+    }
+}
 export const setSlowNetworkPopup = (boolean) => {
     return async function (dispatch) {
         dispatch({
@@ -220,8 +229,8 @@ export const getUserDataWithToken = async (token) => {
 
             // Realiza la solicitud al servidor para validar el token
             const res = await axios.get(
-                // "http://localhost:3001/token/getuserdata"
                 "https://indico-backend.onrender.com/token/getuserdata"
+                // "http://localhost:3001/token/getuserdata"
                 , config)
             // Retorna el resultado de la validación
             return res;

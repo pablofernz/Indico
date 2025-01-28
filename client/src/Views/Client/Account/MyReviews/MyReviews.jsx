@@ -219,7 +219,7 @@ const MyReviews = () => {
   const navigate = useNavigate();
   const [isExit, setExit] = useState(false);
   const userData = JSON.parse(window.localStorage.getItem("userData"));
-
+  const [toReviews, setToReviews] = useState(false);
   const [reviewsData, setReviewsData] = useState([]);
   const getMyReviews = async () => {
     try {
@@ -243,6 +243,7 @@ const MyReviews = () => {
   return (
     <div className={style.accountComponent}>
       <div className={style.background} />
+      {toReviews && <SwipeBottomMiddle />}
       {/* - - - - - - - - - - - - - CARD - - - - - - - - - - - - - - - - - -  */}
 
       <div className={style.cardContainer}>
@@ -367,17 +368,16 @@ const MyReviews = () => {
                   </p>
 
                   <button
-                    // onClick={() => {
-                    //   setToStore(true);
-                    //   window.sessionStorage.removeItem("cartItems");
+                    onClick={() => {
+                      setToReviews(true);
 
-                    //   setTimeout(() => {
-                    //     window.location.href = "/store";
-                    //   }, 500);
-                    // }}
+                      setTimeout(() => {
+                        window.location.href = "/store/reviews";
+                      }, 500);
+                    }}
                     className={style.errorButton}
                   >
-                    Dar una reseña
+                    Ir a las reseñas
                   </button>
                 </motion.div>
               )}

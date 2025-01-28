@@ -1,9 +1,49 @@
+.loginPage {
+    position: relative;
+    width: 100dvw;
+    height: 100dvh;
+}
+
+.loginPage>button {
+    position: fixed;
+    top: 0;
+    left: 0;
+    margin-top: 20px;
+    margin-left: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    background-color: whitesmoke;
+    padding: 10px;
+    color: rgb(0, 0, 0);
+    cursor: pointer;
+    border-radius: 9999px;
+    outline: 2px solid black;
+    box-shadow: 5px 5px 0px rgb(0, 0, 0);
+    transition: all 0.2s ease;
+    z-index: 2;
+}
+
+.loginPage>button:active {
+    box-shadow: 0px 0px 0px black;
+    transform: translateX(4px) translateY(4px);
+}
+
+
+
 .form {
     display: flex;
     justify-content: center;
-    height: 100vh;
-    width: 100vw;
+    height: 100dvh;
+    width: 100dvw;
     background-color: black;
+}
+
+.dataContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
 }
 
 .title {
@@ -29,8 +69,8 @@
 
 .background {
     position: absolute;
-    height: 100vh;
-    width: 100vw;
+    height: 100dvh;
+    width: 100dvw;
     z-index: 0;
     background-size: cover;
     background-position: center center;
@@ -44,16 +84,15 @@
     flex-direction: column;
     gap: 10px;
     padding: 30px;
-    min-width: 300px;
-    min-height: 500px;
-    max-height: 500px;
+   
     border-radius: 20px;
     color: rgb(31, 31, 31);
     background-size: cover;
     background-position: center center;
+    background-color: white;
     background-image: url(https://res.cloudinary.com/dnrprmypf/image/upload/q_30/v1729605070/Projects%20Images/Indico/Store%20image%20backgrounds_utils/paper%20png%20login-register.webp);
-    height: 80vh;
-    width: 32vw;
+    height: auto;
+    width: 450px;
     box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
     z-index: 1;
 }
@@ -66,6 +105,8 @@
     align-items: center;
     padding-right: 10px;
     transition: 0.2s ease-in-out;
+    position: relative;
+
 }
 
 .inputFormError {
@@ -91,6 +132,24 @@
     white-space: nowrap;
     text-overflow: ellipsis;
     max-width: 340px;
+}
+
+.input::-ms-reveal,
+.input::-ms-clear {
+    display: none;
+}
+
+.eye {
+    position: absolute;
+    right: 0;
+    color: rgb(90, 90, 90);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 50px;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
 }
 
 .inputError {
@@ -258,7 +317,7 @@
     justify-content: center;
     align-items: center;
     visibility: hidden;
-    
+
 }
 
 .svg:hover .svgCard {
@@ -274,5 +333,16 @@
 @media (max-width: 500px) {
     .login {
         width: 90dvw;
+    }
+    .eye{
+        margin-right: 35px;
+
+    }
+
+    .loginPage>button {
+        scale: 0.85;
+        margin-top: 10px;
+        margin-left: 10px;
+        z-index: 3;
     }
 }

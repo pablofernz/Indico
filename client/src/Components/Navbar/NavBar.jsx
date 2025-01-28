@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useState } from "react";
 import style from "./NavBar.module.css";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
@@ -8,45 +8,14 @@ import SwipeBottomMiddle from "../pageAnimations/swipeUp/Exit/swipeUp";
 import {
   getUserDataWithToken,
   setNetworkConnectionError,
-  validateToken,
 } from "../../Redux/actions";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import useViewportWidth from "../../Hooks/useViewportWidth";
 
 const NavBar = () => {
   const navigate = useNavigate();
-  const [prevScrollPos, setPrevScrollPos] = useState(0);
-  const [visible, setVisible] = useState(true);
   const dispatch = useDispatch();
   const viewportWidth = useViewportWidth();
-
-  // useEffect(() => {
-  //   const handleScroll = () => {
-  //     const currentScrollPos = window.scrollY;
-
-  //     setVisible(prevScrollPos > currentScrollPos || currentScrollPos < 100);
-
-  //     setPrevScrollPos(currentScrollPos);
-  //   };
-
-  //   window.addEventListener("scroll", handleScroll);
-
-  //   return () => {
-  //     window.removeEventListener("scroll", handleScroll);
-  //   };
-  // }, [prevScrollPos]);
-
-  const [isOpen, setIsOpen] = useState("closed");
-
-  const handleclick = () => {
-    if (isOpen === "closed") {
-      setIsOpen("open");
-      console.log("Open");
-    } else {
-      setIsOpen("closed");
-      console.log("Closed");
-    }
-  };
 
   const [isUserDropdownOpen, setUserDropdown] = useState(false);
   const [isExit, setExit] = useState(false);
@@ -54,8 +23,6 @@ const NavBar = () => {
   const userDropdownHandler = () => {
     setUserDropdown(!isUserDropdownOpen);
   };
-
-  const [tokenStatus, setTokenStatus] = useState();
 
   const [userData, setUserData] = useState(null);
 
@@ -81,27 +48,33 @@ const NavBar = () => {
       }
     } catch (error) {
       console.log(error);
-      // window.alert(error);
     }
   };
   useEffect(() => {
     getUserData();
   }, []);
 
-  const networkError = useSelector((state) => state.errors.network_connection);
   return (
-    <motion.div
-    // initial={{ y: -300 }}
-    // animate={{ y: !networkError && 0 }}
-    // transition={{ duration: 0.5, delay: 1.5 }}
-    >
+    <motion.div className={style.component}>
       {isExit == true && <SwipeBottomMiddle />}
-      <nav className={`${style.navbar} ${visible ? "" : style.hidden}`}>
+      <nav
+        className={style.navbar}
+        style={{
+          padding: !Cookies.get("session_token")
+            ? "0px 15px 0px 25px"
+            : useViewportWidth() > 700
+            ? "0px 50px 0px 25px"
+            : "0px 15px 0px 15px",
+          backdropFilter: "blur(5px)",
+          backgroundImage:
+            "linear-gradient(to bottom, rgba(255,255,255,0.7), transparent)",
+        }}
+      >
         <div className={style.navbar}>
           <div className={style.logo}>
             <img
               className={style.logoImg}
-              src="https://i.ibb.co/4JNx6NT/logo-bold-2.png"
+              src="https://res.cloudinary.com/dnrprmypf/image/upload/q_0/v1735168763/logo-bold-2_hfiy0s.webp"
               alt="logo"
             />
             <a>Indico.</a>
@@ -109,11 +82,28 @@ const NavBar = () => {
 
           <ul className={style.menu}>
             <li className={style.btnsnav}>
-              <a href="#Menu">Menú</a>
+              <a
+                onClick={() => {
+                  setExit(true);
+                  setTimeout(() => {
+                    navigate("/store");
+                  }, 500);
+                }}
+              >
+                Tienda
+              </a>
             </li>
-
             <li className={style.btnsnav}>
-              <a href="#Reviews">Reseñas</a>
+              <a
+                onClick={() => {
+                  setExit(true);
+                  setTimeout(() => {
+                    navigate("/store/reviews");
+                  }, 500);
+                }}
+              >
+                Reseñas
+              </a>
             </li>
 
             <li>
@@ -121,10 +111,19 @@ const NavBar = () => {
             </li>
             {!Cookies.get("session_token") ? (
               <>
-                {viewportWidth > 600 ? (
+                {viewportWidth > 700 ? (
                   <div className={style.enterButtons}>
                     <li className={style.btnsnav}>
-                      <a href="#Register">Registrate</a>
+                      <a
+                        onClick={() => {
+                          setExit(true);
+                          setTimeout(() => {
+                            navigate("/register");
+                          }, 500);
+                        }}
+                      >
+                        Registrate
+                      </a>
                     </li>
 
                     <li>
@@ -163,7 +162,7 @@ const NavBar = () => {
                             fill="none"
                             viewBox="0 0 24 24"
                             strokeWidth="2"
-                            stroke="currentColor"
+                            stroke="black"
                             width="35"
                             height="35"
                           >
@@ -188,7 +187,7 @@ const NavBar = () => {
                             fill="none"
                             viewBox="0 0 24 24"
                             strokeWidth="2"
-                            stroke="currentColor"
+                            stroke="black"
                             width="35"
                             height="35"
                           >
@@ -219,6 +218,36 @@ const NavBar = () => {
                                 gap: "5px",
                               }}
                             >
+                              <button
+                                className={style.dropdownOption}
+                                onClick={() => {
+                                  setExit(true);
+                                  setTimeout(() => {
+                                    navigate("/store");
+                                  }, 500);
+                                }}
+                              >
+                                <p className={style.dropdownOptionsIcon}>
+                                  <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    viewBox="0 0 24 24"
+                                    fill="currentColor"
+                                    width="20"
+                                    height="20"
+                                  >
+                                    <path d="M5.223 2.25c-.497 0-.974.198-1.325.55l-1.3 1.298A3.75 3.75 0 0 0 7.5 9.75c.627.47 1.406.75 2.25.75.844 0 1.624-.28 2.25-.75.626.47 1.406.75 2.25.75.844 0 1.623-.28 2.25-.75a3.75 3.75 0 0 0 4.902-5.652l-1.3-1.299a1.875 1.875 0 0 0-1.325-.549H5.223Z" />
+                                    <path
+                                      fillRule="evenodd"
+                                      d="M3 20.25v-8.755c1.42.674 3.08.673 4.5 0A5.234 5.234 0 0 0 9.75 12c.804 0 1.568-.182 2.25-.506a5.234 5.234 0 0 0 2.25.506c.804 0 1.567-.182 2.25-.506 1.42.674 3.08.675 4.5.001v8.755h.75a.75.75 0 0 1 0 1.5H2.25a.75.75 0 0 1 0-1.5H3Zm3-6a.75.75 0 0 1 .75-.75h3a.75.75 0 0 1 .75.75v3a.75.75 0 0 1-.75.75h-3a.75.75 0 0 1-.75-.75v-3Zm8.25-.75a.75.75 0 0 0-.75.75v5.25c0 .414.336.75.75.75h3a.75.75 0 0 0 .75-.75v-5.25a.75.75 0 0 0-.75-.75h-3Z"
+                                      clipRule="evenodd"
+                                    />
+                                  </svg>
+                                </p>
+
+                                <p className={style.dropdownOptionsText}>
+                                  Ir a la tienda
+                                </p>
+                              </button>
                               <button
                                 className={style.dropdownOption}
                                 onClick={() => {
@@ -265,9 +294,9 @@ const NavBar = () => {
                                     height="20"
                                   >
                                     <path
-                                      fill-rule="evenodd"
+                                      fillRule="evenodd"
                                       d="M18.685 19.097A9.723 9.723 0 0 0 21.75 12c0-5.385-4.365-9.75-9.75-9.75S2.25 6.615 2.25 12a9.723 9.723 0 0 0 3.065 7.097A9.716 9.716 0 0 0 12 21.75a9.716 9.716 0 0 0 6.685-2.653Zm-12.54-1.285A7.486 7.486 0 0 1 12 15a7.486 7.486 0 0 1 5.855 2.812A8.224 8.224 0 0 1 12 20.25a8.224 8.224 0 0 1-5.855-2.438ZM15.75 9a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0Z"
-                                      clip-rule="evenodd"
+                                      clipRule="evenodd"
                                     />
                                   </svg>
                                 </p>
@@ -312,16 +341,19 @@ const NavBar = () => {
                 )}
               </>
             ) : (
-              <div className={style.userContainer}>
+              <div
+                className={style.userContainer}
+                onClick={userDropdownHandler}
+              >
                 <button
-                  onClick={userDropdownHandler}
                   className={style.userImgContainer}
+                  onClick={userDropdownHandler}
                 >
                   {userData && (
                     <img
-                      style={{ borderRadius: "999px" }}
-                      width="35"
-                      height="35"
+                      style={{ borderRadius: "100%" }}
+                      width="37"
+                      height="37"
                       src={userData.image}
                       alt="user-male-circle"
                     />

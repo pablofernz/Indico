@@ -24,9 +24,10 @@
 
 .exitButton {
     position: absolute;
+    color: gray;
     top: 0;
     right: 0;
-    margin: 10px;
+    margin: 15px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -116,16 +117,17 @@
 }
 
 
-@media (max-width: 500px){
-   .reviewContainer{
-    scale: 0.8;
-    width: 100dvw;
-    
-   }
-   .imgReview{
-    height: 200px;
-    width: 200px;
-    margin-top: -0px;
-    background-color: transparent;
-   }
+@media (max-width: 500px) {
+    .reviewContainer {
+        scale: 0.8;
+        width: 100dvw;
+
+    }
+
+    .imgReview {
+        height: 200px;
+        width: 200px;
+        margin-top: -0px;
+        background-color: transparent;
+    }
 }

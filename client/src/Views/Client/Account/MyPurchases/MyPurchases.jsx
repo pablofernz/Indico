@@ -129,7 +129,7 @@ const PurchaseReceipt = ({ userData, dataForReceipt, setReceiptOpen }) => {
             />
             <img
               className={style.logoIndico}
-              src="https://res.cloudinary.com/dnrprmypf/image/upload/v1718654737/Logo-light_v11oio.png"
+              src="https://res.cloudinary.com/dnrprmypf/image/upload/q_0/v1718654737/Logo-light_v11oio.webp"
               alt=""
             />
           </picture>
@@ -472,7 +472,7 @@ const MyPurchases = () => {
             </AnimatePresence>
 
             <AnimatePresence mode="popLayout">
-              {!purchasesData.length && (
+              {purchasesData !== null && !purchasesData?.length && (
                 <motion.div
                   initial={{ opacity: 0, scale: 1 }}
                   exit={{ opacity: 0, scale: 0 }}

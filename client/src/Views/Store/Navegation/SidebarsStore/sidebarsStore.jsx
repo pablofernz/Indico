@@ -1,5 +1,4 @@
 import { useDispatch, useSelector } from "react-redux";
-import NavBarStore from "../NavbarStore/NavBarStore";
 import style from "./sidebarsStore.module.css";
 import React, { useEffect, useState } from "react";
 import {
@@ -9,17 +8,15 @@ import {
   clearCart,
   cartStatus,
 } from "../../../../Redux/actions";
-import IconLoader from "../../../../Components/iconLoader/iconLoader";
 import { useNavigate } from "react-router-dom";
-import { motion, LayoutGroup, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import useViewportWidth from "../../../../Hooks/useViewportWidth";
 import NotLoginModal from "../../../../Components/NotLoginModal/notLoginModal";
+import SwipeBottomMiddle from "../../../../Components/pageAnimations/swipeUp/Exit/swipeUp";
 
 const Sidebars = () => {
   // - - - - - - - - - - C A R T - - - - - - - - - - - - - - - - -
 
-  // const [optionsStatus, setOptionsStatus] = useState("closed");
-  // const [cartStatus, setCartStatus] = useState("closed");
   const viewportWidth = useViewportWidth();
   const navigate = useNavigate();
   const userData = JSON.parse(window.localStorage.getItem("userData"));
@@ -199,10 +196,26 @@ const Sidebars = () => {
   };
 
   const [isExit, setExit] = useState(false);
-  const exitHandler = () => {
-    setExit(true);
+  const [toPay, setToPay] = useState(false);
+  const payHandler = () => {
+    setToPay(true);
     setTimeout(() => {
       navigate("/store/pay");
+    }, 500);
+  };
+  const backHandler = () => {
+    setExit(true);
+    setTimeout(() => {
+      if (window.sessionStorage.getItem("page_aux") !== "/store") {
+        navigate(`${window.sessionStorage.getItem("page_aux")}`);
+        window.sessionStorage.removeItem("page_aux");
+      } else {
+        if (window.sessionStorage.getItem("page_aux") == "/store") {
+          navigate("/");
+        } else {
+          window.history.back();
+        }
+      }
     }, 500);
   };
 
@@ -222,7 +235,7 @@ const Sidebars = () => {
 
   return (
     <div className={style.store}>
-      {isExit == true && (
+      {toPay == true && (
         <motion.div
           className={style.pantalla}
           initial={{ y: -800 }} // Estilo inicial
@@ -231,13 +244,18 @@ const Sidebars = () => {
           transition={{ duration: 0.5 }} // Duración de la transición
         />
       )}
-      {notLogin && (
-        <NotLoginModal
-          setNotLoginModalOpen={setNotLogin}
-          text="Debes estar logueado para poder hacer compras"
-          exit={setExit}
-        />
-      )}
+      {isExit && <SwipeBottomMiddle />}
+
+      <AnimatePresence>
+        {notLogin && (
+          <NotLoginModal
+            setNotLoginModalOpen={setNotLogin}
+            text="Debes estar logueado para poder hacer compras"
+            exit={setExit}
+          />
+        )}
+      </AnimatePresence>
+
       <AnimatePresence>
         {viewportWidth <= 600 && foodInCart.length > 0 && (
           <motion.div
@@ -251,20 +269,13 @@ const Sidebars = () => {
       </AnimatePresence>
       {/*- -------- FILTERS BUTTON --------------- */}
       <div className={style.backButton}>
-        <button
-          onClick={() => {
-            setExit(true);
-            setTimeout(() => {
-              navigate("/home");
-            }, 500);
-          }}
-        >
+        <button onClick={backHandler}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
             viewBox="0 0 24 24"
             strokeWidth="3"
-            stroke="currentColor"
+            stroke="black"
             width="20"
             height="20"
           >
@@ -368,15 +379,24 @@ const Sidebars = () => {
             onClick={userDropdownHandler}
             className={style.userImgContainer}
           >
-            <img
-              style={{ borderRadius: "999px" }}
-              src={
-                userData
-                  ? userData.image
-                  : "https://res.cloudinary.com/dnrprmypf/image/upload/v1728605983/Projects%20Images/Indico/Clients%20Photos/User%20default%20photo.png"
-              }
-              alt="user-male-circle"
-            />
+            {!userData ? (
+              <img
+                style={{ borderRadius: "999px" }}
+                src="https://res.cloudinary.com/dnrprmypf/image/upload/v1728605983/Projects%20Images/Indico/Clients%20Photos/User%20default%20photo.png"
+                alt="User"
+              />
+            ) : userData.image !== "" ? (
+              <img
+                style={{ borderRadius: "999px" }}
+                src={userData.image}
+                alt="User"
+              />
+            ) : (
+              <div className={style.test}>
+                {userData.name.split("")[0].toUpperCase()}
+              </div>
+            )}
+
             <div className={style.dropdownIndicator}>
               <motion.svg
                 animate={{
@@ -440,7 +460,7 @@ const Sidebars = () => {
                             viewBox="0 0 24 24"
                             width="22"
                             height="22"
-                            fill="currentColor"
+                            fill="black"
                           >
                             <path
                               fillRule="evenodd"
@@ -452,33 +472,7 @@ const Sidebars = () => {
 
                         <p className={style.dropdownOptionsText}>Mi cuenta</p>
                       </button>
-                      <button
-                        className={style.dropdownOption}
-                        onClick={() => {
-                          // setExit(true);
-                          // setTimeout(() => {
-                          //   navigate("/store");
-                          // }, 500);
-                        }}
-                      >
-                        <p className={style.dropdownOptionsIcon}>
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            viewBox="0 0 24 24"
-                            fill="currentColor"
-                            width="20"
-                            height="20"
-                          >
-                            <path
-                              fillRule="evenodd"
-                              d="M1.5 6.375c0-1.036.84-1.875 1.875-1.875h17.25c1.035 0 1.875.84 1.875 1.875v3.026a.75.75 0 0 1-.375.65 2.249 2.249 0 0 0 0 3.898.75.75 0 0 1 .375.65v3.026c0 1.035-.84 1.875-1.875 1.875H3.375A1.875 1.875 0 0 1 1.5 17.625v-3.026a.75.75 0 0 1 .374-.65 2.249 2.249 0 0 0 0-3.898.75.75 0 0 1-.374-.65V6.375Zm15-1.125a.75.75 0 0 1 .75.75v.75a.75.75 0 0 1-1.5 0V6a.75.75 0 0 1 .75-.75Zm.75 4.5a.75.75 0 0 0-1.5 0v.75a.75.75 0 0 0 1.5 0v-.75Zm-.75 3a.75.75 0 0 1 .75.75v.75a.75.75 0 0 1-1.5 0v-.75a.75.75 0 0 1 .75-.75Zm.75 4.5a.75.75 0 0 0-1.5 0V18a.75.75 0 0 0 1.5 0v-.75ZM6 12a.75.75 0 0 1 .75-.75H12a.75.75 0 0 1 0 1.5H6.75A.75.75 0 0 1 6 12Zm.75 2.25a.75.75 0 0 0 0 1.5h3a.75.75 0 0 0 0-1.5h-3Z"
-                              clipRule="evenodd"
-                            />
-                          </svg>
-                        </p>
 
-                        <p className={style.dropdownOptionsText}>Cupones</p>
-                      </button>
                       <button
                         className={style.dropdownOption}
                         onClick={() => {
@@ -492,7 +486,7 @@ const Sidebars = () => {
                           <svg
                             xmlns="http://www.w3.org/2000/svg"
                             viewBox="0 0 24 24"
-                            fill="currentColor"
+                            fill="black"
                             width="20"
                             height="20"
                           >
@@ -519,34 +513,6 @@ const Sidebars = () => {
                         onClick={() => {
                           setExit(true);
                           setTimeout(() => {
-                            navigate("/store/reviews");
-                          }, 500);
-                        }}
-                      >
-                        <p className={style.dropdownOptionsIcon}>
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            viewBox="0 0 24 24"
-                            fill="currentColor"
-                            width="20"
-                            height="20"
-                          >
-                            <path d="M4.913 2.658c2.075-.27 4.19-.408 6.337-.408 2.147 0 4.262.139 6.337.408 1.922.25 3.291 1.861 3.405 3.727a4.403 4.403 0 0 0-1.032-.211 50.89 50.89 0 0 0-8.42 0c-2.358.196-4.04 2.19-4.04 4.434v4.286a4.47 4.47 0 0 0 2.433 3.984L7.28 21.53A.75.75 0 0 1 6 21v-4.03a48.527 48.527 0 0 1-1.087-.128C2.905 16.58 1.5 14.833 1.5 12.862V6.638c0-1.97 1.405-3.718 3.413-3.979Z" />
-                            <path d="M15.75 7.5c-1.376 0-2.739.057-4.086.169C10.124 7.797 9 9.103 9 10.609v4.285c0 1.507 1.128 2.814 2.67 2.94 1.243.102 2.5.157 3.768.165l2.782 2.781a.75.75 0 0 0 1.28-.53v-2.39l.33-.026c1.542-.125 2.67-1.433 2.67-2.94v-4.286c0-1.505-1.125-2.811-2.664-2.94A49.392 49.392 0 0 0 15.75 7.5Z" />
-                          </svg>
-                        </p>
-
-                        <p className={style.dropdownOptionsText}>
-                          Leer las reseñas
-                        </p>
-                      </button>
-                      <div className={style.divider}></div>
-
-                      <button
-                        className={style.dropdownOption}
-                        onClick={() => {
-                          setExit(true);
-                          setTimeout(() => {
                             navigate("/login");
                           }, 500);
                         }}
@@ -555,14 +521,14 @@ const Sidebars = () => {
                           <svg
                             xmlns="http://www.w3.org/2000/svg"
                             viewBox="0 0 24 24"
-                            fill="currentColor"
+                            fill="black"
                             width="20"
                             height="20"
                           >
                             <path
-                              fill-rule="evenodd"
+                              fillRule="evenodd"
                               d="M18.685 19.097A9.723 9.723 0 0 0 21.75 12c0-5.385-4.365-9.75-9.75-9.75S2.25 6.615 2.25 12a9.723 9.723 0 0 0 3.065 7.097A9.716 9.716 0 0 0 12 21.75a9.716 9.716 0 0 0 6.685-2.653Zm-12.54-1.285A7.486 7.486 0 0 1 12 15a7.486 7.486 0 0 1 5.855 2.812A8.224 8.224 0 0 1 12 20.25a8.224 8.224 0 0 1-5.855-2.438ZM15.75 9a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0Z"
-                              clip-rule="evenodd"
+                              clipRule="evenodd"
                             />
                           </svg>
                         </p>
@@ -586,7 +552,7 @@ const Sidebars = () => {
                             style={{ marginLeft: "4px" }}
                             xmlns="http://www.w3.org/2000/svg"
                             viewBox="0 0 24 24"
-                            fill="currentColor"
+                            fill="black"
                             width="20"
                             height="20"
                           >
@@ -595,6 +561,33 @@ const Sidebars = () => {
                         </p>
 
                         <p className={style.dropdownOptionsText}>Registrarse</p>
+                      </button>
+                      <div className={style.divider}></div>
+                      <button
+                        className={style.dropdownOption}
+                        onClick={() => {
+                          setExit(true);
+                          setTimeout(() => {
+                            navigate("/store/reviews");
+                          }, 500);
+                        }}
+                      >
+                        <p className={style.dropdownOptionsIcon}>
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 24 24"
+                            fill="black"
+                            width="20"
+                            height="20"
+                          >
+                            <path d="M4.913 2.658c2.075-.27 4.19-.408 6.337-.408 2.147 0 4.262.139 6.337.408 1.922.25 3.291 1.861 3.405 3.727a4.403 4.403 0 0 0-1.032-.211 50.89 50.89 0 0 0-8.42 0c-2.358.196-4.04 2.19-4.04 4.434v4.286a4.47 4.47 0 0 0 2.433 3.984L7.28 21.53A.75.75 0 0 1 6 21v-4.03a48.527 48.527 0 0 1-1.087-.128C2.905 16.58 1.5 14.833 1.5 12.862V6.638c0-1.97 1.405-3.718 3.413-3.979Z" />
+                            <path d="M15.75 7.5c-1.376 0-2.739.057-4.086.169C10.124 7.797 9 9.103 9 10.609v4.285c0 1.507 1.128 2.814 2.67 2.94 1.243.102 2.5.157 3.768.165l2.782 2.781a.75.75 0 0 0 1.28-.53v-2.39l.33-.026c1.542-.125 2.67-1.433 2.67-2.94v-4.286c0-1.505-1.125-2.811-2.664-2.94A49.392 49.392 0 0 0 15.75 7.5Z" />
+                          </svg>
+                        </p>
+
+                        <p className={style.dropdownOptionsText}>
+                          Leer las reseñas
+                        </p>
                       </button>
                     </div>
                   )}
@@ -630,7 +623,7 @@ const Sidebars = () => {
                     fill="none"
                     viewBox="0 0 24 24"
                     strokeWidth="3"
-                    stroke="currentColor"
+                    stroke="gray"
                     width="20"
                     height="20"
                     style={{ rotate: viewportWidth < 500 && "90deg" }}
@@ -752,7 +745,7 @@ const Sidebars = () => {
                     </svg>
                   </button>
                   {isOrderSent ? (
-                    <button className={style.payButton2} onClick={exitHandler}>
+                    <button className={style.payButton2} onClick={payHandler}>
                       Pagar
                     </button>
                   ) : (

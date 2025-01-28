@@ -4,6 +4,16 @@ const purchaseSchema = require("./Store/Purchase").schema
 const favoriteFoodsSchema = require("./Store/FavoriteFoods").schema
 const bcrypt = require("bcrypt")
 
+const authSchema = mongoose.Schema({
+    authMethod: {
+        type: String,
+        default: "form"
+    },
+    uid: {
+        type: String
+    }
+})
+
 const clientSchema = mongoose.Schema({
     name: {
         type: String,
@@ -19,16 +29,16 @@ const clientSchema = mongoose.Schema({
     },
     password: {
         type: String,
-        required: true
     },
     image: {
         type: String,
-        default: 'https://res.cloudinary.com/dnrprmypf/image/upload/q_auto:low/v1728605983/Projects%20Images/Indico/Clients%20Photos/User%20default%20photo.webp'
+        default: "https://res.cloudinary.com/dnrprmypf/image/upload/q_auto:low/v1728605983/Projects%20Images/Indico/Clients%20Photos/User%20default%20photo.webp"
     },
     role: {
         type: String,
         default: "Client"
     },
+    auth: authSchema,
     purchases: [purchaseSchema],
     reviews: [reviewsSchema],
     favoriteFoods: [favoriteFoodsSchema],
