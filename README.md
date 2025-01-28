@@ -9,7 +9,7 @@ Este es un proyecto de una pÃ¡gina web para un restaurante ficticio el cual creÃ
 ### Screenshots
 ![image](https://github.com/user-attachments/assets/2c7fb6ef-b8d6-4d01-a1c3-7bf6d7438e3c)
 ![image](https://github.com/user-attachments/assets/1978c0c4-e0e4-4857-9ff2-26db55a9b559)
-![image](https://github.com/user-attachments/assets/d703555a-7a55-4711-832a-30164e76e19a)
+![image](https://github.com/user-attachments/assets/e7846b02-a8ad-4b84-91f8-1ea1c4efb301)
 ![image](https://github.com/user-attachments/assets/89f433bb-4058-4fed-a88b-720ada71da4d)
 ![image](https://github.com/pablofernz/indico-restaurant/assets/122618014/886c8493-0a8a-428d-91a3-58862dc2394f)
 ![image](https://github.com/user-attachments/assets/efe12ce3-e6d2-49aa-9094-b5b9c50898c1)
